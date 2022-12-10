@@ -1,6 +1,6 @@
 title: VWO Mobile Service
 remote_theme: viraweb123/viraweb123.github.io
-
+baseurl:/odoo-mobile-service
 
 #
 # This allows you to set which pages you want to appear in the navigation area 
