@@ -2,6 +2,11 @@ title: VWO Mobile Service
 remote_theme: viraweb123/viraweb123.github.io
 
 
+#
+# This allows you to set which pages you want to appear in the navigation area 
+# and configure order of the links.
+#
+header_pages:
 
 plugins:
   - jekyll-feed
