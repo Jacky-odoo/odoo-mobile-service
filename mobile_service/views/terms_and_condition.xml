@@ -8,7 +8,7 @@
                 <form string="Complaint Type">
                     <sheet>
                         <group>
-                            <field name="terms_conditions"/>
+                            <field name="terms_conditions" />
                         </group>
                     </sheet>
                 </form>
@@ -20,7 +20,7 @@
             <field name="model">terms.conditions</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="terms_conditions"/>
+                    <field name="terms_conditions" />
                 </tree>
             </field>
         </record>
@@ -29,7 +29,7 @@
             <field name="name">Terms and Conditions</field>
             <field name="res_model">terms.conditions</field>
             <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="mobile_terms_and_conditions_tree_view"/>
+            <field name="view_id" ref="mobile_terms_and_conditions_tree_view" />
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Click to Create a New Record.
@@ -37,8 +37,10 @@
             </field>
         </record>
 
-        <menuitem action="action_mobile_terms_and_conditions" id="mobile_service_conf5"
-                  parent="mobile_service_configuration"
-                  name="Terms and Conditions" sequence="4"/>
+        <menuitem action="action_mobile_terms_and_conditions"
+            id="mobile_service_conf5"
+            parent="mobile_service_configuration"
+            name="Terms and Conditions"
+            sequence="4" />
     </data>
 </odoo>
