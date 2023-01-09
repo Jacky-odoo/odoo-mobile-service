@@ -26,15 +26,18 @@ class MobileWarranty(models.Model):
                         indexed=True)
     part_number = fields.Char(string="Email")
 
-    importer_id = fields.Many2one(string="Importer Company",
-                                  related='person_name.email')
-    warranty_id = fields.Many2one(string="Warranty Company",
-                                  related='person_name.email')
+    importer_id = fields.Many2one('res.partner',
+                                  string="Importer Company",
+                                  help="")
+    warranty_id = fields.Many2one('res.partner',
+                                  string="Warranty Company",
+                                  help="")
 
     #
     # Create a new name based on the sequnce.
     #
     @api.model
     def create(self, vals):
-        vals['name'] = self.env['ir.sequence'].next_by_code('mobile.service.warranty') or '/'
+        vals['name'] = self.env['ir.sequence'].next_by_code(
+            'mobile.service.warranty') or '/'
         return super(MobileWarranty, self).create(vals)

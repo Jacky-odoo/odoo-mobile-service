@@ -8,13 +8,12 @@ class ProductProduct(models.Model):
                                 default=False,
                                 help="Specify if the product is a mobile part or not.")
     brand_name = fields.Many2one('mobile.brand',
-                                 String="Brand",
+                                 string="Brand",
                                  help="Select a mobile brand for the part")
     model_name = fields.Many2one('brand.model',
-                                 String="Model Name",
+                                 string="Model Name",
                                  domain="[('mobile_brand_name','=',brand_name)]",
                                  help="Select a model for the part")
-    model_colour = fields.Char('Colour',
-                               string="Colour",
-                               help="colour for the part")
+    model_colour = fields.Char(string='Color',
+                               help="Color for the part")
     extra_descriptions = fields.Text(string="Note")

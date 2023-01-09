@@ -171,7 +171,7 @@
                                     <group>
                                         <field name="imei_no" style="width:50%;" colspan="1"
                                             attrs="{'readonly': [('service_state','not in',('draft'))]}" />
-                                        <field name="warranty_number" style="width:50%;"
+                                        <field name="warranty_id" style="width:50%;"
                                             attrs="{'readonly': [('service_state','not in',('draft'))],
                                                     'required': [('is_in_warranty', '=', True)], 'invisible': [('is_in_warranty', '!=', True)]}" />
                                     </group>
