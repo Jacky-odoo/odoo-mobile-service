@@ -1,17 +1,9 @@
 <odoo>
     <data>
 
-        <record id="mobile_service_sequence" model="ir.sequence">
-            <field name="name">Service Code</field>
-            <field name="code">mobile.service</field>
-            <field name="prefix">SERV/</field>
-            <field eval="4" name="padding" />
-            <field name="company_id" eval="False" />
-        </record>
-
-        <record id="mobile_service_request_search_view" model="ir.ui.view">
-            <field name="name">service.request.search1</field>
-            <field name="model">mobile.service</field>
+        <!-- <record id="mobile_service_request_search_view" model="ir.ui.view">
+            <field name="name">mobile.warranty.search1</field>
+            <field name="model">mobile.warranty</field>
             <field name="arch" type="xml">
                 <search string="Search in requests">
                     <field name="person_name"
@@ -46,9 +38,9 @@
                     </group>
                 </search>
             </field>
-        </record>
+        </record> -->
 
-        <record id="mobile_service_request_form_view"
+        <!-- <record id="mobile_service_request_form_view"
             model="ir.ui.view">
             <field name="name">mobile.service.request.form</field>
             <field name="model">mobile.service</field>
@@ -230,9 +222,9 @@
                     </div>
                 </form>
             </field>
-        </record>
+        </record> -->
 
-        <record id="service_request_view_kanban" model="ir.ui.view">
+        <!-- <record id="service_request_view_kanban" model="ir.ui.view">
             <field name="name">mobile.service.kanban</field>
             <field name="model">mobile.service</field>
             <field name="arch" type="xml">
@@ -265,9 +257,9 @@
                     </templates>
                 </kanban>
             </field>
-        </record>
+        </record> -->
 
-        <record id="mobile_service_graph" model="ir.ui.view">
+        <!-- <record id="mobile_service_graph" model="ir.ui.view">
             <field name="name">mobile.service.graph</field>
             <field name="model">mobile.service</field>
             <field name="arch" type="xml">
@@ -275,9 +267,9 @@
                     <field name="technician_name" type="row" />
                 </graph>
             </field>
-        </record>
+        </record> -->
 
-        <record id="mobile_service_request_tree_view" model="ir.ui.view">
+        <!-- <record id="mobile_service_request_tree_view" model="ir.ui.view">
             <field name="name">mobile.service.request.tree</field>
             <field name="model">mobile.service</field>
             <field name="arch" type="xml">
@@ -297,44 +289,28 @@
                     <field name="service_state" />
                 </tree>
             </field>
-        </record>
+        </record> -->
 
-        <record id="action_mobile_service_request" model="ir.actions.act_window">
-            <field name="name">Service Request</field>
-            <field name="res_model">mobile.service</field>
+        <record id="action_mobile_warranty" model="ir.actions.act_window">
+            <field name="name">Warranties</field>
+            <field name="res_model">mobile.warranty</field>
             <field name="view_mode">tree,form,kanban,pivot,graph</field>
-            <field name="search_view_id" ref="mobile_service_request_search_view" />
-            <field name="view_id" ref="mobile_service_request_tree_view" />
+            <!-- <field name="search_view_id" ref="mobile_service_request_search_view" />
+            <field name="view_id" ref="mobile_service_request_tree_view" /> -->
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
-                    Click to Create a New Record.
+                    Click to Create a New Warranty.
                 </p>
             </field>
         </record>
 
 
-        <menuitem id="mobile_service_main_menu"
-            web_icon="mobile_service,static/description/web-icon.png"
-            name="Mobile Service"
-            sequence="20" />
-
         <menuitem
-            id="mobile_service_menu"
+            action="action_mobile_warranty"
+            id="mobile_warranty_menu"
             parent="mobile_service_main_menu"
-            sequence="20" />
-
-        <menuitem
-            action="action_mobile_service_request"
-            id="mobile_service_menu2"
-            parent="mobile_service_main_menu"
-            name="Service Request"
-            sequence="1" />
-
-        <menuitem id="mobile_service_configuration"
-            parent="mobile_service_main_menu"
-            name="Configuration"
-            sequence="3" />
-
+            name="Warranty"
+            sequence="2" />
 
     </data>
 </odoo>

@@ -1002,7 +1002,7 @@ msgid "Used quantity is less than quantity stock move posted. "
 msgstr ""
 
 #. module: mobile_service
-#: model:ir.model.fields,field_description:mobile_service.field_mobile_service__warranty_number
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_service__warranty_id
 msgid "Warranty No "
 msgstr ""
 
@@ -1101,6 +1101,6 @@ msgid "terms.conditions"
 msgstr ""
 
 #. module: mobile_service
-#: model:ir.model.fields,help:mobile_service.field_mobile_service__warranty_number
+#: model:ir.model.fields,help:mobile_service.field_mobile_service__warranty_id
 msgid "warranty details"
 msgstr ""

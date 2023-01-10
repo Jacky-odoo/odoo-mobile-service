@@ -9,7 +9,7 @@
                     <sheet>
                         <group>
                             <group>
-                                <field name="complaint_type"/>
+                                <field name="complaint_type" />
                             </group>
                         </group>
                     </sheet>
@@ -22,7 +22,7 @@
             <field name="model">mobile.complaint</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="complaint_type"/>
+                    <field name="complaint_type" />
                 </tree>
             </field>
         </record>
@@ -31,7 +31,7 @@
             <field name="name">Complaint Types</field>
             <field name="res_model">mobile.complaint</field>
             <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="mobile_complaint_type_tree_view"/>
+            <field name="view_id" ref="mobile_complaint_type_tree_view" />
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Click to Create a New Record.
@@ -40,8 +40,10 @@
 
         </record>
 
-        <menuitem action="mobile_service.action_mobile_complaint_type" id="mobile_service_conf2"
-                  parent="mobile_service_configuration"
-                  name="Complaint Type" sequence="3"/>
+        <menuitem action="mobile_service.action_mobile_complaint_type"
+            id="mobile_service_conf2"
+            parent="mobile_service_configuration"
+            name="Complaint Type"
+            sequence="3" />
     </data>
 </odoo>
