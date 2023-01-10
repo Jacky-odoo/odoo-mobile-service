@@ -14,7 +14,7 @@ class MobileWarranty(models.Model):
                                string="Mobile Brand")
     model_id = fields.Many2one('brand.model',
                                string="Model",
-                               domain="[('mobile_brand_name','=',brand_name)]")
+                               domain="[('mobile_brand_name','=',brand_id)]")
     color = fields.Char(string='Color',
                         help="Color of the device",
                         required=False)
@@ -24,7 +24,7 @@ class MobileWarranty(models.Model):
                         indexed=True)
     imei2 = fields.Char(string="IMEI 2",
                         indexed=True)
-    part_number = fields.Char(string="Email")
+    part_number = fields.Char(string="Part Number")
 
     importer_id = fields.Many2one('res.partner',
                                   string="Importer Company",
@@ -32,6 +32,8 @@ class MobileWarranty(models.Model):
     warranty_id = fields.Many2one('res.partner',
                                   string="Warranty Company",
                                   help="")
+    descriptions = fields.Text(string="Note",
+                               help="Extra Note on The Warranty")
 
     #
     # Create a new name based on the sequnce.
