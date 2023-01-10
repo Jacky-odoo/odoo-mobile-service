@@ -45,7 +45,7 @@
             </field>
         </record>
 
-        <record id="mobile_service_request_form_view" model="ir.ui.view">
+        <record id="mobile_service_warranty_form_view" model="ir.ui.view">
             <field name="name">mobile.service.warranty.form</field>
             <field name="model">mobile.warranty</field>
             <field name="arch" type="xml">

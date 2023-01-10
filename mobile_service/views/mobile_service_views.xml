@@ -48,8 +48,7 @@
             </field>
         </record>
 
-        <record id="mobile_service_request_form_view"
-            model="ir.ui.view">
+        <record id="mobile_service_request_form_view" model="ir.ui.view">
             <field name="name">mobile.service.request.form</field>
             <field name="model">mobile.service</field>
             <field name="arch" type="xml">
@@ -119,14 +118,9 @@
                             </h1>
                         </div>
                         <group>
-                            <div>
-                                <field name="is_in_warranty"
-                                    attrs="{'readonly': [('service_state','in',('returned','not_solved'))]}" />
-                                <label for="is_in_warranty" />
-                                <field name="re_repair"
-                                    attrs="{'readonly': [('service_state','in',('returned','not_solved'))]}" />
-                                <label for="re_repair" />
-                            </div>
+                            <field name="re_repair"
+                                widget="bs_toggle"
+                                attrs="{'readonly': [('service_state','in',('returned','not_solved'))]}" />
                         </group>
 
                         <group>
@@ -139,18 +133,27 @@
                                     attrs="{'readonly': [('service_state','in',('returned','not_solved'))]}" />
                                 <field name="email_id" style="width:50%;"
                                     attrs="{'readonly': [('service_state','in',('returned','not_solved'))]}" />
-                                <label for="street" string="Address" />
+                                <label for="street"
+                                    string="Address" />
                                 <div class="o_address_format">
-                                    <field name="street" placeholder="Street..."
+                                    <field name="street"
+                                        placeholder="Street..."
                                         class="o_address_street" />
-                                    <field name="street2" placeholder="Street 2..."
+                                    <field name="street2"
+                                        placeholder="Street 2..."
                                         class="o_address_street" />
-                                    <field name="city" placeholder="City" class="o_address_city" />
-                                    <field name="state_id" class="o_address_state"
+                                    <field name="city"
+                                        placeholder="City"
+                                        class="o_address_city" />
+                                    <field name="state_id"
+                                        class="o_address_state"
                                         placeholder="State"
                                         options='{"no_open": True}' />
-                                    <field name="zip" placeholder="ZIP" class="o_address_zip" />
-                                    <field name="country_id" placeholder="Country"
+                                    <field name="zip"
+                                        placeholder="ZIP"
+                                        class="o_address_zip" />
+                                    <field name="country_id"
+                                        placeholder="Country"
                                         class="o_address_country"
                                         options='{"no_open": True, "no_create": True}' />
                                 </div>
@@ -158,14 +161,18 @@
                             <group>
                                 <label for="brand_name" />
                                 <div class="o_row">
-                                    <field name="brand_name" placeholder="Brand name"
+                                    <field name="brand_name"
+                                        placeholder="Brand name"
                                         attrs="{'readonly': [('service_state','not in',('draft'))]}" />
-                                    <field name="model_name" placeholder="Model name"
+                                    <field name="model_name"
+                                        placeholder="Model name"
                                         attrs="{'readonly': [('service_state','not in',('draft'))]}" />
                                 </div>
-                                <field name="date_request" style="width:50%;"
+                                <field name="date_request"
+                                    style="width:50%;"
                                     attrs="{'readonly': [('service_state','not in',('draft'))]}" />
-                                <field name="return_date" style="width:50%;"
+                                <field name="return_date"
+                                    style="width:50%;"
                                     attrs="{'readonly': [('service_state','in',('returned','not_solved'))]}" />
                                 <field name="technician_name" style="width:50%;"
                                     attrs="{'readonly': [('service_state','not in',('draft'))]}" />
@@ -174,20 +181,27 @@
 
                         </group>
                         <notebook>
+                            <page string="Warranty">
+                                <group>
+                                    <field name="imei_no" 
+                                        style="width:50%;" 
+                                        colspan="1"
+                                        attrs="{'readonly': [('service_state','not in',('draft'))]}" />
+                                    <field name="is_in_warranty"
+                                        widget="bs_toggle"
+                                        attrs="{'readonly': [('service_state','in',('returned','not_solved'))]}" >
+                                    </field>
+                                    <field name="warranty_id" 
+                                        style="width:50%;"
+                                        attrs="{'readonly': [('service_state','not in',('draft'))],
+                                                'required': [('is_in_warranty', '=', True)], 'invisible': [('is_in_warranty', '!=', True)]}" />
+                                </group>
+                            </page>
                             <page string="Description">
                                 <group>
-                                    <group>
-                                        <field name="imei_no" style="width:50%;" colspan="1"
-                                            attrs="{'readonly': [('service_state','not in',('draft'))]}" />
-                                        <field name="warranty_id" style="width:50%;"
-                                            attrs="{'readonly': [('service_state','not in',('draft'))],
-                                                    'required': [('is_in_warranty', '=', True)], 'invisible': [('is_in_warranty', '!=', True)]}" />
-                                    </group>
-                                    <group>
-                                        <field name="internal_notes"
-                                            placeholder="Notes used internally (eg: device password)"
-                                            attrs="{'readonly': [('service_state','in',('returned','not_solved'))]}" />
-                                    </group>
+                                    <field name="internal_notes"
+                                        placeholder="Notes used internally (eg: device password)"
+                                        attrs="{'readonly': [('service_state','in',('returned','not_solved'))]}" />
                                 </group>
                             </page>
                             <page string="Complaints">

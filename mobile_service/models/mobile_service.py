@@ -57,6 +57,7 @@ class MobileServiceShop(models.Model):
     date_request = fields.Date(string="Requested date",
                                default=fields.Date.context_today)
     return_date = fields.Date(string="Return date",
+                               default=fields.Date.context_today,
                               required=True)
     technician_name = fields.Many2one('res.users',
                                       string="Technician Name",
