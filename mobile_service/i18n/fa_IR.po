@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-05 14:50+0000\n"
-"PO-Revision-Date: 2023-01-09 10:44+0330\n"
+"PO-Revision-Date: 2023-01-10 13:38+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. module: mobile_service
 #: model:mail.template,body_html:mobile_service.email_template_mobile_service
@@ -24,17 +24,27 @@ msgid ""
 "                <p>Dear ${object.person_name.name},</p>\n"
 "                <p>Your service request for ${object.brand_name.brand_name "
 "or 'n/a' } (${object.model_name.mobile_brand_models or 'n/a' }) with "
-"reference no <b>${object.name or 'n/a' }</b> has been processed to <b>"
-"${object.service_state or 'n/a' }</b> stage.</p>\n"
+"reference no <b>${object.name or 'n/a' }</b> has been processed to "
+"<b>${object.service_state or 'n/a' }</b> stage.</p>\n"
 "                <p>If you have any questions, please let us know.</p>\n"
 "                <p>Best regards,</p>\n"
 "            "
 msgstr ""
+"\n"
+"                <p> ${object.person_name.name} عزیز,</p>\n"
+"                <p>درخواست تعمیر شما برای ${object.brand_name.brand_name or "
+"'n/a' } (${object.model_name.mobile_brand_models or 'n/a' }) با شماره سریال "
+"<b>${object.name or 'n/a' }</b> به حالت <b>${object.service_state or 'n/a' }"
+"</b>  تغییر کرده است.</p>\n"
+"                <p>اگر در این رابطه پرسشی دارید آن را با ما در میان بگذارید."
+"</p>\n"
+"                <p>با بهترین آرزوهاِ</p>\n"
+"            "
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__invoice_count
 msgid "# Invoice"
-msgstr ""
+msgstr "# حسابداری"
 
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_ticket_template
@@ -42,11 +52,13 @@ msgid ""
 "<span>Keep this ticket safely for future reference.</span><br/>\n"
 "                   <span>Issue Date :</span>"
 msgstr ""
+"<span>از این شناسه برای مراجعه های بعد نگهداری کنید.</span><br/>\n"
+"                   <span>تاریخ ایجاد :</span>"
 
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_ticket_template
 msgid "<span>The device is in warranty range !!</span>"
-msgstr ""
+msgstr "<span>این دستگاه در دوره ضمانت خود قرار دارد !!</span>"
 
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_ticket_template
@@ -91,7 +103,7 @@ msgstr "فعالیت‌ها"
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr ""
+msgstr "خطا در ساختار فعالیت"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__activity_state
@@ -479,7 +491,7 @@ msgstr "فاکتور"
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.view_mobile_create_inv
 msgid "Invoice Service Order"
-msgstr ""
+msgstr "قبض درخواست تعمیر"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_invoice__advance_payment_method
@@ -819,7 +831,7 @@ msgstr "کاربرمسئول"
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
 msgid "Return advance"
-msgstr ""
+msgstr "بازگشت به مشتری"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__return_date
