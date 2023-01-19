@@ -304,8 +304,6 @@
                     <field name="brand_name" />
                     <field name="model_name" />
                     <field name="imei_no" />
-                    <field name="image_medium" widget='image' class="Your_custom_class"
-                        string="Image" />
                     <field name="technician_name" />
                     <field name="return_date" />
                     <field name="service_state" />
