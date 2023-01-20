@@ -6,15 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-05 14:50+0000\n"
-"PO-Revision-Date: 2023-01-20 13:28+0330\n"
+"POT-Creation-Date: 2023-01-20 12:53+0000\n"
+"PO-Revision-Date: 2023-01-20 16:28+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"Plural-Forms: \n"
 "X-Generator: Poedit 3.2.2\n"
 
 #. module: mobile_service
@@ -91,27 +91,37 @@ msgid "<strong>Terms and Conditions</strong>"
 msgstr "<strong>شرایط و ضوابط</strong>"
 
 #. module: mobile_service
+#: model:ir.model.fields,help:mobile_service.field_mobile_warranty__code_hamta
+msgid "A code that show Hamta number"
+msgstr "کدی که شماره همتا را نشان می دهد"
+
+#. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__message_needaction
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__message_needaction
 msgid "Action Needed"
 msgstr "اقدام مورد نیاز"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__activity_ids
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__activity_ids
 msgid "Activities"
 msgstr "فعالیت‌ها"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__activity_exception_decoration
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__activity_exception_decoration
 msgid "Activity Exception Decoration"
 msgstr "خطا در ساختار فعالیت"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__activity_state
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__activity_state
 msgid "Activity State"
 msgstr "وضعیت فعالیت"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__activity_type_icon
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__activity_type_icon
 msgid "Activity Type Icon"
 msgstr "آیکون نوع فعالیت"
 
@@ -148,13 +158,17 @@ msgstr "تخصیص داده شده"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__message_attachment_count
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__message_attachment_count
 msgid "Attachment Count"
 msgstr "تعداد پیوست"
 
 #. module: mobile_service
 #: model:ir.actions.act_window,name:mobile_service.action_mobile_brand
+#: model:ir.model.fields,field_description:mobile_service.field_product_product__brand_name
+#: model:ir.model.fields,field_description:mobile_service.field_product_template__brand_name
 #: model:ir.ui.menu,name:mobile_service.mobile_service_conf1
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_brand_form_view
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_warranty_search_view
 msgid "Brand"
 msgstr "برند"
 
@@ -162,12 +176,6 @@ msgstr "برند"
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_brand_model_form_view
 msgid "Brand Model"
 msgstr "مدل برند"
-
-#. module: mobile_service
-#: model:ir.model.fields,field_description:mobile_service.field_product_product__brand_name
-#: model:ir.model.fields,field_description:mobile_service.field_product_template__brand_name
-msgid "Brand Name"
-msgstr "نام برند"
 
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
@@ -200,15 +208,37 @@ msgid "Click to Create a New Record."
 msgstr "برای ایجاد رکورد جدید کلیک کنید."
 
 #. module: mobile_service
+#: model_terms:ir.actions.act_window,help:mobile_service.action_mobile_warranty
+msgid "Click to Create a New Warranty."
+msgstr "برای ایجاد گارانتی جدید کلیک کنید."
+
+#. module: mobile_service
 #: model_terms:ir.actions.act_window,help:mobile_service.product_template_action_product
 msgid "Click to define a new product."
 msgstr "برای ایجاد محصول جدید کلیک کنید."
 
 #. module: mobile_service
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__code_hamta
+msgid "Code"
+msgstr "کد"
+
+#. module: mobile_service
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__color
 #: model:ir.model.fields,field_description:mobile_service.field_product_product__model_colour
 #: model:ir.model.fields,field_description:mobile_service.field_product_template__model_colour
-msgid "Colour"
+msgid "Color"
 msgstr "رنگ"
+
+#. module: mobile_service
+#: model:ir.model.fields,help:mobile_service.field_product_product__model_colour
+#: model:ir.model.fields,help:mobile_service.field_product_template__model_colour
+msgid "Color for the part"
+msgstr "رنگ برای قسمت"
+
+#. module: mobile_service
+#: model:ir.model.fields,help:mobile_service.field_mobile_warranty__color
+msgid "Color of the device"
+msgstr "رنگ دستگاه"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__company_id
@@ -218,22 +248,22 @@ msgstr "شرکت"
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_complaint_tree__complaint_id
 msgid "Complaint"
-msgstr "شکایت"
+msgstr "ایراد"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_complaint_description__description
 msgid "Complaint Description"
-msgstr "شرح شکایت"
+msgstr "شرح ایراد"
 
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_complaint_template_form_view
 msgid "Complaint Template"
-msgstr "قالب شکایت"
+msgstr "قالب ایراد"
 
 #. module: mobile_service
 #: model:ir.ui.menu,name:mobile_service.mobile_service_conf6
 msgid "Complaint Templates"
-msgstr "قالبهای شکایت"
+msgstr "قالبهای ایراد"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_complaint__complaint_type
@@ -241,29 +271,29 @@ msgstr "قالبهای شکایت"
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_complaint_type_form_view
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_terms_and_conditions_form_view
 msgid "Complaint Type"
-msgstr "نوع شکایت"
+msgstr "نوع ایراد"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_complaint_description__complaint_type_template
 msgid "Complaint Type Template"
-msgstr "قالب نوع شکایت"
+msgstr "قالب نوع ایراد"
 
 #. module: mobile_service
 #: model:ir.actions.act_window,name:mobile_service.action_mobile_complaint_template
 #: model:ir.actions.act_window,name:mobile_service.action_mobile_complaint_type
 msgid "Complaint Types"
-msgstr "نوعهای شکایت"
+msgstr "نوعهای ایراد"
 
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_ticket_template
 msgid "Complaints"
-msgstr "شکایات"
+msgstr "ایراد"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__complaints_tree
 msgid "Complaints Tree"
-msgstr "درخت شکایات"
+msgstr "درخت ایرادها"
 
 #. module: mobile_service
 #: model:ir.model.fields.selection,name:mobile_service.selection__mobile_service__service_state__completed
@@ -276,7 +306,7 @@ msgstr "تکمیل شده"
 #: code:addons/mobile_service/models/mobile_service.py:0
 #, python-format
 msgid "Compose Email"
-msgstr "ساخت ایمیل"
+msgstr "ارسال رایانامه"
 
 #. module: mobile_service
 #: model:ir.ui.menu,name:mobile_service.mobile_service_configuration
@@ -289,6 +319,7 @@ msgid "Contact Number"
 msgstr "شماره تماس"
 
 #. module: mobile_service
+#: model:ir.model.fields,help:mobile_service.field_mobile_service__country_id
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
 msgid "Country"
 msgstr "کشور"
@@ -315,6 +346,7 @@ msgstr "ایجاد فاکتورها"
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_complaint_tree__create_uid
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_invoice__create_uid
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__create_uid
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__create_uid
 #: model:ir.model.fields,field_description:mobile_service.field_product_order_line__create_uid
 #: model:ir.model.fields,field_description:mobile_service.field_terms_conditions__create_uid
 msgid "Created by"
@@ -328,6 +360,7 @@ msgstr "ایجاد شده توسط"
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_complaint_tree__create_date
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_invoice__create_date
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__create_date
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__create_date
 #: model:ir.model.fields,field_description:mobile_service.field_product_order_line__create_date
 #: model:ir.model.fields,field_description:mobile_service.field_terms_conditions__create_date
 msgid "Created on"
@@ -347,6 +380,7 @@ msgstr "ارائه به"
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_complaint_tree__description_tree
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_ticket_template
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_warranty_form_view
 msgid "Description"
 msgstr "شرح"
 
@@ -368,6 +402,7 @@ msgstr "جزیئات دستگاه"
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_complaint_tree__display_name
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_invoice__display_name
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__display_name
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__display_name
 #: model:ir.model.fields,field_description:mobile_service.field_product_order_line__display_name
 #: model:ir.model.fields,field_description:mobile_service.field_terms_conditions__display_name
 msgid "Display Name"
@@ -382,7 +417,12 @@ msgstr "پیش نویس"
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__email_id
 msgid "Email"
-msgstr "ایمیل"
+msgstr "رایانامه"
+
+#. module: mobile_service
+#: model:ir.model.fields,help:mobile_service.field_mobile_warranty__descriptions
+msgid "Extra Note on The Warranty"
+msgstr "یادداشت اضافی در مورد گارانتی"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__first_invoice_created
@@ -396,18 +436,21 @@ msgstr "اولین فاکتور پرداخت شده"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__message_follower_ids
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__message_follower_ids
 msgid "Followers"
 msgstr "دنبال‌کننده‌ها"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__message_partner_ids
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__message_partner_ids
 msgid "Followers (Partners)"
 msgstr "دنبال‌کننده‌گان(شرکا)"
 
 #. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__activity_type_icon
+#: model:ir.model.fields,help:mobile_service.field_mobile_warranty__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
-msgstr ""
+msgstr "نماد فونت عالی e.g. fa-tasks"
 
 #. module: mobile_service
 #: model:ir.model.fields.selection,name:mobile_service.selection__mobile_invoice__advance_payment_method__full_amount
@@ -416,11 +459,13 @@ msgstr "مقدارکامل"
 
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_search_view
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_warranty_search_view
 msgid "Group By"
 msgstr "دسته بندی براساس"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__has_message
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__has_message
 msgid "Has Message"
 msgstr "دارای پیام"
 
@@ -432,6 +477,7 @@ msgstr "دارای پیام"
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_complaint_tree__id
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_invoice__id
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__id
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__id
 #: model:ir.model.fields,field_description:mobile_service.field_product_order_line__id
 #: model:ir.model.fields,field_description:mobile_service.field_terms_conditions__id
 msgid "ID"
@@ -443,35 +489,50 @@ msgid "IMEI"
 msgstr ""
 
 #. module: mobile_service
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__imei1
+msgid "IMEI 1"
+msgstr ""
+
+#. module: mobile_service
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__imei2
+msgid "IMEI 2"
+msgstr ""
+
+#. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__imei_no
 msgid "IMEI Number"
 msgstr "شماره IMEI"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__activity_exception_icon
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__activity_exception_icon
 msgid "Icon"
 msgstr "آیکون"
 
 #. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__activity_exception_icon
+#: model:ir.model.fields,help:mobile_service.field_mobile_warranty__activity_exception_icon
 msgid "Icon to indicate an exception activity."
 msgstr "نمادی برای نشان دادن یک فعالیت استثنایی."
 
 #. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__message_needaction
+#: model:ir.model.fields,help:mobile_service.field_mobile_warranty__message_needaction
 msgid "If checked, new messages require your attention."
 msgstr "اگر علامت زده شود، پیام‌های جدید به توجه شما نیاز دارند."
 
 #. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__message_has_error
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__message_has_sms_error
+#: model:ir.model.fields,help:mobile_service.field_mobile_warranty__message_has_error
+#: model:ir.model.fields,help:mobile_service.field_mobile_warranty__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "اگر علامت زده شود، برخی از پیام ها دارای خطای تحویل هستند."
 
 #. module: mobile_service
-#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_tree_view
-msgid "Image"
-msgstr "تصویر"
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__importer_id
+msgid "Importer Company"
+msgstr "شرکت وارد کننده"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__is_in_warranty
@@ -522,8 +583,9 @@ msgstr ""
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__message_is_follower
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__message_is_follower
 msgid "Is Follower"
-msgstr "فالووراست"
+msgstr "دنبال کننده است"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_product_product__is_a_parts
@@ -544,6 +606,7 @@ msgstr "روزنامه"
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_complaint_tree____last_update
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_invoice____last_update
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service____last_update
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty____last_update
 #: model:ir.model.fields,field_description:mobile_service.field_product_order_line____last_update
 #: model:ir.model.fields,field_description:mobile_service.field_terms_conditions____last_update
 msgid "Last Modified on"
@@ -557,6 +620,7 @@ msgstr "آخرین تغییر در"
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_complaint_tree__write_uid
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_invoice__write_uid
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__write_uid
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__write_uid
 #: model:ir.model.fields,field_description:mobile_service.field_product_order_line__write_uid
 #: model:ir.model.fields,field_description:mobile_service.field_terms_conditions__write_uid
 msgid "Last Updated by"
@@ -570,6 +634,7 @@ msgstr "آخرین به روز رسانی توسط"
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_complaint_tree__write_date
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_invoice__write_date
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__write_date
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__write_date
 #: model:ir.model.fields,field_description:mobile_service.field_product_order_line__write_date
 #: model:ir.model.fields,field_description:mobile_service.field_terms_conditions__write_date
 msgid "Last Updated on"
@@ -577,6 +642,7 @@ msgstr "آخرین بروزرسانی در"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__message_main_attachment_id
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__message_main_attachment_id
 msgid "Main Attachment"
 msgstr "پیوست اصلی"
 
@@ -587,11 +653,13 @@ msgstr "مدیر"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__message_has_error
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__message_has_error
 msgid "Message Delivery error"
 msgstr "خطای تحویل پیام"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__message_ids
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__message_ids
 msgid "Messages"
 msgstr "پیام‌ها"
 
@@ -599,11 +667,11 @@ msgstr "پیام‌ها"
 #: model:ir.model.fields,field_description:mobile_service.field_brand_model__mobile_brand_name
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_brand__brand_name
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__brand_name
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__brand_id
 msgid "Mobile Brand"
 msgstr "برند موبایل"
 
 #. module: mobile_service
-#: model:account.journal,name:mobile_service.mobile_service_journal
 #: model:ir.module.category,name:mobile_service.mobile_service_execute
 #: model:ir.ui.menu,name:mobile_service.mobile_service_main_menu
 msgid "Mobile Service"
@@ -635,7 +703,14 @@ msgid "Mobile Technician"
 msgstr "تکنسین موبایل"
 
 #. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_warranty_form_view
+msgid "Mobile Warranty"
+msgstr "گارانتی موبایل"
+
+#. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__model_name
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__model_id
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_warranty_search_view
 msgid "Model"
 msgstr "مدل"
 
@@ -660,8 +735,9 @@ msgstr "مدلها"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__my_activity_date_deadline
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__my_activity_date_deadline
 msgid "My Activity Deadline"
-msgstr "مهلت فعالیت من."
+msgstr "مهلت فعالیت من"
 
 #. module: mobile_service
 #. odoo-python
@@ -672,16 +748,19 @@ msgstr "جدید"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__activity_date_deadline
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__activity_date_deadline
 msgid "Next Activity Deadline"
 msgstr "مهلت فعالیت بعدی"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__activity_summary
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__activity_summary
 msgid "Next Activity Summary"
 msgstr "خلاصه فعالیت بعدی"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__activity_type_id
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__activity_type_id
 msgid "Next Activity Type"
 msgstr "نوع فعالیت بعدی"
 
@@ -697,10 +776,11 @@ msgid "Not solved"
 msgstr "حل نشده"
 
 #. module: mobile_service
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__descriptions
 #: model:ir.model.fields,field_description:mobile_service.field_product_product__extra_descriptions
 #: model:ir.model.fields,field_description:mobile_service.field_product_template__extra_descriptions
 msgid "Note"
-msgstr "توجه"
+msgstr "یادداشت"
 
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
@@ -712,34 +792,44 @@ msgstr "یادداشت های استفاده شده  داخلی (به عنوان
 #: code:addons/mobile_service/wizard/mobile_create_invoice.py:0
 #, python-format
 msgid "Nothing to create invoice"
-msgstr "چیزی برای ایجاد فاکتور وجود ندارد"
+msgstr "چیزی برای فاکتور کردن موجود نیست"
 
 #. module: mobile_service
 #. odoo-python
 #: code:addons/mobile_service/models/mobile_service.py:0
 #, python-format
 msgid "Nothing to post stock move"
-msgstr "چیزی برای پست انتقال سهام وجود ندارد"
+msgstr "چیزی برای حواله انبار موجود نیست"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__message_needaction_counter
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__message_needaction_counter
 msgid "Number of Actions"
 msgstr "تعداد اقدامات"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__message_has_error_counter
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__message_has_error_counter
 msgid "Number of errors"
 msgstr "تعداد خطاها"
 
 #. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__message_needaction_counter
+#: model:ir.model.fields,help:mobile_service.field_mobile_warranty__message_needaction_counter
 msgid "Number of messages which requires an action"
 msgstr "تعداد پیام هایی که نیاز به اقدام دارند"
 
 #. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__message_has_error_counter
+#: model:ir.model.fields,help:mobile_service.field_mobile_warranty__message_has_error_counter
 msgid "Number of messages with delivery error"
 msgstr "تعداد پیام های دارای خطای تحویل"
+
+#. module: mobile_service
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__part_number
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_warranty_search_view
+msgid "Part Number"
+msgstr "شماره قطعه"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__product_order_line
@@ -774,7 +864,7 @@ msgstr "انتخاب شناسه"
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
 msgid "Post Stock moves"
-msgstr ""
+msgstr "سهام حرکت می کند"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_product_order_line__part_price
@@ -811,7 +901,7 @@ msgstr "تعمیرمجدد"
 #. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__re_repair
 msgid "Re-repairing."
-msgstr "تعمیر مجدد."
+msgstr "در حال تعمیر مجدد."
 
 #. module: mobile_service
 #: model:mail.template,subject:mobile_service.email_template_mobile_service
@@ -821,10 +911,11 @@ msgstr ""
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__date_request
 msgid "Requested date"
-msgstr "تاریخ درخواستی"
+msgstr "تاریخ ثبت درخواست"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__activity_user_id
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__activity_user_id
 msgid "Responsible User"
 msgstr "کاربرمسئول"
 
@@ -851,6 +942,7 @@ msgstr "بازگشت"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__message_has_sms_error
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__message_has_sms_error
 msgid "SMS Delivery error"
 msgstr "پیامک خطای تحویل"
 
@@ -858,6 +950,11 @@ msgstr "پیامک خطای تحویل"
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_search_view
 msgid "Search in requests"
 msgstr "جستجو در درخواست ها"
+
+#. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_warranty_search_view
+msgid "Search in warranties"
+msgstr "جستجو در گارانتی ها"
 
 #. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_product_product__brand_name
@@ -915,7 +1012,7 @@ msgstr "ایمیل وضعیت سرویس"
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_ticket_template
 msgid "Sl no."
-msgstr ""
+msgstr "شماره  ls."
 
 #. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_product_product__is_a_parts
@@ -935,17 +1032,22 @@ msgstr "وضعیت"
 
 #. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__activity_state
+#: model:ir.model.fields,help:mobile_service.field_mobile_warranty__activity_state
 msgid ""
 "Status based on activities\n"
 "Overdue: Due date is already passed\n"
 "Today: Activity date is today\n"
 "Planned: Future activities."
 msgstr ""
+"وضعیت بر اساس فعالیت ها\n"
+"سررسید: تاریخ سررسید گذشته است\n"
+"امروز: تاریخ فعالیت امروز است\n"
+"برنامه ریزی شده: فعالیت های آینده."
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_product_order_line__qty_stock_move
 msgid "Stock Move Posted Qty"
-msgstr ""
+msgstr "نقل و انتقال سهام تعداد ارسال شده"
 
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
@@ -986,6 +1088,7 @@ msgstr "این انتخاب نوع محموله خروجی را تعیین می 
 
 #. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__activity_exception_decoration
+#: model:ir.model.fields,help:mobile_service.field_mobile_warranty__activity_exception_decoration
 msgid "Type of the exception activity on record."
 msgstr "نوع فعالیت استثنا در ثبت."
 
@@ -1009,27 +1112,50 @@ msgstr "مقدار استفاده شده"
 #: code:addons/mobile_service/wizard/mobile_create_invoice.py:0
 #, python-format
 msgid "Used quantity is less than invoiced quantity"
-msgstr "مقدار مصرف شده کمتر از مقدار فاکتور شده است"
+msgstr "تعداد به کاربرده شده کمتر از تعداد به فاکتور شده است"
 
 #. module: mobile_service
 #. odoo-python
 #: code:addons/mobile_service/models/mobile_service.py:0
 #, python-format
 msgid "Used quantity is less than quantity stock move posted. "
-msgstr "مقدار استفاده شده کمتر از مقدار انتقال موجودی  است"
+msgstr "تعداد به کارگرفته شده کمتر از تعداد حواله شده به انبار است "
+
+#. module: mobile_service
+#: model:ir.actions.act_window,name:mobile_service.action_mobile_warranty
+msgid "Warranties"
+msgstr "گارانتی ها"
+
+#. module: mobile_service
+#: model:ir.ui.menu,name:mobile_service.mobile_warranty_menu
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+msgid "Warranty"
+msgstr "ضمانتنامه"
+
+#. module: mobile_service
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__warranty_id
+msgid "Warranty Company"
+msgstr "شرکت گارانتی"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__warranty_id
-msgid "Warranty No "
-msgstr "شماره گارانتی "
+msgid "Warranty Number"
+msgstr "شماره گارانتی"
+
+#. module: mobile_service
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__name
+msgid "Warranty Serial"
+msgstr "سریال گارانتی"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__website_message_ids
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__website_message_ids
 msgid "Website Messages"
 msgstr "پیام وبسایت"
 
 #. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__website_message_ids
+#: model:ir.model.fields,help:mobile_service.field_mobile_warranty__website_message_ids
 msgid "Website communication history"
 msgstr "تاریخچه ارتباطات وب سایت"
 
@@ -1038,23 +1164,17 @@ msgstr "تاریخچه ارتباطات وب سایت"
 #: code:addons/mobile_service/models/mobile_service.py:0
 #, python-format
 msgid "You cannot delete an assigned service request"
-msgstr "شما نمی توانید یک درخواست سرویس تخصیص داده شده را حذف کنید."
+msgstr "شما نمیتوانید درخواست تعمیر محول شده را حذف کنید"
 
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
 msgid "ZIP"
-msgstr "ZIP"
+msgstr "فشرده"
 
 #. module: mobile_service
 #: model:ir.model,name:mobile_service.model_brand_model
 msgid "brand.model"
 msgstr "برند.مدل"
-
-#. module: mobile_service
-#: model:ir.model.fields,help:mobile_service.field_product_product__model_colour
-#: model:ir.model.fields,help:mobile_service.field_product_template__model_colour
-msgid "colour for the part"
-msgstr "رنگ برای قسمت"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_brand_model__image_medium
@@ -1091,6 +1211,11 @@ msgstr "موبایل.فاکتور"
 #: model:ir.model,name:mobile_service.model_mobile_service
 msgid "mobile.service"
 msgstr "موبایل.سرویس"
+
+#. module: mobile_service
+#: model:ir.model,name:mobile_service.model_mobile_warranty
+msgid "mobile.warranty"
+msgstr "موبایل.گارانتی"
 
 #. module: mobile_service
 #: model:ir.ui.menu,name:mobile_service.mobile_service_menu
