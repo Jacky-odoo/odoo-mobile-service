@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-10 10:01+0000\n"
-"PO-Revision-Date: 2023-01-10 10:01+0000\n"
+"POT-Creation-Date: 2023-01-20 09:55+0000\n"
+"PO-Revision-Date: 2023-01-20 09:55+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -115,6 +115,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__street
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__street2
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__zip
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
 msgid "Address"
 msgstr ""
 
@@ -126,6 +127,11 @@ msgstr ""
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_invoice__amount
 msgid "Amount"
+msgstr ""
+
+#. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+msgid "Assign to technician"
 msgstr ""
 
 #. module: mobile_service
@@ -155,6 +161,11 @@ msgid "Brand Model"
 msgstr ""
 
 #. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+msgid "Brand name"
+msgstr ""
+
+#. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.view_mobile_create_inv
 msgid "Cancel"
 msgstr ""
@@ -162,6 +173,11 @@ msgstr ""
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_complaint_tree__complaint_type_tree
 msgid "Category"
+msgstr ""
+
+#. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+msgid "City"
 msgstr ""
 
 #. module: mobile_service
@@ -252,6 +268,7 @@ msgid "Complaint Types"
 msgstr ""
 
 #. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_ticket_template
 msgid "Complaints"
 msgstr ""
@@ -263,6 +280,7 @@ msgstr ""
 
 #. module: mobile_service
 #: model:ir.model.fields.selection,name:mobile_service.selection__mobile_service__service_state__completed
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
 msgid "Completed"
 msgstr ""
 
@@ -285,6 +303,7 @@ msgstr ""
 
 #. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__country_id
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
 msgid "Country"
 msgstr ""
 
@@ -292,6 +311,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/mobile_service/models/mobile_service.py:0
 #: model:ir.actions.act_window,name:mobile_service.action_mobile_service_inv
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
 #, python-format
 msgid "Create Invoice"
 msgstr ""
@@ -343,6 +363,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_complaint_tree__description_tree
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_ticket_template
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_warranty_form_view
 msgid "Description"
 msgstr ""
 
@@ -512,6 +533,11 @@ msgid "Internal notes"
 msgstr ""
 
 #. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+msgid "Invoice"
+msgstr ""
+
+#. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.view_mobile_create_inv
 msgid "Invoice Service Order"
 msgstr ""
@@ -653,12 +679,17 @@ msgid "Mobile Service Ticket"
 msgstr ""
 
 #. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+msgid "Mobile Shop"
+msgstr ""
+
+#. module: mobile_service
 #: model:res.groups,name:mobile_service.mobile_service_group_executer
 msgid "Mobile Technician"
 msgstr ""
 
 #. module: mobile_service
-#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_warranty_form_view
 msgid "Mobile Warranty"
 msgstr ""
 
@@ -677,6 +708,7 @@ msgid "Model Name"
 msgstr ""
 
 #. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_ticket_template
 msgid "Model name"
 msgstr ""
@@ -720,6 +752,7 @@ msgid "Next Activity Type"
 msgstr ""
 
 #. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_search_view
 msgid "Not Solved"
 msgstr ""
@@ -734,6 +767,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:mobile_service.field_product_product__extra_descriptions
 #: model:ir.model.fields,field_description:mobile_service.field_product_template__extra_descriptions
 msgid "Note"
+msgstr ""
+
+#. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+msgid "Notes used internally (eg: device password)"
 msgstr ""
 
 #. module: mobile_service
@@ -787,6 +825,11 @@ msgid "Parts Order Lines"
 msgstr ""
 
 #. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+msgid "Parts Usage"
+msgstr ""
+
+#. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_products_parts
 msgid "Parts details"
 msgstr ""
@@ -807,8 +850,18 @@ msgid "Picking Id"
 msgstr ""
 
 #. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+msgid "Post Stock moves"
+msgstr ""
+
+#. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_product_order_line__part_price
 msgid "Price"
+msgstr ""
+
+#. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+msgid "Print Ticket"
 msgstr ""
 
 #. module: mobile_service
@@ -855,8 +908,18 @@ msgid "Responsible User"
 msgstr ""
 
 #. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+msgid "Return advance"
+msgstr ""
+
+#. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__return_date
 msgid "Return date"
+msgstr ""
+
+#. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+msgid "Return to customer"
 msgstr ""
 
 #. module: mobile_service
@@ -891,6 +954,11 @@ msgstr ""
 #: model:ir.model.fields,help:mobile_service.field_product_product__model_name
 #: model:ir.model.fields,help:mobile_service.field_product_template__model_name
 msgid "Select a model for the part"
+msgstr ""
+
+#. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+msgid "Send email"
 msgstr ""
 
 #. module: mobile_service
@@ -946,6 +1014,11 @@ msgid "Specify if the product is in warranty."
 msgstr ""
 
 #. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+msgid "State"
+msgstr ""
+
+#. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__activity_state
 #: model:ir.model.fields,help:mobile_service.field_mobile_warranty__activity_state
 msgid ""
@@ -958,6 +1031,16 @@ msgstr ""
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_product_order_line__qty_stock_move
 msgid "Stock Move Posted Qty"
+msgstr ""
+
+#. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+msgid "Street 2..."
+msgstr ""
+
+#. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+msgid "Street..."
 msgstr ""
 
 #. module: mobile_service
@@ -1064,6 +1147,11 @@ msgstr ""
 #: code:addons/mobile_service/models/mobile_service.py:0
 #, python-format
 msgid "You cannot delete an assigned service request"
+msgstr ""
+
+#. module: mobile_service
+#: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
+msgid "ZIP"
 msgstr ""
 
 #. module: mobile_service

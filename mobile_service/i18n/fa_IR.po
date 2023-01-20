@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-05 14:50+0000\n"
-"PO-Revision-Date: 2023-01-10 13:38+0330\n"
+"PO-Revision-Date: 2023-01-20 13:28+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -466,7 +466,7 @@ msgstr "اگر علامت زده شود، پیام‌های جدید به توج
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__message_has_error
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
-msgstr "اگر علامت زده شود، برخی از پیام ها دارای خطای تحویل هستند"
+msgstr "اگر علامت زده شود، برخی از پیام ها دارای خطای تحویل هستند."
 
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_tree_view
@@ -529,7 +529,7 @@ msgstr "فالووراست"
 #: model:ir.model.fields,field_description:mobile_service.field_product_product__is_a_parts
 #: model:ir.model.fields,field_description:mobile_service.field_product_template__is_a_parts
 msgid "Is a Mobile Part"
-msgstr "یک قطعه موبایل است."
+msgstr "یک قطعه موبایل است"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__journal_type
@@ -661,7 +661,7 @@ msgstr "مدلها"
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__my_activity_date_deadline
 msgid "My Activity Deadline"
-msgstr "مهلت فعالیت من "
+msgstr "مهلت فعالیت من."
 
 #. module: mobile_service
 #. odoo-python
@@ -1016,12 +1016,12 @@ msgstr "مقدار مصرف شده کمتر از مقدار فاکتور شده 
 #: code:addons/mobile_service/models/mobile_service.py:0
 #, python-format
 msgid "Used quantity is less than quantity stock move posted. "
-msgstr "مقدار استفاده شده کمتر از مقدار انتقال موجودی  است."
+msgstr "مقدار استفاده شده کمتر از مقدار انتقال موجودی  است"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__warranty_id
 msgid "Warranty No "
-msgstr "شماره گارانتی"
+msgstr "شماره گارانتی "
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__website_message_ids
