@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-05 14:50+0000\n"
-"PO-Revision-Date: 2023-01-20 13:28+0330\n"
+"PO-Revision-Date: 2023-01-20 13:47+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -407,7 +407,7 @@ msgstr "دنبال‌کننده‌گان(شرکا)"
 #. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
-msgstr ""
+msgstr "نماد فونت عالی e.g. fa-tasks"
 
 #. module: mobile_service
 #: model:ir.model.fields.selection,name:mobile_service.selection__mobile_invoice__advance_payment_method__full_amount
@@ -440,7 +440,7 @@ msgstr "شناسه"
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_ticket_template
 msgid "IMEI"
-msgstr ""
+msgstr "IMEI"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__imei_no
@@ -661,7 +661,7 @@ msgstr "مدلها"
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__my_activity_date_deadline
 msgid "My Activity Deadline"
-msgstr "مهلت فعالیت من."
+msgstr "مهلت فعالیت من"
 
 #. module: mobile_service
 #. odoo-python
@@ -774,7 +774,7 @@ msgstr "انتخاب شناسه"
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
 msgid "Post Stock moves"
-msgstr ""
+msgstr "سهام حرکت می کند"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_product_order_line__part_price
@@ -816,7 +816,7 @@ msgstr "تعمیر مجدد."
 #. module: mobile_service
 #: model:mail.template,subject:mobile_service.email_template_mobile_service
 msgid "Ref ${object.name or 'n/a' }"
-msgstr ""
+msgstr "Ref ${object.name or 'n/a' }"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__date_request
@@ -915,7 +915,7 @@ msgstr "ایمیل وضعیت سرویس"
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_ticket_template
 msgid "Sl no."
-msgstr ""
+msgstr "شماره  ls."
 
 #. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_product_product__is_a_parts
@@ -941,11 +941,15 @@ msgid ""
 "Today: Activity date is today\n"
 "Planned: Future activities."
 msgstr ""
+"وضعیت بر اساس فعالیت ها\n"
+"سررسید: تاریخ سررسید گذشته است\n"
+"امروز: تاریخ فعالیت امروز است\n"
+"برنامه ریزی شده: فعالیت های آینده."
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_product_order_line__qty_stock_move
 msgid "Stock Move Posted Qty"
-msgstr ""
+msgstr "نقل و انتقال سهام تعداد ارسال شده"
 
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
@@ -1016,7 +1020,7 @@ msgstr "مقدار مصرف شده کمتر از مقدار فاکتور شده 
 #: code:addons/mobile_service/models/mobile_service.py:0
 #, python-format
 msgid "Used quantity is less than quantity stock move posted. "
-msgstr "مقدار استفاده شده کمتر از مقدار انتقال موجودی  است"
+msgstr "مقدار استفاده شده کمتر از مقدار انتقال موجودی  است "
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__warranty_id
