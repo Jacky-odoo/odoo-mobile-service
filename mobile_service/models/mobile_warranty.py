@@ -41,6 +41,13 @@ class MobileWarranty(models.Model):
                                  required=True,
                                  default=lambda self: self.env.company)
 
+    state = fields.Selection([('draft', 'Draft'),
+                              ('valid', 'Valid'),
+                              ('expired', 'Expired')],
+                             string='Status',
+                             default='draft',
+                             track_visibility='always')
+
     #
     # Create a new name based on the sequnce.
     #

@@ -104,8 +104,8 @@ class MobileServiceShop(models.Model):
                                    default=lambda self: self.env['account.journal'].search([('code', '=', 'SERV')]))
 
     company_id = fields.Many2one('res.company',
-                                 'Company', 
-                                 required=True, 
+                                 'Company',
+                                 required=True,
                                  default=lambda self: self.env.company)
 
     @api.model
@@ -122,7 +122,9 @@ class MobileServiceShop(models.Model):
 
     stock_picking_id = fields.Many2one('stock.picking', string="Picking Id")
 
-    picking_transfer_id = fields.Many2one('stock.picking.type', 'Deliver To', required=True,
+    picking_transfer_id = fields.Many2one('stock.picking.type',
+                                          'Deliver To', 
+                                          required=True,
                                           default=_default_picking_transfer,
                                           help="This will determine picking type of outgoing shipment")
 

@@ -15,20 +15,25 @@
                     <field name="brand_id" />
                     <field name="model_id" />
                     <field name="color" />
+                    <field name="state" />
                     <field name="company_id" groups="base.group_multi_company"/>
 
-                    <!-- <filter string="Returned"
-                        name="Service Status"
-                        domain="[('service_state', '=', 'returned')]" />
                     <filter string="Draft"
-                        name="Service Status"
-                        domain="[('service_state', '=', 'draft')]" />
-                    <filter string="Not Solved"
-                        name="Service Status"
-                        domain="[('service_state', '=', 'not_solved')]" /> -->
+                        name="Status"
+                        domain="[('state', '=', 'draft')]" />
+                    <filter string="Valid"
+                        name="Status"
+                        domain="[('state', '=', 'valid')]" />
+                    <filter string="Expired"
+                        name="Status"
+                        domain="[('state', '=', 'expired')]" />
 
                     <separator />
                     <group expand="0" string="Group By">
+                        <filter string="Status"
+                            name="state"
+                            domain="[]"
+                            context="{'group_by': 'state'}" />
                         <filter string="Brand"
                             name="brand_id"
                             domain="[]"
@@ -52,6 +57,9 @@
             <field name="arch" type="xml">
                 <form string="Mobile Warranty">
                     <header>
+                        <field name="state" 
+                            widget="statusbar"
+                            statusbar_visible="draft,valid,expired" />
                     </header>
                     <sheet>
                         <div class="oe_title">
@@ -151,12 +159,17 @@
                     <field name="model_id" />
                     <field name="color" />
                     <field name="imei1" />
-                    <field name="imei2" />
-                    <field name="part_number"/>
+                    <field name="imei2" optional="hide"/>
+                    <field name="part_number" optional="hide"/>
                     <field name="code_hamta" />
                     <field name="importer_id" />
                     <field name="warranty_id" />
-                    <field name="company_id" groups="base.group_multi_company"/>
+                    <field name="company_id" groups="base.group_multi_company"  optional="show"/>
+                    <field name="state" 
+                        optional="hide"
+                        widget="badge" 
+                        decoration-info="state == 'draft'" 
+                        decoration-success="state == 'valid'"/>
                 </tree>
             </field>
         </record>
