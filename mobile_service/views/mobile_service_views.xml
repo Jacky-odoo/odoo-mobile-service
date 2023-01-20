@@ -22,6 +22,7 @@
                     <field name="imei_no" />
                     <field name="return_date" />
                     <field name="service_state" />
+                    <field name="company_id" groups="base.group_multi_company"/>
 
                     <filter string="Returned"
                         name="Service Status"
@@ -35,10 +36,15 @@
 
                     <separator />
                     <group expand="0" string="Group By">
+                        <filter string="Company"
+                            name="company"
+                            domain="[]"
+                            context="{'group_by': 'company_id'}" />
                         <filter string="Service State"
                             name="service_state"
                             domain="[]"
-                            context="{'group_by': 'service_state'}" />
+                            context="{'group_by': 'service_state'}" 
+                            groups="base.group_multi_company" />
                         <filter string="Technician"
                             name="technician"
                             domain="[]"
@@ -177,6 +183,7 @@
                                 <field name="technician_name" style="width:50%;"
                                     attrs="{'readonly': [('service_state','not in',('draft'))]}" />
                                 <field name="picking_count" invisible="1" />
+                                <field name="company_id" groups="base.group_multi_company"/>
                             </group>
 
                         </group>
@@ -307,6 +314,7 @@
                     <field name="technician_name" />
                     <field name="return_date" />
                     <field name="service_state" />
+                    <field name="company_id" groups="base.group_multi_company"/>
                 </tree>
             </field>
         </record>

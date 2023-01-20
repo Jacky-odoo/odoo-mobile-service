@@ -8,6 +8,7 @@ class MobileServiceShop(models.Model):
     _name = 'mobile.service'
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
+    _check_company_auto = True
 
     name = fields.Char(string='Service Number',
                        copy=False,
@@ -57,7 +58,7 @@ class MobileServiceShop(models.Model):
     date_request = fields.Date(string="Requested date",
                                default=fields.Date.context_today)
     return_date = fields.Date(string="Return date",
-                               default=fields.Date.context_today,
+                              default=fields.Date.context_today,
                               required=True)
     technician_name = fields.Many2one('res.users',
                                       string="Technician Name",
@@ -102,8 +103,10 @@ class MobileServiceShop(models.Model):
                                    invisible=True,
                                    default=lambda self: self.env['account.journal'].search([('code', '=', 'SERV')]))
 
-    company_id = fields.Many2one('res.company', 'Company',
-                                 default=lambda self: self.env['res.company']._company_default_get('mobile.service'))
+    company_id = fields.Many2one('res.company',
+                                 'Company', 
+                                 required=True, 
+                                 default=lambda self: self.env.company)
 
     @api.model
     def _default_picking_transfer(self):

@@ -15,6 +15,7 @@
                     <field name="brand_id" />
                     <field name="model_id" />
                     <field name="color" />
+                    <field name="company_id" groups="base.group_multi_company"/>
 
                     <!-- <filter string="Returned"
                         name="Service Status"
@@ -75,6 +76,7 @@
                             <group id="partners">
                                 <field name="importer_id" />
                                 <field name="warranty_id" />
+                                <field name="company_id" groups="base.group_multi_company"/>
                             </group>
                         </group>
                         <notebook>
@@ -86,8 +88,9 @@
                         </notebook>
                     </sheet>
                     <div class="oe_chatter">
-                        <field name="message_follower_ids" widget="mail_followers" />
-                        <field name="message_ids" widget="mail_thread" />
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
                     </div>
                 </form>
             </field>
@@ -153,6 +156,7 @@
                     <field name="code_hamta" />
                     <field name="importer_id" />
                     <field name="warranty_id" />
+                    <field name="company_id" groups="base.group_multi_company"/>
                 </tree>
             </field>
         </record>

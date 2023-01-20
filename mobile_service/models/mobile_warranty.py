@@ -5,6 +5,7 @@ class MobileWarranty(models.Model):
     _name = 'mobile.warranty'
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
+    _check_company_auto = True
 
     name = fields.Char(string="Warranty Serial",
                        indexed=True,
@@ -34,6 +35,11 @@ class MobileWarranty(models.Model):
                                   help="")
     descriptions = fields.Text(string="Note",
                                help="Extra Note on The Warranty")
+
+    company_id = fields.Many2one('res.company',
+                                 'Company',
+                                 required=True,
+                                 default=lambda self: self.env.company)
 
     #
     # Create a new name based on the sequnce.
