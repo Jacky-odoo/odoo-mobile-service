@@ -7,28 +7,37 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-21 14:57+0000\n"
-"PO-Revision-Date: 2023-01-21 14:57+0000\n"
+"PO-Revision-Date: 2023-01-21 18:35+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: fa_IR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. module: mobile_service
 #: model:mail.template,body_html:mobile_service.email_template_mobile_service
 msgid ""
 "\n"
 "                <p>Dear ${object.person_name.name},</p>\n"
-"                <p>Your service request for ${object.brand_name.brand_name or 'n/a' } (${object.model_name.mobile_brand_models or 'n/a' }) with reference no <b>${object.name or 'n/a' }</b> has been processed to <b>${object.service_state or 'n/a' }</b> stage.</p>\n"
+"                <p>Your service request for ${object.brand_name.brand_name "
+"or 'n/a' } (${object.model_name.mobile_brand_models or 'n/a' }) with "
+"reference no <b>${object.name or 'n/a' }</b> has been processed to "
+"<b>${object.service_state or 'n/a' }</b> stage.</p>\n"
 "                <p>If you have any questions, please let us know.</p>\n"
 "                <p>Best regards,</p>\n"
 "            "
 msgstr ""
 "\n"
 "                <p> ${object.person_name.name} عزیز,</p>\n"
-"                <p>درخواست تعمیر شما برای ${object.brand_name.brand_name or 'n/a' } (${object.model_name.mobile_brand_models or 'n/a' }) با شماره سریال <b>${object.name or 'n/a' }</b> به حالت <b>${object.service_state or 'n/a' }</b>  تغییر کرده است.</p>\n"
-"                <p>اگر در این رابطه پرسشی دارید آن را با ما در میان بگذارید.</p>\n"
+"                <p>درخواست تعمیر شما برای ${object.brand_name.brand_name or "
+"'n/a' } (${object.model_name.mobile_brand_models or 'n/a' }) با شماره سریال "
+"<b>${object.name or 'n/a' }</b> به حالت <b>${object.service_state or 'n/a' }"
+"</b>  تغییر کرده است.</p>\n"
+"                <p>اگر در این رابطه پرسشی دارید آن را با ما در میان بگذارید."
+"</p>\n"
 "                <p>با بهترین آرزوهاِ</p>\n"
 "            "
 
@@ -299,7 +308,7 @@ msgstr "تکمیل شده"
 #: code:addons/mobile_service/models/mobile_service.py:0
 #, python-format
 msgid "Compose Email"
-msgstr ""
+msgstr "نوشتن و ارسال ایمیل"
 
 #. module: mobile_service
 #: model:ir.ui.menu,name:mobile_service.mobile_service_configuration
@@ -418,7 +427,7 @@ msgstr "رایانامه"
 #: model:ir.model.fields.selection,name:mobile_service.selection__mobile_warranty__state__expired
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_warranty_search_view
 msgid "Expired"
-msgstr ""
+msgstr "منقضی شده"
 
 #. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_mobile_warranty__descriptions
@@ -743,10 +752,9 @@ msgstr "مهلت فعالیت من"
 #. module: mobile_service
 #. odoo-python
 #: code:addons/mobile_service/models/mobile_service.py:0
-#: code:addons/mobile_service/models/mobile_service.py:0
 #, python-format
 msgid "New"
-msgstr ""
+msgstr "جدید"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__activity_date_deadline
@@ -794,15 +802,14 @@ msgstr "یادداشت های استفاده شده  داخلی (به عنوان
 #: code:addons/mobile_service/wizard/mobile_create_invoice.py:0
 #, python-format
 msgid "Nothing to create invoice"
-msgstr ""
+msgstr "چیزی برای ایجاد فاکتور وجود ندارد"
 
 #. module: mobile_service
 #. odoo-python
 #: code:addons/mobile_service/models/mobile_service.py:0
-#: code:addons/mobile_service/models/mobile_service.py:0
 #, python-format
 msgid "Nothing to post stock move"
-msgstr ""
+msgstr "چیزی برای پست انتقال سهام وجود ندارد"
 
 #. module: mobile_service
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__message_needaction_counter
@@ -1037,7 +1044,7 @@ msgstr "وضعیت"
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__state
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_warranty_search_view
 msgid "Status"
-msgstr ""
+msgstr "وضعیت"
 
 #. module: mobile_service
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__activity_state
@@ -1121,20 +1128,20 @@ msgstr "مقدار استفاده شده"
 #: code:addons/mobile_service/wizard/mobile_create_invoice.py:0
 #, python-format
 msgid "Used quantity is less than invoiced quantity"
-msgstr ""
+msgstr "مقدار مصرف شده کمتر از مقدار فاکتور شده است"
 
 #. module: mobile_service
 #. odoo-python
 #: code:addons/mobile_service/models/mobile_service.py:0
 #, python-format
 msgid "Used quantity is less than quantity stock move posted. "
-msgstr ""
+msgstr "مقدار استفاده شده کمتر از مقدار انتقال سهام پست شده است. "
 
 #. module: mobile_service
 #: model:ir.model.fields.selection,name:mobile_service.selection__mobile_warranty__state__valid
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_warranty_search_view
 msgid "Valid"
-msgstr ""
+msgstr "معتبر"
 
 #. module: mobile_service
 #: model:ir.actions.act_window,name:mobile_service.action_mobile_warranty
@@ -1179,7 +1186,7 @@ msgstr "تاریخچه ارتباطات وب سایت"
 #: code:addons/mobile_service/models/mobile_service.py:0
 #, python-format
 msgid "You cannot delete an assigned service request"
-msgstr ""
+msgstr "شما نمی توانید یک درخواست خدمات اختصاص داده شده را حذف کنید"
 
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view
