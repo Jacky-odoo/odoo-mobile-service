@@ -319,6 +319,8 @@
                     <field name="service_state" 
                         widget="badge"
                         decoration-info="service_state == 'draft'" 
+                        decoration-primary="service_state == 'not_solved'"
+                        decoration-danger="service_state == 'returned'"
                         decoration-success="service_state == 'completed'"/>
                     <field name="company_id" 
                         optional="show"
