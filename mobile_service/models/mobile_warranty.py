@@ -48,6 +48,9 @@ class MobileWarranty(models.Model):
                              default='draft',
                              track_visibility='always')
 
+    start_date = fields.Date(string="Start Date", default=fields.Date.context_today)
+    expire_date = fields.Date(string="Expire Date")
+
     #
     # Create a new name based on the sequnce.
     #
