@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-22 12:02+0000\n"
-"PO-Revision-Date: 2023-01-22 15:36+0330\n"
+"PO-Revision-Date: 2023-01-22 15:50+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -1145,7 +1145,7 @@ msgstr "مقدار مصرف شده کمتر از مقدار فاکتور شده 
 #: code:addons/mobile_service/models/mobile_service.py:0
 #, python-format
 msgid "Used quantity is less than quantity stock move posted. "
-msgstr "مقدار استفاده شده کمتر از مقدار انتقال سهام پست شده است."
+msgstr "مقدار استفاده شده کمتر از مقدار انتقال سهام پست شده است. "
 
 #. module: mobile_service
 #: model:ir.model.fields.selection,name:mobile_service.selection__mobile_warranty__state__valid
