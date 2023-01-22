@@ -36,11 +36,13 @@ class MobileServiceShop(models.Model):
                                  help="Country")
 
     imei_no = fields.Char(string="IMEI Number")
-    warranty_id = fields.Char(string="Warranty Number",
-                              help="warranty details")
+    warranty_id = fields.Many2one("mobile.warranty",
+                                   string='Warranty Number',
+                                   help="warranty details")
     is_in_warranty = fields.Boolean(string='In Warranty',
                                     default=False,
-                                    help="Specify if the product is in warranty.")
+                                    help="Specify if the product is in warranty.",
+                                    copy=False)
 
     re_repair = fields.Boolean('Re-repair',
                                default=False,
@@ -123,7 +125,7 @@ class MobileServiceShop(models.Model):
     stock_picking_id = fields.Many2one('stock.picking', string="Picking Id")
 
     picking_transfer_id = fields.Many2one('stock.picking.type',
-                                          'Deliver To', 
+                                          'Deliver To',
                                           required=True,
                                           default=_default_picking_transfer,
                                           help="This will determine picking type of outgoing shipment")
@@ -387,6 +389,19 @@ class MobileServiceShop(models.Model):
 
         }
         return self.env.ref('mobile_service.mobile_service_ticket').report_action(self, data=data)
+
+    @api.onchange('imei_no')
+    def _onchange_imei_find_warranty(self):
+        # Check if warranty find
+        if self.imei_no:
+            warranty_ids = self.env['mobile.warranty'].search(['|', ('imei1', '=', self.imei_no), ('imei2', '=', self.imei_no)])
+            if warranty_ids:
+                self.is_in_warranty = True
+                self.warranty_id = warranty_ids[0]
+        else:
+            self.is_in_warranty = False
+            self.warranty_id = False
+
 
 
 class MobileBrand(models.Model):
