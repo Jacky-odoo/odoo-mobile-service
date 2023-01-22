@@ -83,14 +83,13 @@
                                 <field name="code_hamta" />
                                 <field name="part_number" />
                             </group>
-                            <group id="expireDate">
-                                <field name="start_date" />
-                                <field name="expire_date" />
-                            </group>
                             <group id="partners">
                                 <field name="importer_id" />
                                 <field name="warranty_id" />
                                 <field name="company_id" groups="base.group_multi_company"/>
+                                <separator/>
+                                <field name="start_date" />
+                                <field name="expire_date" />
                             </group>
                         </group>
                         <notebook>

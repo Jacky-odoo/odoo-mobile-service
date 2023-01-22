@@ -1,4 +1,5 @@
 from odoo import models, fields, api, _
+from odoo.tools import date_utils
 
 
 class MobileWarranty(models.Model):
@@ -48,8 +49,16 @@ class MobileWarranty(models.Model):
                              default='draft',
                              track_visibility='always')
 
-    start_date = fields.Date(string="Start Date", default=fields.Date.context_today)
+    start_date = fields.Date(string="StartDate")
     expire_date = fields.Date(string="Expire Date")
+    
+    #Create expire date for date of warranty
+    @api.onchange("start_date")
+    def _onchange_expire_date(self):
+        if self.start_date:
+            self.expire_date = date_utils.add(self.start_date, months=18)
+        else:
+            self.expire_date = False
 
     #
     # Create a new name based on the sequnce.
