@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-22 05:14+0000\n"
-"PO-Revision-Date: 2023-01-22 08:46+0330\n"
+"POT-Creation-Date: 2023-01-22 12:02+0000\n"
+"PO-Revision-Date: 2023-01-22 15:50+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -308,7 +308,7 @@ msgstr "تکمیل شده"
 #: code:addons/mobile_service/models/mobile_service.py:0
 #, python-format
 msgid "Compose Email"
-msgstr "نوشتن و ارسال ایمیل"
+msgstr "ارسال و نوشتن ایمیل"
 
 #. module: mobile_service
 #: model:ir.ui.menu,name:mobile_service.mobile_service_configuration
@@ -422,6 +422,11 @@ msgstr "پیش نویس"
 #: model:ir.model.fields,field_description:mobile_service.field_mobile_service__email_id
 msgid "Email"
 msgstr "رایانامه"
+
+#. module: mobile_service
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__expire_date
+msgid "Expire Date"
+msgstr "تاریخ انقضا"
 
 #. module: mobile_service
 #: model:ir.model.fields.selection,name:mobile_service.selection__mobile_warranty__state__expired
@@ -1034,6 +1039,11 @@ msgstr "مشخص کنید که آیا محصول یک قطعه موبایل اس
 #: model:ir.model.fields,help:mobile_service.field_mobile_service__is_in_warranty
 msgid "Specify if the product is in warranty."
 msgstr "مشخص کنید که آیا محصول دارای گارانتی است یا خیر."
+
+#. module: mobile_service
+#: model:ir.model.fields,field_description:mobile_service.field_mobile_warranty__start_date
+msgid "Start Date"
+msgstr "تاریخ شروع"
 
 #. module: mobile_service
 #: model_terms:ir.ui.view,arch_db:mobile_service.mobile_service_request_form_view

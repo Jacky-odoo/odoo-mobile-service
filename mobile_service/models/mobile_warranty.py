@@ -49,10 +49,9 @@ class MobileWarranty(models.Model):
                              default='draft',
                              track_visibility='always')
 
-    start_date = fields.Date(string="StartDate")
+    start_date = fields.Date(string="Start Date")
     expire_date = fields.Date(string="Expire Date")
-    
-    #Create expire date for date of warranty
+
     @api.onchange("start_date")
     def _onchange_expire_date(self):
         if self.start_date:
