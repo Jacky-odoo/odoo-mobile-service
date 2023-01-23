@@ -37,8 +37,8 @@ class MobileServiceShop(models.Model):
 
     imei_no = fields.Char(string="IMEI Number")
     warranty_id = fields.Many2one("mobile.warranty",
-                                   string='Warranty Number',
-                                   help="warranty details")
+                                  string='Warranty Number',
+                                  help="warranty details")
     is_in_warranty = fields.Boolean(string='In Warranty',
                                     default=False,
                                     help="Specify if the product is in warranty.",
@@ -67,6 +67,7 @@ class MobileServiceShop(models.Model):
                                       default=lambda self: self.env.user,
                                       required=True)
     service_state = fields.Selection([('draft', 'Draft'),
+                                      ('accepted', 'Accepted'),
                                       ('assigned', 'Assigned'),
                                       ('completed', 'Completed'),
                                       ('returned', 'Returned'),
@@ -132,6 +133,10 @@ class MobileServiceShop(models.Model):
 
     picking_count = fields.Integer()
 
+
+    ################################################################################
+    #              Models 
+    ################################################################################
     @api.onchange('return_date')
     def check_date(self):
         if self.return_date != False:
@@ -143,6 +148,9 @@ class MobileServiceShop(models.Model):
                 raise UserError(
                     "Return date should be greater than requested date")
 
+    ################################################################################
+    #              State Machin: Actions
+    ################################################################################
     def approve(self):
         self.service_state = 'assigned'
 
@@ -153,6 +161,18 @@ class MobileServiceShop(models.Model):
         self.service_state = 'returned'
 
     def not_solved(self):
+        self.service_state = 'not_solved'
+
+    def action_accept_service(self):
+        """
+        Accepts incoming request (in draft) and move them to the accepted state.
+        """
+        self.service_state = 'accepted'
+    
+    def action_reject_service(self):
+        """
+        Rejects incoming service request (in draft state) and move them to the not solved state.
+        """
         self.service_state = 'not_solved'
 
     def action_send_mail(self):
@@ -319,6 +339,18 @@ class MobileServiceShop(models.Model):
         #     inv_ids.append(each.id)
         # view_id = self.env.ref('account.view_move_form').id
         # ctx = dict(
+
+    def action_accept_service(self):
+        """
+        Accepts incoming request (in draft) and move them to the accepted state.
+        """
+        self.service_state = 'accepted'
+    
+    def action_reject_service(self):
+        """
+        Rejects incoming service request (in draft state) and move them to the not solved state.
+        """
+        self.service_state = 'not solved'
         #     create=False,
         # )
         # if inv_ids:
@@ -394,14 +426,14 @@ class MobileServiceShop(models.Model):
     def _onchange_imei_find_warranty(self):
         # Check if warranty find
         if self.imei_no:
-            warranty_ids = self.env['mobile.warranty'].search(['|', ('imei1', '=', self.imei_no), ('imei2', '=', self.imei_no)])
+            warranty_ids = self.env['mobile.warranty'].search(
+                ['|', ('imei1', '=', self.imei_no), ('imei2', '=', self.imei_no)])
             if warranty_ids:
                 self.is_in_warranty = True
                 self.warranty_id = warranty_ids[0]
         else:
             self.is_in_warranty = False
             self.warranty_id = False
-
 
 
 class MobileBrand(models.Model):
