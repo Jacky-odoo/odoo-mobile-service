@@ -262,8 +262,7 @@ class MobileServiceShop(models.Model):
 
     @api.onchange('imei_no')
     def _service_count(self):
-        service_ids = self.search([('imei_no', '=', self.imei_no)])
-        self.service_count = len(service_ids)
+        self.service_count = self.search([('imei_no', '=', self.imei_no)], count = True)
 
     @api.model
     def create(self, vals):
