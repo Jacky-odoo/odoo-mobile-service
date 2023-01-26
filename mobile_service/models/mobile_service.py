@@ -104,6 +104,11 @@ class MobileServiceShop(models.Model):
                                            invisible=True,
                                            copy=False)
 
+
+    service_count = fields.Integer(compute='_service_count',
+                                   string='# Services',
+                                   copy=False)
+
     journal_type = fields.Many2one('account.journal',
                                    'Journal',
                                    invisible=True,
@@ -255,6 +260,11 @@ class MobileServiceShop(models.Model):
             [('invoice_origin', '=', self.name)])
         self.invoice_count = len(invoice_ids)
 
+    @api.onchange('imei_no')
+    def _service_count(self):
+        service_ids = self.search([('imei_no', '=', self.imei_no)])
+        self.service_count = len(service_ids)
+
     @api.model
     def create(self, vals):
         print(self.env.user.company_id)
@@ -313,6 +323,32 @@ class MobileServiceShop(models.Model):
         if flag != 1:
             raise UserError(_('Nothing to post stock move'))
 
+    def action_view_services(self):
+        self.ensure_one()
+        ctx = dict(
+            create=False,
+        )
+        action = {
+            'name': _("Services"),
+            'type': 'ir.actions.act_window',
+            'res_model': 'mobile.service',
+            'target': 'current',
+            'context': ctx
+        }
+        service_ids = self.search([('imei_no', '=', self.imei_no)])
+        serv_ids = []
+        for each in service_ids:
+            serv_ids.append(each.id)
+        if len(serv_ids) == 1:
+            service_id = serv_ids and serv_ids[0]
+            action['res_id'] = service_id
+            action['view_mode'] = 'form'
+            action['views'] = [(self.env.ref('mobile_service.mobile_service_request_form_view').id, 'form')]
+        else:
+            action['view_mode'] = 'tree,form'
+            action['domain'] = [('id', 'in', serv_ids)]
+        return action
+
     def action_view_invoice(self):
         self.ensure_one()
         ctx = dict(
@@ -341,38 +377,6 @@ class MobileServiceShop(models.Model):
             action['view_mode'] = 'tree,form'
             action['domain'] = [('id', 'in', inv_ids)]
         return action
-        # inv_obj = self.env['account.move'].search([('invoice_origin', '=', self.name)])
-        # inv_ids = []
-        # for each in inv_obj:
-        #     inv_ids.append(each.id)
-        # view_id = self.env.ref('account.view_move_form').id
-        # ctx = dict(
-        #     create=False,
-        # )
-        # if inv_ids:
-        #     if len(inv_ids) <= 1:
-        #         value = {
-        #             'view_mode': 'form',
-        #             'res_model': 'account.move',
-        #             'view_id': view_id,
-        #             'type': 'ir.actions.act_window',
-        #             'name': 'Invoice',
-        #             'context': ctx,
-        #             'res_id': inv_ids and inv_ids[0]
-        #         }
-        #     else:
-        #         value = {
-        #             'domain': str([('id', 'in', inv_ids)]),
-        #             'view_mode': 'tree,form',
-        #             'res_model': 'account.move',
-        #             'view_id': False,
-        #             'type': 'ir.actions.act_window',
-        #             'context': ctx,
-        #             'name': 'Invoice',
-        #             'res_id': inv_ids
-        #         }
-        #
-        #     return value
 
     def get_ticket(self):
         self.ensure_one()
