@@ -1,0 +1,18 @@
+<odoo>
+    <record id="mobile_service_res_partner_count" model="ir.ui.view">
+        <field name="name">res.partner.mobile.service.form.view</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    name='action_view_mobile_services'
+                    class="oe_stat_button"
+                    type="object"
+                    icon="fa-cog">
+                    <field string="Mobile Services" name="mobile_service_count" widget="statinfo" />
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

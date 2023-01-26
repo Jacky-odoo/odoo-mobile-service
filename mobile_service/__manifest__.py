@@ -24,6 +24,7 @@
         'views/complaint_type.xml',
         'views/brand_models.xml',
         'views/brand.xml',
+        'views/res_partner_views.xml',
         'wizard/mobile_create_invoice_views.xml',
         'reports/mobile_service_ticket.xml',
         'reports/service_ticket_template.xml',
