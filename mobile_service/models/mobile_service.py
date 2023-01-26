@@ -59,8 +59,7 @@ class MobileServiceShop(models.Model):
 
     date_request = fields.Date(string="Requested date",
                                default=fields.Date.context_today)
-    accept_date = fields.Date(string="Accepted date",
-                              domain="[('service_state','not in','draft')])")  
+    accept_date = fields.Date(string="Accepted date")  
                               
                                                        
     return_date = fields.Date(string="Return date",
@@ -168,13 +167,15 @@ class MobileServiceShop(models.Model):
     def return_to(self):
         self.service_state = 'returned'
 
+    def not_solved(self):
+        self.service_state = 'not_solved'
 
     def action_accept_service(self):
         """
         Accepts incoming request (in draft) and move them to the accepted state.
         """
+        self.accept_date = datetime.now()
         self.service_state = 'accepted'
-        self.accept_date = self.Date.context_today
 
     def action_reject_service(self):
         """
@@ -346,18 +347,6 @@ class MobileServiceShop(models.Model):
         #     inv_ids.append(each.id)
         # view_id = self.env.ref('account.view_move_form').id
         # ctx = dict(
-
-    def action_accept_service(self):
-        """
-        Accepts incoming request (in draft) and move them to the accepted state.
-        """
-        self.service_state = 'accepted'
-
-    def action_reject_service(self):
-        """
-        Rejects incoming service request (in draft state) and move them to the not solved state.
-        """
-        self.service_state = 'not solved'
         #     create=False,
         # )
         # if inv_ids:

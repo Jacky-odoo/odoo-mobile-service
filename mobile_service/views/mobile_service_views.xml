@@ -70,7 +70,7 @@
                         <button
                             string="Not Solved"
                             type="object"
-                            name="not_solved"
+                            name="action_reject_service"
                             attrs="{'invisible': [('service_state','not in',('draft'))]}" />
 
 
@@ -216,7 +216,7 @@
                                     attrs="{'readonly': 1}" />
                                 <field name="accept_date"
                                     style="width:50%;"
-                                    attrs="{'readonly': 1}" />
+                                    attrs="{'readonly': 1, 'invisible': [('service_state','in',('draft'))]}" />
                                 <field name="return_date"
                                     style="width:50%;"
                                     attrs="{'readonly': 1, 'invisible': ['!', ('service_state','in',('returned','not_solved'))]}" />
