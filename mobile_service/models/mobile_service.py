@@ -47,7 +47,7 @@ class MobileServiceShop(models.Model):
     re_repair = fields.Boolean('Re-repair',
                                default=False,
                                help="Re-repairing.")
-
+    #TODO: maso, 2023: rename to brand_id
     brand_name = fields.Many2one('mobile.brand',
                                  string="Mobile Brand")
     model_name = fields.Many2one('brand.model',
@@ -133,10 +133,10 @@ class MobileServiceShop(models.Model):
 
     picking_count = fields.Integer()
 
+    ################################################################################
+    #              Models
+    ################################################################################
 
-    ################################################################################
-    #              Models 
-    ################################################################################
     @api.onchange('return_date')
     def check_date(self):
         if self.return_date != False:
@@ -168,7 +168,7 @@ class MobileServiceShop(models.Model):
         Accepts incoming request (in draft) and move them to the accepted state.
         """
         self.service_state = 'accepted'
-    
+
     def action_reject_service(self):
         """
         Rejects incoming service request (in draft state) and move them to the not solved state.
@@ -345,7 +345,7 @@ class MobileServiceShop(models.Model):
         Accepts incoming request (in draft) and move them to the accepted state.
         """
         self.service_state = 'accepted'
-    
+
     def action_reject_service(self):
         """
         Rejects incoming service request (in draft state) and move them to the not solved state.
@@ -425,12 +425,13 @@ class MobileServiceShop(models.Model):
     @api.onchange('imei_no')
     def _onchange_imei_find_warranty(self):
         # Check if warranty find
+        warranty_ids = False
         if self.imei_no:
             warranty_ids = self.env['mobile.warranty'].search(
                 ['|', ('imei1', '=', self.imei_no), ('imei2', '=', self.imei_no)])
-            if warranty_ids:
-                self.is_in_warranty = True
-                self.warranty_id = warranty_ids[0]
+        if warranty_ids:
+            self.is_in_warranty = True
+            self.warranty_id = warranty_ids[0]
         else:
             self.is_in_warranty = False
             self.warranty_id = False
@@ -441,6 +442,7 @@ class MobileBrand(models.Model):
     _rec_name = 'brand_name'
 
     brand_name = fields.Char(string="Mobile Brand", required=True)
+    
 
 
 class MobileComplaintType(models.Model):
@@ -467,7 +469,8 @@ class MobileComplaintTree(models.Model):
 
     complaint_type_tree = fields.Many2one(
         'mobile.complaint', string="Category", required=True)
-    description_tree = fields.Many2one('mobile.complaint.description', string="Description",
+    description_tree = fields.Many2one('mobile.complaint.description',
+                                       string="Description",
                                        domain="[('complaint_type_template','=',complaint_type_tree)]")
 
 

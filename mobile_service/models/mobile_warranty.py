@@ -38,9 +38,10 @@ class MobileWarranty(models.Model):
                                help="Extra Note on The Warranty")
 
     company_id = fields.Many2one('res.company',
-                                 'Company',
+                                 string="Company",
                                  required=True,
-                                 default=lambda self: self.env.company)
+                                 default=lambda self: self.env.company,
+                                 help="This is company id")
 
     state = fields.Selection([('draft', 'Draft'),
                               ('valid', 'Valid'),
