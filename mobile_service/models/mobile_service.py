@@ -59,6 +59,10 @@ class MobileServiceShop(models.Model):
 
     date_request = fields.Date(string="Requested date",
                                default=fields.Date.context_today)
+    accept_date = fields.Date(string="Accepted date",
+                              domain="[('service_state','not in','draft')])")  
+                              
+                                                       
     return_date = fields.Date(string="Return date",
                               default=fields.Date.context_today,
                               required=True)
@@ -160,14 +164,17 @@ class MobileServiceShop(models.Model):
     def return_to(self):
         self.service_state = 'returned'
 
-    def not_solved(self):
-        self.service_state = 'not_solved'
+    
+    def return_to(self):
+        self.service_state = 'returned'
+
 
     def action_accept_service(self):
         """
         Accepts incoming request (in draft) and move them to the accepted state.
         """
         self.service_state = 'accepted'
+        self.accept_date = self.Date.context_today
 
     def action_reject_service(self):
         """

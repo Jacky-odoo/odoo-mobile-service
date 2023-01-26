@@ -214,6 +214,9 @@
                                 <field name="date_request"
                                     style="width:50%;"
                                     attrs="{'readonly': 1}" />
+                                <field name="accept_date"
+                                    style="width:50%;"
+                                    attrs="{'readonly': 1}" />
                                 <field name="return_date"
                                     style="width:50%;"
                                     attrs="{'readonly': 1, 'invisible': ['!', ('service_state','in',('returned','not_solved'))]}" />
@@ -351,6 +354,8 @@
                     <field name="imei_no" />
                     <field name="technician_name" optional="show" />
                     <field name="return_date" optional="hide" />
+                    <field name="date_request" optional="hide" />
+                    <field name="accept_date" optional="hide" />
                     <field name="complaints_tree"
                         widget="many2many_tags" />
                     <field name="service_state"
