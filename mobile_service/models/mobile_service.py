@@ -437,13 +437,8 @@ class MobileServiceShop(models.Model):
             self.warranty_id = False
 
 
-class MobileBrand(models.Model):
-    _name = 'mobile.brand'
-    _rec_name = 'brand_name'
 
-    brand_name = fields.Char(string="Mobile Brand", required=True)
-    
-
+   
 
 class MobileComplaintType(models.Model):
     _name = 'mobile.complaint'
@@ -479,7 +474,9 @@ class MobileBrandModels(models.Model):
     _rec_name = 'mobile_brand_models'
 
     mobile_brand_name = fields.Many2one(
-        'mobile.brand', string="Mobile Brand", required=True)
+        'mobile.brand', 
+        string="Mobile Brand", 
+        required=True)
     mobile_brand_models = fields.Char(string="Model Name", required=True)
     image_medium = fields.Binary(string='image', store=True, attachment=True)
 
