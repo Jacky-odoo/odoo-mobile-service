@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="brand_select_wizard" name="Select Brand Wizard Page">
+        <t t-call="website.layout">
+            <div id="wrap" class="js_blog website_blog">
+                <t t-out="0"/>
+
+
+                <h1>Hi</h1>
+                <t t-foreach="[1, 2, 3]" t-as="i">
+                    <p><t t-out="i"/></p>
+                </t>
+    
+                <!-- Droppable-area shared across all blog's pages -->
+                <t t-set="oe_structure_blog_footer_description">Visible in all pages</t>
+                <div class="oe_structure oe_empty oe_structure_not_nearest"
+                    id="oe_structure_blog_footer"
+                    t-att-data-editor-sub-message="oe_structure_blog_footer_description"/>
+            </div>
+        </t>
+    </template>
+</odoo>
