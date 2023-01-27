@@ -5,119 +5,148 @@ import pytz
 
 
 class MobileServiceShop(models.Model):
-    _name = 'mobile.service'
+    _name = 'moblie_service.service'
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _check_company_auto = True
 
-    name = fields.Char(string='Service Number',
-                       copy=False,
-                       default="New")
-    person_name = fields.Many2one('res.partner',
-                                  string="Customer Name",
-                                  required=True)
-    contact_no = fields.Char(related='person_name.mobile',
-                             string="Contact Number")
-    email_id = fields.Char(related='person_name.email',
-                           string="Email")
+    name = fields.Char(
+        string='Service Number',
+        copy=False,
+        default="New")
+    person_name = fields.Many2one(
+        comodel_name='res.partner',
+        string="Customer Name",
+        required=True)
+    contact_no = fields.Char(
+        related='person_name.mobile',
+        string="Contact Number")
+    email_id = fields.Char(
+        related='person_name.email',
+        string="Email")
+    street = fields.Char(
+        related='person_name.street',
+        string="Address")
+    street2 = fields.Char(
+        related='person_name.street2',
+        string="Address")
+    city = fields.Char(
+        related='person_name.city',
+        string="Address")
+    state_id = fields.Many2one(
+        related='person_name.state_id',
+        string="Address")
+    zip = fields.Char(
+        related='person_name.zip',
+        string="Address")
+    country_id = fields.Many2one(
+        string="Address",
+        related='person_name.country_id',
+        help="Country")
 
-    street = fields.Char(related='person_name.street',
-                         string="Address")
-    street2 = fields.Char(related='person_name.street2',
-                          string="Address")
-    city = fields.Char(related='person_name.city',
-                       string="Address")
-    state_id = fields.Many2one(related='person_name.state_id',
-                               string="Address")
-    zip = fields.Char(related='person_name.zip',
-                      string="Address")
-    country_id = fields.Many2one(string="Address",
-                                 related='person_name.country_id',
-                                 help="Country")
+    imei_no = fields.Char(
+        string="IMEI Number")
+    warranty_id = fields.Many2one(
+        comodel_name="mobile.warranty",
+        string='Warranty Number',
+        help="warranty details")
+    is_in_warranty = fields.Boolean(
+        string='In Warranty',
+        default=False,
+        help="Specify if the product is in warranty.",
+        copy=False)
 
-    imei_no = fields.Char(string="IMEI Number")
-    warranty_id = fields.Many2one("mobile.warranty",
-                                  string='Warranty Number',
-                                  help="warranty details")
-    is_in_warranty = fields.Boolean(string='In Warranty',
-                                    default=False,
-                                    help="Specify if the product is in warranty.",
-                                    copy=False)
+    re_repair = fields.Boolean(
+        string='Re-repair',
+        default=False,
+        help="Re-repairing.")
+    # TODO: maso, 2023: rename to brand_id
+    brand_id = fields.Many2one(
+        comodle_name='mobile_service.brand',
+        string="Mobile Brand")
+    model_id = fields.Many2one(
+        comodel_name='moblie_service.brand.model',
+        string="Model",
+        domain="[('mobile_brand_name','=',brand_name)]")
+    image_medium = fields.Image(
+        related='model_name.image',
+        store=True,
+        attachment=True)
 
-    re_repair = fields.Boolean('Re-repair',
-                               default=False,
-                               help="Re-repairing.")
-    #TODO: maso, 2023: rename to brand_id
-    brand_name = fields.Many2one('mobile.brand',
-                                 string="Mobile Brand")
-    model_name = fields.Many2one('brand.model',
-                                 string="Model",
-                                 domain="[('mobile_brand_name','=',brand_name)]")
-    image_medium = fields.Binary(related='model_name.image_medium',
-                                 store=True,
-                                 attachment=True)
+    date_request = fields.Date(
+        string="Requested date",
+        default=fields.Date.context_today)
+    accept_date = fields.Date(
+        string="Accepted date")
 
-    date_request = fields.Date(string="Requested date",
-                               default=fields.Date.context_today)
-    accept_date = fields.Date(string="Accepted date")  
-                              
-                                                       
-    return_date = fields.Date(string="Return date",
-                              default=fields.Date.context_today,
-                              required=True)
-    technician_name = fields.Many2one('res.users',
-                                      string="Technician Name",
-                                      default=lambda self: self.env.user,
-                                      required=True)
-    service_state = fields.Selection([('draft', 'Draft'),
-                                      ('accepted', 'Accepted'),
-                                      ('assigned', 'Assigned'),
-                                      ('completed', 'Completed'),
-                                      ('returned', 'Returned'),
-                                      ('not_solved', 'Not solved')],
-                                     string='Service Status',
-                                     default='draft',
-                                     track_visibility='always')
+    return_date = fields.Date(
+        string="Return date",
+        default=fields.Date.context_today,
+        required=True)
+    technician_name = fields.Many2one(
+        comodel_name='res.users',
+        string="Technician Name",
+        default=lambda self: self.env.user,
+        required=True)
+    service_state = fields.Selection(
+        selection=[('draft', 'Draft'),
+                   ('accepted', 'Accepted'),
+                   ('assigned', 'Assigned'),
+                   ('completed', 'Completed'),
+                   ('returned', 'Returned'),
+                   ('not_solved', 'Not solved')],
+        string='Service Status',
+        default='draft',
+        track_visibility='always')
 
-    complaints_tree = fields.One2many('mobile.complaint.tree',
-                                      'complaint_id',
-                                      string='Complaints Tree')
+    complaints_tree = fields.One2many(
+        comodel_name='mobile.complaint.tree',
+        inverse_name='complaint_id',
+        string='Complaints Tree')
 
-    product_order_line = fields.One2many('product.order.line',
-                                         'product_order_id',
-                                         string='Parts Order Lines')
+    product_order_line = fields.One2many(
+        comodel_name='product.order.line',
+        inverse_name='product_order_id',
+        string='Parts Order Lines')
 
-    internal_notes = fields.Text(string="Internal notes")
-    invoice_count = fields.Integer(compute='_invoice_count',
-                                   string='# Invoice',
-                                   copy=False)
-    invoice_ids = fields.Many2many("account.move",
-                                   string='Invoices',
-                                   compute="_get_invoiced",
-                                   readonly=True,
-                                   copy=False)
+    internal_notes = fields.Text(
+        string="Internal notes")
+    invoice_count = fields.Integer(
+        compute='_invoice_count',
+        string='# Invoice',
+        copy=False)
+    invoice_ids = fields.Many2many(
+        comodel_name="account.move",
+        string='Invoices',
+        compute="_get_invoiced",
+        readonly=True,
+        copy=False)
 
-    first_payment_inv = fields.Many2one('account.move',
-                                        copy=False)
+    first_payment_inv = fields.Many2one(
+        comodel_name='account.move',
+        copy=False)
 
-    first_invoice_created = fields.Boolean(string="First Invoice Created",
-                                           invisible=True,
-                                           copy=False)
+    first_invoice_created = fields.Boolean(
+        string="First Invoice Created",
+        invisible=True,
+        copy=False)
 
+    service_count = fields.Integer(
+        compute='_service_count',
+        string='# Services',
+        copy=False)
 
-    service_count = fields.Integer(compute='_service_count',
-                                   string='# Services',
-                                   copy=False)
+    journal_type = fields.Many2one(
+        comodel_name='account.journal',
+        string='Journal',
+        invisible=True,
+        default=lambda self: self.env['account.journal'].search([('code', '=', 'SERV')]))
 
-    journal_type = fields.Many2one('account.journal',
-                                   'Journal',
-                                   invisible=True,
-                                   default=lambda self: self.env['account.journal'].search([('code', '=', 'SERV')]))
-
-    company_id = fields.Many2one('res.company',
-                                 'Company',
-                                 required=True,
-                                 default=lambda self: self.env.company)
+    company_id = fields.Many2one(
+        comodel_name='res.company',
+        string='Company',
+        required=True,
+        default=lambda self: self.env.company)
 
     @api.model
     def _default_picking_transfer(self):
@@ -168,7 +197,6 @@ class MobileServiceShop(models.Model):
     def return_to(self):
         self.service_state = 'returned'
 
-    
     def return_to(self):
         self.service_state = 'returned'
 
@@ -262,7 +290,8 @@ class MobileServiceShop(models.Model):
 
     @api.onchange('imei_no')
     def _service_count(self):
-        self.service_count = self.search([('imei_no', '=', self.imei_no)], count = True)
+        self.service_count = self.search(
+            [('imei_no', '=', self.imei_no)], count=True)
 
     @api.model
     def create(self, vals):
@@ -342,7 +371,8 @@ class MobileServiceShop(models.Model):
             service_id = serv_ids and serv_ids[0]
             action['res_id'] = service_id
             action['view_mode'] = 'form'
-            action['views'] = [(self.env.ref('mobile_service.mobile_service_request_form_view').id, 'form')]
+            action['views'] = [
+                (self.env.ref('mobile_service.mobile_service_request_form_view').id, 'form')]
         else:
             action['view_mode'] = 'tree,form'
             action['domain'] = [('id', 'in', serv_ids)]
@@ -434,58 +464,3 @@ class MobileServiceShop(models.Model):
         else:
             self.is_in_warranty = False
             self.warranty_id = False
-
-
-
-   
-
-class MobileComplaintType(models.Model):
-    _name = 'mobile.complaint'
-    _rec_name = 'complaint_type'
-
-    complaint_type = fields.Char(string="Complaint Type", required=True)
-
-
-class MobileComplaintTypeTemplate(models.Model):
-    _name = 'mobile.complaint.description'
-    _rec_name = 'description'
-
-    complaint_type_template = fields.Many2one(
-        'mobile.complaint', string="Complaint Type Template", required=True)
-    description = fields.Text(string="Complaint Description")
-
-
-class MobileComplaintTree(models.Model):
-    _name = 'mobile.complaint.tree'
-    _rec_name = 'complaint_type_tree'
-
-    complaint_id = fields.Many2one('mobile.service')
-
-    complaint_type_tree = fields.Many2one(
-        'mobile.complaint', string="Category", required=True)
-    description_tree = fields.Many2one('mobile.complaint.description',
-                                       string="Description",
-                                       domain="[('complaint_type_template','=',complaint_type_tree)]")
-
-
-class MobileBrandModels(models.Model):
-    _name = 'brand.model'
-    _rec_name = 'mobile_brand_models'
-
-    mobile_brand_name = fields.Many2one(
-        'mobile.brand', 
-        string="Mobile Brand", 
-        required=True)
-    mobile_brand_models = fields.Char(string="Model Name", required=True)
-    image_medium = fields.Binary(string='image', store=True, attachment=True)
-
-
-class MobileServiceTermsAndConditions(models.Model):
-    _name = 'terms.conditions'
-    _rec_name = 'terms_id'
-
-    terms_id = fields.Char(String="Terms and condition", compute="_find_id")
-    terms_conditions = fields.Text(string="Terms and Conditions")
-
-    def _find_id(self):
-        self.terms_id = self.id or ''

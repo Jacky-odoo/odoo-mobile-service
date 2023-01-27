@@ -3,7 +3,7 @@ from odoo import models, fields, api, _
 
 
 class MobileBrand(models.Model):
-    _name = 'mobile.brand'
+    _name = 'mobile_service.brand'
     _rec_name = 'name'
 
     name = fields.Char(string="Mobile Brand",
@@ -11,18 +11,20 @@ class MobileBrand(models.Model):
                        trim=True,
                        required=True)
 
-    model_ids = fields.One2many(comodel_name="brand.model",
-                                inverse_name='mobile_brand_name',
-                                string="Models")
+    model_ids = fields.One2many(
+        comodel_name="brand.model",
+        inverse_name='brand_id',
+        string='Models')
 
     model_count = fields.Integer(compute='_model_brand_count',
                                  string='# Mobile Brand Count',
                                  copy=False)
-    image = fields.Image(string="Image For Brand",
+    image = fields.Image(string="Image",
                          max_height=800,
                          max_width=800,
                          verify_resolution=True,
                          help="This image used in wizard")
+
     internal_ref = fields.Char(size=16,
                                trim=True,
                                translate=False,

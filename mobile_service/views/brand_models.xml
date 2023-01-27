@@ -7,11 +7,11 @@
             <field name="arch" type="xml">
                 <form string="Brand Model">
                     <sheet>
-                        <field name="image_medium" widget='image' class="oe_avatar" />
+                        <field name="image" widget='image' class="oe_avatar" />
                         <group>
                             <group>
-                                <field name="mobile_brand_name" />
-                                <field name="mobile_brand_models" />
+                                <field name="name" />
+                                <field name="brand_id" />
                             </group>
                         </group>
                     </sheet>
@@ -24,7 +24,7 @@
             <field name="model">brand.model</field>
             <field name="arch" type="xml">
                 <kanban>
-                    <field name="image_medium" />
+                    <field name="image" />
                     <field name="id" />
                     <progressbar field="activity_state"
                         colors="{&quot;planned&quot;: &quot;success&quot;, &quot;today&quot;: &quot;warning&quot;, &quot;overdue&quot;: &quot;danger&quot;}" />
@@ -33,17 +33,18 @@
                             <div class="oe_kanban_global_click">
                                 <div class="o_kanban_image">
                                     <img
-                                        t-att-src="kanban_image('brand.model', 'image_medium', record.id.raw_value)"
-                                        alt="Product" class="o_image_64_contain" />
+                                        t-att-src="kanban_image('brand.model', 'image', record.id.raw_value)"
+                                        alt="Product" 
+                                        class="o_image_64_contain" />
                                 </div>
                                 <div class="oe_kanban_details">
                                     <strong class="o_kanban_record_title">
-                                        <field name="mobile_brand_name" />
+                                        <field name="name" />
                                     </strong>
                                 </div>
                                 <div name="tags" />
                                 <ul>
-                                    <li> model: <field name="mobile_brand_models" /></li>
+                                    <li> model: <field name="brand_id" /></li>
                                 </ul>
                                 <div name="tags" />
                             </div>
@@ -59,8 +60,8 @@
             <field name="model">brand.model</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="mobile_brand_name" />
-                    <field name="mobile_brand_models" />
+                    <field name="name" />
+                    <field name="brand_id" />
                 </tree>
             </field>
         </record>
