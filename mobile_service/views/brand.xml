@@ -7,6 +7,15 @@
             <field name="arch" type="xml">
                 <form string="Brand">
                     <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button 
+                                name='action_view_brand_count' 
+                                class="oe_stat_button" 
+                                type="object"
+                                icon="fa-money">
+                                <field string="Models" name="model_count" widget="statinfo" />
+                            </button>
+                        </div>
                         <group>
                             <group>
                                 <field name="brand_name"/>
