@@ -33,14 +33,14 @@
 
     <record id="mobile_service_tech_rules" model="ir.rule">
         <field name="name">Mobile Service rule</field>
-        <field name="model_id" ref="model_mobile_service" />
-        <field name="domain_force">[('technician_name','=',user.id),('service_state','!=','draft'), ('company_id', 'in', company_ids)]</field>
+        <field name="model_id" ref="model_mobile_service_service" />
+        <field name="domain_force">[('technician_id','=',user.id),('service_state','!=','draft'), ('company_id', 'in', company_ids)]</field>
         <field name="groups" eval="[(4,ref('mobile_service_group_executer'))]"/>
     </record>
 
     <record id="mobile_service_tech_rules" model="ir.rule">
         <field name="name">Mobile Service rule</field>
-        <field name="model_id" ref="model_mobile_service" />
+        <field name="model_id" ref="model_mobile_service_service" />
         <field name="domain_force">[('service_state','=','draft'), ('company_id', 'in', company_ids)]</field>
         <field name="groups" eval="[(4,ref('mobile_service_group_acceptor'))]"/>
     </record>
@@ -48,7 +48,7 @@
 
     <record id="mobile_service_rule_manager" model="ir.rule">
         <field name="name">Mobile Service Manager rule</field>
-        <field name="model_id" ref="model_mobile_service" />
+        <field name="model_id" ref="model_mobile_service_service" />
         <field name="domain_force">[('company_id', 'in', company_ids)]</field>
         <field name="groups" eval="[(4,ref('mobile_service_group_manager'))]"/>
     </record>
@@ -58,7 +58,7 @@
     <!-- Company-restricted Records -->
     <record id="mobile_service_warranty_rule_manager" model="ir.rule">
         <field name="name">Mobile Warranty: multi-company</field>
-        <field name="model_id" ref="model_mobile_warranty"/>
+        <field name="model_id" ref="model_mobile_service_warranty"/>
         <field name="domain_force">[('company_id', 'in', company_ids)]</field>
         <field name="groups" eval="[(4,ref('mobile_service_group_executer'))]"/>
     </record>

@@ -4,19 +4,18 @@ class Partner(models.Model):
     _inherit = 'res.partner'
 
     mobile_service_ids = fields.One2many(
-        comodel_name='mobile.service',
-        inverse_name='person_name',
+        comodel_name='mobile_service.service',
+        inverse_name='person_id',
         string="Mobile Services")
-
     mobile_service_count = fields.Integer(
-        compute='_mobile_service_count',
+        compute='_compute_mobile_service_count',
         string='# Moblie Services',
         copy=False)
 
-    def _mobile_service_count(self):
+    def _compute_mobile_service_count(self):
         self.ensure_one()
-        self.mobile_service_count = self.env['mobile.service'].search(
-            [('person_name', '=', self.id)], count=True)
+        self.mobile_service_count = self.env['mobile_service.service'].search(
+            [('person_id', '=', self.id)], count=True)
 
     def action_view_mobile_services(self):
         self.ensure_one()
@@ -26,7 +25,7 @@ class Partner(models.Model):
         action = {
             'name': _("Services"),
             'type': 'ir.actions.act_window',
-            'res_model': 'mobile.service',
+            'res_model': 'mobile_service.service',
             'target': 'current',
             'context': ctx
         }

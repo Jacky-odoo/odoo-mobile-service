@@ -10,7 +10,9 @@
                     class="oe_stat_button"
                     type="object"
                     icon="fa-cog">
-                    <field string="Mobile Services" name="mobile_service_count" widget="statinfo" />
+                    <field string="Mobile Services" 
+                        name="mobile_service_count" 
+                        widget="statinfo" />
                 </button>
             </xpath>
         </field>

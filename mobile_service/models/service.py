@@ -14,34 +14,34 @@ class MobileServiceShop(models.Model):
         string='Service Number',
         copy=False,
         default="New")
-    person_name = fields.Many2one(
+    person_id = fields.Many2one(
         comodel_name='res.partner',
         string="Customer Name",
         required=True)
     contact_no = fields.Char(
-        related='person_name.mobile',
+        related='person_id.mobile',
         string="Contact Number")
     email_id = fields.Char(
-        related='person_name.email',
+        related='person_id.email',
         string="Email")
     street = fields.Char(
-        related='person_name.street',
+        related='person_id.street',
         string="Address")
     street2 = fields.Char(
-        related='person_name.street2',
+        related='person_id.street2',
         string="Address")
     city = fields.Char(
-        related='person_name.city',
+        related='person_id.city',
         string="Address")
     state_id = fields.Many2one(
-        related='person_name.state_id',
+        related='person_id.state_id',
         string="Address")
     zip = fields.Char(
-        related='person_name.zip',
+        related='person_id.zip',
         string="Address")
     country_id = fields.Many2one(
         string="Address",
-        related='person_name.country_id',
+        related='person_id.country_id',
         help="Country")
 
     imei_no = fields.Char(
@@ -67,9 +67,9 @@ class MobileServiceShop(models.Model):
     model_id = fields.Many2one(
         comodel_name='moblie_service.brand.model',
         string="Model",
-        domain="[('mobile_brand_name','=',brand_name)]")
-    image_medium = fields.Image(
-        related='model_name.image',
+        domain="[('brand_id','=',brand_id)]")
+    image = fields.Image(
+        related='model_id.image',
         store=True,
         attachment=True)
 
@@ -83,7 +83,7 @@ class MobileServiceShop(models.Model):
         string="Return date",
         default=fields.Date.context_today,
         required=True)
-    technician_name = fields.Many2one(
+    technician_id = fields.Many2one(
         comodel_name='res.users',
         string="Technician Name",
         default=lambda self: self.env.user,
@@ -99,12 +99,12 @@ class MobileServiceShop(models.Model):
         default='draft',
         track_visibility='always')
 
-    complaints_tree = fields.One2many(
-        comodel_name='mobile.complaint.tree',
-        inverse_name='complaint_id',
+    complaint_tree_ids = fields.One2many(
+        comodel_name='mobile_service.complaint.tree',
+        inverse_name='complaint_tree_id',
         string='Complaints Tree')
 
-    product_order_line = fields.One2many(
+    product_order_line_ids = fields.One2many(
         comodel_name='product.order.line',
         inverse_name='product_order_id',
         string='Parts Order Lines')
@@ -298,10 +298,10 @@ class MobileServiceShop(models.Model):
         print(self.env.user.company_id)
         if 'company_id' in vals:
             vals['name'] = self.env['ir.sequence'].with_context(force_company=self.env.user.company_id.id).next_by_code(
-                'mobile.service') or _('New')
+                'mobile_service.service.sequence') or _('New')
         else:
             vals['name'] = self.env['ir.sequence'].next_by_code(
-                'mobile.service') or _('New')
+                'mobile_service.service.sequence') or _('New')
         vals['service_state'] = 'draft'
         return super(MobileServiceShop, self).create(vals)
 
@@ -313,11 +313,13 @@ class MobileServiceShop(models.Model):
         return super(MobileServiceShop, self).unlink()
 
     def action_invoice_create_wizard(self):
-
+        """
+        Create new invoice based on current items
+        """
         return {
             'name': _('Create Invoice'),
             'view_mode': 'form',
-            'res_model': 'mobile.invoice',
+            'res_model': 'mobile_service.invoice',
             'type': 'ir.actions.act_window',
             'target': 'new'
         }
@@ -329,9 +331,9 @@ class MobileServiceShop(models.Model):
                 flag = 1
                 pick = {
                     'picking_type_id': self.picking_transfer_id.id,
-                    'partner_id': self.person_name.id,
+                    'partner_id': self.person_id.id,
                     'origin': self.name,
-                    'location_dest_id': self.person_name.property_stock_customer.id,
+                    'location_dest_id': self.person_id.property_stock_customer.id,
                     'location_id': self.picking_transfer_id.default_location_src_id.id,
 
                 }
@@ -440,9 +442,9 @@ class MobileServiceShop(models.Model):
             'date_return': self.return_date,
             'sev_id': self.name,
             'warranty': self.is_in_warranty,
-            'customer_name': self.person_name.name,
+            'customer_id': self.person_id.name,
             'imei_no': self.imei_no,
-            'technician': self.technician_name.name,
+            'technician': self.technician_id.name,
             'complaint_types': complaint_text,
             'complaint_description': description_text,
             'mobile_brand': self.brand_name.brand_name,
@@ -456,7 +458,7 @@ class MobileServiceShop(models.Model):
         # Check if warranty find
         warranty_ids = False
         if self.imei_no:
-            warranty_ids = self.env['mobile.warranty'].search(
+            warranty_ids = self.env['mobile_service.warranty'].search(
                 ['|', ('imei1', '=', self.imei_no), ('imei2', '=', self.imei_no)])
         if warranty_ids:
             self.is_in_warranty = True

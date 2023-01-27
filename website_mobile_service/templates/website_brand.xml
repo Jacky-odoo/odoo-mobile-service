@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="brand_select_wizard" name="Select Brand Wizard Page">
+        <t t-call="website.layout">
+            <div id="wrap" class="js_blog website_blog">
+                <t t-out="0" />
+                <section>
+                    <h1 class="text-center">تعمیر گوشی خود را با انتخاب برند آن آغاز نمایید.</h1>
+                </section>
+                <section
+                    id="category-list"
+                    style="direction: rtl; margin: 0px; padding: 0px; display: flex; flex-flow: row wrap; place-content: stretch space-around; align-items: stretch;">
+                    <t t-foreach="brands" t-as="brand">
+                        <div id="list-item"
+                            style="display: flex; flex-direction: column; justify-content: flex-end; margin: 8px; box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 5px 0px; background-color: rgb(255, 255, 255); cursor: pointer; flex: 0 1 auto; width: 225px; min-height: 275px; border-radius: 15px; border-color: rgb(0, 174, 239); border-style: solid; border-width: 1px;">
+                            <img id="logo"
+                                t-if="brand.image"
+                                t-att-src="image_data_uri(brand.image)"
+                                t-att-alt="'تعمیر گوشی و موبایل ' + brand.name + ' - البان'"
+                                style="object-fit: contain; max-height: 200px; max-width: 200px; margin: 16px;" />
+                            <a id="link"
+                                t-att-href="'/mobile-service/' + brand.internal_ref"
+                                style="text-align: center; padding: 15px; margin: 0px; border-top: 1px solid rgba(0, 0, 0, 0.12); text-decoration: none; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+                                <t t-out="brand.name" />
+                            </a>
+                        </div>
+                    </t>
+                </section>
+
+                <!-- Droppable-area shared across all blog's pages -->
+                <t t-set="oe_structure_blog_footer_description">Visible in all pages</t>
+                <div class="oe_structure oe_empty oe_structure_not_nearest"
+                    id="oe_structure_blog_footer"
+                    t-att-data-editor-sub-message="oe_structure_blog_footer_description" />
+            </div>
+        </t>
+    </template>
+</odoo>

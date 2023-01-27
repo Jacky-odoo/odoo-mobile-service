@@ -5,16 +5,19 @@ from odoo.exceptions import UserError, ValidationError
 
 class MobileServiceInvoice(models.Model):
 
-    _name = 'mobile.invoice'
+    _name = 'mobile_service.invoice'
 
-    advance_payment_method = fields.Selection([('advance', 'Advance'), ('full_amount', 'Full amount')],
-                                              string='Invoice method', default='advance')
+    advance_payment_method = fields.Selection(
+        select=[('advance', 'Advance'), ('full_amount', 'Full amount')],
+        string='Invoice method',
+        default='advance')
     amount = fields.Integer(string='Amount')
     number = fields.Char(string='Service Id')
 
     def action_invoice_create(self):
         active_id = self._context.get('active_id')
-        service_id = self.env['mobile.service'].search([('id', '=', active_id)])
+        service_id = self.env['mobile_service.service'].search(
+            [('id', '=', active_id)])
         if not service_id.env['product.product'].search([("name", "=", "Mobile Service Advance")]):
             vals = self._prepare_advance_product()
             self.env['product.product'].create(vals)
@@ -33,7 +36,7 @@ class MobileServiceInvoice(models.Model):
             'ref': supplier.name,
             'partner_id': supplier.id,
             'currency_id': service_id.company_id.currency_id.id,
-            'journal_id': service_id.journal_type.id,
+            'journal_id': service_id.journal_id.id,
             'invoice_origin': service_id.name,
             'company_id': service_id.company_id.id,
         }
@@ -41,9 +44,11 @@ class MobileServiceInvoice(models.Model):
         service_id.first_payment_inv = inv_id.id
         self.number = service_id.name
         if self.advance_payment_method != 'advance':
-            product_id = service_id.env['product.product'].search([("name", "=", "Mobile Service Charge")])
+            product_id = service_id.env['product.product'].search(
+                [("name", "=", "Mobile Service Charge")])
         else:
-            product_id = service_id.env['product.product'].search([("name", "=", "Mobile Service Advance")])
+            product_id = service_id.env['product.product'].search(
+                [("name", "=", "Mobile Service Advance")])
 
         if product_id.property_account_income_id.id:
             income_account = product_id.property_account_income_id.id
@@ -69,11 +74,13 @@ class MobileServiceInvoice(models.Model):
                 'invoice_line_ids': inv_line_data})
             inv_id._compute_journal_id()
 
-        sale_order_product = self.env['product.order.line'].search([('product_order_id', '=', service_id.name)])
+        sale_order_product = self.env['product.order.line'].search(
+            [('product_order_id', '=', service_id.name)])
         for line_data in sale_order_product:
             qty = line_data.product_uom_qty - line_data.qty_invoiced
             if line_data.product_uom_qty < line_data.qty_invoiced:
-                raise UserError(_('Used quantity is less than invoiced quantity'))
+                raise UserError(
+                    _('Used quantity is less than invoiced quantity'))
             uom_id = line_data.product_id.product_tmpl_id.uom_id
             if qty > 0:
                 flag = 1
@@ -91,7 +98,7 @@ class MobileServiceInvoice(models.Model):
                 })]
                 inv_id.write({
                     'invoice_line_ids': inv_line_data})
-                print(line_data.product_id.id,'pr')
+                print(line_data.product_id.id, 'pr')
                 line_data.qty_invoiced = line_data.qty_invoiced + qty
                 inv_id._compute_journal_id()
 

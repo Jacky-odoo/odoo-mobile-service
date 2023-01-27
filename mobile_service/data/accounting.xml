@@ -2,7 +2,7 @@
 <odoo noupdate="1">
     <record model="ir.sequence" id="seq_mobile_service_warranty">
         <field name="name">Mobile Warranty</field>
-        <field name="code">mobile.service.warranty</field>
+        <field name="code">mobile_service.warranty.sequence</field>
         <field name="prefix">W</field>
         <field name="padding">5</field>
         <field name="company_id" eval="False"/>

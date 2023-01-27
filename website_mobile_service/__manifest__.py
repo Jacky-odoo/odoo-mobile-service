@@ -11,7 +11,16 @@
         'mobile_service',
     ],
     'data': [
-        'views/website_brand_templates.xml'
+        # Data
+        # Security
+        # Templates
+        'templates/website_brand_model.xml',
+        'templates/website_brand.xml',
+        'templates/website_complaint_description.xml',
+        'templates/website_complaint.xml',
+        'templates/website_submit.xml',
+        # Views
+        # Wizards
     ],
     'images': [],
     'assets': {},

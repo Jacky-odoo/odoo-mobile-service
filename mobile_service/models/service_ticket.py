@@ -3,11 +3,11 @@ from odoo import models, api
 
 class StockMoveReport(models.AbstractModel):
 
-    _name = 'report.mobile_service.mobile_service_ticket_template'
+    _name = 'mobile_service.report.mobile_service_ticket_template'
 
     @api.model
     def _get_report_values(self, docids, data):
-        terms = self.env['terms.conditions'].search([])
+        terms = self.env['mobile_service.terms.conditions'].search([])
         return {
             'date_today': data['date_today'],
             'date_request': data['date_request'],

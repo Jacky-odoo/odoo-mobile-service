@@ -6,37 +6,39 @@ class MobileBrand(models.Model):
     _name = 'mobile_service.brand'
     _rec_name = 'name'
 
-    name = fields.Char(string="Mobile Brand",
-                       translate=True,
-                       trim=True,
-                       required=True)
-
+    name = fields.Char(
+        string="Mobile Brand",
+        translate=True,
+        trim=True,
+        required=True)
     model_ids = fields.One2many(
-        comodel_name="brand.model",
+        comodel_name="moblie_service.brand.model",
         inverse_name='brand_id',
         string='Models')
-
-    model_count = fields.Integer(compute='_model_brand_count',
-                                 string='# Mobile Brand Count',
-                                 copy=False)
-    image = fields.Image(string="Image",
-                         max_height=800,
-                         max_width=800,
-                         verify_resolution=True,
-                         help="This image used in wizard")
-
-    internal_ref = fields.Char(size=16,
-                               trim=True,
-                               translate=False,
-                               help="Used in url and internal usages",
-                               string="Inranal Refrence",
-                               index=True,
-                               group_operator="count")
+    model_count = fields.Integer(
+        compute='_model_brand_count',
+        string='# Mobile Brand Count',
+        copy=False)
+    image = fields.Image(
+        string="Image",
+        max_height=800,
+        max_width=800,
+        verify_resolution=True,
+        help="This image used in wizard")
+    internal_ref = fields.Char(
+        size=16,
+        trim=True,
+        translate=False,
+        help="Used in url and internal usages",
+        string="Inranal Refrence",
+        index=True,
+        group_operator="count")
 
     def _model_brand_count(self):
         self.ensure_one()
-        self.model_count = self.env['brand.model'].search(
-            [('mobile_brand_name', '=', self.id)], count=True)
+        self.model_count = self.env['mobile_service.brand.model'].search(
+            [('brand_id', '=', self.id)],
+            count=True)
 
     def action_view_brand_count(self):
         self.ensure_one()
@@ -50,8 +52,8 @@ class MobileBrand(models.Model):
             'target': 'current',
             'context': ctx
         }
-        model_ids = self.env['brand.model'].search(
-            [('mobile_brand_name', '=', self.id)])
+        model_ids = self.env['mobile_service.brand.model'].search(
+            [('brand_id', '=', self.id)])
         inv_ids = []
         for each in model_ids:
             inv_ids.append(each.id)

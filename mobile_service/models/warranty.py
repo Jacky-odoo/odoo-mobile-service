@@ -1,0 +1,89 @@
+from odoo import models, fields, api, _
+from odoo.tools import date_utils
+
+
+class MobileWarranty(models.Model):
+    _name = 'mobile_service.warranty'
+    _rec_name = 'name'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _check_company_auto = True
+
+    name = fields.Char(
+        string="Warranty Serial",
+        indexed=True,
+        readonly=True,
+        copy=False,)
+    brand_id = fields.Many2one(
+        comodel_name='mobile_service.brand',
+        string="Mobile Brand")
+    model_id = fields.Many2one(
+        comodel_name='moblie_service.brand.model',
+        string="Model",
+        domain="[('brand_id','=',brand_id)]")
+    color = fields.Char(
+        string='Color',
+        help="Color of the device",
+        required=False)
+    code_hamta = fields.Char(
+        size=64,
+        index=True,
+        string="Code",
+        help="A code that show Hamta number")
+    imei1 = fields.Char(
+        string="IMEI 1",
+        size=32,
+        indexed=True)
+    imei2 = fields.Char(
+        string="IMEI 2",
+        size=32,
+        indexed=True)
+    part_number = fields.Char(
+        size=32,
+        index=True,
+        string="Part Number")
+
+    importer_id = fields.Many2one(
+        comodel_name='res.partner',
+        string="Importer Company",
+        help="")
+    warranty_id = fields.Many2one(
+        comodel_name='res.partner',
+        string="Warranty Company",
+        help="")
+    descriptions = fields.Text(
+        string="Note",
+        help="Extra Note on The Warranty")
+
+    company_id = fields.Many2one(
+        comodel_name='res.company',
+        string="Company",
+        required=True,
+        default=lambda self: self.env.company,
+        help="This is company id")
+
+    state = fields.Selection(
+        state=[('draft', 'Draft'),
+               ('valid', 'Valid'),
+               ('expired', 'Expired')],
+        string='Status',
+        default='draft',
+        track_visibility='always')
+
+    start_date = fields.Date(string="Start Date")
+    expire_date = fields.Date(string="Expire Date")
+
+    @api.onchange("start_date")
+    def _onchange_expire_date(self):
+        if self.start_date:
+            self.expire_date = date_utils.add(self.start_date, months=18)
+        else:
+            self.expire_date = False
+
+    #
+    # Create a new name based on the sequnce.
+    #
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].next_by_code(
+            'mobile_service.warranty.sequence') or '/'
+        return super(MobileWarranty, self).create(vals)

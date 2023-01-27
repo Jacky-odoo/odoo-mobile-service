@@ -14,20 +14,31 @@
         'account'
     ],
     'data': [
+        # Security
         'security/security.xml',
         'security/ir.model.access.csv',
-        'views/mobile_service_views.xml',
-        'views/mobile_warranty_views.xml',
-        'views/product_template.xml',
-        'views/terms_and_condition.xml',
-        'views/complaint_template.xml',
-        'views/complaint_type.xml',
-        'views/brand_models.xml',
+
+        # views
+        'views/brand_model.xml',
         'views/brand.xml',
-        'views/res_partner_views.xml',
-        'wizard/mobile_create_invoice_views.xml',
+        'views/complaint_description.xml',
+        'views/complaint.xml',
+        'views/product.xml',
+        'views/res_partner.xml',
+        'views/service.xml',
+        'views/term_condition',
+        'views/warranty',
+
+        # Templates
+
+        # Wizards
+        'wizard/mobile_create_invoice.xml',
+
+        # Reports
         'reports/mobile_service_ticket.xml',
         'reports/service_ticket_template.xml',
+
+        # Data
         'data/accounting.xml',
         'data/mobile_service_data.xml',
         'data/mobile_service_email_template.xml'

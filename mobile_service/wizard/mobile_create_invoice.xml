@@ -1,7 +1,7 @@
 <odoo>
        <record id="view_mobile_create_inv" model="ir.ui.view">
             <field name="name">Create Invoice</field>
-            <field name="model">mobile.invoice</field>
+            <field name="model">mobile_service.invoice</field>
             <field name="arch" type="xml">
                 <form string="Invoice Service Order">
                     <p class="oe_grey">
@@ -29,7 +29,7 @@
       <record id="action_mobile_service_inv" model="ir.actions.act_window">
             <field name="name">Create Invoice</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">mobile.invoice</field>
+            <field name="res_model">mobile_service.invoice</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>
             <field name="view_id" ref="view_mobile_create_inv"/>
