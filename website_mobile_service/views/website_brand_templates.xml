@@ -6,10 +6,12 @@
                 <t t-out="0"/>
 
 
-                <h1>Hi</h1>
-                <t t-foreach="[1, 2, 3]" t-as="i">
-                    <p><t t-out="i"/></p>
-                </t>
+                <h1>Chose Your Brand</h1>
+                <ul>
+                    <t t-foreach="brands" t-as="brand">
+                        <li><t t-out="brand.brand_name"/></li>
+                    </t>
+                </ul>
     
                 <!-- Droppable-area shared across all blog's pages -->
                 <t t-set="oe_structure_blog_footer_description">Visible in all pages</t>
