@@ -61,7 +61,6 @@
                 <tree>
                     <field name="mobile_brand_name" />
                     <field name="mobile_brand_models" />
-                    <field name="image_medium" widget='image' class="Your_custom_class" />
                 </tree>
             </field>
         </record>
