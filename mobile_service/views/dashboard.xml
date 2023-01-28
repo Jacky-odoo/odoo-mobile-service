@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="mobile_service_main_menu"
+        web_icon="mobile_service,static/description/web-icon.png"
+        name="Mobile Service"
+        sequence="20" />
+
+    <menuitem id="mobile_service_configuration"
+        parent="mobile_service_main_menu"
+        name="Configuration"
+        sequence="3" />
+
+</odoo>

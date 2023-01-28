@@ -12,14 +12,13 @@
                 <page string="Parts details" attrs="{'invisible': [('is_a_parts', '=', False)]}">
                     <group>
                         <group>
-                            <field name="brand_name"
+                            <field name="brand_id"
                                 attrs="{'required': [('is_a_parts', '=', True)]}" />
                             <field name="model_id"
                                 attrs="{'required': [('is_a_parts', '=', True)]}" />
                         </group>
                         <group>
                             <field name="model_color" />
-                            <field name="extra_descriptions" />
                         </group>
                     </group>
                 </page>

@@ -12,7 +12,7 @@ class MobileBrand(models.Model):
         trim=True,
         required=True)
     model_ids = fields.One2many(
-        comodel_name="moblie_service.brand.model",
+        comodel_name="mobile_service.brand.model",
         inverse_name='brand_id',
         string='Models')
     model_count = fields.Integer(

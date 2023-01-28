@@ -5,7 +5,7 @@ import pytz
 
 
 class MobileServiceShop(models.Model):
-    _name = 'moblie_service.service'
+    _name = 'mobile_service.service'
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _check_company_auto = True
@@ -65,7 +65,7 @@ class MobileServiceShop(models.Model):
         comodle_name='mobile_service.brand',
         string="Mobile Brand")
     model_id = fields.Many2one(
-        comodel_name='moblie_service.brand.model',
+        comodel_name='mobile_service.brand.model',
         string="Model",
         domain="[('brand_id','=',brand_id)]")
     image = fields.Image(
@@ -101,7 +101,7 @@ class MobileServiceShop(models.Model):
 
     complaint_tree_ids = fields.One2many(
         comodel_name='mobile_service.complaint.tree',
-        inverse_name='complaint_tree_id',
+        inverse_name='service_id',
         string='Complaints Tree')
 
     product_order_line_ids = fields.One2many(
@@ -421,17 +421,17 @@ class MobileServiceShop(models.Model):
                 datetime.now(), "%Y-%m-%d %I:%M:%S %p")
         complaint_text = ""
         description_text = ""
-        complaint_id = self.env['mobile.complaint.tree'].search(
+        complaint_ids = self.env['mobile_service.complaint.tree'].search(
             [('complaint_id', '=', self.id)])
-        if complaint_id:
-            for obj in complaint_id:
+        if complaint_ids:
+            for obj in complaint_ids:
                 complaint = obj.complaint_type_tree
                 description = obj.description_tree
                 complaint_text = complaint.complaint_type + ", " + complaint_text
                 if description.description:
                     description_text = description.description + ", " + description_text
         else:
-            for obj in complaint_id:
+            for obj in complaint_ids:
                 complaint = obj.complaint_type_tree
                 complaint_text = complaint.complaint_type + ", " + complaint_text
         data = {

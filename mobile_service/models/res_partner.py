@@ -9,7 +9,7 @@ class Partner(models.Model):
         string="Mobile Services")
     mobile_service_count = fields.Integer(
         compute='_compute_mobile_service_count',
-        string='# Moblie Services',
+        string='# mobile Services',
         copy=False)
 
     def _compute_mobile_service_count(self):

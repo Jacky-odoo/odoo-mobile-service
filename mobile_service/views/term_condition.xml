@@ -1,12 +1,13 @@
 <odoo>
     <record id="mobile_terms_and_conditions_form_view" model="ir.ui.view">
         <field name="name">mobile.terms.and.conditions.form</field>
-        <field name="model">moblie_service.terms.conditions</field>
+        <field name="model">mobile_service.term.condition</field>
         <field name="arch" type="xml">
             <form string="Complaint Type">
                 <sheet>
                     <group>
-                        <field name="terms_conditions" />
+                        <field name="name" />
+                        <field name="description" />
                     </group>
                 </sheet>
             </form>
@@ -15,17 +16,18 @@
 
     <record id="mobile_terms_and_conditions_tree_view" model="ir.ui.view">
         <field name="name">mobile.terms.and.conditions.tree</field>
-        <field name="model">moblie_service.terms.conditions</field>
+        <field name="model">mobile_service.term.condition</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="terms_conditions" />
+                <field name="name" />
+                <field name="description" />
             </tree>
         </field>
     </record>
 
     <record id="action_mobile_terms_and_conditions" model="ir.actions.act_window">
         <field name="name">Terms and Conditions</field>
-        <field name="res_model">moblie_service.terms.conditions</field>
+        <field name="res_model">mobile_service.term.condition</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="mobile_terms_and_conditions_tree_view" />
         <field name="help" type="html">

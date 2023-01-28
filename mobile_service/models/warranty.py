@@ -17,7 +17,7 @@ class MobileWarranty(models.Model):
         comodel_name='mobile_service.brand',
         string="Mobile Brand")
     model_id = fields.Many2one(
-        comodel_name='moblie_service.brand.model',
+        comodel_name='mobile_service.brand.model',
         string="Model",
         domain="[('brand_id','=',brand_id)]")
     color = fields.Char(
@@ -62,7 +62,7 @@ class MobileWarranty(models.Model):
         help="This is company id")
 
     state = fields.Selection(
-        state=[('draft', 'Draft'),
+        selection=[('draft', 'Draft'),
                ('valid', 'Valid'),
                ('expired', 'Expired')],
         string='Status',

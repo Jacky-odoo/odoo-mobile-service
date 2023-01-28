@@ -3,7 +3,7 @@ from odoo import models, fields
 
 
 class MobileServiceTermsAndConditions(models.Model):
-    _name = 'moblie_service.term.condition'
+    _name = 'mobile_service.term.condition'
     _rec_name = 'name'
 
     name = fields.Char(

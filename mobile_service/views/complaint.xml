@@ -1,7 +1,7 @@
 <odoo>
 
     <record id="mobile_complaint_type_form_view" model="ir.ui.view">
-        <field name="name">mobile.complaint.type.form</field>
+        <field name="name">mobile_service.complaint.type.form</field>
         <field name="model">mobile_service.complaint</field>
         <field name="arch" type="xml">
             <form string="Complaint Type">
@@ -17,8 +17,8 @@
     </record>
 
     <record id="mobile_complaint_type_tree_view" model="ir.ui.view">
-        <field name="name">mobile.complaint.type.tree</field>
-        <field name="model">mobile.complaint</field>
+        <field name="name">mobile_service.complaint.type.tree</field>
+        <field name="model">mobile_service.complaint</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />
@@ -28,7 +28,7 @@
 
     <record id="action_mobile_complaint_type" model="ir.actions.act_window">
         <field name="name">Complaint Types</field>
-        <field name="res_model">mobile.complaint</field>
+        <field name="res_model">mobile_service.complaint</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="mobile_complaint_type_tree_view" />
         <field name="help" type="html">

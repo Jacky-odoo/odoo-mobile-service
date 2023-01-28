@@ -260,20 +260,21 @@
                             </group>
                         </page>
                         <page string="Complaints">
-                            <field name="complaints_tree_ids" mode="tree"
+                            <field name="complaint_tree_ids" 
+                                mode="tree"
                                 attrs="{'readonly': [('service_state','in',('returned','not_solved'))]}">
                                 <tree string="Complaints" editable="bottom">
-                                    <field name="complaint_type_tree" />
-                                    <field name="description_tree" />
+                                    <field name="complaint_id" />
+                                    <field name="complaint_description_id" />
                                 </tree>
                                 <form>
-                                    <field name="complaint_type_tree" />
-                                    <field name="description_tree" />
+                                    <field name="complaint_id" />
+                                    <field name="complaint_description_id" />
                                 </form>
                             </field>
                         </page>
                         <page string="Parts Usage">
-                            <field name="product_order_line" mode="tree"
+                            <field name="product_order_line_ids" mode="tree"
                                 attrs="{'readonly': [('service_state','in',('returned','not_solved'))]}">
                                 <tree string="Complaints" editable="bottom">
                                     <field name="product_id" />
@@ -307,7 +308,7 @@
         <field name="model">mobile_service.service</field>
         <field name="arch" type="xml">
             <kanban class="o_kanban_small_column">
-                <field name="image_medium" />
+                <field name="image" />
                 <field name="id" />
                 <templates>
                     <t t-name="kanban-box">
@@ -364,7 +365,7 @@
                 <field name="return_date" optional="hide" />
                 <field name="date_request" optional="hide" />
                 <field name="accept_date" optional="hide" />
-                <field name="complaints_tree_ids"
+                <field name="complaint_tree_ids"
                     widget="many2many_tags" />
                 <field name="service_state"
                     widget="badge"
@@ -393,10 +394,7 @@
     </record>
 
 
-    <menuitem id="mobile_service_main_menu"
-        web_icon="mobile_service,static/description/web-icon.png"
-        name="Mobile Service"
-        sequence="20" />
+
 
     <menuitem
         id="mobile_service_menu"
@@ -409,9 +407,4 @@
         parent="mobile_service_main_menu"
         name="Service Request"
         sequence="1" />
-
-    <menuitem id="mobile_service_configuration"
-        parent="mobile_service_main_menu"
-        name="Configuration"
-        sequence="3" />
 </odoo>

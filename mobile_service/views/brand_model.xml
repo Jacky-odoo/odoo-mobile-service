@@ -1,7 +1,7 @@
 <odoo>
     <record id="mobile_brand_model_form_view" model="ir.ui.view">
         <field name="name">mobile.brand.model.form</field>
-        <field name="model">moblie_service.brand.model</field>
+        <field name="model">mobile_service.brand.model</field>
         <field name="arch" type="xml">
             <form string="Brand Model">
                 <sheet>

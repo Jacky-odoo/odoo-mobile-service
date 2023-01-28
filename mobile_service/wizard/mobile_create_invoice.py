@@ -8,7 +8,9 @@ class MobileServiceInvoice(models.Model):
     _name = 'mobile_service.invoice'
 
     advance_payment_method = fields.Selection(
-        select=[('advance', 'Advance'), ('full_amount', 'Full amount')],
+        selection=[
+            ('advance', 'Advance'),
+            ('full_amount', 'Full amount')],
         string='Invoice method',
         default='advance')
     amount = fields.Integer(string='Amount')

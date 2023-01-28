@@ -15,7 +15,7 @@ class ProductProduct(models.Model):
     model_id = fields.Many2one(
         comodel_name='mobile_service.brand.model',
         string="Model Name",
-        domain="[('mobile_brand_name','=',brand_name)]",
+        domain="[('brand_id','=',brand_id)]",
         help="Select a model for the part")
     model_color = fields.Char(
         string='Color',

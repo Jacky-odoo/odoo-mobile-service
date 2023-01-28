@@ -2,7 +2,7 @@ from odoo import models, fields
 
 
 class MobileBrandModels(models.Model):
-    _name = 'moblie_service.brand.model'
+    _name = 'mobile_service.brand.model'
     _rec_name = 'name'
 
     brand_id = fields.Many2one(

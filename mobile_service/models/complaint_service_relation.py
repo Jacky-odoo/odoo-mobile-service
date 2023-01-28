@@ -5,8 +5,8 @@ class MobileComplaintTree(models.Model):
     """
     A relation between service, complaint and description
     """
-    _name = 'moblie_service.complaint.tree'
-    _rec_name = 'complaint_type_tree'
+    _name = 'mobile_service.complaint.tree'
+    _rec_name = 'complaint_id'
 
     service_id = fields.Many2one(
         comodel_name='mobile_service.service',
@@ -19,4 +19,4 @@ class MobileComplaintTree(models.Model):
     complaint_description_id = fields.Many2one(
         comodel_name='mobile_service.complaint.description',
         string="Complaint Description",
-        domain="[('complaint_type_template','=',complaint_type_tree)]")
+        domain="[('complaint_id', '=', complaint_id)]")

@@ -19,6 +19,7 @@
         'security/ir.model.access.csv',
 
         # views
+        'views/dashboard.xml',   #contains basic menuse and root struct
         'views/brand_model.xml',
         'views/brand.xml',
         'views/complaint_description.xml',
@@ -26,8 +27,8 @@
         'views/product.xml',
         'views/res_partner.xml',
         'views/service.xml',
-        'views/term_condition',
-        'views/warranty',
+        'views/term_condition.xml',
+        'views/warranty.xml',
 
         # Templates
 
