@@ -3,25 +3,84 @@
     <template id="request_submit_wizard" name="Select Complaint Wizard Page">
         <t t-call="website.layout">
             <div id="wrap" class="js_blog website_blog">
-                <t t-out="0"/>
+                <t t-out="0" />
                 <section>
                     <h1 class="text-center">فرم زیر را پر کنید</h1>
                 </section>
 
 
-                <section> 
-                    <form>
-                        <input />
-                        <input />
-                        <input />
-                    </form>
-                </section>
+                <form id="register_request_form"
+                    method="POST"
+                    action="/mobile-service/submit_service_request"
+                    data-success_page="/"
+                    class="s_website_form form-horizontal container-fluid mt32">
+                    <!-- Hiden items-->
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <input type="hidden" name="brand_id" t-att-value="brand.id"/>
+                    <input type="hidden" name="model_id" t-att-value="model.id"/>
+                    <input type="hidden" name="complaint_id" t-att-value="complaint.id"/>
+                    <input type="hidden" name="complaint_description_id" t-att-value="complaint_description.id"/>
+
+                    <div class="form-group form-field o_website_form_required_custom">
+                        <label class="col-md-3 col-sm-4 control-label" for="name">Name</label>
+                        <div class="col-md-7 col-sm-8">
+                            <input type="text"
+                                class="form-control o_website_form_input"
+                                name="name"
+                                required="" />
+                        </div>
+                    </div>
+                    <div class="form-group form-field o_website_form_required_custom">
+                        <label class="col-md-3 col-sm-4 control-label" for="mobile">Mobile</label>
+                        <div class="col-md-7 col-sm-8">
+                            <input type="text"
+                                class="form-control o_website_form_input"
+                                name="mobile"
+                                required="" />
+                        </div>
+                    </div>
+                    <div class="form-group form-field o_website_form_required_custom">
+                        <label class="col-md-3 col-sm-4 control-label" for="address">address</label>
+                        <div class="col-md-7 col-sm-8">
+                            <input type="text"
+                                class="form-control o_website_form_input"
+                                name="address"
+                                required="" />
+                        </div>
+                    </div>
+                    <div class="form-group form-field o_website_form_required_custom">
+                        <label class="col-md-3 col-sm-4 control-label" for="email">EMail</label>
+                        <div class="col-md-7 col-sm-8">
+                            <input type="email"
+                                class="form-control o_website_form_input"
+                                name="email"
+                                required="" />
+                        </div>
+                    </div>
+                    <div class="form-group form-field o_website_form_required_custom">
+                        <label class="col-md-3 col-sm-4 control-label" for="comment">comment</label>
+                        <div class="col-md-7 col-sm-8">
+                            <input type="text"
+                                class="form-control o_website_form_input"
+                                name="comment"
+                                required="" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
 
                 <!-- Droppable-area shared across all blog's pages -->
                 <t t-set="oe_structure_blog_footer_description">Visible in all pages</t>
                 <div class="oe_structure oe_empty oe_structure_not_nearest"
                     id="oe_structure_blog_footer"
-                    t-att-data-editor-sub-message="oe_structure_blog_footer_description"/>
+                    t-att-data-editor-sub-message="oe_structure_blog_footer_description" />
             </div>
         </t>
     </template>
