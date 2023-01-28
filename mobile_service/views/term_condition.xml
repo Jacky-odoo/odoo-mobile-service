@@ -41,5 +41,5 @@
         id="mobile_service_conf5"
         parent="mobile_service_configuration"
         name="Terms and Conditions"
-        sequence="4" />
+        sequence="5" />
 </odoo>

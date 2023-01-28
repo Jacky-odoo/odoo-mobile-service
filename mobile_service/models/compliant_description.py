@@ -8,13 +8,13 @@ class MobileComplaintTypeTemplate(models.Model):
     name = fields.Char(
         size=64,
         index=True,
-        string="Complaint Description",
+        string="Complaint Types",
         help="Name of the description")
     description = fields.Text(
         string="Complaint Description")
     complaint_id = fields.Many2one(
         comodel_name='mobile_service.complaint',
-        string="Complaint Type Template",
+        string="Complaint",
         index=True,
         required=True)
     image = fields.Image(

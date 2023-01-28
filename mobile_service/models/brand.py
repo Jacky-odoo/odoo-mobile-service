@@ -30,7 +30,7 @@ class MobileBrand(models.Model):
         trim=True,
         translate=False,
         help="Used in url and internal usages",
-        string="Inranal Refrence",
+        string="Internal Refrence",
         index=True,
         group_operator="count")
 

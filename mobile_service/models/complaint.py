@@ -5,7 +5,7 @@ class MobileComplaintType(models.Model):
     _rec_name = 'name'
 
     name = fields.Char(
-        string="Complaint Type", 
+        string="Complaint Name", 
         required=True,
         translate=True,
         trim=True)

@@ -4,7 +4,7 @@
         <field name="name">mobile_service.complaint.type.form</field>
         <field name="model">mobile_service.complaint</field>
         <field name="arch" type="xml">
-            <form string="Complaint Type">
+            <form string="Complaints">
                 <sheet>
                     <group>
                         <group>
@@ -27,7 +27,7 @@
     </record>
 
     <record id="action_mobile_complaint_type" model="ir.actions.act_window">
-        <field name="name">Complaint Types</field>
+        <field name="name">Complaints</field>
         <field name="res_model">mobile_service.complaint</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="mobile_complaint_type_tree_view" />
@@ -42,6 +42,6 @@
     <menuitem id="mobile_service_conf2"
         action="mobile_service.action_mobile_complaint_type"
         parent="mobile_service_configuration"
-        name="Complaint Type"
+        name="Complaints"
         sequence="3" />
 </odoo>

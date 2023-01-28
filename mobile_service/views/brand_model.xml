@@ -58,9 +58,8 @@
         <field name="model">mobile_service.brand.model</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="internal_ref" />
                 <field name="name" />
-                <field name="brand_id" />
+                <field name="brand_id" optional='hide'/>
             </tree>
         </field>
     </record>
