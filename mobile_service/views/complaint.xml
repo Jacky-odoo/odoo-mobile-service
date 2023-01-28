@@ -9,6 +9,9 @@
                     <group>
                         <group>
                             <field name="name" />
+                            <field name="image"
+                                widget='image'
+                                class="oe_avatar" />
                             <field name="internal_ref" />
                         </group>
                     </group>

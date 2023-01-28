@@ -9,7 +9,10 @@
                         <field name="complaint_id" />
                         <field name="name" />
                         <field name="description" />
-                        <field name="internal_ref"/>
+                        <field name="image"
+                            widget='image'
+                            class="oe_avatar" />
+                        <field name="internal_ref" />
                     </group>
                 </sheet>
             </form>

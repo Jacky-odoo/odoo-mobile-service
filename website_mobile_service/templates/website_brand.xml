@@ -7,6 +7,7 @@
                 <section>
                     <h1 class="text-center">تعمیر گوشی خود را با انتخاب برند آن آغاز نمایید.</h1>
                 </section>
+                
                 <section
                     id="category-list"
                     style="direction: rtl; margin: 0px; padding: 0px; display: flex; flex-flow: row wrap; place-content: stretch space-around; align-items: stretch;">
