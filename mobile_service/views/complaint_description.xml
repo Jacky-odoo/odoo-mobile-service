@@ -9,6 +9,7 @@
                         <field name="complaint_id" />
                         <field name="name" />
                         <field name="description" />
+                        <field name="internal_ref"/>
                     </group>
                 </sheet>
             </form>

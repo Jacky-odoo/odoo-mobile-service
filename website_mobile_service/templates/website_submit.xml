@@ -1,3 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <template id="request_submit_wizard" name="Select Complaint Wizard Page">
+        <t t-call="website.layout">
+            <div id="wrap" class="js_blog website_blog">
+                <t t-out="0"/>
+                <section>
+                    <h1 class="text-center">فرم زیر را پر کنید</h1>
+                </section>
+
+
+                <section> 
+                    <form>
+                        <input />
+                        <input />
+                        <input />
+                    </form>
+                </section>
+
+                <!-- Droppable-area shared across all blog's pages -->
+                <t t-set="oe_structure_blog_footer_description">Visible in all pages</t>
+                <div class="oe_structure oe_empty oe_structure_not_nearest"
+                    id="oe_structure_blog_footer"
+                    t-att-data-editor-sub-message="oe_structure_blog_footer_description"/>
+            </div>
+        </t>
+    </template>
 </odoo>

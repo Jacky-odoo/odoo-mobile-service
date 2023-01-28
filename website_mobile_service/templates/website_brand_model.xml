@@ -11,7 +11,11 @@
 
                 <section> 
                     <t t-foreach="models" t-as="model">
-                        <li><t t-out="model.name" /></li>
+                        <li>
+                            <a t-att-href="'/mobile-service/' + model.brand_id.internal_ref + '/' + model.internal_ref">
+                                <t t-out="model.name" />
+                            </a>
+                        </li>
                     </t>
                 </section>
 

@@ -23,3 +23,8 @@ class MobileComplaintType(models.Model):
         string="Inranal Refrence",
         index=True,
         group_operator="count")
+
+    complaint_description_ids = fields.One2many(
+        comodel_name='mobile_service.complaint.description',
+        inverse_name="complaint_id",
+        string="Complaint Descriptions")

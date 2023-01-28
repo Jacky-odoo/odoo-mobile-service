@@ -1,3 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <template id="complaint_description_select_wizard" name="Select Complaint Description Wizard Page">
+        <t t-call="website.layout">
+            <div id="wrap" class="js_blog website_blog">
+                <t t-out="0"/>
+                <section>
+                    <h1 class="text-center">توصیف مشکل گوشی را انتخاب کنید</h1>
+                </section>
+
+
+                <section> 
+                    <t t-foreach="complaint_descriptions" t-as="complaint_description">
+                        <li>
+                            <a t-att-href="'/mobile-service/' + brand.internal_ref + '/' + model.internal_ref + '/' + complaint.internal_ref + '/' + complaint_description.internal_ref">
+                                <t t-out="complaint_description.name" />
+                            </a>
+                        </li>
+                    </t>
+                </section>
+
+                <!-- Droppable-area shared across all blog's pages -->
+                <t t-set="oe_structure_blog_footer_description">Visible in all pages</t>
+                <div class="oe_structure oe_empty oe_structure_not_nearest"
+                    id="oe_structure_blog_footer"
+                    t-att-data-editor-sub-message="oe_structure_blog_footer_description"/>
+            </div>
+        </t>
+    </template>
 </odoo>
