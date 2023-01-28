@@ -14,4 +14,5 @@ class MobileServiceTermsAndConditions(models.Model):
         string="Description")
 
     def _find_id(self):
-        self.terms_id = self.id or ''
+        for item in self:
+            item.name = item.id or ''
