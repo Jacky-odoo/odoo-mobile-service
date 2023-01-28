@@ -47,7 +47,7 @@ class MobileServiceShop(models.Model):
     imei_no = fields.Char(
         string="IMEI Number")
     warranty_id = fields.Many2one(
-        comodel_name="mobile.warranty",
+        comodel_name="mobile_service.warranty",
         string='Warranty Number',
         help="warranty details")
     is_in_warranty = fields.Boolean(
@@ -60,9 +60,8 @@ class MobileServiceShop(models.Model):
         string='Re-repair',
         default=False,
         help="Re-repairing.")
-    # TODO: maso, 2023: rename to brand_id
     brand_id = fields.Many2one(
-        comodle_name='mobile_service.brand',
+        comodel_name='mobile_service.brand',
         string="Mobile Brand")
     model_id = fields.Many2one(
         comodel_name='mobile_service.brand.model',
