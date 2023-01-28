@@ -28,4 +28,9 @@
     'application': False,
     'auto_install': True,
     'license': 'LGPL-3',
+    'assets': {
+        'web.assets_frontend': [
+            '/website_mobile_service/static/src/scss/breadcrumb.scss',
+        ]
+    },
 }

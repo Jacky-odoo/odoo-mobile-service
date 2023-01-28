@@ -4,10 +4,22 @@
         <t t-call="website.layout">
             <div id="wrap" class="js_blog website_blog">
                 <t t-out="0" />
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active"><a href="/mobile-service">برند گوشی : <t t-out="brand.name"></t></a></li>
+                        <li class="breadcrumb-item">مدل گوشی</li>
+                        <li class="breadcrumb-item">دسته ایراد</li>
+                        <li class="breadcrumb-item">ایراد</li>
+                    </ol>
+                </nav>
+
                 <section>
                     <h1 name="Header-1" class="section-head xs-mb-30 title-highlight-left"
-                        style="padding: 8px; text-align: text-center; background-color: rgb(255, 255, 255);">
-                        تعمیر گوشی خود را با انتخاب برند آن آغاز نمایید
+                        style="padding: 8px; text-align: text-right; background-color: rgb(255, 255, 255);">
+                        تعمیر گوشی 
+                         خود را با
+                        انتخاب برند آن آغاز نمایید 
                     </h1>
                 </section>
 
@@ -23,7 +35,7 @@
                                 t-att-alt="'تعمیر گوشی و موبایل ' + model.name + ' - البان'"
                                 style="object-fit: contain; max-height: 200px; max-width: 200px; margin: 16px;" />
                             <a id="link"
-                                t-att-href="'/mobile-service/' + model.brand_id.internal_ref + '/' + model.internal_ref"
+                                t-att-href="'/mobile-service/' + brand.internal_ref + '/' + model.internal_ref"
                                 style="text-align: center; padding: 15px; margin: 0px; border-top: 1px solid rgba(0, 0, 0, 0.12); text-decoration: none; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
                                 <t t-out="model.name" />
                             </a>
@@ -31,13 +43,13 @@
                     </t>
                 </section>
 
-
                 <!-- Droppable-area shared across all blog's pages -->
                 <t t-set="oe_structure_blog_footer_description">Visible in all pages</t>
                 <div class="oe_structure oe_empty oe_structure_not_nearest"
                     id="oe_structure_blog_footer"
                     t-att-data-editor-sub-message="oe_structure_blog_footer_description" />
             </div>
+
         </t>
     </template>
 </odoo>

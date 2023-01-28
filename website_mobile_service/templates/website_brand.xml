@@ -4,11 +4,24 @@
         <t t-call="website.layout">
             <div id="wrap" class="js_blog website_blog">
                 <t t-out="0" />
-                <section>
-                    <h1 name="Header-1" class="section-head xs-mb-30 title-highlight-left"
-                        style="padding: 8px; text-align: text-center; background-color: rgb(255, 255, 255);">
-                        تعمیر گوشی خود را با انتخاب برند آن آغاز نمایید
-                    </h1>
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">برند گوشی</li>
+                        <li class="breadcrumb-item">مدل گوشی</li>
+                        <li class="breadcrumb-item">دسته ایراد</li>
+                        <li class="breadcrumb-item">ایراد</li>
+                    </ol>
+                </nav>
+
+
+                <section style="text-align: text-center;">
+                    <p>
+                        <h2 name="Header-1" class="section-head xs-mb-30 title-highlight-left"
+                            style="padding: 8px; background-color: rgb(255, 255, 255);">
+                            تعمیر گوشی خود را با انتخاب برند آن آغاز نمایید
+                        </h2>
+                    </p>
                 </section>
 
                 <section

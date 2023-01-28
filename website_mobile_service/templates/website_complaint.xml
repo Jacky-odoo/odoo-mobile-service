@@ -4,10 +4,21 @@
         <t t-call="website.layout">
             <div id="wrap" class="js_blog website_blog">
                 <t t-out="0" />
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active"><a href="/mobile-service">برند گوشی : <t t-out="brand.name"></t></a></li>
+                        <li class="breadcrumb-item"><a t-att-href="'/mobile-service/' + brand.internal_ref">مدل گوشی : <t t-out="model.name"></t></a></li>
+                        <li class="breadcrumb-item">دسته ایراد</li>
+                        <li class="breadcrumb-item">ایراد</li>
+                    </ol>
+                </nav>
+
                 <section>
                     <h1 name="Header-1" class="section-head xs-mb-30 title-highlight-left"
                         style="padding: 8px; text-align: text-center; background-color: rgb(255, 255, 255);">
-                        دسته مشکل گوشی را انتخاب کنید
+                        دسته مشکل 
+                            خود را با  گوشی را انتخاب کنید 
                     </h1>
                 </section>
 
@@ -30,6 +41,7 @@
                         </div>
                     </t>
                 </section>
+
                 <!-- Droppable-area shared across all blog's pages -->
                 <t t-set="oe_structure_blog_footer_description">Visible in all pages</t>
                 <div class="oe_structure oe_empty oe_structure_not_nearest"

@@ -4,10 +4,18 @@
         <t t-call="website.layout">
             <div id="wrap" class="js_blog website_blog">
                 <t t-out="0" />
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active"><a href="/mobile-service">برند گوشی : <t t-out="brand.name"></t></a></li>
+                        <li class="breadcrumb-item"><a t-att-href="'/mobile-service/' + brand.internal_ref">مدل گوشی : <t t-out="model.name"></t></a></li>
+                        <li class="breadcrumb-item"><a t-att-href="'/mobile-service/' + brand.internal_ref + '/' + model.internal_ref">دسته ایراد : <t t-out="complaint.name"></t></a></li>
+                        <li class="breadcrumb-item"><a t-att-href="'/mobile-service/' + brand.internal_ref + '/' + model.internal_ref + '/' + complaint.internal_ref">ایراد :<t t-out="complaint_description.name"></t></a></li>
+                    </ol>
+                </nav>
+                
                 <section>
                     <h1 class="text-center">فرم زیر را پر کنید</h1>
                 </section>
-
 
                 <form id="register_request_form"
                     method="POST"
