@@ -27,12 +27,6 @@
             <kanban>
                 <field name="image" />
                 <field name="id" />
-                <progressbar field="activity_state"
-                    colors="{
-                        'planned': 'success', 
-                        'today': 'warning', 
-                        'overdue': 'danger'
-                    }" />
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">

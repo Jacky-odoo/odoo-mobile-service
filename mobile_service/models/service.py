@@ -233,7 +233,7 @@ class MobileServiceShop(models.Model):
         except ValueError:
             compose_form_id = False
         ctx = {
-            'default_model': 'mobile.service',
+            'default_model': 'mobile_service.service',
             'default_res_id': self.ids[0],
             'default_use_template': bool(template_id),
             'default_template_id': template_id,
@@ -361,7 +361,7 @@ class MobileServiceShop(models.Model):
         action = {
             'name': _("Services"),
             'type': 'ir.actions.act_window',
-            'res_model': 'mobile.service',
+            'res_model': 'mobile_service.service',
             'target': 'current',
             'context': ctx
         }
