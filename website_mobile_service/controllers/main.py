@@ -83,7 +83,8 @@ class MobileService(Controller):
            sitemap=False,
            methods=['POST'])
     def register_issue(self, **kw):
-        return request.render("website_mobile_service.request_submit_success_wizard", {})
+        # TODO: maso, submet as CRM or repair service
+        return werkzeug.utils.redirect("/mobile-service-thanks")
 
     def _get_brand(self, ref):
         return self._get_model_by_ref('mobile_service.brand', ref)
