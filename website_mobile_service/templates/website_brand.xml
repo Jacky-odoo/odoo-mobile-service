@@ -5,8 +5,12 @@
             <div id="wrap" class="js_blog website_blog">
                 <t t-out="0" />
                 <section>
-                    <h1 class="text-center">تعمیر گوشی خود را با انتخاب برند آن آغاز نمایید.</h1>
+                    <h1 name="Header-1" class="section-head xs-mb-30 title-highlight-left"
+                        style="padding: 8px; text-align: text-center; background-color: rgb(255, 255, 255);">
+                        تعمیر گوشی خود را با انتخاب برند آن آغاز نمایید
+                    </h1>
                 </section>
+
                 <section
                     id="category-list"
                     style="direction: rtl; margin: 0px; padding: 0px; display: flex; flex-flow: row wrap; place-content: stretch space-around; align-items: stretch;">
