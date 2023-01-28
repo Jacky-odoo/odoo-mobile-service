@@ -63,8 +63,8 @@ class MobileWarranty(models.Model):
 
     state = fields.Selection(
         selection=[('draft', 'Draft'),
-               ('valid', 'Valid'),
-               ('expired', 'Expired')],
+                   ('valid', 'Valid'),
+                   ('expired', 'Expired')],
         string='Status',
         default='draft',
         track_visibility='always')
@@ -76,8 +76,11 @@ class MobileWarranty(models.Model):
     def _onchange_expire_date(self):
         if self.start_date:
             self.expire_date = date_utils.add(self.start_date, months=18)
+            self.state = 'valid'
         else:
             self.expire_date = False
+            self.start_date = False
+            self.state = 'draft'
 
     #
     # Create a new name based on the sequnce.
