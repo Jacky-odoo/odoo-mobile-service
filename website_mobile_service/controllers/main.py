@@ -75,7 +75,6 @@ class MobileService(Controller):
             'complaint_description': self._get_complaint_description(complaint_description_ref)
         })
 
-
     @route('/mobile-service/submit_service_request',
            type='http',
            auth="public",
@@ -84,6 +83,14 @@ class MobileService(Controller):
            methods=['POST'])
     def register_issue(self, **kw):
         # TODO: maso, submet as CRM or repair service
+        Model = request.env['crm.lead']
+        Model.create({
+            'name': kw['name'],
+            'street': kw['street'],
+            'phone': kw['phone'],
+            'email_from': kw['email_from'],
+            'description': kw['description'],
+        })
         return werkzeug.utils.redirect("/mobile-service-thanks")
 
     def _get_brand(self, ref):
