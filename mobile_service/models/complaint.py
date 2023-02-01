@@ -22,7 +22,8 @@ class MobileComplaintType(models.Model):
         help="Used in url and internal usages",
         string="Inranal Refrence",
         index=True,
-        group_operator="count")
+        group_operator="count",
+        required=True)
 
     complaint_description_ids = fields.One2many(
         comodel_name='mobile_service.complaint.description',

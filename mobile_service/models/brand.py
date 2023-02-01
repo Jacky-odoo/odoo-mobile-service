@@ -32,7 +32,8 @@ class MobileBrand(models.Model):
         help="Used in url and internal usages",
         string="Internal Refrence",
         index=True,
-        group_operator="count")
+        group_operator="count",
+        required=True)
 
     def _model_brand_count(self):
         self.ensure_one()
