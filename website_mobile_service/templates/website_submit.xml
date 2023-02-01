@@ -24,17 +24,17 @@
                     class="s_website_form form-horizontal container-fluid mt32">
                     <!-- Hiden items-->
                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                    <input type="hidden" name="brand_id" t-att-value="brand.id"/>
-                    <input type="hidden" name="model_id" t-att-value="model.id"/>
-                    <input type="hidden" name="complaint_id" t-att-value="complaint.id"/>
-                    <input type="hidden" name="complaint_description_id" t-att-value="complaint_description.id"/>
+                    <input type="hidden" name="brand_ref" t-att-value="brand.internal_ref"/>
+                    <input type="hidden" name="model_ref" t-att-value="model.internal_ref"/>
+                    <input type="hidden" name="complaint_ref" t-att-value="complaint.internal_ref"/>
+                    <input type="hidden" name="complaint_description_ref" t-att-value="complaint_description.internal_ref"/>
 
                     <div class="form-group form-field o_website_form_required_custom">
-                        <label class="col-md-3 col-sm-4 control-label" for="name">Name</label>
+                        <label class="col-md-3 col-sm-4 control-label" for="contact_name">Name</label>
                         <div class="col-md-7 col-sm-8">
                             <input type="text"
                                 class="form-control o_website_form_input"
-                                name="name"
+                                name="contact_name"
                                 required="" />
                         </div>
                     </div>
