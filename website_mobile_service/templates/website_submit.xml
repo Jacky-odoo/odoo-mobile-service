@@ -14,7 +14,7 @@
                 </nav>
                 
                 <section class="text-center">
-                    <h1 class="text-center">فرم زیر را پر کنید</h1>
+                    <h1 class="text-center">فرم زیر را تکمیل کنید</h1>
                 </section>
                 <div style="display: flex; flex-direction: column;">
                     <form id="register_request_form"
@@ -52,7 +52,7 @@
                                     pattern="^[0۰][۱۲۳۴۵۶۷۸۹۰1234567890]+$"
                                     name="phone"
                                     id="phone"
-                                    placeholder="0917-777-0000"
+                                    placeholder="0**********"
                                     required="" 
                                     data-bs-toggle="tooltip" data-bs-placement="top" title="---------> فیلد را بر اساس الگو پر کنید"/>
                             </div>
