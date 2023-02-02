@@ -16,7 +16,7 @@
 
                 <section style="direction: rtl">
                     <h1 name="Header-1" class="section-head xs-mb-30 title-highlight-left"
-                        style="padding: 8px; text-align: center; background-color: rgb(255, 255, 255);">
+                        style="user-select-none; padding: 8px; text-align: center; background-color: rgb(255, 255, 255);">
                         مدل برند گوشی خود را انتخاب کنید
                     </h1>
                 </section>
