@@ -15,10 +15,10 @@
                     </ol>
                 </nav>
 
-                <section>
+                <section style="direction: rtl">
                     <h1 name="Header-1" class="section-head xs-mb-30 title-highlight-left"
-                        style="padding: 8px; text-align: text-center; background-color: rgb(255, 255, 255);">
-                        توصیف مشکل گوشی را انتخاب کنید
+                        style="padding: 8px; text-align: center; background-color: rgb(255, 255, 255);">
+                        توصیف ایراد گوشی را انتخاب کنید
                     </h1>
                 </section>
 
@@ -28,14 +28,15 @@
                     <t t-foreach="complaint_descriptions" t-as="complaint_description">
                         <div id="list-item"
                             style="display: flex; flex-direction: column; justify-content: flex-end; margin: 8px; box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 5px 0px; background-color: rgb(255, 255, 255); cursor: pointer; flex: 0 1 auto; width: 225px; min-height: 275px; border-radius: 15px; border-color: rgb(0, 174, 239); border-style: solid; border-width: 1px;">
+                            <a id="link"
+                                t-att-href="'/mobile-service/' + brand.internal_ref + '/' + model.internal_ref + '/' + complaint.internal_ref + '/' + complaint_description.internal_ref"
+                                style="text-align: center; padding: 15px; margin: 0px;  text-decoration: none; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
                             <img id="logo"
                                 t-if="complaint_description.image"
                                 t-att-src="image_data_uri(complaint_description.image)"
                                 t-att-alt="'تعمیر گوشی و موبایل ' + complaint_description.name + ' - البان'"
-                                style="object-fit: contain; max-height: 200px; max-width: 200px; margin: 16px;" />
-                            <a id="link"
-                                t-att-href="'/mobile-service/' + brand.internal_ref + '/' + model.internal_ref + '/' + complaint.internal_ref + '/' + complaint_description.internal_ref"
-                                style="text-align: center; padding: 15px; margin: 0px; border-top: 1px solid rgba(0, 0, 0, 0.12); text-decoration: none; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+                                style="object-fit: contain;border-bottom: 1px solid rgba(0, 0, 0, 0.12); max-height: 200px; max-width: 200px;" />
+                            
                                 <t t-out="complaint_description.name" />
                             </a>
                         </div>

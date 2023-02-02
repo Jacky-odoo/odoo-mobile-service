@@ -13,77 +13,80 @@
                     </ol>
                 </nav>
                 
-                <section>
+                <section class="text-center">
                     <h1 class="text-center">فرم زیر را پر کنید</h1>
                 </section>
+                <div style="display: flex; flex-direction: column;">
+                    <form id="register_request_form"
+                        method="POST"
+                        action="/mobile-service/submit_service_request"
+                        data-success_page="/"
+                        class="s_website_form form-horizontal container-fluid mt32"
+                        style="direction: rtl; padding: 8px; display: flex; flex-direction: column; min-width: 16px; min-height: 16px; background-color: rgb(239, 239, 239); border-style: solid; border-color: rgb(128, 130, 133); margin-right: 8px; margin-left: 8px; border-width: 1px; border-radius: 5px; margin-bottom: 15px; max-width: 450px; align-self: center;">
+                        <!-- Hiden items-->
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <input type="hidden" name="brand_ref" t-att-value="brand.internal_ref"/>
+                        <input type="hidden" name="model_ref" t-att-value="model.internal_ref"/>
+                        <input type="hidden" name="complaint_ref" t-att-value="complaint.internal_ref"/>
+                        <input type="hidden" name="complaint_description_ref" t-att-value="complaint_description.internal_ref"/>
 
-                <form id="register_request_form"
-                    method="POST"
-                    action="/mobile-service/submit_service_request"
-                    data-success_page="/"
-                    class="s_website_form form-horizontal container-fluid mt32">
-                    <!-- Hiden items-->
-                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                    <input type="hidden" name="brand_ref" t-att-value="brand.internal_ref"/>
-                    <input type="hidden" name="model_ref" t-att-value="model.internal_ref"/>
-                    <input type="hidden" name="complaint_ref" t-att-value="complaint.internal_ref"/>
-                    <input type="hidden" name="complaint_description_ref" t-att-value="complaint_description.internal_ref"/>
-
-                    <div class="form-group form-field o_website_form_required_custom">
-                        <label class="col-md-3 col-sm-4 control-label" for="contact_name">Name</label>
-                        <div class="col-md-7 col-sm-8">
-                            <input type="text"
-                                class="form-control o_website_form_input"
-                                name="contact_name"
-                                required="" />
+                        <div class="form-group form-field o_website_form_required_custom">
+                            <label class="col-md-3 col-sm-4 control-label" for="contact_name">نام:</label>
+                            <div class="col-md-7 col-sm-8">
+                                <input type="text"
+                                    class="form-control o_website_form_input"
+                                    name="contact_name"
+                                    required="" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group form-field o_website_form_required_custom">
-                        <label class="col-md-3 col-sm-4 control-label" for="phone">Mobile</label>
-                        <div class="col-md-7 col-sm-8">
-                            <input type="text"
-                                class="form-control o_website_form_input"
-                                name="phone"
-                                required="" />
+                        <div class="form-group form-field o_website_form_required_custom">
+                            <label class="col-md-3 col-sm-4 control-label" for="phone">شماره موبایل:</label>
+                            <div class="col-md-7 col-sm-8">
+                                <input type="text"
+                                    class="form-control o_website_form_input"
+                                    name="phone"
+                                    required="" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group form-field o_website_form_required_custom">
-                        <label class="col-md-3 col-sm-4 control-label" for="street">address</label>
-                        <div class="col-md-7 col-sm-8">
-                            <input type="text"
-                                class="form-control o_website_form_input"
-                                name="street"
-                                required="" />
+                        <div class="form-group form-field o_website_form_required_custom">
+                            <label class="col-md-3 col-sm-4 control-label" for="street">آدرس:</label>
+                            <div class="col-md-7 col-sm-8">
+                                <input type="text"
+                                    class="form-control o_website_form_input"
+                                    name="street"
+                                    required="" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group form-field o_website_form_required_custom">
-                        <label class="col-md-3 col-sm-4 control-label" for="email_from">EMail</label>
-                        <div class="col-md-7 col-sm-8">
-                            <input type="email"
-                                class="form-control o_website_form_input"
-                                name="email_from"
-                                required="" />
+                        <div class="form-group form-field o_website_form_required_custom">
+                            <label class="col-md-3 col-sm-4 control-label" for="email_from">ایمیل:</label>
+                            <div class="col-md-7 col-sm-8">
+                                <input type="email"
+                                    class="form-control o_website_form_input"
+                                    name="email_from"
+                                    required="" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group form-field o_website_form_required_custom">
-                        <label class="col-md-3 col-sm-4 control-label" for="description">comment</label>
-                        <div class="col-md-7 col-sm-8">
-                            <input type="text"
-                                class="form-control o_website_form_input"
-                                name="description"
-                                required="" />
+                        <div class="form-group form-field o_website_form_required_custom">
+                            <label class="col-md-3 col-sm-4 control-label" for="description">توضیحات:</label>
+                            <div class="col-md-7 col-sm-8">
+                                <input type="text"
+                                    class="form-control o_website_form_input"
+                                    name="description"
+                                    required="" />
+                            </div>
                         </div>
-                    </div>
 
 
 
-                    <div class="form-group">
-                        <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+                                <button type="submit" class="btn btn-primary" style='padding: 13px; background-color: rgb(40, 197, 255); color: black; font-size: 1.2em; font-weight: 600; align-self: center; font-family: "Yekan Bakh FaNum 04"; border-radius: 10px; margin: 8px;'>
+                                    درخواست
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </form>
-
+                    </form>
+                </div>
                 <!-- Droppable-area shared across all blog's pages -->
                 <t t-set="oe_structure_blog_footer_description">Visible in all pages</t>
                 <div class="oe_structure oe_empty oe_structure_not_nearest"
