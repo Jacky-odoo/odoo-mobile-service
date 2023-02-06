@@ -458,7 +458,7 @@ class MobileServiceShop(models.Model):
         warranty_ids = False
         if self.imei_no:
             warranty_ids = self.env['mobile_service.warranty'].search(
-                ['|', ('imei1', '=', self.imei_no), ('imei2', '=', self.imei_no)])
+                ['|',('imei1', '=', self.imei_no), ('imei2', '=', self.imei_no),('brand_id.name' ,'=' ,self.brand_id.name)])
         if warranty_ids:
             self.is_in_warranty = True
             self.warranty_id = warranty_ids[0]

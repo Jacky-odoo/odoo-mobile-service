@@ -244,7 +244,7 @@
                                     attrs="{'readonly': [('service_state','not in',('draft'))]}" />
                                 <field name="is_in_warranty"
                                     widget="bs_toggle"
-                                    attrs="{'readonly': [('service_state','in',('returned','not_solved'))]}">
+                                    attrs="{'readonly': [('service_state','in',('returned','not_solved'))],'invisible': [('is_in_warranty', '!=', True)]}">
                                 </field>
                                 <field name="warranty_id"
                                     style="width:50%;"
