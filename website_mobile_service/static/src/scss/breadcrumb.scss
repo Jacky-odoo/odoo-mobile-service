@@ -1,5 +1,5 @@
 .breadcrumb {
-    background-color: #0d6efd;
+    background-color: #00aeef;
     overflow: hidden;
     direction: rtl;
 }
@@ -28,7 +28,7 @@ ol.breadcrumb {
     align-items: center;
     color: white;
     text-decoration: none;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .breadcrumb li:before {
@@ -46,7 +46,7 @@ ol.breadcrumb {
     border-left: 1rem solid transparent;
     border-bottom: 1rem solid transparent;
     border-top: 1rem solid transparent;
-    border-right: 1rem solid blue;
+    border-right: 1rem solid #00aeef;
 }
 
 .breadcrumb li:first-child {
@@ -116,4 +116,48 @@ ol.breadcrumb {
 .breadcrumb.breadcrumb-responsive li,
 .breadcrumb.breadcrumb-responsive li a {
     white-space: nowrap !important;
+}
+
+.text-underline-hover {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 9px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 5px 0px;
+    cursor: pointer;
+    flex: 0 1 auto;
+    width: 225px;
+    min-height: 275px;
+    border-radius: 15px;
+    border-color: rgb(0, 174, 239);
+    border-style: solid;
+    border-width: 1px;
+
+    &:hover {
+        box-shadow: #00aeef 3px 4px 8px 3px;
+    }
+
+    a {
+
+        text-align: center;
+        text-decoration: none;
+        padding: 0px;
+        margin: 0px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+
+        &:hover {
+            transform: scale(1.05, 1.05);
+        }
+
+        img {
+            object-fit: contain;
+            max-height: 200px;
+            max-width: 200px;
+            margin: 0px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+        }
+    }
 }
