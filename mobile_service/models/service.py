@@ -446,8 +446,8 @@ class MobileServiceShop(models.Model):
             'technician': self.technician_id.name,
             'complaint_types': complaint_text,
             'complaint_description': description_text,
-            'mobile_brand': self.brand_name.brand_name,
-            'model_name': self.model_name.mobile_brand_models,
+            'mobile_brand': self.brand_id.name,
+            'model_name': self.model_id.name,
 
         }
         return self.env.ref('mobile_service.mobile_service_ticket').report_action(self, data=data)
@@ -458,7 +458,7 @@ class MobileServiceShop(models.Model):
         warranty_ids = False
         if self.imei_no:
             warranty_ids = self.env['mobile_service.warranty'].search(
-                ['|',('imei1', '=', self.imei_no), ('imei2', '=', self.imei_no),('brand_id.name' ,'=' ,self.brand_id.name),('model_id.name','=',self.model_id.name)])
+                ['|',('imei1', '=', self.imei_no), ('imei2', '=', self.imei_no),('brand_id' ,'=' ,self.brand_id),('model_id','=',self.model_id)])
         if warranty_ids:
             self.is_in_warranty = True
             self.warranty_id = warranty_ids[0]
