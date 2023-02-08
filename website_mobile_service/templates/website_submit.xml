@@ -5,7 +5,7 @@
             <div id="wrap" class="js_blog website_blog">
                 <t t-out="0" />
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
+                    <ol class="breadcrumb p-0">
                         <li class="breadcrumb-item active"><a href="/mobile-service">برند گوشی : <t t-out="brand.name"></t></a></li>
                         <li class="breadcrumb-item"><a t-att-href="'/mobile-service/' + brand.internal_ref">مدل گوشی : <t t-out="model.name"></t></a></li>
                         <li class="breadcrumb-item"><a t-att-href="'/mobile-service/' + brand.internal_ref + '/' + model.internal_ref">دسته ایراد : <t t-out="complaint.name"></t></a></li>
@@ -16,13 +16,13 @@
                 <section class="text-center">
                     <h1 class="text-center">فرم زیر را تکمیل کنید</h1>
                 </section>
-                <div style="display: flex; flex-direction: column;">
+                <div class="d-flex flex-column p-0 m-0">
                     <form id="register_request_form"
                         method="POST"
                         action="/mobile-service/submit_service_request"
                         data-success_page="/"
-                        class="s_website_form container-fluid mt32 container"
-                        style="direction: rtl; padding: 8px; min-width: 16px; min-height: 16px; background-color: rgb(239, 239, 239); border-style: solid; border-color: rgb(128, 130, 133); border-width: 1px; border-radius: 5px; margin-bottom: 15px; max-width: 450px; align-self: center;">
+                        class="container-fluid mt32 container p-15 p-md-8 border-1 rounded-3 align-self-center border border-dark bg-secondary text-white"
+                        style="direction: rtl; min-width: 16px; min-height: 16px; border-style: solid; margin-bottom: 15px; max-width: 450px;">
                         <!-- Hiden items-->
                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                         <input type="hidden" name="brand_ref" t-att-value="brand.internal_ref"/>

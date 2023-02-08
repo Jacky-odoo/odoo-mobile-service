@@ -6,7 +6,7 @@
                 <t t-out="0" />
 
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
+                    <ol class="breadcrumb p-0">
                         <li class="breadcrumb-item active">
                             <a href="/mobile-service">برند گوشی : <t t-out="brand.name"></t></a>
                         </li>
@@ -28,21 +28,32 @@
 
                 <section
                     id="category-list"
-                    style="direction: rtl; margin: 0px; padding: 0px; display: flex; flex-flow: row wrap; place-content: stretch space-around; align-items: stretch;">
+                    class="d-flex flex-wrap flex-column flex-md-row justify-content-center align-item-stretch m-0 p-0">
                     <t t-foreach="complaints" t-as="complaint">
-                        <div id="list-item"
-                            class="text-underline-hover">
-                            <a id="link"
-                                t-att-href="'/mobile-service/' + brand.internal_ref + '/' + model.internal_ref + '/' + complaint.internal_ref"
-                                style="text-align: center; padding: 15px; margin: 0px;  text-decoration: none; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
-                                <img id="logo"
-                                    t-if="complaint.image"
-                                    t-att-src="image_data_uri(complaint.image)"
-                                    t-att-alt="'تعمیر گوشی و موبایل ' + complaint.name + ' - البان'"/>
-
-                                <t t-out="complaint.name" />
-                            </a>
-                        </div>
+                        <a id="list-item"
+                            class="d-flex flex-row flex-md-column justify-content-end flex-align-center m-2 border border-primary border-2 rounded-3 text-decoration-none"
+                            t-att-href="'/mobile-service/' + brand.internal_ref + '/' + model.internal_ref + '/' + complaint.internal_ref">
+                            <img id="logo"
+                                class="d-none d-md-block m-0"
+                                style="object-fit: contain;
+                            max-height: 200px;
+                            max-width: 200px;
+                            border-bottom: 1px solid rgba(0, 0, 0, 0.12);"
+                            t-if="complaint.image"
+                            t-att-src="image_data_uri(complaint.image)"
+                            t-att-alt="'تعمیر گوشی و موبایل ' + complaint.name + ' - البان'"/>
+                            <img id="logo"
+                                class="d-md-none m-0"
+                                style="object-fit: contain;
+                            max-height: 64px;
+                            max-width: 64px;
+                            border-bottom: 1px solid rgba(0, 0, 0, 0.12);"
+                                t-if="complaint.image"
+                                t-att-src="image_data_uri(complaint.image)"
+                                t-att-alt="'تعمیر گوشی و موبایل ' + complaint.name + ' - البان'" />
+                            <div name="div" id="title" class="border-start"></div>
+                            <spam t-out="complaint.name" class="flex-fill align-self-center p-2 " />
+                        </a>
                     </t>
                 </section>
 
