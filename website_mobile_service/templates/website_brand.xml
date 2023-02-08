@@ -4,56 +4,9 @@
         <t t-call="website.layout">
             <div id="wrap" class="js_blog website_blog">
                 <t t-out="0" />
+                <t t-call="website_mobile_service.breadcrumb_wizard"/>
+                <t t-call="website_mobile_service.widget_brand_wizard"/>
 
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb p-0">
-                        <li class="breadcrumb-item active">برند گوشی</li>
-                        <li class="breadcrumb-item">مدل گوشی</li>
-                        <li class="breadcrumb-item">دسته ایراد</li>
-                        <li class="breadcrumb-item">ایراد</li>
-                    </ol>
-                </nav>
-
-
-                <section style="direction: rtl; place-content: stretch; align-items: stretch;">
-                    <p style="text-align: text-center;">
-                        <h1 name="Header-1" class="section-head xs-mb-30 title-highlight-left"
-                            style="padding: 8px; background-color: rgb(255, 255, 255); text-align: center;">
-                            تعمیر گوشی خود را با انتخاب برند آن آغاز نمایید
-                        </h1>
-                    </p>
-                </section>
-
-                <section
-                    id="category-list"
-                    class="d-flex flex-wrap flex-column flex-md-row justify-content-center align-item-stretch m-0 p-0">
-                    <t t-foreach="brands" t-as="brand">
-                        <a id="list-item"
-                            class=" zindex-modal d-flex flex-row flex-md-column justify-content-end flex-align-center m-2 border border-primary border-2 rounded-3 text-decoration-none"
-                            t-att-href="'/mobile-service/' + brand.internal_ref">
-                            <img id="logo"
-                                class="d-none d-md-block m-0"
-                                style="object-fit: contain;
-                                max-height: 200px;
-                                max-width: 200px;
-                                border-bottom: 1px solid rgba(0, 0, 0, 0.12);"
-                                t-if="brand.image"
-                                t-att-src="image_data_uri(brand.image)"
-                                t-att-alt="'تعمیر گوشی و موبایل ' + brand.name + ' - البان'" />
-                            <img id="logo"
-                            class="d-md-none m-0"
-                                style="object-fit: contain;
-                                max-height: 64px;
-                                max-width: 64px;
-                                border-bottom: 1px solid rgba(0, 0, 0, 0.12);"
-                                t-if="brand.image"
-                                t-att-src="image_data_uri(brand.image)"
-                                t-att-alt="'تعمیر گوشی و موبایل ' + brand.name + ' - البان'" />
-                            <div name="div" id="title" class="border-start"></div>  
-                            <spam t-out="brand.name" class="flex-fill align-self-center p-2 " />
-                        </a>
-                    </t>
-                </section>
                 <!-- Droppable-area shared across all blog's pages -->
                 <t t-set="oe_structure_blog_footer_description">Visible in all pages</t>
                 <div class="oe_structure oe_empty oe_structure_not_nearest"

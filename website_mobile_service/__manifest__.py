@@ -19,6 +19,12 @@
         'templates/website_complaint_description.xml',
         'templates/website_complaint.xml',
         'templates/website_submit.xml',
+        'templates/widget_breadcrumb.xml',
+        'templates/widget_brand.xml',
+        'templates/widget_brand_model.xml',
+        'templates/widget_complaint.xml',
+        'templates/widget_complaint_description.xml',
+        'templates/widget_submit.xml',
         # Views
         # Wizards
     ],

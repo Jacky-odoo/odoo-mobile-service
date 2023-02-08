@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="breadcrumb_wizard" name="widget Wizard Page">
+
+
+        <nav t-if="not brand and not model and not complaint and not complaint_description" aria-label="breadcrumb">
+            <ol class="breadcrumb p-0">
+                <li class="breadcrumb-item active">برند گوشی</li>
+                <li class="breadcrumb-item">مدل گوشی</li>
+                <li class="breadcrumb-item">دسته ایراد</li>
+                <li class="breadcrumb-item">ایراد</li>
+            </ol>
+        </nav>
+
+        <nav t-if="brand and not model and not complaint and not complaint_description" aria-label="breadcrumb">
+            <ol class="breadcrumb p-0">
+                <li class="breadcrumb-item active">
+                    <a href="/mobile-service">برند گوشی : <t t-out="brand.name"></t></a>
+                </li>
+                <li class="breadcrumb-item">مدل گوشی</li>
+                <li class="breadcrumb-item">دسته ایراد</li>
+                <li class="breadcrumb-item">ایراد</li>
+            </ol>
+        </nav>
+
+        <nav t-if="brand and model and not complaint and not complaint_description" aria-label="breadcrumb">
+            <ol class="breadcrumb p-0">
+                <li class="breadcrumb-item active">
+                    <a href="/mobile-service">برند گوشی : <t t-out="brand.name"></t></a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a t-att-href="'/mobile-service/' + brand.internal_ref">مدل گوشی : <t
+                            t-out="model.name"></t></a>
+                </li>
+                <li class="breadcrumb-item">دسته ایراد</li>
+                <li class="breadcrumb-item">ایراد</li>
+            </ol>
+        </nav>
+
+        <nav t-if="brand and model and complaint and not complaint_description" aria-label="breadcrumb">
+            <ol class="breadcrumb p-0">
+                <li class="breadcrumb-item active"><a href="/mobile-service">برند گوشی : <t t-out="brand.name"></t></a></li>
+                <li class="breadcrumb-item"><a t-att-href="'/mobile-service/' + brand.internal_ref">مدل گوشی : <t t-out="model.name"></t></a></li>
+                <li class="breadcrumb-item"><a t-att-href="'/mobile-service/' + brand.internal_ref + '/' + model.internal_ref">دسته ایراد : <t t-out="complaint.name"></t></a></li>
+                <li class="breadcrumb-item">ایراد</li>
+            </ol>
+        </nav>
+
+        <nav t-if="brand and model and complaint and complaint_description" aria-label="breadcrumb">
+            <ol class="breadcrumb p-0">
+                <li class="breadcrumb-item active"><a href="/mobile-service">برند گوشی : <t t-out="brand.name"></t></a></li>
+                <li class="breadcrumb-item"><a t-att-href="'/mobile-service/' + brand.internal_ref">مدل گوشی : <t t-out="model.name"></t></a></li>
+                <li class="breadcrumb-item"><a t-att-href="'/mobile-service/' + brand.internal_ref + '/' + model.internal_ref">دسته ایراد : <t t-out="complaint.name"></t></a></li>
+                <li class="breadcrumb-item"><a t-att-href="'/mobile-service/' + brand.internal_ref + '/' + model.internal_ref + '/' + complaint.internal_ref">ایراد :<t t-out="complaint_description.name"></t></a></li>
+            </ol>
+        </nav>
+    </template>
+</odoo>
