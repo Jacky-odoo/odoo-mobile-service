@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>882</x>
+      <y>120</y>
+      <w>288</w>
+      <h>174</h>
+    </coordinates>
+    <panel_attributes>warranty
+&lt;mobile_service&gt;
+--
++id: int
+
++start_date: date
++expire_date: date
++name: string
++color: string
++code_hamta: string
++imei1: string
++imei2: string
++part_number: string
++descriptions: text
++state: selection
+
+--
+#create()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1308</x>
+      <y>126</y>
+      <w>72</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>res.partner
+&lt;base&gt;
+--
++id:int
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1218</x>
+      <y>270</y>
+      <w>210</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>res_partner
+&lt;mobile_service&gt;
+--
+
+//compute field
++mobile_service_count: int
+
+--
+#action_view_mobile_services():ir.actions.act_window</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1344</x>
+      <y>234</y>
+      <w>18</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1164</x>
+      <y>216</y>
+      <w>156</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+device imported by
+
+importer_id &gt;
+&lt; --</panel_attributes>
+    <additional_attributes>10.0;20.0;240.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1164</x>
+      <y>162</y>
+      <w>156</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+warranty by
+
+warranty_id &gt;
+&lt;--</panel_attributes>
+    <additional_attributes>10.0;20.0;240.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>984</x>
+      <y>48</y>
+      <w>336</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1..1
+is part of
+
+company_id &gt;
+&lt; --</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;20.0;540.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1308</x>
+      <y>48</y>
+      <w>72</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>res.company
+&lt;base&gt;
+--
++id:int
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1164</x>
+      <y>126</y>
+      <w>156</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>240.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>852</x>
+      <y>48</y>
+      <w>186</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..1
+m2=0..n
+Every brand phone has warranty
+
+&lt; brand_id
+-- &gt;</panel_attributes>
+    <additional_attributes>10.0;30.0;90.0;30.0;90.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>666</x>
+      <y>54</y>
+      <w>192</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>brand
+&lt;mobile_service&gt;
+--
+
++internal_ref: string
+
++name: string
++model_count: int
++image: image
+--
+#_model_brand_count(model_count):int
+#action_view_brand_count():action</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>426</x>
+      <y>60</y>
+      <w>96</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>brand_model
+&lt;mobile_service&gt;
+--
++name: string
++image: image
++internal_ref: string
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>516</x>
+      <y>54</y>
+      <w>162</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..1
+m2=0..n
+Every models in brand
+
+brand_id &gt;
+&lt; model_ids</panel_attributes>
+    <additional_attributes>250.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>474</x>
+      <y>0</y>
+      <w>516</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..1
+m2=0..n
+Every brand_model phone has warranty
+
+&lt; model_id
+-- &gt;</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;20.0;820.0;20.0;820.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>696</x>
+      <y>186</y>
+      <w>162</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>complaint
+&lt;mobile_service&gt;
+--
+
++internal_ref:char
+
++name: string
++image: image</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>180</y>
+      <w>162</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>complaint_description
+&lt;mobile_service&gt;
+--
+
++internal_ref:char
+
++name: string
++description: text
++image: image</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>516</x>
+      <y>216</y>
+      <w>192</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..1
+m2=0..n
+complaint with complaint description
+
+&lt; complaint_description_ids
+complaint_id &gt;</panel_attributes>
+    <additional_attributes>300.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>624</x>
+      <y>366</y>
+      <w>222</w>
+      <h>534</h>
+    </coordinates>
+    <panel_attributes>service
+&lt;mobile_service&gt;
+--
++name: string
+
++: many2one
++country_id: many2one
++brand_id: many2one
++model_id: many2one
++warranty_id: many2one
++complaint_tree_ids: one2many
++company_id: many2one
++product_order_line_ids: one2many
++first_payment_inv: many2one
++journal_type: many2one
++technician_id: many2one
++state_id: many2one
++stock_picking_id: many2one
++picking_transfer_id: many2one
++invoice_ids: many2many
+
++contact_no:string
++email_id:string
++street: string
++street2: string
++city: string
++zip:string
++imei_no: string
++is_in_warranty: boolean
++re_repair: boolean
++image: image
++date_request: date
++accept_date: date
++return_date: date
++service_state: selection
++internal_notes: text
++invoice_count: int
++first_invoice_created: boolean
++service_count: int
++picking_count: int
+--
+#check_date(return_date)
+#approve()
+#complete()
+#return_to()
+#not_solved()
+#action_accept_service()
+#action_reject_service()
+#action_send_mail(): ir.actions.act_window
+#return_advance()
+#create(): object create
+#unlink(): object unlink
+#action_invoice_create_wizard(): ir.actions.act_window
+#action_post_stock()
+#action_view_services(): ir.actions.act_window
+#get_ticket(): object
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>336</y>
+      <w>90</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>mail.thread
+&lt;base&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>420</y>
+      <w>90</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>mail.activity.mixin
+&lt;base&gt;
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>444</x>
+      <y>378</y>
+      <w>192</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;300.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>444</x>
+      <y>426</y>
+      <w>192</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;300.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1152</x>
+      <y>288</y>
+      <w>210</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+imported by
+
+importer_id &gt;
+&lt; --
+warranty_id &gt;
+&lt; --
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;150.0;310.0;150.0;310.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1134</x>
+      <y>78</y>
+      <w>354</w>
+      <h>462</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+company by
+
+company_id &gt;
+&lt; --</panel_attributes>
+    <additional_attributes>10.0;360.0;10.0;710.0;550.0;710.0;550.0;10.0;410.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>354</y>
+      <w>558</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+Partner with service
+
+&lt; mobile_service_ids
+person_id &gt;</panel_attributes>
+    <additional_attributes>10.0;140.0;890.0;140.0;890.0;10.0</additional_attributes>
+  </element>
+</diagram>
