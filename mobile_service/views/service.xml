@@ -198,9 +198,13 @@
                                     attrs="{'invisible': [('service_state','in',('draft'))]}" />
                                 <field name="return_date"
                                     attrs="{'invisible': ['!', ('service_state','in',('returned','not_solved'))]}" />
-                                <field name="technician_id"
+                                <field name="acceptor_id"
                                     attrs="{'readonly': [('service_state','not in',('draft'))]}" />
-                                <field name="company_id" groups="base.group_multi_company" />
+                                <field name="technician_id"
+                                    attrs="{'readonly': [('service_state','not in',('draft', 'accepted'))]}" />
+                                <field name="company_id" 
+                                    groups="base.group_multi_company"
+                                    attrs="{'readonly': [('service_state','not in',('draft'))]}"  />
                             </group>
                         </group>
                     <notebook>

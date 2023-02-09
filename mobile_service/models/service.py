@@ -65,11 +65,16 @@ class MobileServiceShop(models.Model):
     return_date = fields.Date(
         string="Return date",
         readonly=True)
+    acceptor_id = fields.Many2one(
+        comodel_name='res.users',
+        string="Acceptor Name",
+        tracking=True)
     technician_id = fields.Many2one(
         comodel_name='res.users',
         string="Technician Name",
         default=lambda self: self.env.user,
-        required=True)
+        required=True,
+        tracking=True)
     service_state = fields.Selection(
         selection=[('draft', 'Draft'),
                    ('accepted', 'Accepted'),
