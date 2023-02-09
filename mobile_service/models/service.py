@@ -80,6 +80,7 @@ class MobileServiceShop(models.Model):
                    ('accepted', 'Accepted'),
                    ('assigned', 'Assigned'),
                    ('completed', 'Completed'),
+                   ('qc_accepted', 'QC Accepted'),
                    ('returned', 'Returned'),
                    ('not_solved', 'Not solved')],
         string='Service Status',
@@ -182,8 +183,12 @@ class MobileServiceShop(models.Model):
     def return_to(self):
         self.service_state = 'returned'
 
-    def return_to(self):
-        self.service_state = 'returned'
+    def action_qc_accepted(self):
+        """
+        This action is called when the service is in completed state. Then
+        the service is moved into qc_accepted state.
+        """
+        self.service_state = 'qc_accepted'
 
     def not_solved(self):
         self.service_state = 'not_solved'

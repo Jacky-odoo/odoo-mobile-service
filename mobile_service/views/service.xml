@@ -101,7 +101,7 @@
                     <button
                         name="action_invoice_create_wizard"
                         string="Create Invoice"
-                        attrs="{'invisible': [('service_state','not in',('completed', 'assigned'))]}"
+                        attrs="{'invisible': [('service_state','not in',('qc_accepted', 'assigned'))]}"
                         type="object"
                         class="oe_highlight"
                         groups="mobile_service.mobile_service_group_manager" />
@@ -109,7 +109,7 @@
                     <button
                         name="action_post_stock"
                         string="Post Stock moves"
-                        attrs="{'invisible': [('service_state','not in',('completed', 'assigned'))]}"
+                        attrs="{'invisible': [('service_state','not in',('qc_accepted', 'assigned'))]}"
                         type="object"
                         class="oe_highlight"
                         groups="mobile_service.mobile_service_group_manager" />
@@ -118,8 +118,17 @@
                         string="Return to customer"
                         name="return_to"
                         type="object"
+                        attrs="{'invisible': [('service_state','not in',('qc_accepted'))]}"
+                        groups="mobile_service.mobile_service_group_manager" />
+
+                    
+                    <button
+                        string="QC Accept"
+                        name="action_qc_accepted"
+                        type="object"
                         attrs="{'invisible': [('service_state','not in',('completed'))]}"
                         groups="mobile_service.mobile_service_group_manager" />
+
 
                     <button
                         string="Not Solved"
