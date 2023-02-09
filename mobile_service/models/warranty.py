@@ -13,6 +13,7 @@ class MobileWarranty(models.Model):
         indexed=True,
         readonly=True,
         copy=False,)
+
     brand_id = fields.Many2one(
         comodel_name='mobile_service.brand',
         string="Mobile Brand")
@@ -20,6 +21,21 @@ class MobileWarranty(models.Model):
         comodel_name='mobile_service.brand.model',
         string="Model",
         domain="[('brand_id','=',brand_id)]")
+    importer_id = fields.Many2one(
+        comodel_name='res.partner',
+        string="Importer Company",
+        help="")
+    warranty_id = fields.Many2one(
+        comodel_name='res.partner',
+        string="Warranty Company",
+        help="")
+    company_id = fields.Many2one(
+        comodel_name='res.company',
+        string="Company",
+        required=True,
+        default=lambda self: self.env.company,
+        help="This is company id")
+
     color = fields.Char(
         string='Color',
         help="Color of the device",
@@ -42,24 +58,10 @@ class MobileWarranty(models.Model):
         index=True,
         string="Part Number")
 
-    importer_id = fields.Many2one(
-        comodel_name='res.partner',
-        string="Importer Company",
-        help="")
-    warranty_id = fields.Many2one(
-        comodel_name='res.partner',
-        string="Warranty Company",
-        help="")
     descriptions = fields.Text(
         string="Note",
         help="Extra Note on The Warranty")
 
-    company_id = fields.Many2one(
-        comodel_name='res.company',
-        string="Company",
-        required=True,
-        default=lambda self: self.env.company,
-        help="This is company id")
 
     state = fields.Selection(
         selection=[('draft', 'Draft'),

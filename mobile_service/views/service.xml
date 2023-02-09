@@ -57,6 +57,8 @@
         <field name="model">mobile_service.service</field>
         <field name="arch" type="xml">
             <form string="Mobile Shop">
+                <!-- Hidden fields -->
+                <field name="picking_count" invisible="1" />
                 <header>
                     <!-- Actions for state: draft -->
                     <button string="Accept"
@@ -172,69 +174,35 @@
                     </group>
 
                     <group>
-                        <group>
-                            <field name="person_id"
-                                widget="res_partner_many2one"
-                                context="{'res_partner_search_mode': 'customer'}"
-                                style="width:50%;"
-                                attrs="{'readonly': [('service_state','not in',('draft'))]}" />
-                            <field name="contact_no"
-                                style="width:50%;"
-                                attrs="{'readonly': [('service_state','in',('returned','not_solved'))]}" />
-                            <field name="email_id"
-                                style="width:50%;"
-                                attrs="{'readonly': [('service_state','in',('returned','not_solved'))]}" />
-                            <label for="street"
-                                string="Address" />
-                            <div class="o_address_format">
-                                <field name="street"
-                                    placeholder="Street..."
-                                    class="o_address_street" />
-                                <field name="street2"
-                                    placeholder="Street 2..."
-                                    class="o_address_street" />
-                                <field name="city"
-                                    placeholder="City"
-                                    class="o_address_city" />
-                                <field name="state_id"
-                                    class="o_address_state"
-                                    placeholder="State"
-                                    options='{"no_open": True}' />
-                                <field name="zip"
-                                    placeholder="ZIP"
-                                    class="o_address_zip" />
-                                <field name="country_id"
-                                    placeholder="Country"
-                                    class="o_address_country"
-                                    options='{"no_open": True, "no_create": True}' />
-                            </div>
-                        </group>
-                        <group>
-                            <label for="brand_id" />
-                            <div class="o_row">
-                                <field name="brand_id"
-                                    placeholder="Brand Name"
+                            <group id="contact-info">
+                                <field name="person_id"
+                                    widget="res_partner_many2one"
+                                    context="{'res_partner_search_mode': 'customer'}"
                                     attrs="{'readonly': [('service_state','not in',('draft'))]}" />
+                                <field name="contact_no" />
+                                <field name="email_id" />
+                                <field name="street" />
+                                <field name="street2" />
+                                <field name="city" />
+                                <field name="state_id" options='{"no_open": True}' />
+                                <field name="zip" />
+                                <field name="country_id" options='{"no_open": True, "no_create": True}' />
+                            </group>
+                            <group id="request-info">
                                 <field name="model_id"
                                     placeholder="Model Name"
                                     attrs="{'readonly': [('service_state','not in',('draft'))]}" />
-                            </div>
-                            <field name="date_request"
-                                style="width:50%;"
-                                attrs="{'readonly': 1}" />
-                            <field name="accept_date"
-                                style="width:50%;"
-                                attrs="{'readonly': 1, 'invisible': [('service_state','in',('draft'))]}" />
-                            <field name="return_date"
-                                style="width:50%;"
-                                attrs="{'readonly': 1, 'invisible': ['!', ('service_state','in',('returned','not_solved'))]}" />
-                            <field name="technician_id" style="width:50%;"
-                                attrs="{'readonly': [('service_state','not in',('draft'))]}" />
-                            <field name="picking_count" invisible="1" />
-                            <field name="company_id" groups="base.group_multi_company" />
+                                <field name="brand_id" />
+                                <field name="date_request" />
+                                <field name="accept_date"
+                                    attrs="{'invisible': [('service_state','in',('draft'))]}" />
+                                <field name="return_date"
+                                    attrs="{'invisible': ['!', ('service_state','in',('returned','not_solved'))]}" />
+                                <field name="technician_id"
+                                    attrs="{'readonly': [('service_state','not in',('draft'))]}" />
+                                <field name="company_id" groups="base.group_multi_company" />
+                            </group>
                         </group>
-
-                    </group>
                     <notebook>
                         <page string="Warranty">
                             <group>
@@ -260,7 +228,7 @@
                             </group>
                         </page>
                         <page string="Complaints">
-                            <field name="complaint_tree_ids" 
+                            <field name="complaint_tree_ids"
                                 mode="tree"
                                 attrs="{'readonly': [('service_state','in',('returned','not_solved'))]}">
                                 <tree string="Complaints" editable="bottom">
@@ -392,8 +360,6 @@
             </p>
         </field>
     </record>
-
-
 
 
     <menuitem

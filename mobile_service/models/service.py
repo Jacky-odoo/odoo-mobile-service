@@ -14,35 +14,21 @@ class MobileServiceShop(models.Model):
         string='Service Number',
         copy=False,
         default="New")
+
+    # ----------------- person address ---------------------
     person_id = fields.Many2one(
         comodel_name='res.partner',
         string="Customer Name",
         required=True)
-    contact_no = fields.Char(
-        related='person_id.mobile',
-        string="Contact Number")
-    email_id = fields.Char(
-        related='person_id.email',
-        string="Email")
-    street = fields.Char(
-        related='person_id.street',
-        string="Address")
-    street2 = fields.Char(
-        related='person_id.street2',
-        string="Address")
-    city = fields.Char(
-        related='person_id.city',
-        string="Address")
-    state_id = fields.Many2one(
-        related='person_id.state_id',
-        string="Address")
-    zip = fields.Char(
-        related='person_id.zip',
-        string="Address")
-    country_id = fields.Many2one(
-        string="Address",
-        related='person_id.country_id',
-        help="Country")
+    contact_no = fields.Char(related='person_id.mobile')
+    email_id = fields.Char(related='person_id.email')
+    street = fields.Char(related='person_id.street')
+    street2 = fields.Char(related='person_id.street2')
+    city = fields.Char(related='person_id.city')
+    zip = fields.Char(related='person_id.zip')
+    state_id = fields.Many2one(related='person_id.state_id')
+    country_id = fields.Many2one(related='person_id.country_id')
+    # ------------------------------------------------
 
     imei_no = fields.Char(
         string="IMEI Number")
@@ -60,28 +46,26 @@ class MobileServiceShop(models.Model):
         string='Re-repair',
         default=False,
         help="Re-repairing.")
-    brand_id = fields.Many2one(
-        comodel_name='mobile_service.brand',
-        string="Mobile Brand")
+
+    # ------------------ Device Model --------------------
     model_id = fields.Many2one(
         comodel_name='mobile_service.brand.model',
-        string="Model",
-        domain="[('brand_id','=',brand_id)]")
-    image = fields.Image(
-        related='model_id.image',
-        store=True,
-        attachment=True)
+        string="Model")
+    brand_id = fields.Many2one(related='model_id.brand_id')
+    image = fields.Image(related='model_id.image')
+    # ----------------------------------------------------
 
+    # ------------------ Request info --------------------
     date_request = fields.Date(
         string="Requested date",
+        readonly=True,
         default=fields.Date.context_today)
     accept_date = fields.Date(
+        readonly=True,
         string="Accepted date")
-
     return_date = fields.Date(
         string="Return date",
-        default=fields.Date.context_today,
-        required=True)
+        readonly=True)
     technician_id = fields.Many2one(
         comodel_name='res.users',
         string="Technician Name",
@@ -97,19 +81,18 @@ class MobileServiceShop(models.Model):
         string='Service Status',
         default='draft',
         track_visibility='always')
-
     complaint_tree_ids = fields.One2many(
         comodel_name='mobile_service.complaint.tree',
         inverse_name='service_id',
         string='Complaints Tree')
+    internal_notes = fields.Text(
+        string="Internal notes")
+    # ------------------------------------------------------
 
     product_order_line_ids = fields.One2many(
         comodel_name='product.order.line',
         inverse_name='product_order_id',
         string='Parts Order Lines')
-
-    internal_notes = fields.Text(
-        string="Internal notes")
     invoice_count = fields.Integer(
         compute='_invoice_count',
         string='# Invoice',
@@ -120,15 +103,22 @@ class MobileServiceShop(models.Model):
         compute="_get_invoiced",
         readonly=True,
         copy=False)
-
     first_payment_inv = fields.Many2one(
         comodel_name='account.move',
         copy=False)
-
     first_invoice_created = fields.Boolean(
         string="First Invoice Created",
         invisible=True,
         copy=False)
+    stock_picking_id = fields.Many2one(
+        'stock.picking', 
+        string="Picking Id")
+    picking_transfer_id = fields.Many2one(
+        'stock.picking.type',
+        'Deliver To',
+        required=True,
+        default=lambda self: self._default_picking_transfer(),
+        help="This will determine picking type of outgoing shipment")
 
     service_count = fields.Integer(
         compute='_service_count',
@@ -147,6 +137,8 @@ class MobileServiceShop(models.Model):
         required=True,
         default=lambda self: self.env.company)
 
+    picking_count = fields.Integer()
+
     @api.model
     def _default_picking_transfer(self):
         type_obj = self.env['stock.picking.type']
@@ -158,16 +150,6 @@ class MobileServiceShop(models.Model):
             types = type_obj.search(
                 [('code', '=', 'outgoing'), ('warehouse_id', '=', False)])
         return types[:4]
-
-    stock_picking_id = fields.Many2one('stock.picking', string="Picking Id")
-
-    picking_transfer_id = fields.Many2one('stock.picking.type',
-                                          'Deliver To',
-                                          required=True,
-                                          default=_default_picking_transfer,
-                                          help="This will determine picking type of outgoing shipment")
-
-    picking_count = fields.Integer()
 
     ################################################################################
     #              Models
@@ -458,7 +440,7 @@ class MobileServiceShop(models.Model):
         warranty_ids = False
         if self.imei_no:
             warranty_ids = self.env['mobile_service.warranty'].search(
-                ['|',('imei1', '=', self.imei_no), ('imei2', '=', self.imei_no),('brand_id' ,'=' ,self.brand_id.id),('model_id','=',self.model_id.id)])
+                ['|', ('imei1', '=', self.imei_no), ('imei2', '=', self.imei_no), ('brand_id', '=', self.brand_id.id), ('model_id', '=', self.model_id.id)])
         if warranty_ids:
             self.is_in_warranty = True
             self.warranty_id = warranty_ids[0]
