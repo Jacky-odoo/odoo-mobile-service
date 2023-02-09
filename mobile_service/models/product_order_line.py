@@ -5,10 +5,13 @@ class ProductOrderLine(models.Model):
 
     _name = 'product.order.line'
 
-    product_order_id = fields.Many2one('mobile.service')
+    product_order_id = fields.Many2one('mobile_service.service')
 
-    product_id = fields.Many2one('product.product', string='Product',
-                                 domain="[('is_a_parts','=', True)]", required=True)
+    product_id = fields.Many2one(
+        'product.product', 
+        string='Product',
+        # domain="[('is_a_parts','=', True)]", 
+        required=True)
     product_uom_qty = fields.Float(string='Used Quantity', default=1.0, required=True)
     price_unit = fields.Float(string='Unit Price', default=0.0, required=True)
     qty_invoiced = fields.Float(string='Invoiced qty', readonly=True)
