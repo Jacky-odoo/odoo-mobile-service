@@ -36,11 +36,10 @@ class MobileServiceShop(models.Model):
         comodel_name="mobile_service.warranty",
         string='Warranty Number',
         help="warranty details")
-    is_in_warranty = fields.Boolean(
-        string='In Warranty',
-        default=False,
-        help="Specify if the product is in warranty.",
-        copy=False)
+    is_in_warranty = fields.Boolean(compute='_compute_is_in_warranty',
+                                    string='In Warranty',
+                                    help="Specify if the product is in warranty.",
+                                    copy=False)
 
     re_repair = fields.Boolean(
         string='Re-repair',
@@ -111,7 +110,7 @@ class MobileServiceShop(models.Model):
         invisible=True,
         copy=False)
     stock_picking_id = fields.Many2one(
-        'stock.picking', 
+        'stock.picking',
         string="Picking Id")
     picking_transfer_id = fields.Many2one(
         'stock.picking.type',
@@ -434,16 +433,30 @@ class MobileServiceShop(models.Model):
         }
         return self.env.ref('mobile_service.mobile_service_ticket').report_action(self, data=data)
 
-    @api.onchange('imei_no')
+    @api.onchange('imei_no', 'company_id')
     def _onchange_imei_find_warranty(self):
         # Check if warranty find
         warranty_ids = False
         if self.imei_no:
             warranty_ids = self.env['mobile_service.warranty'].search(
-                ['|', ('imei1', '=', self.imei_no), ('imei2', '=', self.imei_no), ('brand_id', '=', self.brand_id.id), ('model_id', '=', self.model_id.id)])
+                [
+                    '&',
+                        ('company_id', '=', self.company_id.id),
+                        '|', 
+                            ('imei1', '=', self.imei_no), 
+                            ('imei2', '=', self.imei_no)],
+                limit=1,
+                order="expire_date DESC")
         if warranty_ids:
             self.is_in_warranty = True
             self.warranty_id = warranty_ids[0]
+            self.model_id = self.warranty_id.model_id
         else:
             self.is_in_warranty = False
             self.warranty_id = False
+            self.model_id = False
+
+    @api.depends('warranty_id')
+    def _compute_is_in_warranty(self):
+        self.is_in_warranty = self.warranty_id and (
+            self.warranty_id.expire_date and self.warranty_id.expire_date > self.date_request)

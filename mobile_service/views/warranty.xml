@@ -87,7 +87,7 @@
                             <field name="company_id" groups="base.group_multi_company" />
                             <separator />
                             <field name="start_date" />
-                            <field name="expire_date" readonly='1' />
+                            <field name="expire_date" />
                         </group>
                     </group>
                     <notebook>
