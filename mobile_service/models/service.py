@@ -183,7 +183,9 @@ class MobileServiceShop(models.Model):
         self.service_state = 'completed'
 
     def return_to(self):
+        self.return_date = datetime.now()
         self.service_state = 'returned'
+
 
     def action_qc_accepted(self):
         """
@@ -463,6 +465,7 @@ class MobileServiceShop(models.Model):
             self.is_in_warranty = True
             self.warranty_id = warranty_ids[0]
             self.model_id = self.warranty_id.model_id
+            
         else:
             self.is_in_warranty = False
             self.warranty_id = False
