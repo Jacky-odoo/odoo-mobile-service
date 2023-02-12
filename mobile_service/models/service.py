@@ -36,11 +36,11 @@ class MobileServiceShop(models.Model):
         comodel_name="mobile_service.warranty",
         string='Warranty Number',
         help="warranty details")
-    is_in_warranty = fields.Boolean(compute='_compute_is_in_warranty',
-                                    string='In Warranty',
-                                    help="Specify if the product is in warranty.",
-                                    copy=False)
-
+    is_in_warranty = fields.Boolean(
+        compute='_compute_is_in_warranty',
+        string='In Warranty',
+        help="Specify if the product is in warranty.",
+        copy=False)
     re_repair = fields.Boolean(
         string='Re-repair',
         default=False,
@@ -70,7 +70,7 @@ class MobileServiceShop(models.Model):
         string="Acceptor Name",
         default=lambda self: self.env.user,
         tracking=True,
-        )
+    )
     technician_id = fields.Many2one(
         comodel_name='res.users',
         string="Technician Name",
@@ -185,7 +185,6 @@ class MobileServiceShop(models.Model):
     def return_to(self):
         self.return_date = datetime.now()
         self.service_state = 'returned'
-
 
     def action_qc_accepted(self):
         """
@@ -455,19 +454,16 @@ class MobileServiceShop(models.Model):
             warranty_ids = self.env['mobile_service.warranty'].search(
                 [
                     '&',
-                        ('company_id', '=', self.company_id.id),
-                        '|', 
-                            ('imei1', '=', self.imei_no), 
-                            ('imei2', '=', self.imei_no)],
+                    ('company_id', '=', self.company_id.id),
+                    '|',
+                    ('imei1', '=', self.imei_no),
+                    ('imei2', '=', self.imei_no)],
                 limit=1,
                 order="expire_date DESC")
         if warranty_ids:
-            self.is_in_warranty = True
             self.warranty_id = warranty_ids[0]
             self.model_id = self.warranty_id.model_id
-            
         else:
-            self.is_in_warranty = False
             self.warranty_id = False
             self.model_id = False
 
