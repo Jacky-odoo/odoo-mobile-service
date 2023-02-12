@@ -207,8 +207,12 @@
                                     attrs="{'invisible': [('service_state','in',('draft'))]}" />
                                 <field name="return_date"
                                     attrs="{'invisible': ['!', ('service_state','in',('returned','not_solved'))]}" />
+
                                 <field name="acceptor_id"
-                                    attrs="{'readonly': [('service_state','not in',('draft'))]}" />
+                                    attrs="{'readonly': [('service_state','not in',('draft'))]
+                                                            ,'invisible' : [('service_state','in',('draft'))]}" />
+
+                                                            
                                 <field name="technician_id"
                                     attrs="{'readonly': [('service_state','not in',('draft', 'accepted'))]}" />
                                 <field name="company_id" 

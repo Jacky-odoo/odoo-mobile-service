@@ -68,7 +68,9 @@ class MobileServiceShop(models.Model):
     acceptor_id = fields.Many2one(
         comodel_name='res.users',
         string="Acceptor Name",
-        tracking=True)
+        default=lambda self: self.env.user,
+        tracking=True,
+        )
     technician_id = fields.Many2one(
         comodel_name='res.users',
         string="Technician Name",
