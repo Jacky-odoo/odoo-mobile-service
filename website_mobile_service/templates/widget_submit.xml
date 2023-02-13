@@ -9,7 +9,7 @@
                 method="POST"
                 action="/mobile-service/submit_service_request"
                 data-success_page="/"
-                class="container-fluid mt32 container p-15 p-md-8 border-1 rounded-3 align-self-center border border-dark bg-secondary text-white"
+                class="container-fluid mt32 container p-15 p-md-8 border-1 rounded-3 align-self-center border border-dark bg-secondary bg-gradient text-white"
                 style="direction: rtl; min-width: 16px; min-height: 16px; border-style: solid; margin-bottom: 15px; max-width: 450px;">
                 <!-- Hiden items-->
                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
