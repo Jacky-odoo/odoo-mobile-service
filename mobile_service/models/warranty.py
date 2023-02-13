@@ -62,17 +62,16 @@ class MobileWarranty(models.Model):
         string="Note",
         help="Extra Note on The Warranty")
 
-
     state = fields.Selection(
         selection=[('draft', 'Draft'),
                    ('valid', 'Valid'),
-                   ('expired', 'Expired')],
+                   ('canceled', 'Canceled')],
         string='Status',
         default='draft',
         track_visibility='always')
 
-    start_date = fields.Date(string="Start Date",tracking=True)
-    expire_date = fields.Date(string="Expire Date",tracking=True)
+    start_date = fields.Date(string="Start Date", tracking=True)
+    expire_date = fields.Date(string="Expire Date", tracking=True)
 
     @api.onchange("start_date")
     def _onchange_expire_date(self):
@@ -92,3 +91,8 @@ class MobileWarranty(models.Model):
         vals['name'] = self.env['ir.sequence'].next_by_code(
             'mobile_service.warranty.sequence') or '/'
         return super(MobileWarranty, self).create(vals)
+
+
+    def canceled_date_state(self):
+        #TO-DO
+        self.state = 'canceled'
