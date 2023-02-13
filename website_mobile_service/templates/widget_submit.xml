@@ -2,7 +2,7 @@
 <odoo>
     <template id="widget_submit_wizard" name="Select submit Wizard Page">
         <section class="text-center">
-            <h1 class="text-center">فرم زیر را تکمیل کنید</h1>
+            <h3 class="text-center">فرم زیر را تکمیل کنید</h3>
         </section>
         <div class="d-flex flex-column p-0 m-0">
             <form id="register_request_form"
