@@ -59,11 +59,13 @@
                 <header>
                     <field name="state"
                         widget="statusbar"
-                        statusbar_visible="draft,valid,expired" />
+                        statusbar_visible="draft,valid,canceled" />
                     <button string="Canceled" 
                         type="object" 
                         name="canceled_date_state" 
-                        class="oe_highlight"/>
+                        class="oe_highlight"
+                        data-hotkey="q"
+                        confirm="Are you sure canceled this warranty?"/>
                 </header>
                 <sheet>
                     <div class="oe_title">
