@@ -65,7 +65,6 @@
                             placeholder="لطفا ایمیل خود را وارد کنید"
                             name="email_from"
                             id="email_from"
-                            required="" 
                             data-bs-toggle="tooltip" data-bs-placement="top" title="فیلد را حتما پر کنید"/>
                     </div>
                 </div>
