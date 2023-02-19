@@ -340,7 +340,15 @@
     </record>
 
 
-    <menuitem id="mobile_service_menu" parent="mobile_service_main_menu" sequence="20" />
+    <menuitem 
+        id="mobile_service_menu" 
+        parent="mobile_service_main_menu" 
+        sequence="20" />
 
-    <menuitem action="action_mobile_service_request" id="mobile_service_menu2" parent="mobile_service_main_menu" name="Service Request" sequence="1" />
+    <menuitem 
+        action="action_mobile_service_request" 
+        id="mobile_service_menu2" 
+        parent="mobile_service_main_menu" 
+        name="Service Request" 
+        sequence="1" />
 </odoo>
