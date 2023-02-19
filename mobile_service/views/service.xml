@@ -44,7 +44,7 @@
                 <header>
                     <!-- Actions for state: draft -->
                     <button  
-                        confirm="Are you sure Accept?" 
+                        confirm="Are you sure accept?" 
                         string="Accept" 
                         type="object" 
                         name="action_accept_service" 
@@ -55,9 +55,16 @@
                         confirm="Are you sure Not Solve?" 
                         string="Not Solved" 
                         type="object" 
+                        class="oe_highlight" 
                         name="action_reject_service" 
                         attrs="{'invisible': [('service_state','not in',('draft'))]}" />
-
+                    <button 
+                        confirm="Are you sure Check Warranty?" 
+                        string="Check Warranty/IMEI" 
+                        type="object" 
+                        class="oe_highlight" 
+                        name="action_chk_service" 
+                        attrs="{'invisible': [('service_state','not in',('draft'))]}" />
 
                     <!-- Actions for state: accepted -->
                     <button 
@@ -142,20 +149,12 @@
                 <div class="alert alert-warning mb-0" 
                     role="alert"
                     attrs="{'invisible': [('warranty_id', '!=', False)]}">
-                    No warranty found for the IMEI.
-                    <button name="action_view_invoice"
-                        type="object"
-                        string="one of those bills"
-                        class="btn btn-link p-0"/>
+                    No warranty found for this IMEI.
                 </div>
                 <div class="alert alert-warning mb-0" 
                     role="alert"
                     attrs="{'invisible': ['|', ('warranty_id', '=', False), ('is_in_warranty', '=', True)]}">
-                    Current warranty for the IMEI is expired.
-                    <button name="action_view_invoice"
-                        type="object"
-                        string="one of those bills"
-                        class="btn btn-link p-0"/>
+                    Current warranty for this IMEI is expired.
                 </div>
 
                 <sheet>

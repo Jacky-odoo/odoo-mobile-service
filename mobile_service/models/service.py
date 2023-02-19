@@ -179,6 +179,27 @@ class MobileServiceShop(models.Model):
     def approve(self):
         self.service_state = 'assigned'
 
+    
+    def action_chk_service(self):
+        warranty_ids = False
+        if self.imei_no:
+            warranty_ids = self.env['mobile_service.warranty'].search(
+                [
+                    '&',
+                    ('company_id', '=', self.company_id.id),
+                    '|',
+                    ('imei1', '=', self.imei_no),
+                    ('imei2', '=', self.imei_no)],
+                limit=1,
+                order="expire_date DESC")
+        if warranty_ids:
+            self.warranty_id = warranty_ids[0]
+            self.model_id = self.warranty_id.model_id
+        else:
+            self.warranty_id = False
+            self.model_id = False
+       
+
     def complete(self):
         self.service_state = 'completed'
 
@@ -461,27 +482,6 @@ class MobileServiceShop(models.Model):
 
         }
         return self.env.ref('mobile_service.mobile_service_ticket').report_action(self, data=data)
-
-    @api.onchange('imei_no', 'company_id')
-    def _onchange_imei_find_warranty(self):
-        # Check if warranty find
-        warranty_ids = False
-        if self.imei_no:
-            warranty_ids = self.env['mobile_service.warranty'].search(
-                [
-                    '&',
-                    ('company_id', '=', self.company_id.id),
-                    '|',
-                    ('imei1', '=', self.imei_no),
-                    ('imei2', '=', self.imei_no)],
-                limit=1,
-                order="expire_date DESC")
-        if warranty_ids:
-            self.warranty_id = warranty_ids[0]
-            self.model_id = self.warranty_id.model_id
-        else:
-            self.warranty_id = False
-            self.model_id = False
 
     @api.depends('warranty_id')
     def _compute_is_in_warranty(self):
