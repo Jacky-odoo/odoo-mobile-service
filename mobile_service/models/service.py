@@ -194,6 +194,10 @@ class MobileServiceShop(models.Model):
         self.service_state = 'qc_accepted'
 
     def not_solved(self):
+        """
+        this action is called when the service is in not solved and we will return to customer wit button
+        the service is moved into not_solved state.
+        """
         self.service_state = 'not_solved'
 
     def action_accept_service(self):
@@ -275,17 +279,22 @@ class MobileServiceShop(models.Model):
             return value
         else:
             raise UserError("No invoice created")
-
+    
+#this function count the invoices for this service that active
     def _invoice_count(self):
         invoice_ids = self.env['account.move'].search(
             [('invoice_origin', '=', self.name)])
         self.invoice_count = len(invoice_ids)
 
+
+#this function count that service with this imei number
     @api.onchange('imei_no')
     def _service_count(self):
         self.service_count = self.search(
             [('imei_no', '=', self.imei_no)], count=True)
 
+
+#create function to this level create the request and request number and goto draft state
     @api.model
     def create(self, vals):
         print(self.env.user.company_id)
@@ -298,6 +307,8 @@ class MobileServiceShop(models.Model):
         vals['service_state'] = 'draft'
         return super(MobileServiceShop, self).create(vals)
 
+
+#this function create error you cannot delete services that is not in draft state(or assigned)
     def unlink(self):
         for i in self:
             if i.service_state != 'draft':
@@ -305,6 +316,8 @@ class MobileServiceShop(models.Model):
                     _('You cannot delete an assigned service request'))
         return super(MobileServiceShop, self).unlink()
 
+
+#action window for invoice create
     def action_invoice_create_wizard(self):
         """
         Create new invoice based on current items
@@ -317,6 +330,7 @@ class MobileServiceShop(models.Model):
             'target': 'new'
         }
 
+#action for post stock level
     def action_post_stock(self):
         flag = 0
         for order in self.product_order_line:
@@ -345,6 +359,8 @@ class MobileServiceShop(models.Model):
             raise UserError(_('Nothing to post stock move'))
         if flag != 1:
             raise UserError(_('Nothing to post stock move'))
+
+
 
     def action_view_services(self):
         self.ensure_one()

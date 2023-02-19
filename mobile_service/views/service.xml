@@ -43,33 +43,100 @@
                 <field name="picking_count" invisible="1" />
                 <header>
                     <!-- Actions for state: draft -->
-                    <button  confirm="Are you sure Accept?" string="Accept" type="object" name="action_accept_service" class="oe_highlight" attrs="{'invisible': [('service_state','not in',('draft'))]}" groups="mobile_service.mobile_service_group_manager" />
-                    <button confirm="Are you sure Not Solve?" string="Not Solved" type="object" name="action_reject_service" attrs="{'invisible': [('service_state','not in',('draft'))]}" />
+                    <button  
+                        confirm="Are you sure Accept?" 
+                        string="Accept" 
+                        type="object" 
+                        name="action_accept_service" 
+                        class="oe_highlight" 
+                        attrs="{'invisible': [('service_state','not in',('draft'))]}" 
+                        groups="mobile_service.mobile_service_group_manager" />
+                    <button 
+                        confirm="Are you sure Not Solve?" 
+                        string="Not Solved" 
+                        type="object" 
+                        name="action_reject_service" 
+                        attrs="{'invisible': [('service_state','not in',('draft'))]}" />
 
 
                     <!-- Actions for state: accepted -->
-                    <button confirm="Are you sure Assign to Technician?" string="Assign to technician" type="object" name="approve" class="oe_highlight" attrs="{'invisible': [('service_state','not in',('accepted'))]}" groups="mobile_service.mobile_service_group_manager" />
+                    <button 
+                        confirm="Are you sure Assign to Technician?" 
+                        string="Assign to technician" 
+                        type="object" 
+                        name="approve" 
+                        class="oe_highlight" 
+                        attrs="{'invisible': [('service_state','not in',('accepted'))]}" 
+                        groups="mobile_service.mobile_service_group_manager" />
 
                     <!-- Actions for state: assigned -->
-                    <button confirm="Are you sure complete?" string="Completed" type="object" name="complete" class="oe_highlight" attrs="{'invisible': [('service_state','not in',('assigned'))]}" />
+                    <button 
+                        confirm="Are you sure complete?" 
+                        string="Completed" 
+                        type="object" 
+                        name="complete" 
+                        class="oe_highlight"
+                        attrs="{'invisible': [('service_state','not in',('assigned'))]}" />
 
-                    <button confirm="Are you sure Return advance?" string="Return advance" type="object" name="return_advance" class="oe_highlight" attrs="{'invisible': [('service_state','not in',('not_solved'))]}" groups="mobile_service.mobile_service_group_manager" />
+                    <button 
+                        confirm="Are you sure Return advance?" 
+                        string="Return advance" 
+                        type="object" 
+                        name="return_advance" 
+                        class="oe_highlight" 
+                        attrs="{'invisible': [('service_state','not in',('not_solved'))]}" 
+                        groups="mobile_service.mobile_service_group_manager" />
 
-                    <button confirm="Are you sure Create Invoice?" name="action_invoice_create_wizard" string="Create Invoice" attrs="{'invisible': [('service_state','not in',('qc_accepted', 'assigned'))]}" type="object" class="oe_highlight" groups="mobile_service.mobile_service_group_manager" />
+                    <button 
+                        confirm="Are you sure Create Invoice?" 
+                        name="action_invoice_create_wizard" 
+                        string="Create Invoice" 
+                        attrs="{'invisible': [('service_state','not in',('qc_accepted', 'assigned'))]}" 
+                        type="object" 
+                        class="oe_highlight" 
+                        groups="mobile_service.mobile_service_group_manager" />
 
-                    <button confirm="Are you sure Post Stock?" name="action_post_stock" string="Post Stock moves" attrs="{'invisible': [('service_state','not in',('qc_accepted', 'assigned'))]}" type="object" class="oe_highlight" groups="mobile_service.mobile_service_group_manager" />
+                    <button 
+                        confirm="Are you sure Post Stock?" 
+                        name="action_post_stock" 
+                        string="Post Stock moves" 
+                        attrs="{'invisible': [('service_state','not in',('qc_accepted', 'assigned'))]}" 
+                        type="object" 
+                        class="oe_highlight" 
+                        groups="mobile_service.mobile_service_group_manager" />
 
-                    <button confirm="Are you sure Return to Customer?" string="Return to customer" name="return_to" type="object" attrs="{'invisible': [('service_state','not in',('qc_accepted'))]}" groups="mobile_service.mobile_service_group_manager" />
+                    <button 
+                        confirm="Are you sure Return to Customer?" 
+                        string="Return to customer" 
+                        name="return_to" 
+                        type="object" 
+                        attrs="{'invisible': [('service_state','not in',('qc_accepted'))]}" 
+                        groups="mobile_service.mobile_service_group_manager" />
 
 
-                    <button confirm="Are you sure to Accept?" string="QC Accept" name="action_qc_accepted" type="object" attrs="{'invisible': [('service_state','not in',('completed'))]}" groups="mobile_service.mobile_service_group_manager" />
+                    <button 
+                        confirm="Are you sure to Accept?" 
+                        string="QC Accept" 
+                        name="action_qc_accepted" 
+                        type="object" 
+                        attrs="{'invisible': [('service_state','not in',('completed'))]}" 
+                        groups="mobile_service.mobile_service_group_manager" />
 
 
-                    <button confirm="Are you sure Not Solve?" string="Not Solved" type="object" name="not_solved" attrs="{'invisible': [('service_state','not in',('assigned'))]}" />
+                    <button 
+                        confirm="Are you sure Not Solve?" 
+                        string="Not Solved"
+                        type="object" 
+                        name="not_solved" 
+                        attrs="{'invisible': [('service_state','not in',('assigned'))]}" />
 
                     
 
-                    <field name="service_state" widget="statusbar" statusbar_visible="draft,accepted,returned,not_solved" />
+                    <field 
+                        name="service_state" 
+                        widget="statusbar" 
+                        statusbar_visible="draft,accepted,returned,not_solved" />
+                        
                 </header>
 
                 <div class="alert alert-warning mb-0" 
