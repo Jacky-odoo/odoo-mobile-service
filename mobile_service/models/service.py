@@ -1,6 +1,7 @@
 from datetime import datetime, date, timedelta
 from odoo import models, fields, api, _
-from odoo.exceptions import Warning, UserError
+from odoo.exceptions import  UserError
+from odoo.http import request
 import pytz
 
 
@@ -31,7 +32,9 @@ class MobileServiceShop(models.Model):
     # ------------------------------------------------
 
     imei_no = fields.Char(
-        string="IMEI Number")
+        string="IMEI Number",
+        required=True,
+        tracking=True)
     warranty_id = fields.Many2one(
         comodel_name="mobile_service.warranty",
         string='Warranty Number',
@@ -77,25 +80,24 @@ class MobileServiceShop(models.Model):
         default=lambda self: self.env.user,
         required=True,
         tracking=True)
+    # --------------------- states  -----------------------
     service_state = fields.Selection(
-        selection=[('draft', 'Draft'),
-                   ('accepted', 'Accepted'),
-                   ('assigned', 'Assigned'),
-                   ('completed', 'Completed'),
-                   ('qc_accepted', 'QC Accepted'),
-                   ('returned', 'Returned'),
-                   ('not_solved', 'Not solved')],
+        selection=[('draft', 'Accepted'),
+                   ('caan', 'Customer'),
+                   ('easmobile', 'Evaluation'),
+                   ('qcsmobile', 'Quality'),
+                   ('finmobile', 'Delivered')],
         string='Service Status',
         default='draft',
-        track_visibility='always')
+        track_visibility='always',
+        tracking=True)
+    # ------------------------------------------------------
     complaint_tree_ids = fields.One2many(
         comodel_name='mobile_service.complaint.tree',
         inverse_name='service_id',
         string='Complaints Tree')
     internal_notes = fields.Text(
         string="Internal notes")
-    # ------------------------------------------------------
-
     product_order_line_ids = fields.One2many(
         comodel_name='product.order.line',
         inverse_name='product_order_id',
@@ -176,10 +178,7 @@ class MobileServiceShop(models.Model):
     ################################################################################
     #              State Machin: Actions
     ################################################################################
-    def approve(self):
-        self.service_state = 'assigned'
 
-    
     def action_chk_service(self):
         warranty_ids = False
         if self.imei_no:
@@ -198,41 +197,40 @@ class MobileServiceShop(models.Model):
         else:
             self.warranty_id = False
             self.model_id = False
-       
-
-    def complete(self):
-        self.service_state = 'completed'
-
-    def return_to(self):
-        self.return_date = datetime.now()
-        self.service_state = 'returned'
-
-    def action_qc_accepted(self):
+    # States that we create ---------->
+    def action_draftmobile_service(self):
         """
-        This action is called when the service is in completed state. Then
-        the service is moved into qc_accepted state.
+        this is called when a record set in first level
         """
-        self.service_state = 'qc_accepted'
+        self.service_state = 'draft'
 
-    def not_solved(self):
+    def action_acceptmobile_service(self):
         """
-        this action is called when the service is in not solved and we will return to customer wit button
-        the service is moved into not_solved state.
-        """
-        self.service_state = 'not_solved'
-
-    def action_accept_service(self):
-        """
-        Accepts incoming request (in draft) and move them to the accepted state.
+        this is called after draft this is Customer action and notification
         """
         self.accept_date = datetime.now()
-        self.service_state = 'accepted'
+        self.service_state = 'caan'
 
-    def action_reject_service(self):
+    def action_easmobile_service(self):
         """
-        Rejects incoming service request (in draft state) and move them to the not solved state.
+        this called after Customer action and notification and this is Evalution and service
         """
-        self.service_state = 'not_solved'
+        self.service_state = 'easmobile'
+
+    def action_qcsmobile_service(self):
+        """
+        this called after Evalution and service and this is quality Control and shipping
+        """
+        self.service_state = 'qcsmobile'
+
+    def action_finmobile_service(self):
+        """
+        this called after quality Control and shipping this is Delivery state\
+        to this level can send information to crm , Print , send email
+        """
+        self.return_date = datetime.now()
+        self.service_state = 'finmobile'
+    
 
     def action_send_mail(self):
         '''
@@ -487,3 +485,19 @@ class MobileServiceShop(models.Model):
     def _compute_is_in_warranty(self):
         self.is_in_warranty = self.warranty_id and (
             self.warranty_id.expire_date and self.warranty_id.expire_date > self.date_request)
+
+    def register_to_crm(self,**kw):
+        # Create CRM and record this fields
+        Model = request.env['crm.lead']
+        Model.sudo().create({
+            'name': self.name,
+            'street': self.street,
+            'mobile': self.contact_no,
+            'email_from': self.email_id,
+            'description': self.service_state,
+            #color side of this field in crm
+            'color' : 4,
+            'function' : 'Elban',
+            'campaign_id' : '4',
+            'partner_id' : self.person_id.id,
+        })

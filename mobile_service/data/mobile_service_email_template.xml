@@ -5,16 +5,40 @@
         <record id="email_template_mobile_service" model="mail.template">
             <field name="name">Service Status Email</field>
             <field name="model_id" ref="model_mobile_service_service" />
-            <field name="email_from">${(object.user_id.email |safe}</field>
-            <field name="email_to">${object.person_id.email |safe}</field>
-            <field name="subject">Ref ${object.name or 'n/a' }</field>
-            <field name="auto_delete" eval="True" />
-            <field name="lang">${object.person_id.lang}</field>
-            <field name="body_html"><![CDATA[
-                <p>Dear ${object.person_id.name},</p>
-                <p>Your service request for ${object.brand_id.name or 'n/a' } (${object.model_id.brand_id or 'n/a' }) with reference no <b>${object.name or 'n/a' }</b> has been processed to <b>${object.service_state or 'n/a' }</b> stage.</p>
+            <field name="email_from">{{ object.acceptor_id.email }}</field>
+            <field name="email_to">{{ object.person_id.email }}</field>
+            <field name="subject">Ref {{ object.name }}</field>
+            <field name="report_name">Ref {{ object.name }}</field>
+            <field name="report_template" ref="mobile_service_ticket"/>
+
+            <field name="partner_to">{{ object.person_id.id }}</field>
+            <!--?Nothing todo --> 
+            <!--todo <field name="lang">{{ object.partner_id.lang }}</field>-->
+            <!--? To solve the above problem, I made it in the email template, it works locally and there is no problem. -->
+                
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html" type="html">
+                <p>Dear <t t-out="object.person_id.name or ''"/>,</p>
+                <p >Your service request for <t t-out=" object.brand_id.name"/> (<t t-out="object.model_id.name"/>) <br/>with reference no
+                    <t t-out="object.name"/> <br/>has been processed to
+                        <t t-if="object.service_state in ('draft')"> 
+                            <span class="fw-bolder text-primary">Accepter</span>
+                        </t>
+                        <t t-if="object.service_state in ('caan')" > 
+                            <span class="fw-bolder text-primary">Customer</span>
+                        </t>
+                        <t t-if="object.service_state in ('easmobile')" > 
+                            <span class="fw-bolder text-primary">Evaluation</span>
+                        </t>
+                        <t t-if="object.service_state in ('qcsmobile')"> 
+                            <span class="fw-bolder text-primary">Quality</span>
+                        </t>
+                        <t t-if="object.service_state in ('finmobile')" > 
+                            <span class="fw-bolder text-primary">Delivered</span> 
+                        </t>
+                     stage.</p>
                 <p>If you have any questions, please let us know.</p>
-                <p>Best regards,</p>]]>
+                <p>Best regards,</p>
             </field>
         </record>
     </data>
