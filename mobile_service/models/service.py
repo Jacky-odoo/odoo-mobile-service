@@ -514,7 +514,7 @@ class MobileServiceShop(models.Model):
     def _compute_is_in_warranty(self):
         self.is_in_warranty = self.warranty_id and (
             self.warranty_id.expire_date and self.warranty_id.expire_date > self.date_request)
-
+    #! Connect To Crm and Create this item for this fields
     def register_to_crm(self,**kw):
         # Create CRM and record this fields
         Model = request.env['crm.lead']
@@ -527,6 +527,7 @@ class MobileServiceShop(models.Model):
             #color side of this field in crm
             'color' : 4,
             'function' : 'Elban',
-            'campaign_id' : '4',
+            'campaign_id' : '3',
+            'stage_id' : '4',
             'partner_id' : self.person_id.id,
         })

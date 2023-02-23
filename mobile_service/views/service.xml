@@ -292,8 +292,8 @@
                                     force_save="1" />
                                 <button  
                                     type="object" 
-                                    class="btn btn-primary btn-sm"
-                                    string=" Warranty" 
+                                    class="btn btn-success fa fa-wikipedia-w"
+                                    string="-Check" 
                                     name="action_view_warranty"   
                                     attrs="{'invisible': [('service_state','not in',('draft'))]}"
                                     groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
@@ -438,43 +438,3 @@
         name="Service Request" 
         sequence="1" />
 </odoo>
-<!--
-<?xml version="1.0"?>
-<odoo>
-    <data noupdate="1">
-        <record id="crm_case_2" model="crm.lead">
-            <field name="create_date" eval="datetime.now() - timedelta(days=8)"/>
-            <field name="type">lead</field>
-            <field name="name">Design Software</field>
-            <field name="contact_name">Marc Dufour</field>
-            <field name="partner_name">The Oil Company</field>
-            <field name="email_from">md@oilcompany.fr</field>
-            <field name="function">Purchase Manager</field>
-            <field name="country_id" ref="base.fr"/>
-            <field name="city">Bordeaux</field>
-            <field name="zip">33000</field>
-            <field name="street">Rue Ignasse Blanchoux 214/32</field>
-            <field name="phone">+33 1 25 54 45 69</field>
-            <field name="tag_ids" eval="[(6, 0, [ref('sales_team.categ_oppor2')])]"/>
-            <field name="priority">1</field>
-            <field name="team_id" ref="sales_team.team_sales_department"/>
-            <field name="user_id" ref="base.user_admin"/>
-            <field name="date_open" eval="(DateTime.today() - relativedelta(months=1)).strftime('%Y-%m-%d %H:%M')"/>
-            <field name="stage_id" ref="stage_lead1"/>
-            <field name="campaign_id" ref="utm.utm_campaign_christmas_special"/>
-            <field name="medium_id" ref="utm.utm_medium_website"/>
-            <field name="source_id" ref="utm.utm_source_newsletter"/>
-        </record>
-        <record id="msg_case2_1" model="mail.message">
-            <field name="subject">Need Details</field>
-            <field name="model">crm.lead</field>
-            <field name="author_id" eval="False"/>
-            <field name="email_from">md@oilcompany.fr</field>
-            <field name="res_id" ref="crm_case_2"/>
-            <field name="body">Want to know features and benefits of using the new software.</field>
-            <field name="message_type">email</field>
-            <field name="subtype_id" ref="mail.mt_comment"/>
-        </record>
-    </data>
-</odoo>
--->
