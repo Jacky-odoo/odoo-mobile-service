@@ -380,7 +380,7 @@ class MobileServiceShop(models.Model):
             raise UserError(_('Nothing to post stock move'))
 
 
-
+#! Actions for view forms -------------------------->
     def action_view_services(self):
         self.ensure_one()
         ctx = dict(
@@ -436,7 +436,36 @@ class MobileServiceShop(models.Model):
             action['view_mode'] = 'tree,form'
             action['domain'] = [('id', 'in', inv_ids)]
         return action
+    #!Action Warranty View ----------------------------------->
+    def action_view_warranty(self):
+        self.ensure_one()
+        ctx = dict(
+            create=True,
+        )
+        action = {
+            'name': _("Warranty"),
+            'type': 'ir.actions.act_window',
+            'res_model': 'mobile_service.warranty',
+            'target': 'current',
+            'context': ctx
+        }
+        warranty_idMs = self.env['mobile_service.warranty'].search(
+            [('name', '=', self.warranty_id.name)])
+        war_ids = []
+        for each in warranty_idMs:
+            war_ids.append(each.id)
+        if len(warranty_idMs) == 1:
+            warranti = war_ids and war_ids[0]
+            action['res_id'] = warranti
+            action['view_mode'] = 'form'
+            action['views'] = [
+                (self.env.ref('mobile_service.mobile_service_warranty_form_view').id, 'form')]
+        else:
 
+            action['view_mode'] = 'tree,form'
+            action['domain'] = [('id', 'in', war_ids)]
+        return action
+    
     def get_ticket(self):
         self.ensure_one()
         user = self.env['res.users'].browse(self.env.uid)
