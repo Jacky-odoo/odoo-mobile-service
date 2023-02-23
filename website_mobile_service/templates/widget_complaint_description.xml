@@ -13,7 +13,7 @@
             class="d-flex flex-wrap flex-column flex-md-row justify-content-center align-item-stretch m-0 p-0">
             <t t-foreach="complaint_descriptions" t-as="complaint_description">
                 <a id="list-item"
-                    class="d-flex flex-row flex-md-column justify-content-end flex-align-center m-2 border border-primary border-2 rounded-3 text-decoration-none"
+                    class="box-shadow d-flex flex-row flex-md-column justify-content-end flex-align-center m-2 border border-primary border-2 rounded-3 text-decoration-none"
                     t-att-href="'/mobile-service/' + brand.internal_ref + '/' + model.internal_ref + '/' + complaint.internal_ref + '/' + complaint_description.internal_ref">
                     <img id="logo"
                         class="d-none d-md-block m-0"
