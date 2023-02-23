@@ -527,7 +527,9 @@ class MobileServiceShop(models.Model):
             #color side of this field in crm
             'color' : 4,
             'function' : 'Elban',
+            #Email Campaign - Services id number
             'campaign_id' : '3',
-            'stage_id' : '4',
+            #Create this field to پیشنهادات
+            'stage_id' : '3',
             'partner_id' : self.person_id.id,
         })
