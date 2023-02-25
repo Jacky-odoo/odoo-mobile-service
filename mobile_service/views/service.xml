@@ -52,7 +52,7 @@
                             type="object" 
                             class="btn btn-primary btn-sm"
                             string=" Cancel Warranty"
-                            name="action_acceptmobile_service"  
+                            name="action_view_warranty"  
                             attrs="{'invisible': [('service_state','not in',('draft'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
                         <button  
@@ -187,7 +187,7 @@
                 
                         <field 
                             name="service_state" 
-                            widget="statusbar"  class="text-start flex-shrink-0"
+                            widget="statusbar"
                             statusbar_visible="draft,caan,esamobile,qcsmobile,finmobile" />
                 
                 </header>
@@ -290,13 +290,6 @@
                                     options='{"no_open": True, "no_create": True}'
                                     readonly="1"
                                     force_save="1" />
-                                <button  
-                                    type="object" 
-                                    class="btn btn-success fa fa-wikipedia-w"
-                                    string="-Check" 
-                                    name="action_view_warranty"   
-                                    attrs="{'invisible': [('service_state','not in',('draft'))]}"
-                                    groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
                             </group>
                         </page>
                         <page string="Description">

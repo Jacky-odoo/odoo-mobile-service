@@ -12,9 +12,9 @@
             <field name="report_template" ref="mobile_service_ticket"/>
 
             <field name="partner_to">{{ object.person_id.id }}</field>
-            <!--?Nothing todo --> 
+           
             <!--todo <field name="lang">{{ object.partner_id.lang }}</field>-->
-            <!--? To solve the above problem, I made it in the email template, it works locally and there is no problem. -->
+            <!--! To solve the above problem, I made it in the email template, it works locally and there is no problem. -->
                 
             <field name="auto_delete" eval="True"/>
             <field name="body_html" type="html">
