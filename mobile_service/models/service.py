@@ -199,13 +199,14 @@ class MobileServiceShop(models.Model):
             self.warranty_id = False
             self.model_id = False
 
-        #if not self.model_id:
-        #    raise UserError(
-        #            ('Please enter a valid warranty'))
-    # States that we create ----------> 
+     
+   
     ################################################################################
     #              State Machin: Actions
     ################################################################################
+
+
+    # States that we create ----------> 
     def action_draftmobile_service(self):
         """
         this is called when a record set in first level
@@ -416,7 +417,7 @@ class MobileServiceShop(models.Model):
             action['view_mode'] = 'tree,form'
             action['domain'] = [('id', 'in', serv_ids)]
         return action
-
+    #create a view form for invoices
     def action_view_invoice(self):
         self.ensure_one()
         ctx = dict(
