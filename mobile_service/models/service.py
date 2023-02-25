@@ -148,6 +148,11 @@ class MobileServiceShop(models.Model):
 
     picking_count = fields.Integer()
 
+   
+
+    ################################################################################
+    #              Models
+    ################################################################################
     @api.model
     def _default_picking_transfer(self):
         type_obj = self.env['stock.picking.type']
@@ -159,10 +164,7 @@ class MobileServiceShop(models.Model):
             types = type_obj.search(
                 [('code', '=', 'outgoing'), ('warehouse_id', '=', False)])
         return types[:4]
-
-    ################################################################################
-    #              Models
-    ################################################################################
+    
 
     @api.onchange('return_date')
     def check_date(self):
@@ -174,13 +176,12 @@ class MobileServiceShop(models.Model):
             if return_date_string < request_date_string:
                 raise UserError(
                     "Return date should be greater than requested date")
-
-    ################################################################################
-    #              State Machin: Actions
-    ################################################################################
+            
+   
 
     def action_chk_service(self):
         warranty_ids = False
+        
         if self.imei_no:
             warranty_ids = self.env['mobile_service.warranty'].search(
                 [
@@ -197,7 +198,14 @@ class MobileServiceShop(models.Model):
         else:
             self.warranty_id = False
             self.model_id = False
-    # States that we create ---------->
+
+        #if not self.model_id:
+        #    raise UserError(
+        #            ('Please enter a valid warranty'))
+    # States that we create ----------> 
+    ################################################################################
+    #              State Machin: Actions
+    ################################################################################
     def action_draftmobile_service(self):
         """
         this is called when a record set in first level
@@ -324,6 +332,7 @@ class MobileServiceShop(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code(
                 'mobile_service.service.sequence') or _('New')
         vals['service_state'] = 'draft'
+        
         return super(MobileServiceShop, self).create(vals)
 
 
