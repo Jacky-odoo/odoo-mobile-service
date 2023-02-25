@@ -51,7 +51,7 @@
     <record id="mobile_service_tech_rules" model="ir.rule">
         <field name="name">Mobile Service rule</field>
         <field name="model_id" ref="model_mobile_service_service" />
-        <field name="domain_force">[('service_state','=','draft'),('service_state','=','caan'), ('company_id', 'in', company_ids)]</field>
+        <field name="domain_force">[('service_state','=','draft'),('service_state','=','accept'),('service_state','=','caan'), ('company_id', 'in', company_ids)]</field>
         <field name="groups" eval="[(4,ref('mobile_service_group_acceptor'))]"/>
     </record>
 <!-- Manager group set Rule(Domain)                           -->
