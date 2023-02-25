@@ -203,18 +203,18 @@ class MobileServiceShop(models.Model):
 
 
     # States that we create ----------> 
-    def action_accept_service(self):
+    def action_draftmobile_service(self):
         """
         this is called when a record set in first level
+        """
+        self.service_state = 'draft'
+    def action_accept_service(self):
+        """
+        this is called when a record set in second level
         """
         self.service_state = 'accept'
 
 
-    def action_draftmobile_service(self):
-        """
-        this is called when a record set in second level
-        """
-        self.service_state = 'draft'
 
     def action_acceptmobile_service(self):
         """
