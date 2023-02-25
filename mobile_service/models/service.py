@@ -24,7 +24,7 @@ class MobileServiceShop(models.Model):
     contact_no = fields.Char(related='person_id.mobile')
     email_id = fields.Char(related='person_id.email')
     street = fields.Char(related='person_id.street')
-    street2 = fields.Char(related='person_id.street2')
+    national_code = fields.Char(String="National id")
     city = fields.Char(related='person_id.city')
     zip = fields.Char(related='person_id.zip')
     state_id = fields.Many2one(related='person_id.state_id')
@@ -225,7 +225,7 @@ class MobileServiceShop(models.Model):
 
     def action_finmobile_service(self):
         """
-        this called after quality Control and shipping this is Delivery state\
+        this called after quality Control and shipping this is Delivery state
         to this level can send information to crm , Print , send email
         """
         self.return_date = datetime.now()
