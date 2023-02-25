@@ -82,7 +82,8 @@ class MobileServiceShop(models.Model):
         tracking=True)
     # --------------------- states  -----------------------
     service_state = fields.Selection(
-        selection=[('draft', 'Accepted'),
+        selection=[('draft', 'Draft'),
+                   ('accept', 'Accepted'),
                    ('caan', 'Customer'),
                    ('easmobile', 'Evaluation'),
                    ('qcsmobile', 'Quality'),
@@ -194,12 +195,7 @@ class MobileServiceShop(models.Model):
                 order="expire_date DESC")
         if warranty_ids:
             self.warranty_id = warranty_ids[0]
-            self.model_id = self.warranty_id.model_id
-        else:
-            self.warranty_id = False
-            self.model_id = False
-
-     
+            self.model_id = self.warranty_id.model_id 
    
     ################################################################################
     #              State Machin: Actions
@@ -207,9 +203,16 @@ class MobileServiceShop(models.Model):
 
 
     # States that we create ----------> 
-    def action_draftmobile_service(self):
+    def action_accept_service(self):
         """
         this is called when a record set in first level
+        """
+        self.service_state = 'accept'
+
+
+    def action_draftmobile_service(self):
+        """
+        this is called when a record set in second level
         """
         self.service_state = 'draft'
 
@@ -442,7 +445,6 @@ class MobileServiceShop(models.Model):
             action['views'] = [
                 (self.env.ref('account.view_move_form').id, 'form')]
         else:
-
             action['view_mode'] = 'tree,form'
             action['domain'] = [('id', 'in', inv_ids)]
         return action
@@ -471,7 +473,6 @@ class MobileServiceShop(models.Model):
             action['views'] = [
                 (self.env.ref('mobile_service.mobile_service_warranty_form_view').id, 'form')]
         else:
-
             action['view_mode'] = 'tree,form'
             action['domain'] = [('id', 'in', war_ids)]
         return action

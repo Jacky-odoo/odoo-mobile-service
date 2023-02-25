@@ -41,30 +41,38 @@
                 <header> 
                     <!-- all state button is in there -->
                     <div  class="btn-group flex-shrink-1 mh-300" role="group" aria-label="Button group example">
-                        <!--**** State Accepted(draft) *********************************************-->
+                        <!--**** State Draft(draft) *********************************************-->
                         <button 
                             type="object" 
                             class="btn btn-info btn-sm"
-                            string=" Check IMEI"
+                            string="Check IMEI"
                             name="action_chk_service" 
                             attrs="{'invisible': [('service_state','not in',('draft'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"/>
+                        <button 
+                            type="object" 
+                            class="btn btn-primary btn-sm"
+                            string="Accept"
+                            name="action_accept_service" 
+                            attrs="{'invisible': ['|',('service_state','not in',('draft')),('model_id','=',False)]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"/>
+                        <!--** State Accepted(accept)******************************************* -->
                         <button  
                             type="object" 
                             class="btn btn-primary btn-sm"
                             string=" Cancel Warranty"
                             name="action_view_warranty"  
-                            attrs="{'invisible': ['|',('imei_no','=',False),('service_state','not in',('draft'))]}" 
+                            attrs="{'invisible': ['|',('imei_no','=',False),('service_state','not in',('accept'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
                         <button  
                             type="object" 
                             class="btn btn-info btn-sm"
                             string=" Assessment"
                             name="action_easmobile_service" 
-                            attrs="{'invisible': ['|',('imei_no','=',False),('service_state','not in',('draft'))]}" 
+                            attrs="{'invisible': ['|',('imei_no','=',False),('service_state','not in',('accept'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
                         
-                        <!-- **** State Customer action and notification(caan)  ****************************************** -->
+                        <!-- **** State Customer action and notification(caan)  ***************** -->
                          
                         <button  
                             type="object" 
@@ -91,7 +99,7 @@
                             type="object" 
                             class="btn btn-info btn-sm"
                             string=" Receive service"
-                            name="action_draftmobile_service" 
+                            name="action_accept_service" 
                             attrs="{'invisible': [('service_state','not in',('caan'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
                         <!-- **** State Evaluation and service(easmobile) ****************************************** -->
@@ -114,14 +122,14 @@
                             type="object" 
                             class="btn btn-primary btn-sm"
                             string=" Coordination with the customer" 
-                            name="action_acceptmobile_service" 
+                            name="action_accept_service" 
                             attrs="{'invisible': [('service_state','not in',('easmobile'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer" />
                         <button  
                             type="object" 
                             class="btn btn-info btn-sm"
                             string=" No warranty" 
-                            name="action_draftmobile_service" 
+                            name="action_accept_service" 
                             attrs="{'invisible': [('service_state','not in',('easmobile'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer" />
                         <button  
@@ -189,7 +197,7 @@
                         <field 
                             name="service_state" 
                             widget="statusbar"
-                            statusbar_visible="draft,caan,esamobile,qcsmobile,finmobile" />
+                            statusbar_visible="draft,accept,caan,esamobile,qcsmobile,finmobile" />
                 
                 </header>
                 <!-- There is messages that for warranty -->                
