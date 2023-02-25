@@ -62,7 +62,7 @@
                             class="btn btn-primary btn-sm"
                             string=" Cancel Warranty"
                             name="action_view_warranty"  
-                            attrs="{'invisible': ['|',('imei_no','=',False),('service_state','not in',('accept'))]}" 
+                            attrs="{'invisible': ['|',('warranty_id','=',False),('service_state','not in',('accept'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
                         <button  
                             type="object" 
