@@ -42,6 +42,7 @@ class MobileWarranty(models.Model):
         compute='_compute_warranty_is_expire',
         string='Warranty expire',
         help="Specify if the product warranty is expired.",
+        default=False,
         copy=False)
     color = fields.Char(
         string='Color',
@@ -97,7 +98,6 @@ class MobileWarranty(models.Model):
     def _compute_warranty_is_expire(self):
             if (self.start_date and self.expire_date) and ((datetime.strptime(str(self.expire_date),'%Y-%m-%d')-datetime.strptime(str(date.today()),'%Y-%m-%d')).days >= 1):
                 self.warranty_is_expire=False
-                self.color=(datetime.strptime(str(self.expire_date),'%Y-%m-%d')-datetime.strptime(str(date.today()),'%Y-%m-%d')).days
             else:
                 self.warranty_is_expire=True
            

@@ -361,7 +361,7 @@ class MobileServiceShop(models.Model):
 #this function create error you cannot delete services that is not in draft state(or assigned)
     def unlink(self):
         for i in self:
-            if i.service_state != 'draft' and i.service_state != 'finmobile' :
+            if i.service_state != 'draft':
                 raise UserError(
                     _('You cannot delete an assigned service request'))
         return super(MobileServiceShop, self).unlink()
