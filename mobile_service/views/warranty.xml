@@ -104,9 +104,9 @@
                                 attrs="{'readonly': ['|',('state','in',('canceled')),('state','in',('valid'))]}" />
                             <separator />
                             <field name="start_date" 
-                                attrs="{'invisible': [('state','in',('canceled'))]}" />
+                                attrs="{'readonly': ['|',('state','in',('canceled')),('state','in',('valid'))]}" />
                             <field name="expire_date"
-                                attrs="{'invisible': [('state','in',('canceled'))]}" />
+                                readonly='True' />
                         </group>
                     </group>
                     <notebook>
