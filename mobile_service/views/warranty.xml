@@ -60,11 +60,19 @@
                     <field name="state"
                         widget="statusbar"
                         statusbar_visible="draft,valid,canceled" />
-                    <button string="Canceled" 
+                    <button string="Cancel" 
                         type="object" 
-                        name="canceled_date_state" 
+                        name="action_canceled_state" 
                         class="oe_highlight"
+                        attrs="{'invisible': [('state','in',('canceled'))]}"
                         data-hotkey="q"
+                        confirm="Are you sure canceled this warranty?"/>
+                    <button string="Validate" 
+                        type="object" 
+                        name="action_valid_state" 
+                        class="oe_highlight"
+                        attrs="{'invisible': ['|',('state','in',('canceled')),('state','in',('valid'))]}"
+                        data-hotkey="v"
                         confirm="Are you sure canceled this warranty?"/>
                 </header>
                 <sheet>

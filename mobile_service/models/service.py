@@ -3,6 +3,7 @@ from odoo import models, fields, api, _
 from odoo.exceptions import  UserError
 from odoo.http import request
 import pytz
+import re 
 
 
 class MobileServiceShop(models.Model):
@@ -177,12 +178,29 @@ class MobileServiceShop(models.Model):
             if return_date_string < request_date_string:
                 raise UserError(
                     "Return date should be greater than requested date")
-            
-   
-
+#! Here we check warranty for imei that user insert    
+#! in Here check in two model function one of them 
+#! with button and one of them with on change that 
+#! we will remove button in feature .....         
+    @api.onchange('imei_no')
+    def action_chk_on_service(self):
+        warranty_ids = False
+        if self.imei_no:
+            warranty_ids = self.env['mobile_service.warranty'].search(
+                [
+                    '&',
+                    ('company_id', '=', self.company_id.id),
+                    '|',
+                    ('imei1', '=', self.imei_no),
+                    ('imei2', '=', self.imei_no)],
+                limit=1,
+                order="expire_date DESC")
+        if warranty_ids:
+            self.warranty_id = warranty_ids[0]
+            self.model_id = self.warranty_id.model_id
+    
     def action_chk_service(self):
         warranty_ids = False
-        
         if self.imei_no:
             warranty_ids = self.env['mobile_service.warranty'].search(
                 [
@@ -343,7 +361,7 @@ class MobileServiceShop(models.Model):
 #this function create error you cannot delete services that is not in draft state(or assigned)
     def unlink(self):
         for i in self:
-            if i.service_state != 'draft':
+            if i.service_state != 'draft' and i.service_state != 'finmobile' :
                 raise UserError(
                     _('You cannot delete an assigned service request'))
         return super(MobileServiceShop, self).unlink()

@@ -1,6 +1,6 @@
 from odoo import models, fields, api, _
 from odoo.tools import date_utils
-
+from odoo.exceptions import  UserError
 
 class MobileWarranty(models.Model):
     _name = 'mobile_service.warranty'
@@ -83,16 +83,23 @@ class MobileWarranty(models.Model):
             self.start_date = False
             self.state = 'draft'
 
-    #
-    # Create a new name based on the sequnce.
-    #
+    #!Create a new name based on the sequnce.
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].next_by_code(
             'mobile_service.warranty.sequence') or '/'
         return super(MobileWarranty, self).create(vals)
+    #!When we will delete a warranty
+    def unlink(self):
+        for i in self:
+            if i.state != 'draft':
+                raise UserError(
+                    _('You cannot delete an Assigned warranty'))
+        return super(MobileWarranty, self).unlink()
 
-
-    def canceled_date_state(self):
+    def action_valid_state(self):
+        #TO-DO
+        self.state = 'valid'
+    def action_canceled_state(self):
         #TO-DO
         self.state = 'canceled'
