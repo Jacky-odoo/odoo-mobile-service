@@ -64,15 +64,8 @@
                         type="object" 
                         name="action_canceled_state" 
                         class="oe_highlight"
-                        attrs="{'invisible': [('state','in',('canceled'))]}"
+                        attrs="{'invisible': ['|',('state','in',('canceled')),('state','in',('draft'))]}"
                         data-hotkey="q"
-                        confirm="Are you sure canceled this warranty?"/>
-                    <button string="Validate" 
-                        type="object" 
-                        name="action_valid_state" 
-                        class="oe_highlight"
-                        attrs="{'invisible': ['|',('state','in',('canceled')),('state','in',('valid'))]}"
-                        data-hotkey="v"
                         confirm="Are you sure canceled this warranty?"/>
                 </header>
                 <sheet>
@@ -83,25 +76,37 @@
                     </div>
                     <group>
                         <group id="brand">
-                            <field name="brand_id" />
-                            <field name="model_id" />
-                            <field name="color" />
+                            <field name="brand_id"
+                                attrs="{'readonly': ['|',('state','in',('canceled')),('state','in',('valid'))]}" />
+                            <field name="model_id"
+                                attrs="{'readonly': ['|',('state','in',('canceled')),('state','in',('valid'))]}"/>
+                            <field name="color"
+                                attrs="{'readonly': ['|',('state','in',('canceled')),('state','in',('valid'))]}"/>
                         </group>
                         <group id="imei">
-                            <field name="imei1" />
-                            <field name="imei2" />
+                            <field name="imei1"
+                                attrs="{'readonly': ['|',('state','in',('canceled')),('state','in',('valid'))]}"/>
+                            <field name="imei2"
+                                attrs="{'readonly': ['|',('state','in',('canceled')),('state','in',('valid'))]}"/>
                         </group>
                         <group id="import-info">
-                            <field name="code_hamta" />
-                            <field name="part_number" />
+                            <field name="code_hamta"
+                                attrs="{'readonly': ['|',('state','in',('canceled')),('state','in',('valid'))]}"/>
+                            <field name="part_number" 
+                                attrs="{'readonly': ['|',('state','in',('canceled')),('state','in',('valid'))]}"/>
                         </group>
                         <group id="partners">
-                            <field name="importer_id" />
-                            <field name="warranty_id" />
-                            <field name="company_id" groups="base.group_multi_company" />
+                            <field name="importer_id"
+                                attrs="{'readonly': ['|',('state','in',('canceled')),('state','in',('valid'))]}"/>
+                            <field name="warranty_id" 
+                                attrs="{'readonly': ['|',('state','in',('canceled')),('state','in',('valid'))]}"/>
+                            <field name="company_id" groups="base.group_multi_company"
+                                attrs="{'readonly': ['|',('state','in',('canceled')),('state','in',('valid'))]}" />
                             <separator />
-                            <field name="start_date" />
-                            <field name="expire_date" />
+                            <field name="start_date" 
+                                attrs="{'invisible': [('state','in',('canceled'))]}" />
+                            <field name="expire_date"
+                                attrs="{'invisible': [('state','in',('canceled'))]}" />
                         </group>
                     </group>
                     <notebook>
