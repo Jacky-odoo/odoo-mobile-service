@@ -555,6 +555,8 @@ class MobileServiceShop(models.Model):
             'mobile': self.contact_no,
             'email_from': self.email_id,
             'description': self.service_state,
+            'date_open' : self.accept_date,
+            'date_closed' : self.warranty_id.expire_date,
             #color side of this field in crm
             'color' : 4,
             'function' : 'Elban',
