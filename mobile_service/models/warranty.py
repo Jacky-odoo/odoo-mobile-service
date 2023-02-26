@@ -16,18 +16,15 @@ class MobileWarranty(models.Model):
 
     brand_id = fields.Many2one(
         comodel_name='mobile_service.brand',
-        string="Mobile Brand",
-        required=True)
+        string="Mobile Brand")
     model_id = fields.Many2one(
         comodel_name='mobile_service.brand.model',
         string="Model",
-        domain="[('brand_id','=',brand_id)]",
-        required=True)
+        domain="[('brand_id','=',brand_id)]")
     importer_id = fields.Many2one(
         comodel_name='res.partner',
         string="Importer Company",
-        help="",
-        required=True)
+        help="")
     warranty_id = fields.Many2one(
         comodel_name='res.partner',
         string="Warranty Company",
@@ -46,14 +43,12 @@ class MobileWarranty(models.Model):
         copy=False)
     color = fields.Char(
         string='Color',
-        help="Color of the device",
-        required=False)
+        help="Color of the device")
     code_hamta = fields.Char(
         size=64,
         index=True,
-        string="Code",
-        help="A code that show Hamta number",
-        required=True)
+        string="Code Hamta",
+        help="A code that show Hamta number")
     imei1 = fields.Char(
         string="IMEI 1",
         size=32,
@@ -62,8 +57,7 @@ class MobileWarranty(models.Model):
     imei2 = fields.Char(
         string="IMEI 2",
         size=32,
-        indexed=True,
-        required=True)
+        indexed=True)
     part_number = fields.Char(
         size=32,
         index=True,
@@ -81,7 +75,7 @@ class MobileWarranty(models.Model):
         default='draft',
         track_visibility='always')
 
-    start_date = fields.Date(string="Start Date", tracking=True,required=True)
+    start_date = fields.Date(string="Start Date", tracking=True)
     expire_date = fields.Date(string="Expire Date", tracking=True)
     #!Check start date of warranty and plus 18 month
     #!else start and expire date go to empty and state go to draft
@@ -116,8 +110,11 @@ class MobileWarranty(models.Model):
         return super(MobileWarranty, self).unlink()
 
     def action_valid_state(self):
-        #TO-DO
-        self.state = 'valid'
+        if self.model_id and self.brand_id and self.company_id and self.start_date:
+            self.state = 'valid'
+        else:
+            raise UserError(
+                    _('You must insert field Model , Brand , Company ,Start Date and then create it to valid???'))
     def action_canceled_state(self):
         #TO-DO
         self.state = 'canceled'
