@@ -230,6 +230,7 @@ class MobileServiceShop(models.Model):
         """
         this is called when a record set in second level
         """
+        self.accept_date = datetime.now()
         self.service_state = 'accept'
 
 
@@ -238,7 +239,6 @@ class MobileServiceShop(models.Model):
         """
         this is called after draft this is Customer action and notification
         """
-        self.accept_date = datetime.now()
         self.service_state = 'caan'
 
     def action_easmobile_service(self):
