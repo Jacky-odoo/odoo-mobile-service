@@ -494,7 +494,7 @@ class MobileServiceShop(models.Model):
             action['view_mode'] = 'tree,form'
             action['domain'] = [('id', 'in', war_ids)]
         return action
-    
+    #! Get report action and return ticket
     def get_ticket(self):
         self.ensure_one()
         user = self.env['res.users'].browse(self.env.uid)
@@ -538,11 +538,13 @@ class MobileServiceShop(models.Model):
 
         }
         return self.env.ref('mobile_service.mobile_service_ticket').report_action(self, data=data)
-
+    
+    #! checked that is in warranty and return true or false
     @api.depends('warranty_id')
     def _compute_is_in_warranty(self):
         self.is_in_warranty = self.warranty_id and (
             self.warranty_id.expire_date and self.warranty_id.expire_date > self.date_request)
+        
     #! Connect To Crm and Create this item for this fields
     def register_to_crm(self):
         # Create CRM and record this fields

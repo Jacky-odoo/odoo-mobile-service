@@ -67,7 +67,24 @@
                         attrs="{'invisible': ['|',('state','in',('canceled')),('state','in',('draft'))]}"
                         data-hotkey="q"
                         confirm="Are you sure canceled this warranty?"/>
+                    <button string="Valid" 
+                        type="object" 
+                        name="action_valid_state" 
+                        class="oe_highlight"
+                        attrs="{'invisible': ['|',('state','in',('canceled')),('state','in',('valid'))]}"
+                        data-hotkey="v"
+                        confirm="Are you sure Valid this warranty?"/>
                 </header>
+                <!--!start Error messages -->
+                <div attrs="{'invisible': [('warranty_is_expire','!=',True)]}" class="alert alert-warning m-0 p-0 w-100 fa fa-2x fa-exclamation-triangle" 
+                    role="alert">
+                    <span>Your warranty is void because it has expired</span>
+                </div>
+                <div attrs="{'invisible': [('state','not in','canceled')]}" class="alert alert-warning m-0 p-0 w-100 fa fa-2x fa-exclamation-triangle" 
+                    role="alert">
+                    <span>You have voided the warranty yourself</span>
+                </div>
+                <!--!end                -->
                 <sheet>
                     <div class="oe_title">
                         <h1>
@@ -106,7 +123,8 @@
                             <field name="start_date" 
                                 attrs="{'readonly': ['|',('state','in',('canceled')),('state','in',('valid'))]}" />
                             <field name="expire_date"
-                                readonly='True' />
+                                invisible='True'/>
+                            <field name="warranty_is_expire"/>    
                         </group>
                     </group>
                     <notebook>

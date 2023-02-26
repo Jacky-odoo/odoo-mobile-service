@@ -204,12 +204,12 @@
                 <div class="alert alert-warning m-0 p-0 w-100 fa fa-2x fa-exclamation-triangle" 
                     role="alert"
                     attrs="{'invisible': [('warranty_id', '!=', False)]}">
-                    No warranty found for this IMEI
+                    <span>No warranty found for this IMEI</span>
                 </div>
                 <div class="alert alert-warning m-0 p-0 w-100 fa fa-2x fa-exclamation-triangle" 
                     role="alert"
                     attrs="{'invisible': ['|', ('warranty_id', '=', False), ('is_in_warranty', '=', True)]}">
-                    Current warranty for this IMEI is expired
+                    <span>Current warranty for this IMEI is expired</span>
                 </div>
                 
                 <sheet>
