@@ -10,3 +10,4 @@ from . import service_ticket
 from . import service
 from . import term_condition
 from . import warranty
+from . import mobile_servicece_crm

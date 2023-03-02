@@ -29,6 +29,7 @@
         'views/service.xml',
         'views/term_condition.xml',
         'views/warranty.xml',
+        'views/mobile_serviece_crm.xml',
 
         # Templates
 
