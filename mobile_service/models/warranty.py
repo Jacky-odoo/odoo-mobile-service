@@ -115,8 +115,18 @@ class MobileWarranty(models.Model):
         if self.model_id and self.brand_id and self.company_id and self.start_date and self.code_hamta and self.importer_id and self.warranty_id:
             self.state = 'valid'
         else:
-            raise UserError(
-                    _('You must insert field Model,Brand,Company,Importer company,Warranty company,Start Date and then create it to valid???'))
+        #!Create an Error in warranty 
+            return {
+            'type': 'ir.actions.client',
+            'tag': 'display_notification',
+            'params': {
+                'title': _('You must Fill all field that neccessary.'),
+                'message': _('IMEI ,Brand ,Model ,Importer and warranty Company ,Start Date'),
+                'type': 'danger',
+                'sticky': True,  #True/False will display for few seconds if false
+                'next': {'type': 'ir.actions.act_window_close'},
+                },
+            }
     def action_canceled_state(self):
         #TO-DO
         self.state = 'canceled'
