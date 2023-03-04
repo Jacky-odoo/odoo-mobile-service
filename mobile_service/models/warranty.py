@@ -37,7 +37,7 @@ class MobileWarranty(models.Model):
         default=lambda self: self.env.company,
         help="This is company id")
     warranty_is_expire = fields.Boolean(
-        compute='_compute_warranty_is_expire',
+        compute='_onchange_expire_date',
         string='Warranty expire',
         help="Specify if the product warranty is expired.",
         default=False,
@@ -82,26 +82,27 @@ class MobileWarranty(models.Model):
     #!else start and expire date go to empty and state go to draft
     @api.onchange("start_date")
     def _onchange_expire_date(self):
+        #When change start date We added expire date and then if start date is false other 
         if self.start_date:
             self.expire_date = date_utils.add(self.start_date, months=18)
         else:
             self.expire_date = False
             self.start_date = False
             self.state = 'draft'
+        #!Compute that warranty is expire or no
+        if (self.start_date and self.expire_date) and ((datetime.strptime(str(self.expire_date),'%Y-%m-%d')-datetime.strptime(str(date.today()),'%Y-%m-%d')).days >= 1):
+            self.warranty_is_expire=False
+        else:
+            self.warranty_is_expire=True
 
-    @api.depends('warranty_id')
-    def _compute_warranty_is_expire(self):
-            if (self.start_date and self.expire_date) and ((datetime.strptime(str(self.expire_date),'%Y-%m-%d')-datetime.strptime(str(date.today()),'%Y-%m-%d')).days >= 1):
-                self.warranty_is_expire=False
-            else:
-                self.warranty_is_expire=True
-           
     #!Create a new name based on the sequnce.
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].next_by_code(
             'mobile_service.warranty.sequence') or '/'
         return super(MobileWarranty, self).create(vals)
+    
+    
     #!When we will delete a warranty
     def unlink(self):
         for i in self:
