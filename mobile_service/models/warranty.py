@@ -120,7 +120,7 @@ class MobileWarranty(models.Model):
             'type': 'ir.actions.client',
             'tag': 'display_notification',
             'params': {
-                'title': _('You must Fill all field that neccessary.'),
+                'title': _('You must Fill This Fields for warranty: %s.',self.name),
                 'message': _('IMEI ,Brand ,Model ,Importer and warranty Company ,Start Date'),
                 'type': 'danger',
                 'sticky': True,  #True/False will display for few seconds if false
