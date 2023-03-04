@@ -24,16 +24,16 @@
                         <t t-if="object.service_state in ('draft')"> 
                             <span class="fw-bolder text-primary">Accepter</span>
                         </t>
-                        <t t-if="object.service_state in ('caan')" > 
+                        <t t-if="object.service_state in ('customer')" > 
                             <span class="fw-bolder text-primary">Customer</span>
                         </t>
-                        <t t-if="object.service_state in ('easmobile')" > 
+                        <t t-if="object.service_state in ('evaluation')" > 
                             <span class="fw-bolder text-primary">Evaluation</span>
                         </t>
-                        <t t-if="object.service_state in ('qcsmobile')"> 
+                        <t t-if="object.service_state in ('quality')"> 
                             <span class="fw-bolder text-primary">Quality</span>
                         </t>
-                        <t t-if="object.service_state in ('finmobile')" > 
+                        <t t-if="object.service_state in ('delivered')" > 
                             <span class="fw-bolder text-primary">Delivered</span> 
                         </t>
                      stage.</p>

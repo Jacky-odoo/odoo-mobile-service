@@ -1,68 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-
+    <!--* Create a Category For rules-->
     <record id="mobile_service_execute" model="ir.module.category">
         <field name="name">Mobile Service</field>
         <field name="sequence">5</field>
     </record>
-<!-- Define QC employee , Acceptor , Manager , Mobile technician-->
+    <!--! Define QC employee , Acceptor , Manager , Mobile technician-->
+        
     <record id="mobile_service_group_executer" model="res.groups">
-        <field name="name">Mobile Technician</field>
-        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-        <field name="category_id" ref="mobile_service_execute"/>
-    </record>
-    <!--!                                                        -->
-    <record id="mobile_service_group_qcemployee" model="res.groups">
-        <field name="name">Qc Employe</field>
-        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-        <field name="category_id" ref="mobile_service_execute"/>
-    </record>
-    <!--!                                                         -->
-    <record id="mobile_service_group_acceptor" model="res.groups">
         <field name="name">Acceptor</field>
+        <field name="category_id" ref="mobile_service_execute"/>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-        <field name="category_id" ref="mobile_service_execute"/>
-    </record>
-
-     <record id="mobile_service_group_manager" model="res.groups">
+    </record>                 
+    <record id="mobile_service_group_manager" model="res.groups">
         <field name="name">Manager</field>
-        <field name="implied_ids" eval="[(4, ref('mobile_service_group_executer'))]"/>
         <field name="category_id" ref="mobile_service_execute"/>
+        <field name="implied_ids" eval="[(4, ref('mobile_service_group_executer'))]"/>
         <field name="users" eval="[(4, ref('base.user_admin')), (4, ref('base.user_root'))]"/>
     </record>
-<!-- Define Rule Of that People Top of this created           -->
-<!-- Qc Employe group set Rule(domain)                        -->
-<record id="mobile_service_tech_rules" model="ir.rule">
-    <field name="name">Mobile Service rule</field>
-    <field name="model_id" ref="model_mobile_service_service" />
-    <field name="domain_force">[('service_state','=','qcmobile'),('company_id', 'in', company_ids)]</field>
-    <field name="groups" eval="[(4,ref('mobile_service_group_qcemployee'))]"/>
-</record>
-
-<!-- Mobile Technician group set Rule(domain)                  -->
-<record id="mobile_service_tech_rules" model="ir.rule">
-    <field name="name">Mobile Service rule</field>
-    <field name="model_id" ref="model_mobile_service_service" />
-    <field name="domain_force">[('service_state','=','easmobile'),('company_id', 'in', company_ids)]</field>
-    <field name="groups" eval="[(4,ref('mobile_service_group_executer'))]"/>
-</record>
-
-<!-- Acceptor group set Rule(domain)                          -->
-    <record id="mobile_service_tech_rules" model="ir.rule">
-        <field name="name">Mobile Service rule</field>
-        <field name="model_id" ref="model_mobile_service_service" />
-        <field name="domain_force">[('service_state','=','draft'),('service_state','=','accept'),('service_state','=','caan'), ('company_id', 'in', company_ids)]</field>
-        <field name="groups" eval="[(4,ref('mobile_service_group_acceptor'))]"/>
+    <record id="mobile_service_group_technicians" model="res.groups">
+        <field name="name">Technicians</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category_id" ref="mobile_service_execute"/>
     </record>
-<!-- Manager group set Rule(Domain)                           -->
+    <record id="mobile_service_group_quality" model="res.groups">
+        <field name="name">QC</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category_id" ref="mobile_service_execute"/>
+    </record>
+    <!--! SERVICE Group set Rule(Domain) -->
+             
+                    <!--* Acceptor -->
+    <record id="mobile_service_acceptor_rules" model="ir.rule">
+        <field name="name">Mobile Service Acceptor rule</field>
+        <field name="model_id" ref="model_mobile_service_service" />
+        <field name="domain_force">[('service_state','in',('draft','accepted','customer')), ('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4,ref('mobile_service_group_executer'))]"/>
+    </record>
+                    <!--* Manager -->
     <record id="mobile_service_rule_manager" model="ir.rule">
         <field name="name">Mobile Service Manager rule</field>
         <field name="model_id" ref="model_mobile_service_service" />
         <field name="domain_force">[('company_id', 'in', company_ids)]</field>
         <field name="groups" eval="[(4,ref('mobile_service_group_manager'))]"/>
     </record>
+                    <!--* Technician -->
+    <record id="mobile_service_techs_rules" model="ir.rule">
+        <field name="name">Mobile Service Technicians rule</field>
+        <field name="model_id" ref="model_mobile_service_service" />
+        <field name="domain_force">[('service_state','=',('evaluation')), ('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4,ref('mobile_service_group_technicians'))]"/>
+    </record>
+                    <!--* QC -->
+    <record id="mobile_service_techs_rules" model="ir.rule">
+        <field name="name">Mobile Service Quality rule</field>
+        <field name="model_id" ref="model_mobile_service_service" />
+        <field name="domain_force">[('service_state','=',('quality')), ('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4,ref('mobile_service_group_quality'))]"/>
+    </record>
 
-    <!-- WARANTY                                              -->
+
+
+
+
+    <!--! WARANTY -->
     <!-- Company-restricted Records  get-> company_ids  take-> [user.company_id.id]    goto company from multi company     -->
     <record id="mobile_service_warranty_rule_manager" model="ir.rule">
         <field name="name">Mobile Warranty: company</field>

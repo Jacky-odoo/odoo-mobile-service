@@ -84,11 +84,11 @@ class MobileServiceShop(models.Model):
     # --------------------- states  -----------------------
     service_state = fields.Selection(
         selection=[('draft', 'Draft'),
-                   ('accept', 'Accepted'),
-                   ('caan', 'Customer'),
-                   ('easmobile', 'Evaluation'),
-                   ('qcsmobile', 'Quality'),
-                   ('finmobile', 'Delivered')],
+                   ('accepted', 'Accepted'),
+                   ('customer', 'Customer'),
+                   ('evaluation', 'Evaluation'),
+                   ('quality', 'Quality'),
+                   ('delivered', 'Delivered')],
         string='Service Status',
         default='draft',
         track_visibility='always',
@@ -231,7 +231,7 @@ class MobileServiceShop(models.Model):
         this is called when a record set in second level
         """
         self.accept_date = datetime.now()
-        self.service_state = 'accept'
+        self.service_state = 'accepted'
 
 
 
@@ -239,19 +239,19 @@ class MobileServiceShop(models.Model):
         """
         this is called after draft this is Customer action and notification
         """
-        self.service_state = 'caan'
+        self.service_state = 'customer'
 
     def action_easmobile_service(self):
         """
         this called after Customer action and notification and this is Evalution and service
         """
-        self.service_state = 'easmobile'
+        self.service_state = 'evaluation'
 
     def action_qcsmobile_service(self):
         """
         this called after Evalution and service and this is quality Control and shipping
         """
-        self.service_state = 'qcsmobile'
+        self.service_state = 'quality'
 
     def action_finmobile_service(self):
         """
@@ -259,7 +259,7 @@ class MobileServiceShop(models.Model):
         to this level can send information to crm , Print , send email
         """
         self.return_date = datetime.now()
-        self.service_state = 'finmobile'
+        self.service_state = 'delivered'
     
 
     def action_send_mail(self):

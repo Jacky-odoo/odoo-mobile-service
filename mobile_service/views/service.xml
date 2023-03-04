@@ -64,14 +64,14 @@
                             class="btn btn-primary btn-sm"
                             string="Check/Cancel Warranty"
                             name="action_view_warranty"  
-                            attrs="{'invisible': ['|',('warranty_id','=',False),('service_state','not in',('accept'))]}" 
+                            attrs="{'invisible': ['|',('warranty_id','=',False),('service_state','not in',('accepted'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
                         <button  
                             type="object" 
                             class="btn btn-secondary btn-sm"
                             string=" Assessment"
                             name="action_easmobile_service" 
-                            attrs="{'invisible': ['|',('imei_no','=',False),('service_state','not in',('accept'))]}" 
+                            attrs="{'invisible': ['|',('imei_no','=',False),('service_state','not in',('accepted'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
                         
                         <!-- **** State Customer action and notification(caan)  ***************** -->
@@ -81,28 +81,28 @@
                             class="btn btn-primary btn-sm"
                             string=" Confirmation" 
                             name="action_easmobile_service"  
-                            attrs="{'invisible': [('service_state','not in',('caan'))]}" 
+                            attrs="{'invisible': [('service_state','not in',('customer'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
                         <button  
                             type="object" 
                             class="btn btn-secondary btn-sm"
                             string=" Rejection"
                             name="action_qcsmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('caan'))]}" 
+                            attrs="{'invisible': [('service_state','not in',('customer'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
                         <button  
                             type="object" 
                             class="btn btn-primary btn-sm"
                             string=" Failure to receive service"
                             name="action_qcsmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('caan'))]}" 
+                            attrs="{'invisible': [('service_state','not in',('customer'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
                         <button  
                             type="object" 
                             class="btn btn-secondary btn-sm"
                             string=" Receive service"
                             name="action_accept_service" 
-                            attrs="{'invisible': [('service_state','not in',('caan'))]}" 
+                            attrs="{'invisible': [('service_state','not in',('customer'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
                         <!-- **** State Evaluation and service(easmobile) ****************************************** -->
                          
@@ -111,49 +111,49 @@
                             class="btn btn-primary btn-sm"
                             string=" Repairable" 
                             name="action_acceptmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('easmobile'))]}" 
+                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer" />
                         <button  
                             type="object" 
                             class="btn btn-secondary btn-sm"
                             string=" Unrepairable" 
                             name="action_qcsmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('easmobile'))]}" 
+                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer" />
                         <button  
                             type="object" 
                             class="btn btn-primary btn-sm"
                             string=" Coordination with the customer" 
                             name="action_accept_service" 
-                            attrs="{'invisible': [('service_state','not in',('easmobile'))]}" 
+                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer" />
                         <button  
                             type="object" 
                             class="btn btn-secondary btn-sm"
                             string=" No warranty" 
                             name="action_accept_service" 
-                            attrs="{'invisible': [('service_state','not in',('easmobile'))]}" 
+                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer" />
                         <button  
                             type="object" 
                             class="btn btn-primary btn-sm"
                             string=" Exchange/return" 
                             name="action_acceptmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('easmobile'))]}" 
+                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer" />
                         <button  
                             type="object" 
                             class="btn btn-secondary btn-sm"
                             string=" Termination of services" 
                             name="action_qcsmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('easmobile'))]}" 
+                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer" />
                         <button  
                             type="object" 
                             class="btn btn-primary btn-sm"
                             string=" Create Invoice" 
                             name="action_invoice_create_wizard" 
-                            attrs="{'invisible': [('service_state','not in',('easmobile'))]}" 
+                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer" />
                         <!-- **** State Quality Control and shipping(qcsmobile) ****************************************** -->
                          
@@ -162,21 +162,21 @@
                             class="btn btn-secondary btn-sm"
                             string=" Confirm repair" 
                             name="action_finmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('qcsmobile'))]}" 
+                            attrs="{'invisible': [('service_state','not in',('quality'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_qcemployee" />
                         <button  
                             type="object" 
                             class="btn btn-primary btn-sm"
                             string=" Confirmation of replacement" 
                             name="action_finmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('qcsmobile'))]}" 
+                            attrs="{'invisible': [('service_state','not in',('quality'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_qcemployee" />
                         <button  
                             type="object" 
                             class="btn btn-secondary btn-sm"
                             string=" Disapproval" 
                             name="action_easmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('qcsmobile'))]}" 
+                            attrs="{'invisible': [('service_state','not in',('quality'))]}" 
                             groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_qcemployee" /> 
                         <!-- *********************** State delivered(finmobile) ****************************************** -->
                         <button  
@@ -184,14 +184,14 @@
                             class="btn btn-primary btn-sm fa fa-paper-plane"
                             string=" Send Mail To Customer" 
                             name="action_send_mail" 
-                            attrs="{'invisible': [('service_state','not in',('finmobile'))]}" 
+                            attrs="{'invisible': [('service_state','not in',('delivered'))]}" 
                             groups="mobile_service.mobile_service_group_manager" />  
                         <button  
                             type="object" 
                             class="btn btn-secondary btn-sm fa fa-handshake-o"
                             string=" Send information to CRM" 
                             name="register_to_crm" 
-                            attrs="{'invisible': [('service_state','not in',('finmobile'))]}"
+                            attrs="{'invisible': [('service_state','not in',('delivered'))]}"
                             groups="mobile_service.mobile_service_group_manager" />  
                         <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
                     </div>
@@ -202,7 +202,7 @@
                             statusbar_visible="draft,accept,caan,esamobile,qcsmobile,finmobile" />
                 
                 </header>
-                <!-- There is messages that for warranty -->                
+                <!--*                     There is messages that for warranty -->                
                 <div class="alert alert-warning m-0 p-0 w-100 fa fa-2x fa-exclamation-triangle" 
                     role="alert"
                     attrs="{'invisible': [('warranty_id', '!=', False)]}">
@@ -213,7 +213,7 @@
                     attrs="{'invisible': ['|', ('warranty_id', '=', False), ('is_in_warranty', '=', True)]}">
                     <span>Current warranty for this IMEI is expired</span>
                 </div>
-                
+                <!--********************************************************* -->
                 <sheet>
                     <div class="oe_button_box" name="button_box">
                         <button name='action_view_invoice' class="oe_stat_button" type="object" icon="fa-money" attrs="{'invisible': [('service_state','in',('draft'))]}">
@@ -231,7 +231,7 @@
                     <group>
                         <field name="re_repair" 
                             widget="bs_toggle" 
-                            attrs="{'readonly': [('service_state','in',('finmobile'))]}" />
+                            attrs="{'readonly': [('service_state','in',('delivered'))]}" />
                     </group>
 
                     <group>
@@ -279,7 +279,7 @@
 
                             <field 
                                 name="technician_id" 
-                                attrs="{'readonly': [('service_state','not in',('draft', 'caan'))]}" />
+                                attrs="{'readonly': [('service_state','not in',('draft', 'customer'))]}" />
                             <field 
                                 name="company_id" 
                                 groups="base.group_multi_company" 
@@ -307,11 +307,11 @@
                         </page>
                         <page string="Description">
                             <group>
-                                <field name="internal_notes" placeholder="Notes used internally (eg: device password)" attrs="{'readonly': [('service_state','in',('finmobile'))]}" />
+                                <field name="internal_notes" placeholder="Notes used internally (eg: device password)" attrs="{'readonly': [('service_state','in',('delivered'))]}" />
                             </group>
                         </page>
                         <page string="Complaints">
-                            <field name="complaint_tree_ids" mode="tree" attrs="{'readonly': [('service_state','in',('finmobile'))]}">
+                            <field name="complaint_tree_ids" mode="tree" attrs="{'readonly': [('service_state','in',('delivered'))]}">
                                 <tree string="Complaints" editable="bottom">
                                     <field name="complaint_id" />
                                     <field name="complaint_description_id" />
@@ -323,7 +323,7 @@
                             </field>
                         </page>
                         <page string="Parts Usage">
-                            <field name="product_order_line_ids" mode="tree" attrs="{'readonly': [('service_state','in',('finmobile'))]}">
+                            <field name="product_order_line_ids" mode="tree" attrs="{'readonly': [('service_state','in',('delivered'))]}">
                                 <tree string="Complaints" editable="bottom">
                                     <field name="product_id" />
                                     <field name="product_uom_qty" />
@@ -398,7 +398,7 @@
         <field name="name">mobile_service.service.request.tree</field>
         <field name="model">mobile_service.service</field>
         <field name="arch" type="xml">
-            <tree decoration-muted="service_state=='finmobile'" default_order="name desc">
+            <tree decoration-muted="service_state=='delivered'" default_order="name desc">
                 <field name="name" />
                 <field name="person_id" />
                 <field name="contact_no" optional="hide" />
@@ -412,7 +412,7 @@
                 <field name="complaint_tree_ids" widget="many2many_tags" />
 
                 <!-- state is used -->
-                <field name="service_state" widget="badge" decoration-info="service_state == 'draft'" decoration-success="service_state == 'finmobile'" />
+                <field name="service_state" widget="badge" decoration-info="service_state == 'draft'" decoration-success="service_state == 'delivered'" />
                 <field name="company_id" optional="show" groups="base.group_multi_company" />
             </tree>
         </field>
