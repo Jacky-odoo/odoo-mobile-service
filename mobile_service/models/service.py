@@ -565,4 +565,5 @@ class MobileServiceShop(models.Model):
             #Create this field to پیشنهادات
             'stage_id' : '3',
             'partner_id' : self.person_id.id,
+            'national_code' : self.national_code,
         })
