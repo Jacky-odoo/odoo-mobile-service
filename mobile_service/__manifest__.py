@@ -39,6 +39,7 @@
         # Reports
         'reports/mobile_service_ticket.xml',
         'reports/service_ticket_template.xml',
+        'reports/service_empty_ticket_template.xml',
 
         # Data
         'data/accounting.xml',

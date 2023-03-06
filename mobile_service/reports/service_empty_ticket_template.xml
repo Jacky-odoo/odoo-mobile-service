@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- To here create header and footer for this template -->
+    <template id="mobile_service_empty_ticket_template_header_footer">
+        <!-- todo header section -->
+        <div class="header m-0 p-0 border border-top-0 border-end-0 border-start-0  border-secondary border-4" style="report_header_style; font-family:Yekan Bakh Fa 04;">
+            <table class="table table-bordered border-1 m-0">
+                <tr class="border-0">
+                    <th class="border-0" colspan="4">
+                        رسید گوشی شرکت البان
+                    </th>
+                    <th class="border-0" colspan="4">
+                        <img width="64" src='/mobile_service/static/description/ELBAAN-Logo-03.png'/>
+                    </th>
+                </tr>
+            </table>
+        </div>
+        <!-- todo body section -->
+        <div class="article o_report_layout_standard m-0 p-0">
+            <t t-out="0"/>
+        </div>
+        <!-- todo footer section -->
+        <div class="footer o_standard_footer m-0 p-0 border border-bottom-0 border-end-0 border-start-0  border-secondary border-4">
+            <span>
+                <h6>نشانی: خیابان حافظ، پایین تر از جمهوری، بازار موبایل ایران، طبقه 3، واحد 503C.</h6>
+                <h6>شنبه تا چهارشنبه ساعت 9 الی 17 و پنجشنبه‌ها از 9 الی 13</h6>
+                <h6>شماره تماس: 02167385555</h6>
+            </span>
+            <p class="text-center">
+                page :<span class="page"/>/<span class="topage"/>
+            </p>
+        </div>    
+    </template>
+    <!-- To here create template for Print action -->
+    <template id="mobile_service_empty_ticket_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="doc" t-value="doc.with_context(lang=lang)" />
+                <t t-call="mobile_service.mobile_service_empty_ticket_template_header_footer">
+                    <div class="page text-start m-0 p-0" style="position:relative; font-family:'Yekan Bakh Fa 04';">
+                        <table class="table table-bordered border-1 m-0">
+                            <tr class="border-1">
+                                <th class="border-1" colspan="4">
+                                    اطلاعات مشتری
+                                </th>
+                                <th class="border-1" colspan="4">
+                                    اطلاعات دستگاه
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="border-1" colspan="4">
+                                    <ul style="list-style:none;">
+                                        <li class="pb-1">
+                                            نام و نام خانوادگی:
+                                            <span>...................</span> 
+                                        </li>
+                                        <li class="pb-1">
+                                            کد ملی:
+                                            <span>...................</span> 
+                                        </li>
+                                        <li class="pb-1">
+                                            شماره تماس:
+                                            <span>...................</span>   
+                                        </li>
+                                        <li class="pb-1">
+                                            تاریخ و ساعت پذیرش:
+                                            <span>...................</span> 
+                                        </li>
+                                        <li class="pb-1">
+                                            نام پذیرنده:
+                                            <span>...................</span> 
+                                        </li>
+                                    </ul> 
+                                </th>
+                                <th class="border-1" colspan="4">
+                                    <ul style="list-style:none;" >
+                                        <li class="pb-1">
+                                            شماره درخواست:
+                                            <span>...................</span> 
+                                        </li>
+                                        <li class="pb-1">
+                                            شماره IMEI: 
+                                            <span>...................</span> 
+                                        </li>
+                                        <li class="pb-1">
+                                            مدل کامل دستگاه:  
+                                            <span>.........................</span> 
+                                        </li>
+                                        <li class="pb-1">
+                                            اقلام همراه گوشی: 
+                                            <span>....................................................</span> 
+                                        </li>
+                                        <li class="pb-1">
+                                            تاریخ آغاز گارانتی: 
+                                            <span>...................</span> 
+                                            تاریخ پایان گارانتی: 
+                                            <span>...................</span> 
+                                        </li>
+                                        <li class="pb-1">
+                                            مشکل اظهار شده: 
+                                            <span>................................</span> 
+                                        </li>
+                                        <li class="pb-1">
+                                            وضعیت ظاهری دستگاه:
+                                            <span>...................</span> 
+                                        </li>
+                                    </ul> 
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="border-1" colspan="8">
+                                    <ol class="list-group">
+                                        <li class="list-group-item"> پذیرش و دریافت کالا به منزله تایید گارانتی کالا نیست. چنانچه پس از بررسی فنی، مورد نقض گارانتی توسط بخش فنی تشخیص داده شود، این موضوع اطلاع رسانی خواهد شد.</li>
+                                        <li class="list-group-item">در صورت ابطال گارانتی، کالای معیوب به مشتری عودت داده خواهد شد و یا در صورت امکان و تقبل هزینه از سوی مشتری، تعمیرات خارج از شرایط ضمانت انجام خواهد گرفت.</li>
+                                        <li class="list-group-item">مرکز خدمات فقط به مدت یک ماه پس از آماده شدن، نگهدار کالا است و در صورت عدم مراجعه طی این مدت شرکت مسئولیتی در قبال نگهداری کالا ندارد و هنگام تحویل هزینه انبارداری دریافت خواهد شد. </li>
+                                        <li class="list-group-item">کارشناسان در اولین فرصت پس از رفع عیب با شما تماس خواهند گرفت اما در صورت تمایل می توانید در زمان‌های اداری با تلفن های ذکر شده تماس بگیرید.</li>
+                                        <li class="list-group-item">این مرکز هیچ گونه مسئولیتی در قبال حفظ و نگهداری اطلاعات داخل دستگاه، اکانت‌هایکاربری نظیر Gmail، Samsung account، MI account، Apple ID و … و همچنین گلس محافظ صفحه نمایش ندارد.</li>
+                                        <li class="list-group-item">مشتری موظف است از اکانت های کاربری خود داخل گوشی خارج شود (sign out). مسئولیت مشکلات بعدی ناشی از خارج نشدن از آنها برعهده خود ایشان خواهد بود.</li>
+                                        <li class="list-group-item">درصورتیکه در طول فرآیند تعمیر نیاز به دریافت نظر یا اطلاعات خاصی از مشتری باشد و مشتری این اطلاعات را با تاخیر به شرکت اعلام نماید، مسئولیت تاخیر در فرآیند کلی تعمیرات به عهده مشتری بوده و شرکت مسئولیتی نخواهد داشت.</li>
+                                        <li class="list-group-item">جهت تحویل گرفتن دستگاه، بعد از هماهنگی با شرکت، با همراه  داشتن کارت ملی و این رسید به مرکز مراجعه فرمایید. دستگاه بدون رسید و کارت ملی تحویل داده نخواهد شد.</li>
+                                        <li class="list-group-item">امضای آورنده کالا به منزله اطلاع، قبول و تایید کلیه شرایط و توضیحات مندرج در این رسید است.</li>
+                                    </ol>
+                                </th>
+                            </tr>
+                        </table>
+                        <table class="table table-bordered border-1 m-0">
+                            <tr class="border-1">
+                                <th class="border-0" colspan="4">
+                                    امضای پذیرنده:
+                                </th>
+                                <th class="border-0" colspan="4">
+                                    نام و امضای آورنده کالا:
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
