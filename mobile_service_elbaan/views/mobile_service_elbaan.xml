@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="mobile_service_requests_form_view" model="ir.ui.view">
+        <field name="model">mobile_service.service</field>
+		<field name="inherit_id" ref="mobile_service.mobile_service_request_form_view"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='service_state']" position="before">
+				     <!-- all state button is in there -->
+					 <div  class="btn-group flex-shrink-1 mh-300" role="group" aria-label="Button group example">
+                        <!--**** State Draft(draft) *********************************************-->
+                        <button 
+                            type="object"  
+                            class="btn btn-secondary btn-sm "
+                            string="Check IMEI"
+                            name="action_chk_service" 
+                            attrs="{'invisible': [('service_state','not in',('draft'))]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
+							confirm="You want check imei?">
+                            <span class="spinner-grow spinner-grow-sm"></span> Check IMEI
+                        </button>
+                        <button 
+                            type="object" 
+                            class="btn btn-primary btn-sm"
+                            string="Accept"
+                            name="action_accept_service" 
+                            attrs="{'invisible': ['|',('service_state','not in',('draft')),('model_id','=',False)]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
+							confirm="Are you sure Accepted?"/>
+                        <!--** State Accepted(accept)******************************************* -->
+                        <button  
+                            type="object" 
+                            class="btn btn-primary btn-sm"
+                            string="Check/Cancel Warranty"
+                            name="action_view_warranty"  
+                            attrs="{'invisible': ['|',('warranty_id','=',False),('service_state','not in',('accepted'))]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" 
+							confirm="You want go to Warranty?"/>
+                        <button  
+                            type="object" 
+                            class="btn btn-secondary btn-sm"
+                            string=" Assessment"
+                            name="action_easmobile_service" 
+                            attrs="{'invisible': ['|',('imei_no','=',False),('service_state','not in',('accepted'))]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
+							confirm="Are you sure assenment?" />
+                        
+                        <!-- **** State Customer action and notification(caan)  ***************** -->
+                         
+                        <button  
+                            type="object" 
+                            class="btn btn-primary btn-sm"
+                            string=" Confirmation" 
+                            name="action_easmobile_service"  
+                            attrs="{'invisible': [('service_state','not in',('customer'))]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
+							confirm="Are you sure Confirmation?" />
+                        <button  
+                            type="object" 
+                            class="btn btn-secondary btn-sm"
+                            string=" Rejection"
+                            name="action_qcsmobile_service" 
+                            attrs="{'invisible': [('service_state','not in',('customer'))]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
+							confirm="Are you sure Rejection?" />
+                        <button  
+                            type="object" 
+                            class="btn btn-primary btn-sm"
+                            string=" Failure to receive service"
+                            name="action_qcsmobile_service" 
+                            attrs="{'invisible': [('service_state','not in',('customer'))]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
+							confirm="Are you sure Failure to receive service?" />
+                        <button  
+                            type="object" 
+                            class="btn btn-secondary btn-sm"
+                            string=" Receive service"
+                            name="action_accept_service" 
+                            attrs="{'invisible': [('service_state','not in',('customer'))]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
+							confirm="Are you sure Failure to Receive service?" />
+						<!-- **** State Evaluation and service(easmobile) ****************************************** -->
+                         
+                        <button  
+                            type="object" 
+                            class="btn btn-primary btn-sm"
+                            string=" Repairable" 
+                            name="action_acceptmobile_service" 
+                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+							confirm="Are you sure Failure to Repairable?" />
+							
+                        <button  
+                            type="object" 
+                            class="btn btn-secondary btn-sm"
+                            string=" Unrepairable" 
+                            name="action_qcsmobile_service" 
+                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+							confirm="Are you sure Unrepairable?" />
+
+                        <button  
+                            type="object" 
+                            class="btn btn-primary btn-sm"
+                            string=" Coordination with the customer" 
+                            name="action_accept_service" 
+                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer" 
+							confirm="Are you sure Coordination with the customer" />
+                        <button  
+                            type="object" 
+                            class="btn btn-secondary btn-sm"
+                            string=" No warranty" 
+                            name="action_accept_service" 
+                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+							confirm="Are you sure this warranty?" />
+
+                        <button  
+                            type="object" 
+                            class="btn btn-primary btn-sm"
+                            string=" Exchange/return" 
+                            name="action_acceptmobile_service" 
+                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+							confirm="Are you sure Exchange/return?" />
+
+                        <button  
+                            type="object" 
+                            class="btn btn-secondary btn-sm"
+                            string=" Termination of services" 
+                            name="action_qcsmobile_service" 
+                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+							confirm="Are you sure Termination of services?" />
+
+                        <button  
+                            type="object" 
+                            class="btn btn-primary btn-sm"
+                            string=" Create Invoice" 
+                            name="action_invoice_create_wizard" 
+                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+							confirm="Are you sure Create Invoice?" />
+
+                        <!-- **** State Quality Control and shipping(qcsmobile) ****************************************** -->
+                         
+                        <button  
+                            type="object" 
+                            class="btn btn-secondary btn-sm"
+                            string=" Confirm repair" 
+                            name="action_finmobile_service" 
+                            attrs="{'invisible': [('service_state','not in',('quality'))]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_qcemployee"
+							confirm="Are you sure Confirm repair?" />
+
+                        <button  
+                            type="object" 
+                            class="btn btn-primary btn-sm"
+                            string=" Confirmation of replacement" 
+                            name="action_finmobile_service" 
+                            attrs="{'invisible': [('service_state','not in',('quality'))]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_qcemployee"
+							confirm="Are you sure Confirmation of replacement?" />
+
+                        <button  
+                            type="object" 
+                            class="btn btn-secondary btn-sm"
+                            string=" Disapproval" 
+                            name="action_easmobile_service" 
+                            attrs="{'invisible': [('service_state','not in',('quality'))]}" 
+                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_qcemployee"
+							confirm="Are you sure Disapproval?" />
+
+                        <!-- *********************** State delivered(finmobile) ****************************************** -->
+                        <button  
+                            type="object" 
+                            class="btn btn-primary btn-sm fa fa-paper-plane"
+                            string=" Send Mail To Customer" 
+                            name="action_send_mail" 
+                            attrs="{'invisible': [('service_state','not in',('delivered'))]}" 
+                            groups="mobile_service.mobile_service_group_manager"
+							confirm="Are you sure Send Mail To Customer?" />
+
+                        <button  
+                            type="object" 
+                            class="btn btn-secondary btn-sm fa fa-handshake-o"
+                            string=" Send information to CRM" 
+                            name="register_to_crm" 
+                            attrs="{'invisible': [('service_state','not in',('delivered'))]}"
+                            groups="mobile_service.mobile_service_group_manager"
+							confirm="Are you sure Send information to CRM?" />
+
+                        <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+                    </div>
+					
+			</xpath>
+        
+		</field>
+	</record>
+</odoo>

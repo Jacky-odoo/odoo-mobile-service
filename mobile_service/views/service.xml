@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="mobile_service_sequence" model="ir.sequence">
         <field name="name">Service Code</field>
@@ -39,167 +40,11 @@
                 <!-- Hidden fields -->
                 <field name="picking_count" invisible="1" />
                 <header> 
-                    <!-- all state button is in there -->
-                    <div  class="btn-group flex-shrink-1 mh-300" role="group" aria-label="Button group example">
-                        <!--**** State Draft(draft) *********************************************-->
-                        <button 
-                            type="object"  
-                            class="btn btn-secondary btn-sm "
-                            string="Check IMEI"
-                            name="action_chk_service" 
-                            attrs="{'invisible': [('service_state','not in',('draft'))]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor">
-                            <span class="spinner-grow spinner-grow-sm"></span> Check IMEI
-                        </button>
-                        <button 
-                            type="object" 
-                            class="btn btn-primary btn-sm"
-                            string="Accept"
-                            name="action_accept_service" 
-                            attrs="{'invisible': ['|',('service_state','not in',('draft')),('model_id','=',False)]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"/>
-                        <!--** State Accepted(accept)******************************************* -->
-                        <button  
-                            type="object" 
-                            class="btn btn-primary btn-sm"
-                            string="Check/Cancel Warranty"
-                            name="action_view_warranty"  
-                            attrs="{'invisible': ['|',('warranty_id','=',False),('service_state','not in',('accepted'))]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
-                        <button  
-                            type="object" 
-                            class="btn btn-secondary btn-sm"
-                            string=" Assessment"
-                            name="action_easmobile_service" 
-                            attrs="{'invisible': ['|',('imei_no','=',False),('service_state','not in',('accepted'))]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
-                        
-                        <!-- **** State Customer action and notification(caan)  ***************** -->
-                         
-                        <button  
-                            type="object" 
-                            class="btn btn-primary btn-sm"
-                            string=" Confirmation" 
-                            name="action_easmobile_service"  
-                            attrs="{'invisible': [('service_state','not in',('customer'))]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
-                        <button  
-                            type="object" 
-                            class="btn btn-secondary btn-sm"
-                            string=" Rejection"
-                            name="action_qcsmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('customer'))]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
-                        <button  
-                            type="object" 
-                            class="btn btn-primary btn-sm"
-                            string=" Failure to receive service"
-                            name="action_qcsmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('customer'))]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
-                        <button  
-                            type="object" 
-                            class="btn btn-secondary btn-sm"
-                            string=" Receive service"
-                            name="action_accept_service" 
-                            attrs="{'invisible': [('service_state','not in',('customer'))]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor" />
-                        <!-- **** State Evaluation and service(easmobile) ****************************************** -->
-                         
-                        <button  
-                            type="object" 
-                            class="btn btn-primary btn-sm"
-                            string=" Repairable" 
-                            name="action_acceptmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer" />
-                        <button  
-                            type="object" 
-                            class="btn btn-secondary btn-sm"
-                            string=" Unrepairable" 
-                            name="action_qcsmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer" />
-                        <button  
-                            type="object" 
-                            class="btn btn-primary btn-sm"
-                            string=" Coordination with the customer" 
-                            name="action_accept_service" 
-                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer" />
-                        <button  
-                            type="object" 
-                            class="btn btn-secondary btn-sm"
-                            string=" No warranty" 
-                            name="action_accept_service" 
-                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer" />
-                        <button  
-                            type="object" 
-                            class="btn btn-primary btn-sm"
-                            string=" Exchange/return" 
-                            name="action_acceptmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer" />
-                        <button  
-                            type="object" 
-                            class="btn btn-secondary btn-sm"
-                            string=" Termination of services" 
-                            name="action_qcsmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer" />
-                        <button  
-                            type="object" 
-                            class="btn btn-primary btn-sm"
-                            string=" Create Invoice" 
-                            name="action_invoice_create_wizard" 
-                            attrs="{'invisible': [('service_state','not in',('evaluation'))]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer" />
-                        <!-- **** State Quality Control and shipping(qcsmobile) ****************************************** -->
-                         
-                        <button  
-                            type="object" 
-                            class="btn btn-secondary btn-sm"
-                            string=" Confirm repair" 
-                            name="action_finmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('quality'))]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_qcemployee" />
-                        <button  
-                            type="object" 
-                            class="btn btn-primary btn-sm"
-                            string=" Confirmation of replacement" 
-                            name="action_finmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('quality'))]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_qcemployee" />
-                        <button  
-                            type="object" 
-                            class="btn btn-secondary btn-sm"
-                            string=" Disapproval" 
-                            name="action_easmobile_service" 
-                            attrs="{'invisible': [('service_state','not in',('quality'))]}" 
-                            groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_qcemployee" /> 
-                        <!-- *********************** State delivered(finmobile) ****************************************** -->
-                        <button  
-                            type="object" 
-                            class="btn btn-primary btn-sm fa fa-paper-plane"
-                            string=" Send Mail To Customer" 
-                            name="action_send_mail" 
-                            attrs="{'invisible': [('service_state','not in',('delivered'))]}" 
-                            groups="mobile_service.mobile_service_group_manager" />  
-                        <button  
-                            type="object" 
-                            class="btn btn-secondary btn-sm fa fa-handshake-o"
-                            string=" Send information to CRM" 
-                            name="register_to_crm" 
-                            attrs="{'invisible': [('service_state','not in',('delivered'))]}"
-                            groups="mobile_service.mobile_service_group_manager" />  
-                        <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-                    </div>
-                
+               <!-- todo <statusbar_colors='{"draft":"danger","accepted":"blue"}' -->
                         <field 
                             name="service_state" 
                             widget="statusbar"
-                            statusbar_visible="draft,accept,caan,esamobile,qcsmobile,finmobile" />
+                            statusbar_visible="draft,accept,caan,esamobile,qcsmobile,finmobile"/>
                 
                 </header>
                 <!--*                     There is messages that for warranty -->                
@@ -250,7 +95,8 @@
                             <field 
                                 name="national_code" 
                                 pattern="[0-9]{10}"
-                                placeholder="Enter 10 Number That is your national Code" />
+                                placeholder="Enter 10 Number That is your national Code"
+                                attrs="{'readonly': [('service_state','not in',('draft'))]}" />
                             <field 
                                 name="country_id" 
                                 options='{"no_open": True, "no_create": True}' />
