@@ -1,101 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="widget_submit_wizard" name="Select submit Wizard Page">
-        <section class="text-center">
-            <h3 class="text-center">فرم زیر را تکمیل کنید</h3>
-        </section>
-        <div class="d-flex flex-column p-0 m-0">
-            <form id="register_request_form"
-                method="POST"
-                action="/mobile-service/submit_service_request"
-                data-success_page="/"
-                class="container-fluid mt32 container p-15 p-md-8 border-1 rounded-3 align-self-center border border-dark bg-secondary bg-gradient text-white"
-                style="direction: rtl; min-width: 16px; min-height: 16px; border-style: solid; margin-bottom: 15px; max-width: 450px;">
-                <!-- Hiden items-->
-                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                <input type="hidden" name="brand_ref" t-att-value="brand.internal_ref"/>
-                <input type="hidden" name="model_ref" t-att-value="model.internal_ref"/>
-                <input type="hidden" name="complaint_ref" t-att-value="complaint.internal_ref"/>
-                <input type="hidden" name="complaint_description_ref" t-att-value="complaint_description.internal_ref"/>
+    <data noupdate="0">
+        <template id="widget_submit_wizard" name="Select submit Wizard Page">
+            <section class="text-center">
+                <h3 class="text-center">فرم زیر را تکمیل کنید</h3>
+            </section>
+            <div class="d-flex flex-column p-0 m-0">
+                <form id="register_request_form"
+                    method="POST"
+                    action="/mobile-service/submit_service_request"
+                    data-success_page="/"
+                    class="container-fluid mt32 container p-15 p-md-8 border-1 rounded-3 align-self-center border border-dark bg-secondary bg-gradient text-white"
+                    style="min-width: 16px; min-height: 16px; border-style: solid; margin-bottom: 15px; max-width: 450px;">
+                    <!-- Hiden items-->
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <input type="hidden" name="brand_ref" t-att-value="brand.internal_ref"/>
+                    <input type="hidden" name="model_ref" t-att-value="model.internal_ref"/>
+                    <input type="hidden" name="complaint_ref" t-att-value="complaint.internal_ref"/>
+                    <input type="hidden" name="complaint_description_ref" t-att-value="complaint_description.internal_ref"/>
 
-                <div class="form-group form-field o_website_form_required_custom" >
-                    <label class="col-md-3 col-sm-4 control-label" for="contact_name">نام:</label>
-                    <div class="col-md-7 col-sm-8 input-group">
-                        <input type="text"
-                            class="form-control o_website_form_input"
-                            name="contact_name"
-                            id="contact_name"
-                            placeholder="لطفا نام خود را وارد کنید"
-                            required="" 
-                            data-bs-toggle="tooltip" 
-                            data-bs-placement="top" 
-                            title="فیلد را حتما پر کنید"/>
+                    <div class="form-group form-field o_website_form_required_custom" >
+                        <label class="col-md-3 col-sm-4 control-label" for="contact_name">نام:</label>
+                        <div class="col-md-7 col-sm-8 input-group">
+                            <input type="text"
+                                class="form-control o_website_form_input"
+                                name="contact_name"
+                                id="contact_name"
+                                placeholder="لطفا نام خود را وارد کنید"
+                                required="" 
+                                data-bs-toggle="tooltip" 
+                                data-bs-placement="top" 
+                                title="فیلد را حتما پر کنید"/>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group form-field o_website_form_required_custom">
-                    <label class="col-md-3 col-sm-4 control-label" for="phone" >شماره موبایل:</label>
-                    <div class="col-md-7 col-sm-8 input-group">
-                        <input type="text"
-                            class="form-control o_website_form_input bfh-phone"
-                            pattern="^[0۰][۱۲۳۴۵۶۷۸۹۰1234567890]+$"
-                            name="phone"
-                            id="phone"
-                            placeholder="0**********"
-                            required="" 
-                            data-bs-toggle="tooltip" data-bs-placement="top" title="---------> فیلد را بر اساس الگو پر کنید"/>
+                    <div class="form-group form-field o_website_form_required_custom">
+                        <label class="col-md-3 col-sm-4 control-label" for="phone" >شماره موبایل:</label>
+                        <div class="col-md-7 col-sm-8 input-group">
+                            <input type="number"
+                                class="form-control o_website_form_input"
+                                pattern="^[0۰][۱۲۳۴۵۶۷۸۹۰1234567890]+$"
+                                name="phone"
+                                id="phone"
+                                textAlignment="viewStart"
+                                gravity="right"
+                                layoutDirection="rtl"
+                                textDirection="rtl"
+                                required="" 
+                                data-bs-toggle="tooltip" data-bs-placement="left" title="فیلد را بر اساس الگو پر کنید"/>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group form-field o_website_form_required_custom">
-                    <label class="col-md-3 col-sm-4 control-label" for="street" >آدرس:</label>
-                    <div class="col-md-7 col-sm-8 input-group">
-                        <input type="text"
-                            class="form-control o_website_form_input"
-                            placeholder="لطفا آدرس خود را وارد کنید"
-                            name="street"
-                            id="street"
-                            required="" 
-                            data-bs-toggle="tooltip" data-bs-placement="top" title="فیلد را حتما پر کنید"/>
+                    <div class="form-group form-field o_website_form_required_custom">
+                        <label class="col-md-3 col-sm-4 control-label" for="street" >آدرس:</label>
+                        <div class="col-md-7 col-sm-8 input-group">
+                            <input type="text"
+                                class="form-control o_website_form_input"
+                                placeholder="لطفا آدرس خود را وارد کنید"
+                                name="street"
+                                id="street"
+                                required="" 
+                                data-bs-toggle="tooltip" data-bs-placement="top" title="فیلد را حتما پر کنید"/>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group form-field o_website_form_required_custom">
-                    <label class="col-md-3 col-sm-4 control-label" for="email_from" >ایمیل:</label>
-                    <div class="col-md-7 col-sm-8 input-group">
-                        <input type="email"
-                            class="form-control o_website_form_input"
-                            placeholder="لطفا ایمیل خود را وارد کنید"
-                            name="email_from"
-                            id="email_from"
-                            data-bs-toggle="tooltip" data-bs-placement="top" title="فیلد را حتما پر کنید"/>
+                    <div class="form-group form-field o_website_form_required_custom">
+                        <label class="col-md-3 col-sm-4 control-label" for="email_from" >ایمیل:</label>
+                        <div class="col-md-7 col-sm-8 input-group">
+                            <input type="email"
+                                class="form-control o_website_form_input"
+                                placeholder="لطفا ایمیل خود را وارد کنید"
+                                name="email_from"
+                                id="email_from"/>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group form-field o_website_form_required_custom">
-                    <label class="col-md-3 col-sm-4 control-label" for="description">توضیحات:</label>
-                    <div class="col-md-7 col-sm-8 input-group">
-                        <textarea type="text"
-                            rows="5"
-                            class="form-control o_website_form_input"
-                            name="description"
-                            id="description"/>
+                    <div class="form-group form-field o_website_form_required_custom">
+                        <label class="col-md-3 col-sm-4 control-label" for="description">توضیحات:</label>
+                        <div class="col-md-7 col-sm-8 input-group">
+                            <textarea type="text"
+                                rows="5"
+                                class="form-control o_website_form_input"
+                                name="description"
+                                id="description"/>
+                        </div>
                     </div>
-                </div>
-                <div class="form-check">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" required="True"/>
-                        <label class="form-check-label" for="flexCheckChecked" data-bs-toggle="tooltip" data-bs-placement="top" title="فرم در صورتی ثبت میشود که شما قوانین را پذیرفته باشید">
-                        قوانین البان را می پذیرم
-                        </label>
-                        <div class="valid-feedback">ممنون که قوانین ما را قبول کردین</div>
-                        <div class="invalid-feedback">لطفا قوانین را قبول کنید</div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" required="True"/>
+                            <label class="form-check-label" for="flexCheckChecked" data-bs-toggle="tooltip" data-bs-placement="top" title="فرم در صورتی ثبت میشود که شما قوانین را پذیرفته باشید">
+                            قوانین البان را می پذیرم
+                            </label>
+                            <div class="valid-feedback">ممنون که قوانین ما را قبول کردین</div>
+                            <div class="invalid-feedback">لطفا قوانین را قبول کنید</div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
-                        <button type="submit" class="btn btn-default" style=' background-color: rgb(40, 197, 255); color: black; padding: 13px; font-size: 1.2em; font-weight: 600; align-self: center; border-radius: 10px; margin: 8px;'>
-                            درخواست
-                        </button>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+                            <button type="submit" class="btn btn-default" style=' background-color: rgb(40, 197, 255); color: black; padding: 13px; font-size: 1.2em; font-weight: 600; align-self: center; border-radius: 10px; margin: 8px;'>
+                                درخواست
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
-    </template>
+                </form>
+            </div>
+        </template>
+    </data>
 </odoo>
