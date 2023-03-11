@@ -44,8 +44,7 @@
                         <field 
                             name="service_state" 
                             widget="statusbar"
-                            statusbar_visible="draft,accept,caan,esamobile,qcsmobile,finmobile"/>
-                
+                            statusbar_visible="draft,accepted,customer,evaluation,quality,delivered"/>
                 </header>
                 <!--*                     There is messages that for warranty -->                
                 <div class="alert alert-warning m-0 p-0 w-100 fa fa-2x fa-exclamation-triangle" 
