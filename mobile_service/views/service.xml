@@ -122,7 +122,6 @@
                                 attrs="{'readonly': [('service_state','not in',('draft'))]
                                                             ,'invisible' : [('service_state','in',('draft'))]}" />
 
-
                             <field 
                                 name="technician_id" 
                                 attrs="{'readonly': [('service_state','not in',('draft', 'customer'))]}" />
