@@ -45,7 +45,8 @@
                             name="service_state" 
                             widget="statusbar"
                             statusbar_visible="draft,accepted,customer,evaluation,quality,delivered"
-                            statusbar_colors='{"Draft":"green","Accepted":"red"}'/>
+                            statusbar_colors='{"Draft":"green","Accepted":"red"}'
+                            attrs="{'invisible': [('service_state','in',('evaluation'))]}"/>
                 </header>
                 <!--*                     There is messages that for warranty -->                
                 <div class="alert alert-warning m-0 p-0 w-100 fa fa-2x fa-exclamation-triangle" 

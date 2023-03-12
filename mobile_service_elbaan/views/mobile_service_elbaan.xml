@@ -195,7 +195,8 @@
                     <field 
                         name="substate_evaluation" 
                         widget="statusbar"
-                        statusbar_visible="evaluation,ppsupply,repairs"/>
+                        statusbar_visible="evaluation,ppsupply,repairs"
+                        attrs="{'invisible': [('service_state','not in',('evaluation'))]}"/>
 			</xpath>
         
 		</field>
