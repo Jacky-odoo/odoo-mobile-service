@@ -14,10 +14,9 @@
                         type="object"
                         class="btn btn-secondary btn-sm "
                         string="Check IMEI"
-                        name="action_chk_service"
+                        name="action_chk_on_service"
                         attrs="{'invisible': [('service_state','not in',('draft'))]}"
-                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
-                        confirm="You want check imei?">
+                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor">
                         <span class="spinner-grow spinner-grow-sm"></span> Check IMEI </button>
                     <button
                         type="object"

@@ -1,7 +1,8 @@
-from datetime import datetime, date, timedelta
+# -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
 from odoo.exceptions import  UserError
 from odoo.http import request
+from datetime import datetime, date, timedelta
 import pytz
 import re 
 
@@ -198,22 +199,10 @@ class MobileServiceShop(models.Model):
         if warranty_ids:
             self.warranty_id = warranty_ids[0]
             self.model_id = self.warranty_id.model_id
+        else:
+            self.warranty_id = False
+            self.model_id = False
     
-    def action_chk_service(self):
-        warranty_ids = False
-        if self.imei_no:
-            warranty_ids = self.env['mobile_service.warranty'].search(
-                [
-                    '&',
-                    ('company_id', '=', self.company_id.id),
-                    '|',
-                    ('imei1', '=', self.imei_no),
-                    ('imei2', '=', self.imei_no)],
-                limit=1,
-                order="expire_date DESC")
-        if warranty_ids:
-            self.warranty_id = warranty_ids[0]
-            self.model_id = self.warranty_id.model_id 
 
 # Action for States that we create in mobile service ---------->
 
