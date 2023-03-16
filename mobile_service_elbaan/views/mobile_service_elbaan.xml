@@ -162,7 +162,7 @@
                         confirm="Are you sure Breach of Warranty?" />
                     <button
                         type="object"
-                        class="btn btn-secondary btn-sm"
+                        class="btn btn-primary btn-sm"
                         string=" Need customer information"
                         name="action_acceptmobile_service"
                         attrs="{'invisible': ['|',('service_state','not in',('evaluation')),('substate_evaluation','not in',('repairs'))]}"
@@ -178,7 +178,7 @@
                         confirm="Are you sure Unrepairable?" />
                     <button
                         type="object"
-                        class="btn btn-secondary btn-sm"
+                        class="btn btn-primary btn-sm"
                         string=" Need parts"
                         name="action_needparts_service"
                         attrs="{'invisible': ['|',('service_state','not in',('evaluation')),('substate_evaluation','not in',('repairs'))]}"
