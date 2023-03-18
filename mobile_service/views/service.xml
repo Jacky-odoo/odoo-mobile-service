@@ -262,7 +262,11 @@
                 <field name="complaint_tree_ids" widget="many2many_tags" />
 
                 <!-- state is used -->
-                <field name="service_state" widget="badge" decoration-info="service_state == 'draft'" decoration-success="service_state == 'delivered'" />
+                <field name="service_state" 
+                    widget="badge" 
+                    decoration-info="service_state == 'draft'" 
+                    decoration-success="service_state == 'accepted'"
+                    decoration-warning="service_state == 'quality'" />
                 <field name="company_id" optional="show" groups="base.group_multi_company" />
             </tree>
         </field>
