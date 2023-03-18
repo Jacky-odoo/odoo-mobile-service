@@ -527,26 +527,3 @@ class MobileServiceShop(models.Model):
     def _compute_is_in_warranty(self):
         self.is_in_warranty = self.warranty_id and (
             self.warranty_id.expire_date and self.warranty_id.expire_date > self.date_request)
-        
-    #! Connect To Crm and Create this item for this fields
-    def register_to_crm(self):
-        # Create CRM and record this fields
-        Model = request.env['crm.lead']
-        Model.sudo().create({
-            'name': self.name,
-            'street': self.street,
-            'mobile': self.contact_no,
-            'email_from': self.email_id,
-            'description': self.service_state,
-            'date_open' : self.accept_date,
-            'date_closed' : self.warranty_id.expire_date,
-            #color side of this field in crm
-            'color' : 4,
-            'function' : 'Elban',
-            #Email Campaign - Services id number
-            'campaign_id' : '3',
-            #Create this field to پیشنهادات
-            'stage_id' : '3',
-            'partner_id' : self.person_id.id,
-            'national_code' : self.national_code,
-        })
