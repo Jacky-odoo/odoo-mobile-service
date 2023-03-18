@@ -63,7 +63,7 @@
                                         </li>
                                         <li class="pb-1">
                                             تاریخ و ساعت پذیرش:
-                                            <span t-esc="doc.accept_date.strftime('%Y-%m-%d %H:%M:%S')"/>
+                                            <span t-esc="doc.accept_date"/>
                                         </li>
                                         <li class="pb-1">
                                             نام پذیرنده:

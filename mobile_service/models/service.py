@@ -66,7 +66,6 @@ class MobileServiceShop(models.Model):
         default=fields.Date.context_today)
     accept_date = fields.Date(
         readonly=True,
-        default=datetime.today(),
         string="Accepted date")
     return_date = fields.Date(
         string="Return date",
