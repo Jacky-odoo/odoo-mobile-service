@@ -86,7 +86,7 @@
                                 widget="res_partner_many2one" 
                                 context="{'res_partner_search_mode': 'customer'}" 
                                 attrs="{'readonly': [('service_state','not in',('draft'))]}" />
-                            <field name="contact_no" />
+                            <field name="contact_no" widget="phone"/>
                             <field name="email_id" />
                             <field name="street" />
                             <field name="city" />

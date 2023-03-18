@@ -36,7 +36,7 @@
             <t t-foreach="docs" t-as="doc">
                 <t t-set="doc" t-value="doc.with_context(lang=lang)" />
                 <t t-call="mobile_service.mobile_service_ticket_template_header_footer">
-                    <div class="page text-start m-0 p-0" style="position:relative; font-family:'Yekan Bakh Fa 04';">
+                    <div class="page text-start m-0 p-0" style="font-family:'Yekan Bakh Fa 04';">
                         <table class="table table-bordered border-1 m-0">
                             <tr class="border-1">
                                 <th class="border-1" colspan="4">
@@ -47,7 +47,7 @@
                                 </th>
                             </tr>
                             <tr>
-                                <th class="border-1" colspan="4">
+                                <th class="border-1 text-nowrap" colspan="4">
                                     <ul style="list-style:none;">
                                         <li class="pb-1">
                                             نام و نام خانوادگی:
@@ -59,7 +59,7 @@
                                         </li>
                                         <li class="pb-1">
                                             شماره تماس:
-                                            <span t-esc="doc.contact_no"/>   
+                                            <span style="direction: ltr /* rtl:ignore */ !important;" t-esc="doc.contact_no"/>   
                                         </li>
                                         <li class="pb-1">
                                             تاریخ و ساعت پذیرش:
@@ -87,10 +87,6 @@
                                             <span t-esc="doc.brand_id.name"/>
                                         </li>
                                         <li class="pb-1">
-                                            اقلام همراه گوشی: 
-                                            <span t-esc="doc.internal_notes"/>
-                                        </li>
-                                        <li class="pb-1">
                                             تاریخ آغاز گارانتی: 
                                             <span t-esc="doc.warranty_id.start_date"/>
                                             تاریخ پایان گارانتی: 
@@ -100,17 +96,18 @@
                                             مشکل اظهار شده: 
                                             <t t-foreach="doc.complaint_tree_ids" t-as="a">
                                                 <span t-esc="a.complaint_id.name"/>
+                                                <span t-esc="a.complaint_description_id.name"/>
                                             </t>
                                         </li>
                                         <li class="pb-1">
-                                            وضعیت ظاهری دستگاه:
+                                            وضعیت ظاهری دستگاه و اقلام همراه گوشی:
                                             <span t-esc="doc.internal_notes"/>
                                         </li>
                                     </ul> 
                                 </th>
                             </tr>
                             <tr>
-                                <th class="border-1" colspan="8">
+                                <th colspan="8">
                                     <ol class="list-group">
                                         <li class="list-group-item"> پذیرش و دریافت کالا به منزله تایید گارانتی کالا نیست. چنانچه پس از بررسی فنی، مورد نقض گارانتی توسط بخش فنی تشخیص داده شود، این موضوع اطلاع رسانی خواهد شد.</li>
                                         <li class="list-group-item">در صورت ابطال گارانتی، کالای معیوب به مشتری عودت داده خواهد شد و یا در صورت امکان و تقبل هزینه از سوی مشتری، تعمیرات خارج از شرایط ضمانت انجام خواهد گرفت.</li>

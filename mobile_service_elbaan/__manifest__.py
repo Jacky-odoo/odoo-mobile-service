@@ -20,7 +20,10 @@
     'images': [
         
     ],
-    'assets': {
+     'assets': {
+        'web.assets_backend': [
+            'mobile_service_elbaan/static/src/css/mobile_service_elbaan.css',
+        ],
     },
     'installable': True,
     'application': True,

@@ -39,7 +39,7 @@
                 <t t-set="doc" t-value="doc.with_context(lang=lang)" />
                 <t t-call="mobile_service.mobile_service_empty_ticket_template_header_footer">
                     <div class="page text-start m-0 p-0"
-                        style="position:relative; font-family:'Yekan Bakh Fa 04';">
+                        style="font-family:'Yekan Bakh Fa 04';">
                         <table class="table table-bordered border-1 m-0">
                             <tr class="border-1">
                                 <th class="border-1" colspan="4">
@@ -57,7 +57,7 @@
                                         </li>
                                         <li class="pb-1"> کد ملی: <span>...................</span>
                                         </li>
-                                        <li class="pb-1"> شماره تماس: <span>...................</span>
+                                        <li class="pb-1" style="text-align:right; !important"> شماره تماس: <span>...................</span>
                                         </li>
                                         <li class="pb-1"> تاریخ و ساعت پذیرش: <span>
                                             ...................</span>
@@ -75,9 +75,6 @@
                                         <li class="pb-1"> مدل کامل دستگاه: <span>
                                             .........................</span>
                                         </li>
-                                        <li class="pb-1"> اقلام همراه گوشی: <span>
-                                            ....................................................</span>
-                                        </li>
                                         <li class="pb-1"> تاریخ آغاز گارانتی: <span>
                                             ...................</span> تاریخ پایان گارانتی: <span>
                                             ...................</span>
@@ -85,7 +82,9 @@
                                         <li class="pb-1"> مشکل اظهار شده: <span>
                                             ................................</span>
                                         </li>
-                                        <li class="pb-1"> وضعیت ظاهری دستگاه: <span>
+                                        <li class="pb-1">
+                                            وضعیت ظاهری دستگاه و اقلام همراه گوشی:
+                                             <span>
                                             ...................</span>
                                         </li>
                                     </ul>
