@@ -99,8 +99,7 @@ class MobileServiceShop(models.Model):
         comodel_name='mobile_service.complaint.tree',
         inverse_name='service_id',
         string='Complaints Tree')
-    internal_notes = fields.Text(
-        string="Internal notes")
+    internal_notes = fields.Text(string="Notes")
     product_order_line_ids = fields.One2many(
         comodel_name='product.order.line',
         inverse_name='product_order_id',

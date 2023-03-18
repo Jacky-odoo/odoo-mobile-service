@@ -99,6 +99,13 @@
                                 pattern="[0-9]{10}"
                                 placeholder="Enter 10 Number That is your national Code"
                                 attrs="{'readonly': [('service_state','not in',('draft'))]}" />
+                          
+                            <field 
+                                name="internal_notes" 
+                                string="Notes"
+                                placeholder="Notes used (eg: device password)" 
+                                attrs="{'readonly': [('service_state','in',('delivered'))]}" />
+                            
                             <field 
                                 name="country_id" 
                                 options='{"no_open": True, "no_create": True}'
@@ -153,11 +160,6 @@
                                     options='{"no_create": True}'
                                     readonly="1"
                                     force_save="1" />
-                            </group>
-                        </page>
-                        <page string="Description">
-                            <group>
-                                <field name="internal_notes" placeholder="Notes used internally (eg: device password)" attrs="{'readonly': [('service_state','in',('delivered'))]}" />
                             </group>
                         </page>
                         <page string="Complaints">
