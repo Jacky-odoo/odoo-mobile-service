@@ -172,7 +172,7 @@
                                 </form>
                             </field>
                         </page>
-                        <page string="Parts Usage">
+                        <page string="Parts and costs">
                             <field name="product_order_line_ids" mode="tree" attrs="{'readonly': [('service_state','in',('delivered'))]}">
                                 <tree string="Complaints" editable="bottom">
                                     <field name="product_id" />
