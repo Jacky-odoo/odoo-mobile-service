@@ -252,15 +252,7 @@
                     statusbar_visible="evaluation,ppsupply,repairs"
                     attrs="{'invisible': [('service_state','not in',('evaluation'))]}" />
             </xpath>
-            <!-- 
-            <xpath expr="//field[@name='national_code']" position="before">
-                <field name="device_along_items_el"
-                     widget="Toggle"
-                     optional="hide"/>
-                <field name="device_appereance_el"
-                    attrs="{'readonly': [('service_state','not in',('draft'))]}" />
-            </xpath>
-            -->
+
         </field>
     </record>
 </odoo>

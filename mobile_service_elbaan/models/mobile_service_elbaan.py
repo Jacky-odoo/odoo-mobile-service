@@ -14,17 +14,6 @@ class MobileServiceElbaanShop(models.Model):
         track_visibility='always',
         default='evaluation',
         tracking=True)
-    device_appereance_el=fields.Char()
-    device_along_items_el= fields.Selection(
-        selection=[('batterycharger', 'Battery Charger'),
-                   ('simcard', 'SIM card'),
-                   ('memory', 'Memory'),
-                   ('phonecovers', 'Phone covers'),
-                   ('box', 'Box')],
-        track_visibility='always',
-        default='memory',
-        options="{'create': False, 'create_edit': False, 'limit': 10}",
-        tracking=True)
     ################################################################################
     #              State Machin: Actions
     ################################################################################
