@@ -101,12 +101,6 @@
                                 attrs="{'readonly': [('service_state','not in',('draft'))]}" />
                           
                             <field 
-                                name="internal_notes" 
-                                string="Notes"
-                                placeholder="Notes used (eg: device password)" 
-                                attrs="{'readonly': [('service_state','in',('delivered'))]}" />
-                            
-                            <field 
                                 name="country_id" 
                                 options='{"no_open": True, "no_create": True}'
                                 invisible="1"/>
@@ -160,6 +154,15 @@
                                     options='{"no_create": True}'
                                     readonly="1"
                                     force_save="1" />
+                            </group>
+                        </page>
+                        <page string="Internal Notes">
+                            <group>
+                                <field 
+                                    name="internal_notes" 
+                                    string="Internal Notes"
+                                    placeholder="Notes used (eg: device password)" 
+                                    attrs="{'readonly': [('service_state','in',('delivered'))]}" />
                             </group>
                         </page>
                         <page string="Complaints">

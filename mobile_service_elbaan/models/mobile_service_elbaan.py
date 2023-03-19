@@ -14,6 +14,14 @@ class MobileServiceElbaanShop(models.Model):
         track_visibility='always',
         default='evaluation',
         tracking=True)
+    items_ids=fields.Many2many(
+        comodel_name='mobile_service.items',
+        relation='mobile_service_items_rel', 
+        string="Included items",
+        store=True,
+        help="this is items mobile")
+    appearance=fields.Text(string="Appearance")
+
     ################################################################################
     #              State Machin: Actions
     ################################################################################

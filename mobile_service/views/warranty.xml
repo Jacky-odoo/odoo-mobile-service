@@ -94,36 +94,36 @@
                     <group>
                         <group id="brand">
                             <field name="brand_id"
-                                attrs="{'readonly': ['|','|',('state','in',('canceled')),('state','in',('valid')),('state','in',('draft'))]}" />
+                                attrs="{'readonly': True}" />
                             <field name="model_id"
-                                attrs="{'readonly': ['|','|',('state','in',('canceled')),('state','in',('valid')),('state','in',('draft'))]}"/>
+                                attrs="{'readonly': True}"/>
                             <field name="color"
-                                attrs="{'readonly': ['|','|',('state','in',('canceled')),('state','in',('valid')),('state','in',('draft'))]}"/>
+                                attrs="{'readonly': True}"/>
                         </group>
                         <group id="imei">
                             <field name="imei1"
-                                attrs="{'readonly': ['|','|',('state','in',('canceled')),('state','in',('valid')),('state','in',('draft'))]}"/>
+                                attrs="{'readonly': True}"/>
                             <field name="imei2"
-                                attrs="{'readonly': ['|','|',('state','in',('canceled')),('state','in',('valid')),('state','in',('draft'))]}"/>
+                                attrs="{'readonly': True}"/>
                         </group>
                         <group id="import-info">
                             <field name="code_hamta"
-                                attrs="{'readonly': ['|','|',('state','in',('canceled')),('state','in',('valid')),('state','in',('draft'))]}"/>
+                                attrs="{'readonly': True}"/>
                             <field name="part_number" 
-                                attrs="{'readonly': ['|','|',('state','in',('canceled')),('state','in',('valid')),('state','in',('draft'))]}"/>
+                                attrs="{'readonly': True}"/>
                         </group>
                         <group id="partners">
                             <field name="importer_id"
-                                attrs="{'readonly': ['|','|',('state','in',('canceled')),('state','in',('valid')),('state','in',('draft'))]}"/>
+                                attrs="{'readonly': True}"/>
                             <field name="warranty_id" 
-                                attrs="{'readonly': ['|','|',('state','in',('canceled')),('state','in',('valid')),('state','in',('draft'))]}"/>
+                                attrs="{'readonly': True}"/>
                             <field name="company_id" groups="base.group_multi_company"
-                                attrs="{'readonly': ['|','|',('state','in',('canceled')),('state','in',('valid')),('state','in',('draft'))]}" />
+                                attrs="{'readonly': True}" />
                             <separator />
                             <field name="start_date" 
                                 attrs="{'readonly': ['|',('state','in',('canceled')),('state','in',('valid'))]}" />
                             <field name="expire_date"
-                                attrs="{'readonly': ['|','|',('state','in',('canceled')),('state','in',('valid')),('state','in',('draft'))],'invisible': [('state', 'in', 'draft')]}"/>
+                                attrs="{'readonly': True,'invisible': [('state', 'in', 'draft')]}"/>
                             <field name="warranty_is_expire"/>    
                         </group>
                     </group>

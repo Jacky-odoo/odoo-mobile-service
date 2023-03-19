@@ -16,6 +16,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/mobile_service_elbaan.xml',
+        'views/mobile_service_elbaan_items.xml',
     ],
     'images': [
         

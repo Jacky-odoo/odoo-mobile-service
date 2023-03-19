@@ -238,7 +238,7 @@
                         type="object"
                         class="btn btn-secondary btn-sm fa fa-handshake-o"
                         string=" Send information to CRM"
-                        name="register_to_crm"
+                        name="register_to_mobile_service"
                         attrs="{'invisible': [('service_state','not in',('delivered'))]}"
                         groups="mobile_service.mobile_service_group_manager"
                         confirm="Are you sure Send information to CRM?" />
@@ -252,7 +252,10 @@
                     statusbar_visible="evaluation,ppsupply,repairs"
                     attrs="{'invisible': [('service_state','not in',('evaluation'))]}" />
             </xpath>
-
+            <xpath expr="//field[@name='national_code']" position="after">
+                <field name="items_ids" widget="many2many_tags" string="Included items"/>
+                <field name="appearance"/>
+            </xpath>
         </field>
     </record>
 </odoo>
