@@ -100,8 +100,14 @@
                                             </t>
                                         </li>
                                         <li class="pb-1">
-                                            وضعیت ظاهری دستگاه و اقلام همراه گوشی:
-                                            <span t-esc="doc.internal_notes"/>
+                                            وضعیت ظاهری دستگاه:
+                                            <span t-esc="doc.appearance"/>
+                                        </li>
+                                        <li class="pb-1">
+                                            اقلام همراه گوشی:
+                                            <t t-foreach="doc.items_ids" t-as="d">
+                                                <span t-esc="d.name"/>
+                                            </t>
                                         </li>
                                     </ul> 
                                 </th>
