@@ -87,7 +87,7 @@
                         string=" Breach OF WARRANTY"
                         name="action_accept_service"
                         attrs="{'invisible': ['|',('service_state','not in',('evaluation')),('substate_evaluation','not in',('evaluation'))]}"
-                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure this warranty?" />
                     <button
                         type="object"
@@ -95,7 +95,7 @@
                         string=" Repairable"
                         name="action_repairabledmobile_service"
                         attrs="{'invisible': ['|',('service_state','not in',('evaluation')),('substate_evaluation','not in',('evaluation'))] , 'readonly': [('is_in_warranty', '!=', True)]}"
-                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure Repairable?" />
 
                     <button
@@ -104,7 +104,7 @@
                         string=" Unrepairable"
                         name="action_unrepairablemobile_service"
                         attrs="{'invisible': ['|',('service_state','not in',('evaluation')),('substate_evaluation','not in',('evaluation'))]}"
-                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure Unrepairable?" />
 
                     <button
@@ -113,7 +113,7 @@
                         string=" Need parts"
                         name="action_needpart_service"
                         attrs="{'invisible': ['|',('service_state','not in',('evaluation')),('substate_evaluation','not in',('evaluation'))]}"
-                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure Need parts?" />
 
                     <!--!Parts/phone supply *********************************** -->
@@ -123,7 +123,7 @@
                         string=" The failure of the part"
                         name="action_rpable_service"
                         attrs="{'invisible': ['|',('service_state','not in',('evaluation')),('substate_evaluation','not in',('ppsupply'))]}"
-                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure The failure of the part?" />
                     <button
                         type="object"
@@ -131,7 +131,7 @@
                         string=" Buy a piece"
                         name="action_rpable_service"
                         attrs="{'invisible': ['|',('service_state','not in',('evaluation')), ('substate_evaluation','not in',('ppsupply'))]}"
-                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure Buy a piece?" />
                     <button
                         type="object"
@@ -139,7 +139,7 @@
                         string=" Not available in the market"
                         name="action_notavailable_service"
                         attrs="{'invisible': ['|',('service_state','not in',('evaluation')), ('substate_evaluation','not in',('ppsupply'))]}"
-                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure Not available in the market?" />
 
                     <button
@@ -148,7 +148,7 @@
                         string=" Buy a phone"
                         name="action_bpfone_service"
                         attrs="{'invisible': ['|',('service_state','not in',('evaluation')), ('substate_evaluation','not in',('ppsupply'))]}"
-                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure Buy a phone?" />
 
                     <!--! repairs ***************************************************** -->
@@ -158,7 +158,7 @@
                         string=" Breach of Warranty"
                         name="action_accept_service"
                         attrs="{'invisible': ['|',('service_state','not in',('evaluation')),('substate_evaluation','not in',('repairs'))], 'readonly':[('is_in_warranty','!=', True)]}"
-                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure Breach of Warranty?" />
                     <button
                         type="object"
@@ -166,7 +166,7 @@
                         string=" Need customer information"
                         name="action_acceptmobile_service"
                         attrs="{'invisible': ['|',('service_state','not in',('evaluation')),('substate_evaluation','not in',('repairs'))]}"
-                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure Need customer information?" />
                     <button
                         type="object"
@@ -174,7 +174,7 @@
                         string=" Unrepairable"
                         name="action_unrepairablemobile_service"
                         attrs="{'invisible': ['|',('service_state','not in',('evaluation')),('substate_evaluation','not in',('repairs'))]}"
-                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure Unrepairable?" />
                     <button
                         type="object"
@@ -182,7 +182,7 @@
                         string=" Need parts"
                         name="action_needparts_service"
                         attrs="{'invisible': ['|',('service_state','not in',('evaluation')),('substate_evaluation','not in',('repairs'))]}"
-                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure Need parts?" />
                     <button
                         type="object"
@@ -190,7 +190,7 @@
                         string=" Repair"
                         name="action_qcsmobile_service"
                         attrs="{'invisible': ['|',('service_state','not in',('evaluation')),('substate_evaluation','not in',('repairs'))]}"
-                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_executer"
+                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure Repair?" />
 
                     <!-- **** State Quality Control and shipping(qcsmobile)
