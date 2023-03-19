@@ -73,7 +73,7 @@
     <menuitem action="action_mobile_items"
         id="mobile_service_conf5"
         parent="mobile_service.mobile_service_configuration"
-        name="Items"
+        name="Included Items"
         sequence="4" />
 
 </odoo>
