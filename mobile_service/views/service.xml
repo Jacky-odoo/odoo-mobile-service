@@ -269,9 +269,11 @@
                 <!-- state is used -->
                 <field name="service_state" 
                     widget="badge" 
-                    decoration-info="service_state == 'draft'" 
+                    decoration-danger="service_state == 'draft'" 
                     decoration-success="service_state == 'accepted'"
-                    decoration-warning="service_state == 'quality'" />
+                    decoration-warning="service_state == 'quality'"
+                    decoration-info="service_state == 'evaluation'" />
+
                 <field name="company_id" optional="show" groups="base.group_multi_company" />
             </tree>
         </field>
