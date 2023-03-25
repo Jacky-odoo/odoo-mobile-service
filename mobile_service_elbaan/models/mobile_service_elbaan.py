@@ -11,7 +11,6 @@ class MobileServiceElbaanShop(models.Model):
                    ('ppsupply', 'Parts/phone supply'),
                    ('repairs', 'Repairs')],
         string='Evaluation Sub States',
-        track_visibility='always',
         default='evaluation',
         tracking=True)
     items_ids=fields.Many2many(

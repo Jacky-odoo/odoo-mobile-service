@@ -93,7 +93,6 @@ class MobileServiceShop(models.Model):
                    ('delivered', 'Delivered')],
         string='Service Status',
         default='draft',
-        track_visibility='always',
         tracking=True)
     # ------------------------------------------------------
     complaint_tree_ids = fields.One2many(

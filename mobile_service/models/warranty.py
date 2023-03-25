@@ -75,7 +75,7 @@ class MobileWarranty(models.Model):
                    ('canceled', 'Canceled')],
         string='Status',
         default='draft',
-        track_visibility='always')
+        tracking=True)
 
     start_date = fields.Date(string="Start Date", tracking=True)
     expire_date = fields.Date(string="Expire Date", tracking=True)
