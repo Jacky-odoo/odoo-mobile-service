@@ -3,6 +3,7 @@ from odoo import models, fields
 class MobileComplaintType(models.Model):
     _name = 'mobile_service.complaint'
     _rec_name = 'name'
+    _description=" "
 
     name = fields.Char(
         string="Complaint Name", 

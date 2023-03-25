@@ -7,10 +7,11 @@ class MobileWarranty(models.Model):
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _check_company_auto = True
+    _description=" "
 
     name = fields.Char(
         string="Warranty Serial",
-        indexed=True,
+        index=True,
         readonly=True,
         copy=False,)
 
@@ -53,12 +54,12 @@ class MobileWarranty(models.Model):
     imei1 = fields.Char(
         string="IMEI 1",
         size=32,
-        indexed=True,
+        index=True,
         required=True)
     imei2 = fields.Char(
         string="IMEI 2",
         size=32,
-        indexed=True)
+        index=True)
     part_number = fields.Char(
         size=32,
         index=True,

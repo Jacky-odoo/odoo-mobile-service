@@ -4,6 +4,7 @@ from odoo import models, fields
 class MobileComplaintTypeTemplate(models.Model):
     _name = 'mobile_service.complaint.description'
     _rec_name = 'name'
+    _description=" "
 
     name = fields.Char(
         size=64,

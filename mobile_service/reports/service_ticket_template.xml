@@ -6,7 +6,7 @@
         <div class="header m-0 p-0 border border-top-0 border-end-0 border-start-0  border-secondary border-4" style="report_header_style; font-family:Yekan Bakh Fa 04;">
             <table class="table table-bordered border-1 m-0">
                 <tr class="border-0">
-                    <th class="border-0" colspan="4"> رسید شرکت <span t-esc="doc.company_id.name" />
+                    <th class="border-0" colspan="4"> رسید شرکت <span t-out="doc.company_id.name" />
                     </th>
                     <th class="border-0" colspan="4">
                         <img t-att-src="image_data_uri(doc.company_id.favicon)" style="width:70px;height:70px;" alt="Contact"/>
@@ -51,23 +51,23 @@
                                     <ul style="list-style:none;">
                                         <li class="pb-1">
                                             نام و نام خانوادگی:
-                                            <span t-esc="doc.person_id.name"/>
+                                            <span t-out="doc.person_id.name"/>
                                         </li>
                                         <li class="pb-1">
                                             کد ملی:
-                                            <span t-esc="doc.national_code"/>
+                                            <span t-out="doc.national_code"/>
                                         </li>
                                         <li class="pb-1">
                                             شماره تماس:
-                                            <span style="direction: ltr /* rtl:ignore */ !important;" t-esc="doc.contact_no"/>   
+                                            <span style="direction: ltr /* rtl:ignore */ !important;" t-out="doc.contact_no"/>   
                                         </li>
                                         <li class="pb-1">
                                             تاریخ و ساعت پذیرش:
-                                            <span t-esc="doc.accept_date"/>
+                                            <span t-out="doc.accept_date"/>
                                         </li>
                                         <li class="pb-1">
                                             نام پذیرنده:
-                                            <span t-esc="doc.acceptor_id.name"/>
+                                            <span t-out="doc.acceptor_id.name"/>
                                         </li>
                                     </ul> 
                                 </th>
@@ -75,38 +75,38 @@
                                     <ul style="list-style:none;" >
                                         <li class="pb-1">
                                             شماره درخواست:
-                                            <span t-esc="doc.name"/>
+                                            <span t-out="doc.name"/>
                                         </li>
                                         <li class="pb-1">
                                             شماره IMEI: 
-                                            <span t-esc="doc.imei_no"/>
+                                            <span t-out="doc.imei_no"/>
                                         </li>
                                         <li class="pb-1">
                                             مدل کامل دستگاه:  
-                                            <span t-esc="doc.model_id.name"/>
-                                            <span t-esc="doc.brand_id.name"/>
+                                            <span t-out="doc.model_id.name"/>
+                                            <span t-out="doc.brand_id.name"/>
                                         </li>
                                         <li class="pb-1">
                                             تاریخ آغاز گارانتی: 
-                                            <span t-esc="doc.warranty_id.start_date"/>
+                                            <span t-out="doc.warranty_id.start_date"/>
                                             تاریخ پایان گارانتی: 
-                                            <span t-esc="doc.warranty_id.expire_date"/>
+                                            <span t-out="doc.warranty_id.expire_date"/>
                                         </li>
                                         <li class="pb-1">
                                             مشکل اظهار شده: 
                                             <t t-foreach="doc.complaint_tree_ids" t-as="a">
-                                                <span t-esc="a.complaint_id.name"/>
-                                                <span t-esc="a.complaint_description_id.name"/>
+                                                <span t-out="a.complaint_id.name"/>
+                                                <span t-out="a.complaint_description_id.name"/>
                                             </t>
                                         </li>
                                         <li class="pb-1">
                                             وضعیت ظاهری دستگاه:
-                                            <span t-esc="doc.appearance"/>
+                                            <span t-out="doc.appearance"/>
                                         </li>
                                         <li class="pb-1">
                                             اقلام همراه گوشی:
                                             <t t-foreach="doc.items_ids" t-as="d">
-                                                <span t-esc="d.name"/>
+                                                <span t-out="d.name"/>
                                             </t>
                                         </li>
                                     </ul> 

@@ -5,6 +5,7 @@ from odoo import models, fields
 class MobileServiceTermsAndConditions(models.Model):
     _name = 'mobile_service.term.condition'
     _rec_name = 'name'
+    _description=" "
 
     name = fields.Char(
         String="Terms and condition",

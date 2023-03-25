@@ -2,8 +2,8 @@ from odoo import models, api
 
 
 class StockMoveReport(models.AbstractModel):
-
     _name = 'mobile_service.report.mobile_service_ticket_template'
+    _description=" "
 
     @api.model
     def _get_report_values(self, docids, data):

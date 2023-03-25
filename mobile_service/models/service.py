@@ -12,6 +12,7 @@ class MobileServiceShop(models.Model):
     _rec_name = 'name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _check_company_auto = True
+    _description=" "
 
     name = fields.Char(
         string='Service Number',
