@@ -15,17 +15,25 @@ class MobileSms(models.AbstractModel):
 
         :raises ? TDE FIXME
         """
-        
-        url = "https://panel.asanak.com/webservice/v1rest/sendsms"
-        payload = {
-            "username": "gilsaitsupport",
-            "password": "Nwkw36B7ZWEeE6Q",
-            "Source": "02100022141590",
-            "Message": message,
-            "destination": ','.join(numbers)
+        serv = self.env['mobile_sms.server'].search([('id', '=', '1')])
+        if serv:
+            url = serv.url
+            payload = {
+                "username": serv.user_name,
+                "password": serv.password,
+                "Source": serv.source_tel,
+                "Message": message,
+                "destination": ','.join(numbers)
+            }
+            response = requests.request("POST", url, data=payload, timeout=5)
+            return response
+        else:
+             params = {
+            'numbers': numbers,
+            'message': message,
         }
-        response = requests.request("POST", url, data=payload, timeout=5)
-        return response
+        return self._contact_iap('/iap/message_send', params)
+        
 
         # params = {
         #    'numbers': numbers,
