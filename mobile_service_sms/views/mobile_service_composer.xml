@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_mobile_sms_composer_form" model="ir.ui.view">
+		<field name="model">sms.composer</field>
+		<field name="inherit_id" ref="sms.sms_composer_view_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='recipient_single_number_itf']" position="before">
+					<field name="server_ids" widget="many2many_tags" string="Server" />
+			</xpath>
+		</field>
+	</record>
+</odoo>

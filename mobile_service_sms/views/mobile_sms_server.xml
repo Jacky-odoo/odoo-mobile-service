@@ -1,0 +1,55 @@
+<odoo>
+    <record id="mobile_mobile_sms_server_form_view" model="ir.ui.view">
+        <field name="name">mobile_sms.server.form</field>
+        <field name="model">mobile_sms.server</field>
+        <field name="arch" type="xml">
+            <form string="Server">
+                
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="internal_ref" />
+                                <field name="url" />
+                                <field name="user_name" />
+                                <field name="password" />
+                                <field name="source_tel" />
+                            </group>
+                        </group>
+                    </sheet>
+                
+            </form>
+        </field>
+    </record>
+
+
+    <record id="mobile_mobile_sms_server_tree_view" model="ir.ui.view">
+        <field name="name">mobile_sms.server.tree</field>
+        <field name="model">mobile_sms.server</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="source_tel" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_mobile_server" model="ir.actions.act_window">
+        <field name="name">Server</field>
+        <field name="res_model">mobile_sms.server</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="mobile_mobile_sms_server_tree_view" />
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click to Create a New Server.</p>
+        </field>
+    </record>
+    <menuitem action="action_mobile_server"
+        id="mobile_service_conf6"
+        parent="mobile_service.mobile_service_configuration"
+        name="Server"
+        sequence="6" />
+</odoo>
