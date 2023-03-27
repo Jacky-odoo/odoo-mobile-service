@@ -15,6 +15,7 @@ class MobileSms(models.AbstractModel):
 
         :raises ? TDE FIXME
         """
+        
         url = "https://panel.asanak.com/webservice/v1rest/sendsms"
         payload = {
             "username": "gilsaitsupport",
@@ -24,7 +25,6 @@ class MobileSms(models.AbstractModel):
             "destination": ','.join(numbers)
         }
         response = requests.request("POST", url, data=payload, timeout=5)
-        print(response.content)
         return response
 
         # params = {
