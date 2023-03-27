@@ -16,7 +16,6 @@
     ],
     'data': [
         'security/ir.model.access.csv',
-        'views/mobile_service_composer.xml',
         'views/mobile_sms_server.xml',
     ],
     'images': [
