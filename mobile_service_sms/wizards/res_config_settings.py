@@ -10,6 +10,7 @@ class ResConfigSettings(models.TransientModel):
     server_id = fields.Many2one(
         comodel_name='mobile_sms.server',
         string="Server",
+        config_parameter='mobile_sms.server.name',
         help="this is server sms")
     
     @api.model
