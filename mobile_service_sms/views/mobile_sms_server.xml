@@ -1,16 +1,13 @@
 <odoo>
-    <record id="mobile_mobile_sms_server_form_view" model="ir.ui.view">
+    <record id="mobile_sms_server_form_view" model="ir.ui.view">
         <field name="name">mobile_sms.server.form</field>
         <field name="model">mobile_sms.server</field>
         <field name="arch" type="xml">
             <form string="Sms Server">
                     <sheet>
-                        
                             <h4>
-                           
                                 <field name="name" string="Name"/>
                             </h4>
-                     
                         <group>
                             <group>
                                 <field name="internal_ref" />
@@ -20,20 +17,24 @@
                                 <field name="source_tel" />
                             </group>
                         </group>
-                    </sheet>
-                
+                    </sheet> 
             </form>
         </field>
     </record>
 
 
-    <record id="mobile_mobile_sms_server_tree_view" model="ir.ui.view">
+    <record id="mobile_sms_server_tree_view" model="ir.ui.view">
         <field name="name">mobile_sms.server.tree</field>
         <field name="model">mobile_sms.server</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />
                 <field name="source_tel" />
+                <field name="internal_ref"/>
+                <field name="server_special"/>
+                <field name="user_name"/>
+                <field name="password"/>
+                <field name="url"/>
             </tree>
         </field>
     </record>
@@ -42,7 +43,7 @@
         <field name="name">Server</field>
         <field name="res_model">mobile_sms.server</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="mobile_mobile_sms_server_tree_view" />
+        <field name="view_id" ref="mobile_sms_server_tree_view" />
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">Click to Create a New Server.</p>
         </field>

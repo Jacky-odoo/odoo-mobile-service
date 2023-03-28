@@ -17,6 +17,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/mobile_sms_server.xml',
+        'wizards/res_config_settings_views.xml',
     ],
     'images': [
         

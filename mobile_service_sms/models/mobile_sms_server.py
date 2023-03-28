@@ -41,3 +41,4 @@ class MobileServiceSmsServer(models.Model):
         string="Phone Source",
         trim=True,
         required=True)
+    server_special = fields.Boolean(string="Special Server")
