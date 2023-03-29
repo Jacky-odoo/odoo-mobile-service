@@ -38,6 +38,12 @@
                                     <div class="text-muted">
                                         select the server that you want send sms with him
                                     </div>
+
+                                    <button
+                                        type="object"
+                                        class="btn btn-secondary btn-sm "
+                                        string="Check IMEI"
+                                        name="action_view_servers">Check servers </button>
                                 </div>
                             </div>
                         </div>

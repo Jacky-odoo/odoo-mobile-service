@@ -26,4 +26,11 @@ class ResConfigSettings(models.TransientModel):
         super(ResConfigSettings, self).set_values()
         self.env['ir.config_parameter'].sudo().set_param('mobile_sms.server_special', self.server_special)
 
-    
+    def action_view_servers(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Servers'),
+            'res_model': 'mobile_sms.server',
+            'view_mode': 'tree,form',
+        }
