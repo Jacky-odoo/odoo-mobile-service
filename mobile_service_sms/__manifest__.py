@@ -1,16 +1,14 @@
 {
-    'name': 'Mobile SMS Management',
+    'name': 'SMS Server Management',
     'version': '16.0.1.0.0',
-    'summary': 'Module for managing mobile SMS Server.',
+    'summary': 'Module for managing SMS Server.',
     'category': 'Industries',
     'author': 'ViraWeb123',
     'company': 'ViraWeb123',
     'website': 'https://viraweb123.ir',
     'depends': [
         'base', 
-        'stock_account', 
-        'mail', 
-        'product', 
+        'mail',  
         'account',
         'sms'
     ],

@@ -3,6 +3,7 @@ from odoo.addons.iap.tools import iap_tools
 import requests
 
 
+
 class MobileSms(models.AbstractModel):
     _inherit = "sms.api"
     
@@ -15,18 +16,41 @@ class MobileSms(models.AbstractModel):
 
         :raises ? TDE FIXME
         """
-        serv = self.env['mobile_sms.server'].search([('id', '=', '1')])
-        if serv:
-            url = serv.url
-            payload = {
-                "username": serv.user_name,
-                "password": serv.password,
-                "Source": serv.source_tel,
-                "Message": message,
-                "destination": ','.join(numbers)
-            }
-            response = requests.request("POST", url, data=payload, timeout=5)
-            return response
+
+        serv = self.env['res.config.settings'].search([('server_special', '=', True)],
+                                                            limit=1,
+                                                            order="create_date DESC")
+        
+        if serv[0]:
+            if serv[0].server_id.id == 1:
+                serv1 = self.env['mobile_sms.server'].search([('id', '=', '1')])
+                url = serv1.url
+                payload = {
+                    "username": serv1.user_name,
+                    "password": serv1.password,
+                    "Source": serv1.source_tel,
+                    "Message": message,
+                    "destination": ','.join(numbers)
+                }
+                response = requests.request("POST", url, data=payload, timeout=5)
+                return response
+            if serv[0].server_id.id == 2:
+                head = {
+                    "X-API-KEY": "9125456459@elbaan.com!",
+                    'ACCEPT': 'application/json',
+                    'Content-Type': 'application/json',
+                }
+                serv2 = self.env['mobile_sms.server'].search([('id', '=', '2')])
+                url = serv2.url
+                payload = {
+                    "username": serv2.user_name,
+                    "password": serv2.password,
+                    "lineNumber": serv2.source_tel,
+                    "MessageText": message,
+                    "Mobiles": ','.join(numbers)
+                }
+                response = requests.request("POST", url, headers=head, json=payload)
+                return response
         else:
              params = {
             'numbers': numbers,
