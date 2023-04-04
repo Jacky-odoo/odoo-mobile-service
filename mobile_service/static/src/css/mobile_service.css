@@ -13,6 +13,7 @@
 .o_field_cell .o_list_char{
     direction: ltr /* rtl:ignore */;
 }
+/*-----Do for tree view view number in true direction*/
 td[name="contact_no"] {
     direction: ltr /* rtl:ignore */;
 }
