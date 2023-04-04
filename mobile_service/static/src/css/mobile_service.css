@@ -8,5 +8,11 @@
     max-height: 80px;
 }
 #recipient_single_number_itf {
-direction: ltr /* rtl:ignore */;
+    direction: ltr /* rtl:ignore */;
+}
+.o_field_cell .o_list_char{
+    direction: ltr /* rtl:ignore */;
+}
+td[name="contact_no"] {
+    direction: ltr /* rtl:ignore */;
 }
