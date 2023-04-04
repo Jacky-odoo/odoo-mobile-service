@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
   <record id="mobile_service_ticket" model="ir.actions.report">
-    <field name="name">Phone invoice to customer</field>
+    <field name="name">Print Receipt</field>
     <field name="model">mobile_service.service</field>
     <field name="report_type">qweb-pdf</field>
     <field name="report_name">mobile_service.mobile_service_ticket_template</field>
@@ -12,7 +12,7 @@
   </record>
 
   <record id="mobile_service_empty_ticket" model="ir.actions.report">
-    <field name="name">Print a receipt to present to customers in person</field>
+    <field name="name">The output file Receipt</field>
     <field name="model">mobile_service.service</field>
     <field name="report_type">qweb-pdf</field>
     <field name="report_name">mobile_service.mobile_service_empty_ticket_template</field>
