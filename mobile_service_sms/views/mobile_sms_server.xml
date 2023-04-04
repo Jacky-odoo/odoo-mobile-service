@@ -4,17 +4,17 @@
         <field name="model">mobile_sms.server</field>
         <field name="arch" type="xml">
             <form string="Sms Server">
-                    <sheet>
-                            <h4>
-                                <field name="name" string="Name"/>
-                            </h4>
+                    <sheet>       
                         <group>
                             <group>
-                                <field name="internal_ref" />
-                                <field name="url" />
-                                <field name="user_name" />
-                                <field name="password" />
+                                <field name="name" string="Name"/>
+                                <field name="server_type" widget="selection" />
+                                <field name="user_name" attrs="{'invisible': [('server_type', '!=', 'asanak')]}" />
+                                <field name="password" attrs="{'invisible': [('server_type', '!=', 'asanak')]}"/>
+                                <field name="security_code" attrs="{'invisible': [('server_type', '!=', 'smsir')]}" />
+                                <field name="api_key" attrs="{'invisible': [('server_type', '!=', 'smsir')]}"/>
                                 <field name="source_tel" />
+                                <field name="internal_ref" />
                             </group>
                         </group>
                     </sheet> 
@@ -31,10 +31,11 @@
                 <field name="name" />
                 <field name="source_tel" />
                 <field name="internal_ref"/>
-                <field name="server_special"/>
-                <field name="user_name"/>
-                <field name="password"/>
-                <field name="url"/>
+                <field name="server_type" />
+                <field name="user_name" attrs="{'invisible': [('server_type', '!=', 'asanak')]}" />
+                                <field name="password" attrs="{'invisible': [('server_type', '!=', 'asanak')]}"/>
+                                <field name="security_code" attrs="{'invisible': [('server_type', '!=', 'smsir')]}" />
+                                <field name="api_key" attrs="{'invisible': [('server_type', '!=', 'smsir')]}"/>
             </tree>
         </field>
     </record>
