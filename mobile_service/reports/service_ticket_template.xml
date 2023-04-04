@@ -6,7 +6,7 @@
         <div
             class="header m-0 p-0 border border-top-0 border-end-0 border-start-0  border-secondary border-4"
             style="font-family:Yekan Bakh Fa 04;">
-            <t t-foreach="docs" t-as="doc">
+            
                 <t t-set="doc" t-value="doc.with_context(lang=lang)" />
                 <table class="table table-bordered border-1 m-0">
                     <tr class="border-0">
@@ -18,7 +18,7 @@
                         </td>
                     </tr>
                 </table>
-            </t>
+           
         </div>
         
         <!-- todo body section -->
