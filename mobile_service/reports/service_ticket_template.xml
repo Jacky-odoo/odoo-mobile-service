@@ -6,21 +6,21 @@
         <div
             class="header m-0 p-0 border border-top-0 border-end-0 border-start-0  border-secondary border-4"
             style="font-family:Yekan Bakh Fa 04;">
-            
-                <t t-set="doc" t-value="doc.with_context(lang=lang)" />
-                <table class="table table-bordered border-1 m-0">
-                    <tr class="border-0">
-                        <td class="border-0" colspan="4"> رسید شرکت <t t-out="doc.company_id.name" />
-                        </td>
-                        <td class="border-0" colspan="4">
-                            <img t-att-src="image_data_uri(doc.company_id.logo)"
-                                style="width:70px;height:70px;" alt="Contact" />
-                        </td>
-                    </tr>
-                </table>
-           
+
+            <t t-set="doc" t-value="doc.with_context(lang=lang)" />
+            <table class="table table-bordered border-1 m-0">
+                <tr class="border-0">
+                    <td class="border-0" colspan="4"> رسید شرکت <t t-out="doc.company_id.name" />
+                    </td>
+                    <td class="border-0" colspan="4">
+                        <img t-att-src="image_data_uri(doc.company_id.logo)"
+                            style="width:70px;height:70px;" alt="Contact" />
+                    </td>
+                </tr>
+            </table>
+
         </div>
-        
+
         <!-- todo body section -->
         <div class="article o_report_layout_standard m-0 p-0">
             <t t-out="0" />
@@ -58,48 +58,39 @@
                             <tr>
                                 <th class="border-1 text-nowrap" colspan="4">
                                     <ul style="list-style:none;">
-                                        <li class="pb-1"> نام و نام خانوادگی: 
-                                            <t
+                                        <li class="pb-1"> نام و نام خانوادگی: <t
                                                 t-out="doc.person_id.name" />
                                         </li>
                                         <li class="pb-1">
-                                            <t t-if="doc.national_code"> کد ملی: 
-                                                <t
+                                            <t t-if="doc.national_code"> کد ملی: <t
                                                     t-out="doc.national_code" />
                                             </t>
                                         </li>
                                         <li class="pb-1">
-                                            <t t-if="doc.contact_no"> شماره تماس: 
-                                                <t
+                                            <t t-if="doc.contact_no"> شماره تماس: <t
                                                     t-out="doc.contact_no"
                                                     style="direction: ltr /* rtl:ignore */;" />
                                             </t>
                                         </li>
                                         <li class="pb-1">
-                                            <t t-if="doc.accept_date"> تاریخ و ساعت پذیرش: 
-                                                <t
+                                            <t t-if="doc.accept_date"> تاریخ و ساعت پذیرش: <t
                                                     t-out="doc.accept_date" /></t>
                                         </li>
                                         <li class="pb-1">
-                                            <t t-if="doc.acceptor_id.name"> نام پذیرنده: 
-                                                <t
+                                            <t t-if="doc.acceptor_id.name"> نام پذیرنده: <t
                                                     t-out="doc.acceptor_id.name" /></t>
                                         </li>
                                     </ul>
                                 </th>
                                 <th class="border-1" colspan="4">
                                     <ul style="list-style:none;">
-                                        <li class="pb-1">
-                                             شماره درخواست: 
-                                            <t t-out="doc.name" />
+                                        <li class="pb-1"> شماره درخواست: <t t-out="doc.name" />
                                         </li>
                                         <li class="pb-1">
-                                            <t t-if="doc.imei_no"> شماره سریال: 
-                                                <t
+                                            <t t-if="doc.imei_no"> شماره سریال: <t
                                                     t-out="doc.imei_no" /></t>
                                         </li>
-                                        <li class="pb-1"> مدل کامل دستگاه: 
-                                            <t
+                                        <li class="pb-1"> مدل کامل دستگاه: <t
                                                 t-out="doc.model_id.name" />
                                             <t
                                                 t-out="doc.brand_id.name" />
