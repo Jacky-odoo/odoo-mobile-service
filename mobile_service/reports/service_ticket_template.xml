@@ -8,7 +8,7 @@
                         <tr class="border-0">
                             <td class="border-0" colspan="4">
                                 رسید شرکت 
-                                <span t-out="doc.company_id.partner_id"/>
+                                <t t-out="doc.company_id.partner_id"/>
                             </td>
                             <td class="border-0" colspan="4">
                                 <img t-att-src="image_data_uri(doc.company_id.logo)" style="width:70px;height:70px;" alt="Contact"/>
@@ -23,9 +23,15 @@
                 <!-- todo footer section -->
                 <div class="footer o_standard_footer m-0 p-0 border border-bottom-0 border-end-0 border-start-0  border-secondary border-4">
                     <span>
-                        <h6>نشانی: خیابان حافظ، پایین تر از جمهوری، بازار موبایل ایران، طبقه 3، واحد 503C.</h6>
+                        <h6>
+                            نشانی:
+                            <t t-out="doc.company_id.street"/>
+                        </h6>
                         <h6>شنبه تا چهارشنبه ساعت 9 الی 17 و پنجشنبه‌ها از 9 الی 13</h6>
-                        <h6>شماره تماس: 02167385555</h6>
+                        <h6>
+                            شماره تماس:
+                            <t t-out="doc.company_id.phone"/>    
+                        </h6>
                     </span>
                     <p class="text-center">
                         page :<span class="page"/>/<span class="topage"/>
@@ -64,7 +70,7 @@
                                         <li class="pb-1">
                                             <t t-if="doc.contact_no">
                                             شماره تماس:
-                                                <span style="direction: ltr /* rtl:ignore */;" t-out="doc.contact_no"/>   
+                                                <t t-out="doc.contact_no" style="direction: ltr /* rtl:ignore */;" />   
                                              </t>
                                         </li>
                                         <li class="pb-1">
@@ -87,7 +93,7 @@
                                         </li>
                                         <li class="pb-1">
                                             <t t-if="doc.imei_no">
-                                            شماره IMEI: 
+                                            شماره سریال: 
                                             <span t-out="doc.imei_no"/></t>
                                         </li>
                                         <li class="pb-1">
