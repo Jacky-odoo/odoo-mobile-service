@@ -3,32 +3,34 @@
     <!-- To here create header and footer for this template -->
     <template id="mobile_service_ticket_template_header_footer">
         <!-- todo header section -->
-        <div class="header m-0 p-0 border border-top-0 border-end-0 border-start-0  border-secondary border-4" style="report_header_style; font-family:Yekan Bakh Fa 04;">
-            <table class="table table-bordered border-1 m-0">
-                <tr class="border-0">
-                    <th class="border-0" colspan="4"> رسید شرکت <span t-out="doc.company_id.name" />
-                    </th>
-                    <th class="border-0" colspan="4">
-                        <img t-att-src="image_data_uri(doc.company_id.favicon)" style="width:70px;height:70px;" alt="Contact"/>
-                    </th>
-                </tr>
-            </table>
-        </div>
-        <!-- todo body section -->
-        <div class="article o_report_layout_standard m-0 p-0">
-            <t t-out="0"/>
-        </div>
-        <!-- todo footer section -->
-        <div class="footer o_standard_footer m-0 p-0 border border-bottom-0 border-end-0 border-start-0  border-secondary border-4">
-            <span>
-                <h6>نشانی: خیابان حافظ، پایین تر از جمهوری، بازار موبایل ایران، طبقه 3، واحد 503C.</h6>
-                <h6>شنبه تا چهارشنبه ساعت 9 الی 17 و پنجشنبه‌ها از 9 الی 13</h6>
-                <h6>شماره تماس: 02167385555</h6>
-            </span>
-            <p class="text-center">
-                page :<span class="page"/>/<span class="topage"/>
-            </p>
-        </div>    
+                <div class="header m-0 p-0 border border-top-0 border-end-0 border-start-0  border-secondary border-4" style="font-family:Yekan Bakh Fa 04;">
+                    <table class="table table-bordered border-1 m-0">
+                        <tr class="border-0">
+                            <td class="border-0" colspan="4">
+                                رسید شرکت 
+                                <span t-out="doc.company_id.partner_id"/>
+                            </td>
+                            <td class="border-0" colspan="4">
+                                <img t-att-src="image_data_uri(doc.company_id.logo)" style="width:70px;height:70px;" alt="Contact"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- todo body section -->
+                <div class="article o_report_layout_standard m-0 p-0">
+                    <t t-out="0"/>
+                </div>
+                <!-- todo footer section -->
+                <div class="footer o_standard_footer m-0 p-0 border border-bottom-0 border-end-0 border-start-0  border-secondary border-4">
+                    <span>
+                        <h6>نشانی: خیابان حافظ، پایین تر از جمهوری، بازار موبایل ایران، طبقه 3، واحد 503C.</h6>
+                        <h6>شنبه تا چهارشنبه ساعت 9 الی 17 و پنجشنبه‌ها از 9 الی 13</h6>
+                        <h6>شماره تماس: 02167385555</h6>
+                    </span>
+                    <p class="text-center">
+                        page :<span class="page"/>/<span class="topage"/>
+                    </p>
+                </div>    
     </template>
     <!-- To here create template for Print action -->
     <template id="mobile_service_ticket_template">
@@ -54,20 +56,26 @@
                                             <span t-out="doc.person_id.name"/>
                                         </li>
                                         <li class="pb-1">
-                                            کد ملی:
-                                            <span t-out="doc.national_code"/>
+                                            <t t-if="doc.national_code">
+                                                کد ملی:
+                                                <span t-out="doc.national_code"/>
+                                            </t>
                                         </li>
                                         <li class="pb-1">
+                                            <t t-if="doc.contact_no">
                                             شماره تماس:
-                                            <span style="direction: ltr /* rtl:ignore */ !important;" t-out="doc.contact_no"/>   
+                                                <span style="direction: ltr /* rtl:ignore */;" t-out="doc.contact_no"/>   
+                                             </t>
                                         </li>
                                         <li class="pb-1">
+                                            <t t-if="doc.accept_date">
                                             تاریخ و ساعت پذیرش:
-                                            <span t-out="doc.accept_date"/>
+                                            <span t-out="doc.accept_date"/></t>
                                         </li>
                                         <li class="pb-1">
+                                            <t t-if="doc.acceptor_id.name">
                                             نام پذیرنده:
-                                            <span t-out="doc.acceptor_id.name"/>
+                                            <span t-out="doc.acceptor_id.name"/></t>
                                         </li>
                                     </ul> 
                                 </th>
@@ -78,8 +86,9 @@
                                             <span t-out="doc.name"/>
                                         </li>
                                         <li class="pb-1">
+                                            <t t-if="doc.imei_no">
                                             شماره IMEI: 
-                                            <span t-out="doc.imei_no"/>
+                                            <span t-out="doc.imei_no"/></t>
                                         </li>
                                         <li class="pb-1">
                                             مدل کامل دستگاه:  
@@ -87,27 +96,32 @@
                                             <span t-out="doc.brand_id.name"/>
                                         </li>
                                         <li class="pb-1">
+                                            <t t-if="doc.warranty_id.start_date">
                                             تاریخ آغاز گارانتی: 
-                                            <span t-out="doc.warranty_id.start_date"/>
+                                            <span t-out="doc.warranty_id.start_date"/></t>
+                                            <t t-if="doc.warranty_id.expire_date">
                                             تاریخ پایان گارانتی: 
-                                            <span t-out="doc.warranty_id.expire_date"/>
+                                            <span t-out="doc.warranty_id.expire_date"/></t>
                                         </li>
                                         <li class="pb-1">
+                                            <t t-if="doc.complaint_tree_ids">
                                             مشکل اظهار شده: 
                                             <t t-foreach="doc.complaint_tree_ids" t-as="a">
                                                 <span t-out="a.complaint_id.name"/>
                                                 <span t-out="a.complaint_description_id.name"/>
-                                            </t>
+                                            </t></t>
                                         </li>
                                         <li class="pb-1">
+                                            <t t-if="doc.appearance">
                                             وضعیت ظاهری دستگاه:
-                                            <span t-out="doc.appearance"/>
+                                            <span t-out="doc.appearance"/></t>
                                         </li>
                                         <li class="pb-1">
+                                            <t t-if="doc.items_ids">
                                             اقلام همراه گوشی:
                                             <t t-foreach="doc.items_ids" t-as="d">
                                                 <span t-out="d.name"/>
-                                            </t>
+                                            </t></t>
                                         </li>
                                     </ul> 
                                 </th>

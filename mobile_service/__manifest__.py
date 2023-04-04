@@ -11,7 +11,8 @@
         'stock_account', 
         'mail', 
         'product', 
-        'account'
+        'account',
+        'crm'
     ],
     'data': [
         # Security
