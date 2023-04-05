@@ -70,3 +70,14 @@ class MobileServiceElbaanShop(models.Model):
                 self.internal_notes+=regex.sub('\t',doc.body)
        else:
            self.internal_notes="is nothing"
+
+    def print_mobile_service_action(self, access_uid=None):
+        return {
+            'type': 'ir.actions.report',
+            'model': 'mobile_service.service',
+            'name': 'mobile_service.service',
+            'report_type': 'qweb-pdf',
+            'binding_model_id': 'model_mobile_service.service',
+            'report_name': 'mobile_service.mobile_service_ticket_template',
+            'report_file': 'mobile_service.mobile_service_ticket_template'
+        }
