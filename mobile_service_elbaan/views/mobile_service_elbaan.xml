@@ -263,7 +263,7 @@
         <field name="inherit_id" ref="mobile_service.mobile_service_request_tree_view" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='company_id']" position="after">
-				<button name="print_mobile_service_action" string="" type="object" icon="fa-print"/>
+				<button name="print_mobile_service_action" string="" type="object" icon="fa-print text-warning"/>
             </xpath>
         </field>
     </record>

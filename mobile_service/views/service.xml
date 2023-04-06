@@ -254,7 +254,7 @@
         <field name="model">mobile_service.service</field>
         <field name="arch" type="xml">
             <tree decoration-muted="service_state=='delivered'" default_order="name desc">
-                <field name="name" />
+                <field name="name" class="text-success fw-bolder"/>
                 <field name="person_id" />
                 <field name="contact_no" optional="hide" />
                 <field name="brand_id" optional="hide" />
