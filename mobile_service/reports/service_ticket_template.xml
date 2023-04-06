@@ -73,8 +73,9 @@
                                             </t>
                                         </li>
                                         <li class="pb-1">
-                                            <t t-if="doc.accept_date"> تاریخ و ساعت پذیرش: <t
-                                                    t-out="doc.accept_date" /></t>
+                                            <t t-if="doc.accept_date"> تاریخ و ساعت پذیرش: 
+                                                <span
+                                                    t-field="doc.accept_date" widget="date"/></t>
                                         </li>
                                         <li class="pb-1">
                                             <t t-if="doc.acceptor_id.name"> نام پذیرنده: <t
@@ -97,9 +98,11 @@
                                         </li>
                                         <li class="pb-1">
                                             <t t-if="doc.warranty_id.start_date"> تاریخ آغاز
-                                                گارانتی: <t t-out="doc.warranty_id.start_date" /></t>
+                                                گارانتی: 
+                                                <span t-field="doc.warranty_id.start_date" widget="date"/></t>
                                             <t t-if="doc.warranty_id.expire_date"> تاریخ پایان
-                                                گارانتی: <t t-out="doc.warranty_id.expire_date" /></t>
+                                                گارانتی: 
+                                                <span t-field="doc.warranty_id.expire_date" widget="date"/></t>
                                         </li>
                                         <li class="pb-1">
                                             <t t-if="doc.complaint_tree_ids"> مشکل اظهار شده: <t
