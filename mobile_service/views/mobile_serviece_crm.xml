@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<record id="view_mobile_serviece_crm_form" model="ir.ui.view">
+	<record id="mobile_serviece_crm_form_view" model="ir.ui.view">
         <field name="model">crm.lead</field>
+		<field name="priority">10</field>
 		<field name="inherit_id" ref="crm.crm_lead_view_form"/>
 		<field name="arch" type="xml">
-			<xpath expr="/form/sheet/group/group[1]/field[@name='is_partner_visible']" position="after">
-					<field name="national_code"/>
+			<xpath expr="//field[@name='tag_ids']" position="after">
+					<field name="national_code" string="National code"/>
 			</xpath>
 		</field>
 	</record>
 
-	<record id="crm_case_tree_view_leads" model="ir.ui.view">
-		<field name="name">crm.lead.tree.lead</field>
+	<record id="mobile_serviece_crm_tree_view" model="ir.ui.view">
 		<field name="model">crm.lead</field>
 		<field name="priority">10</field>
-		<field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+		<field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
 		<field name="arch" type="xml">
-			<xpath expr="/tree/field[@name='user_company_ids']" position="after">
+			<xpath expr="//field[@name='stage_id']" position="after">
 					<field name="national_code"/>
-					<button name="register_to_mobile_service"
-                            string="REDI Can"
-                            type="object"/>
 			</xpath>
 		</field>
 	</record>

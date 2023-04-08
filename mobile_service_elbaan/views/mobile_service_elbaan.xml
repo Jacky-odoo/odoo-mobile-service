@@ -238,7 +238,7 @@
                         type="object"
                         class="btn btn-secondary btn-sm fa fa-handshake-o"
                         string=" Send information to CRM"
-                        name="register_to_mobile_service"
+                        name="register_to_crm_service"
                         attrs="{'invisible': [('service_state','not in',('delivered'))]}"
                         groups="mobile_service.mobile_service_group_manager"
                         confirm="Are you sure Send information to CRM?" />

@@ -528,18 +528,17 @@ class MobileServiceShop(models.Model):
         self.is_in_warranty = self.warranty_id and (
             self.warranty_id.expire_date and self.warranty_id.expire_date > self.date_request)
         
-    #! Connect To Mobile Service and Create this item for this fields
-    def register_to_mobile_service(self):
+#! Connect To Mobile Service and Create this item for this fields
+    def register_to_crm_service(self):
         # Create CRM and record this fields
-        Model = request.env['mobile_service.service']
+        Model = request.env['crm.lead']
         Model.sudo().create({
             'name': self.name,
             'street': self.street,
-            'contact_no': self.mobile,
-            'email_id': self.email_from,
-            'service_state': self.description,
-            'accept_dated' : self.ate_open,
-            'warranty_id.expire_date' : self.date_closed,
+            'phone': self.contact_no,
+            'email_from': self.email_id,
+            'description': self.internal_notes,
+            'date_closed' : self.warranty_id.expire_date,
             'partner_id' : self.person_id.id,
             'national_code' : self.national_code,
         })
