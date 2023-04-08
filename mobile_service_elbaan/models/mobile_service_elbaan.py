@@ -51,7 +51,7 @@ class MobileServiceElbaanShop(models.Model):
 
     def action_unrepairablemobile_service(self):
         if self.is_in_warranty:
-             self.substate_evaluation = 'repairs'
+             self.substate_evaluation = 'ppsupply'
         else:
              self.service_state = 'quality'
 

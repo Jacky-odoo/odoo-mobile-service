@@ -86,7 +86,7 @@
                         class="btn btn-secondary btn-sm"
                         string=" Breach OF WARRANTY"
                         name="action_accept_service"
-                        attrs="{'invisible': ['|',('service_state','not in',('evaluation')),('substate_evaluation','not in',('evaluation'))]}"
+                        attrs="{'invisible': ['|',('service_state','not in',('evaluation')),('substate_evaluation','not in',('evaluation'))],'readonly': [('is_in_warranty', '!=', True)]}"
                         groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure this warranty?" />
                     <button
