@@ -103,6 +103,7 @@ class MobileService(Controller):
             'phone': kw['phone'],
             'email_from': kw['email_from'],
             'description': kw['description'],
+            'from_net' : '1',
         })
         return werkzeug.utils.redirect("/mobile-service-thanks")
 
