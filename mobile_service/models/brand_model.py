@@ -4,7 +4,7 @@ from odoo import models, fields
 class MobileBrandModels(models.Model):
     _name = 'mobile_service.brand.model'
     _rec_name = 'name'
-    _description=" "
+    _description="Mobile brand model"
     
     brand_id = fields.Many2one(
         comodel_name='mobile_service.brand',

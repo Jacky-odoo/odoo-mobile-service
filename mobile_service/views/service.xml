@@ -83,7 +83,7 @@
                     <group>
                         <group id="contact-info">
                             <field name="person_id" 
-                                widget="res_partner_many2one" 
+                            widget='many2one_avatar' 
                                 context="{'res_partner_search_mode': 'customer'}" 
                                 attrs="{'readonly': [('service_state','not in',('draft'))]}" />
                             <field name="contact_no" widget="phone"/>
@@ -126,15 +126,15 @@
                             <field 
                                 name="acceptor_id" 
                                 attrs="{'readonly': [('service_state','not in',('draft'))]
-                                                            ,'invisible' : [('service_state','in',('draft'))]}" />
+                                                            ,'invisible' : [('service_state','in',('draft'))]}" widget='many2one_avatar'/>
 
                             <field 
                                 name="technician_id" 
-                                attrs="{'readonly': [('service_state','not in',('draft', 'customer'))]}" />
+                                attrs="{'readonly': [('service_state','not in',('draft', 'customer'))]}" widget='many2one_avatar'/>
                             <field 
                                 name="company_id" 
                                 groups="base.group_multi_company" 
-                                attrs="{'readonly': [('service_state','not in',('draft'))]}" />
+                                attrs="{'readonly': [('service_state','not in',('draft'))]}" widget='many2one_avatar'/>
                         </group>
                     </group>
                     <notebook>
@@ -255,12 +255,12 @@
         <field name="arch" type="xml">
             <tree decoration-muted="service_state=='delivered'" default_order="name desc">
                 <field name="name" class="text-success fw-bolder"/>
-                <field name="person_id" />
-                <field name="contact_no" optional="hide" />
+                <field name="person_id" widget='many2one_avatar'/>
+                <field name="contact_no" optional="hide" widget="phone"/>
                 <field name="brand_id" optional="hide" />
                 <field name="model_id" />
                 <field name="imei_no" />
-                <field name="technician_id" optional="show" />
+                <field name="technician_id" optional="show" widget='many2one_avatar'/>
                 <field name="return_date" optional="hide" />
                 <field name="date_request" optional="hide" />
                 <field name="accept_date" optional="hide" />
@@ -274,7 +274,7 @@
                     decoration-warning="service_state == 'quality'"
                     decoration-info="service_state == 'evaluation'" />
 
-                <field name="company_id" optional="show" groups="base.group_multi_company" />
+                <field name="company_id" optional="show" groups="base.group_multi_company" widget='many2one_avatar' />
             </tree>
         </field>
     </record>

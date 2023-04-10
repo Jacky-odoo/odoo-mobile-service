@@ -5,7 +5,7 @@ from odoo import models, fields, api, _
 class MobileBrand(models.Model):
     _name = 'mobile_service.brand'
     _rec_name = 'name'
-    _description=" "
+    _description="Mobile brand"
     
     name = fields.Char(
         string="Mobile Brand",

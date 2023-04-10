@@ -7,7 +7,7 @@ class MobileComplaintTree(models.Model):
     """
     _name = 'mobile_service.complaint.tree'
     _rec_name = 'complaint_id'
-    _description=" "
+    _description="Mobile complaint relation"
 
     service_id = fields.Many2one(
         comodel_name='mobile_service.service',

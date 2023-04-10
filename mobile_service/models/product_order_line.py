@@ -4,7 +4,7 @@ from odoo import models, fields, api, _
 class ProductOrderLine(models.Model):
 
     _name = 'product.order.line'
-    _description=" "
+    _description="Mobile Product Order Line"
 
     product_order_id = fields.Many2one('mobile_service.service')
 

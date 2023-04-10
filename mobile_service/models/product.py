@@ -3,7 +3,7 @@ from odoo import models, fields, api, _
 
 class ProductProduct(models.Model):
     _inherit = 'product.template'
-    _description=" "
+    _description="Mobile Product"
 
     is_a_parts = fields.Boolean(
         string='Is a Mobile Part',
