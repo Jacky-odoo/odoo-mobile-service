@@ -8,7 +8,7 @@ class MobileServiceTermsAndConditions(models.Model):
     _description="Mobile Term Condition"
 
     name = fields.Char(
-        String="Terms and condition",
+        string='Terms and condition',
         compute="_find_id")
 
     description = fields.Text(
