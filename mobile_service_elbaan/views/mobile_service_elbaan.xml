@@ -253,8 +253,13 @@
                     attrs="{'invisible': [('service_state','not in',('evaluation'))]}" />
             </xpath>
             <xpath expr="//field[@name='national_code']" position="after">
-                <field name="items_ids" widget="many2many_tags" string="Included items"/>
-                <field name="appearance"/>
+                <field name="items_ids" 
+                widget="many2many_tags" 
+                string="Included items"
+                attrs="{'readonly': [('service_state','not in',('draft'))]}"/>
+                <field 
+                name="appearance"
+                attrs="{'readonly': [('service_state','not in',('draft'))]}"/>
             </xpath>
         </field>
     </record>
