@@ -57,21 +57,30 @@
         <field name="arch" type="xml">
             <form string="Mobile Warranty">
                 <header>
+                    <!-- states is create in here-->
                     <field name="state"
                         widget="statusbar"
-                        statusbar_visible="draft,valid,canceled" />
+                        statusbar_visible="draft,wvalid,valid,canceled" />
+                    <!-- button of states is in there-->
                     <button string="Cancel" 
                         type="object" 
                         name="action_canceled_state" 
                         class="oe_highlight"
-                        attrs="{'invisible': ['|',('state','in',('canceled')),('state','in',('draft'))]}"
+                        attrs="{'invisible': ['|','|',('state','in',('canceled')),('state','in',('wvalid')),('state','in',('draft'))]}"
                         data-hotkey="q"
                         confirm="Are you sure canceled this warranty?"/>
+                    <button string="Waiting for valid" 
+                        type="object" 
+                        name="action_waiting_valid_state" 
+                        class="oe_highlight"
+                        attrs="{'invisible': ['|','|',('state','in',('canceled')),('state','in',('valid')),('state','in',('wvalid'))]}"
+                        data-hotkey="v"
+                        confirm="Are you sure Valid this warranty?"/>
                     <button string="Valid" 
                         type="object" 
                         name="action_valid_state" 
                         class="oe_highlight"
-                        attrs="{'invisible': ['|',('state','in',('canceled')),('state','in',('valid'))]}"
+                        attrs="{'invisible': ['|','|',('state','in',('canceled')),('state','in',('draft')),('state','in',('valid'))]}"
                         data-hotkey="v"
                         confirm="Are you sure Valid this warranty?"/>
                 </header>
@@ -94,36 +103,36 @@
                     <group>
                         <group id="brand">
                             <field name="brand_id"
-                                attrs="{'readonly': True}" />
+                                attrs="{'readonly': [('state', 'not in', 'draft')]}" />
                             <field name="model_id"
-                                attrs="{'readonly': True}"/>
+                                attrs="{'readonly': [('state', 'not in', 'draft')]}" />
                             <field name="color"
-                                attrs="{'readonly': True}"/>
+                                attrs="{'readonly': [('state', 'not in', 'draft')]}" />
                         </group>
                         <group id="imei">
                             <field name="imei1"
-                                attrs="{'readonly': True}"/>
+                                attrs="{'readonly': [('state', 'not in', 'draft')]}" />
                             <field name="imei2"
-                                attrs="{'readonly': True}"/>
+                                attrs="{'readonly': [('state', 'not in', 'draft')]}" />
                         </group>
                         <group id="import-info">
                             <field name="code_hamta"
-                                attrs="{'readonly': True}"/>
+                                attrs="{'readonly': [('state', 'not in', 'draft')]}" />
                             <field name="part_number" 
-                                attrs="{'readonly': True}"/>
+                                attrs="{'readonly': [('state', 'not in', 'draft')]}" />
                         </group>
                         <group id="partners">
                             <field name="importer_id"
-                                attrs="{'readonly': True}"/>
+                                attrs="{'readonly': [('state', 'not in', 'draft')]}" />
                             <field name="warranty_id" 
-                                attrs="{'readonly': True}"/>
+                                attrs="{'readonly': [('state', 'not in', 'draft')]}" />
                             <field name="company_id" groups="base.group_multi_company"
-                                attrs="{'readonly': True}" />
+                                attrs="{'readonly': [('state', 'not in', 'draft')]}"  />
                             <separator />
                             <field name="start_date" 
                                 attrs="{'readonly': ['|',('state','in',('canceled')),('state','in',('valid'))]}" />
                             <field name="expire_date"
-                                attrs="{'readonly': True,'invisible': [('state', 'in', 'draft')]}"/>
+                                attrs="{'readonly': True,'invisible': [('state', 'not in', 'draft,wvalid')]}"/>
                             <field name="warranty_is_expire"/>    
                         </group>
                     </group>

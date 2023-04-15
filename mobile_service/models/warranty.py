@@ -71,6 +71,7 @@ class MobileWarranty(models.Model):
 
     state = fields.Selection(
         selection=[('draft', 'Draft'),
+                   ('wvalid', 'Waiting For Valid'),
                    ('valid', 'Valid'),
                    ('canceled', 'Canceled')],
         string='Status',
@@ -111,7 +112,7 @@ class MobileWarranty(models.Model):
                 raise UserError(
                     _('You cannot delete an Assigned warranty'))
         return super(MobileWarranty, self).unlink()
-
+#I change state of warranty in there
     def action_valid_state(self):
         if self.model_id and self.brand_id and self.company_id and self.start_date and self.code_hamta and self.importer_id and self.warranty_id:
             self.state = 'valid'
@@ -128,6 +129,9 @@ class MobileWarranty(models.Model):
                 'next': {'type': 'ir.actions.act_window_close'},
                 },
             }
+        
     def action_canceled_state(self):
-        #TO-DO
         self.state = 'canceled'
+
+    def action_waiting_valid_state(self):
+        self.state = 'wvalid'
