@@ -160,24 +160,26 @@
         <field name="model">mobile_service.warranty</field>
         <field name="arch" type="xml">
             <tree default_order="name desc">
-                <field name="name" />
-                <field name="brand_id" />
-                <field name="model_id" />
-                <field name="color" />
+                <field name="name" 
+                class="text-info fw-bolder"/>
+                    <field name="brand_id" />
+                    <field name="model_id" />
+                    <field name="state"
+                        widget="badge"
+                        decoration-danger="state == 'canceled'" 
+                        decoration-success="state == 'valid'"
+                        decoration-warning="state == 'wvalid'"
+                        decoration-info="state == 'draft'" />
+                <field name="color" optional="hide"/>
                 <field name="imei1" />
                 <field name="imei2" optional="hide" />
                 <field name="code_hamta" />
                 <field name="part_number" optional="hide" />
-                <field name="importer_id" />
+                <field name="importer_id" widget='many2one_avatar' />
                 <field name="warranty_id" />
                 <field name="start_date" />
                 <field name="expire_date" />
-                <field name="company_id" groups="base.group_multi_company" optional="show" />
-                <field name="state"
-                    optional="hide"
-                    widget="badge"
-                    decoration-info="state == 'draft'"
-                    decoration-success="state == 'valid'" />
+                <field name="company_id" widget='many2one_avatar' groups="base.group_multi_company" optional="show" />
             </tree>
         </field>
     </record>
