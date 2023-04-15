@@ -24,52 +24,58 @@ class MobileServiceElbaanShop(models.Model):
     ################################################################################
     #              State Machin: Actions
     ################################################################################
-
+    def action_view_serv(self):
+        self.ensure_one()
+        ctx = dict(
+            create=False,
+        )
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Service'),
+            'res_model': 'mobile_service.service',
+            'view_mode': 'tree,form',
+            'context': ctx
+        }
 
     # Action for SUB States in mobile service elbaan that we create in mobile service ---------->
-    def action_needparts_service(self):
+    def action_ppsuply_change(self):
         self.substate_evaluation = 'ppsupply'
+        return self.action_view_serv()
+    
+    def action_needparts_service(self):
+        return self.action_ppsuply_change()
 
     def action_bpfone_service(self):
         if self.is_in_warranty:
-             self.service_state = 'quality'
+            return self.action_qcsmobile_service()
 
     def action_notavailable_service(self):
         if self.is_in_warranty:
-             self.substate_evaluation = 'ppsupply'
+             return self.action_ppsuply_change()
         else:
-             self.service_state = 'quality'
+             return self.action_qcsmobile_service()
 
     def action_rpable_service(self):
          self.substate_evaluation = 'repairs'
+         return self.action_view_serv()
 
     def action_repairabledmobile_service(self):
         if self.is_in_warranty:
-            self. substate_evaluation = 'ppsupply'
-        else:
-            self.service_state = 'customer'
+           return self.action_ppsuply_change()
+        
+        return self.action_acceptmobile_service()
 
     def action_unrepairablemobile_service(self):
         if self.is_in_warranty:
-             self.substate_evaluation = 'ppsupply'
+             return self.action_ppsuply_change()
         else:
-             self.service_state = 'quality'
+            return self.action_qcsmobile_service()
 
     def action_needpart_service(self):
         if self.is_in_warranty:
-             self.substate_evaluation = 'ppsupply'
+             return self.action_ppsuply_change()
         else:
-             self.service_state = 'customer'
-#!this function read from chatter body of memo ang delete tags and insert in to internal_note
-    def action_get_chat_messages(self):
-       regex = re.compile(r'<[^>]+>')
-       self.internal_notes= ""
-       messa = self.env['mail.message'].search([('res_id', "=", self.id),('subtype_id',"=", 2),('record_name',"=", self.name), ('model', "=", "mobile_service.service"),], order='create_date asc')
-       if messa:
-            for doc in messa:
-                self.internal_notes+=regex.sub('\t',doc.body)
-       else:
-           self.internal_notes="is nothing"
+             return self.action_acceptmobile_service()
 
     def print_mobile_service_action(self, access_uid=None):
         return {

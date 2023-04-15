@@ -204,51 +204,44 @@ class MobileServiceShop(models.Model):
     
 
 # Action for States that we create in mobile service ---------->
-
     def action_draftmobile_service(self):
-        """
-        this is called when a record set in first level
-        """
+        """ this is called when a record set in first level"""
         self.service_state = 'draft'
-
+        return self.action_view_serv()
+    
     def action_accept_service(self):
-        """
-        this is called when a service accepted
-        """
-        self.accept_date = datetime.now()
+        """this is called when a service accepted"""
+        if not self.accept_date:
+            self.accept_date = datetime.now()
         self.service_state = 'accepted'
-
+        return self.action_view_serv()
+    
     def action_acceptmobile_service(self):
-        """
-        this is called after draft this is Customer action and notification
-        """
+        """ this is called after draft this is Customer action and notification """
         self.service_state = 'customer'
-
+        return self.action_view_serv()
+    
     def action_easmobile_service(self):
-        """
-        this called after 
-        """
+        """ this called after """
         self.service_state = 'evaluation'
-
+        return self.action_view_serv()
+    
     def action_qcsmobile_service(self):
-        """
-        this called after Evalution and service and this is quality Control and shipping
-        """
+        """ this called after Evalution and service and this is quality Control and shipping"""
         self.service_state = 'quality'
-
+        return self.action_view_serv()
+    
     def action_finmobile_service(self):
-        """
-        this called after quality Control and shipping this is Delivery state
+        """this called after quality Control and shipping this is Delivery state
         to this level can send information to crm , Print , send email
         """
         self.return_date = datetime.now()
         self.service_state = 'delivered'
+        return self.action_view_serv()
 
 
     def action_send_mail(self):
-        '''
-        This function opens a window to compose an email, with the edi sale template message loaded by default
-        '''
+        """This function opens a window to compose an email, with the edi sale template message loaded by default"""
         self.ensure_one()
         ir_model_data = self.env['ir.model.data']
         try:
