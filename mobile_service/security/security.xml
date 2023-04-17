@@ -48,7 +48,7 @@
     <record id="mobile_service_techs_rules" model="ir.rule">
         <field name="name">Mobile Service Technicians rule</field>
         <field name="model_id" ref="model_mobile_service_service" />
-        <field name="domain_force">[('service_state','=',('evaluation')), ('company_id', 'in', company_ids)]</field>
+        <field name="domain_force">[('service_state','=',('evaluation')), ('company_id', 'in', company_ids),('technician_id','=',user.id)]</field>
         <field name="groups" eval="[(4,ref('mobile_service_group_technicians'))]"/>
     </record>
                     <!--* QC -->
