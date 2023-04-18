@@ -223,8 +223,9 @@ class MobileServiceShop(models.Model):
     
     def action_easmobile_service(self):
         """ this called after """
-        self.service_state = 'evaluation'
-        return self.action_view_serv()
+        if (self.is_in_warranty or self.warranty_id) and self.warranty_id.state == 'valid':
+            self.service_state = 'evaluation'
+            return self.action_view_serv()
     
     def action_qcsmobile_service(self):
         """ this called after Evalution and service and this is quality Control and shipping"""
