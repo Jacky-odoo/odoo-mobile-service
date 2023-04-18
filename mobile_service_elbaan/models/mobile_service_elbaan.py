@@ -5,7 +5,7 @@ import re
 
 class MobileServiceElbaanShop(models.Model):
     _inherit = 'mobile_service.service'
-    _description = 'Elbaan Company Additional'
+    _description = 'Mobile Service'
     substate_evaluation = fields.Selection(
         selection=[('evaluation', 'Evaluation'),
                    ('ppsupply', 'Parts/phone supply'),

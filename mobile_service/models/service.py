@@ -222,10 +222,27 @@ class MobileServiceShop(models.Model):
         return self.action_view_serv()
     
     def action_easmobile_service(self):
-        """ this called after """
-        if (self.is_in_warranty or self.warranty_id) and self.warranty_id.state == 'valid':
+        """ this called after accept """
+        if self.warranty_id and self.warranty_id.state in 'valid':
             self.service_state = 'evaluation'
             return self.action_view_serv()
+        
+        if not self.warranty_id:
+            self.service_state = 'evaluation'
+            return self.action_view_serv()
+        
+        #!Create an Error in warranty 
+        return {
+        'type': 'ir.actions.client',
+        'tag': 'display_notification',
+        'params': {
+            'title': _('Warranty: %s.',self.name),
+            'message': _('Warranty is not valid please Check it...'),
+            'type': 'danger',
+            'sticky': True,  #True/False will display for few seconds if false
+            'next': {'type': 'ir.actions.act_window_close'},
+            },
+        }
     
     def action_qcsmobile_service(self):
         """ this called after Evalution and service and this is quality Control and shipping"""
@@ -520,7 +537,7 @@ class MobileServiceShop(models.Model):
     @api.depends('warranty_id')
     def _compute_is_in_warranty(self):
         self.is_in_warranty = self.warranty_id and (
-            self.warranty_id.expire_date and self.warranty_id.expire_date > self.date_request)
+            self.warranty_id.expire_date and self.warranty_id.expire_date > self.date_request) and self.warranty_id.state in 'valid'
         
 #! Connect To Mobile Service and Create this item for this fields
     def register_to_crm_service(self):
