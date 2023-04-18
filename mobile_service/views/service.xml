@@ -57,7 +57,7 @@
                 <div class="alert alert-warning m-0 p-0 w-100 fa fa-2x fa-exclamation-triangle" 
                     role="alert"
                     attrs="{'invisible': ['|', ('warranty_id', '=', False), ('is_in_warranty', '=', True)]}">
-                    <span>Current warranty for this IMEI is expired</span>
+                    <span>Current warranty for this IMEI is not valid</span>
                 </div>
                 <!--********************************************************* -->
                 <sheet>

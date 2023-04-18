@@ -132,7 +132,7 @@
                             <field name="start_date" 
                                 attrs="{'readonly': ['|',('state','in',('canceled')),('state','in',('valid'))]}" />
                             <field name="expire_date"
-                                attrs="{'readonly': True,'invisible': [('state', 'not in', 'draft,wvalid')]}"/>
+                                attrs="{'readonly': True}"/>
                             <field name="warranty_is_expire"/>    
                         </group>
                     </group>
