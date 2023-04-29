@@ -223,7 +223,7 @@ class MobileServiceShop(models.Model):
     
     def action_easmobile_service(self):
         """ this called after accept """
-        if self.warranty_id and self.warranty_id.state in 'valid':
+        if self.warranty_id and (self.warranty_id.state in 'valid' or self.warranty_id.state in 'canceled'):
             self.service_state = 'evaluation'
             return self.action_view_serv()
         

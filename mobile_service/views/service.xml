@@ -83,8 +83,9 @@
                     <group>
                         <group id="contact-info">
                             <field name="person_id" 
-                            widget='many2one_avatar' 
+                                widget='many2one_avatar' 
                                 context="{'res_partner_search_mode': 'customer'}" 
+                                options='{"no_create": True}'
                                 attrs="{'readonly': [('service_state','not in',('draft'))]}" />
                             <field name="contact_no" widget="phone"/>
                             <field name="email_id" widget="email"/>
