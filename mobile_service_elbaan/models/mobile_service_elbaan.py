@@ -1,4 +1,4 @@
-from odoo import models, fields, _
+from odoo import models, fields, api, _
 from datetime import datetime
 import re
 
@@ -20,11 +20,14 @@ class MobileServiceElbaanShop(models.Model):
         store=True,
         help="this is items mobile")
     appearance=fields.Text(string="Appearance")
-
+    
     ################################################################################
     #              State Machin: Actions
     ################################################################################
+
     def action_view_serv(self):
+        if self.service_state != 'evaluation':
+            self.substate_evaluation='evaluation'
         self.ensure_one()
         ctx = dict(
             create=False,
@@ -61,8 +64,7 @@ class MobileServiceElbaanShop(models.Model):
 
     def action_repairabledmobile_service(self):
         if self.is_in_warranty:
-           return self.action_ppsuply_change()
-        
+           return self.action_rpable_service()
         return self.action_acceptmobile_service()
 
     def action_unrepairablemobile_service(self):
