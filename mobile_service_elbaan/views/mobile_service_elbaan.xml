@@ -8,8 +8,7 @@
                 <!-- all state button is in there -->
                 <div class="btn-group flex-shrink-1 mh-300" role="group"
                     aria-label="Button group example">
-                    <!--****
-                    State Draft *********************************************-->
+                    <!--**** State Draft *********************************************-->
                     <button
                         type="object"
                         class="btn btn-secondary btn-sm "
@@ -26,8 +25,7 @@
                         attrs="{'invisible': ['|',('service_state','not in',('draft')),('model_id','=',False)]}"
                         groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure Accepted?" />
-                    <!--**
-                    State Accepted******************************************* -->
+                    <!--** State Accepted******************************************* -->
                     <button
                         type="object"
                         class="btn btn-primary btn-sm"
@@ -50,16 +48,16 @@
                     <button
                         type="object"
                         class="btn btn-primary btn-sm"
-                        string=" Confirmation"
-                        name="action_easmobile_service"
+                        string=" Receive documents"
+                        name="action_easmobile_tamin_service"
                         attrs="{'invisible': [('service_state','not in',('customer'))]}"
                         groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure Confirmation?" />
                     <button
                         type="object"
                         class="btn btn-secondary btn-sm"
-                        string=" Rejection"
-                        name="action_qcsmobile_service"
+                        string=" Customer approval"
+                        name="action_easmobile_tamir_service"
                         attrs="{'invisible': [('service_state','not in',('customer'))]}"
                         groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure Rejection?" />
@@ -71,14 +69,6 @@
                         attrs="{'invisible': [('service_state','not in',('customer'))]}"
                         groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
                         confirm="Are you sure Failure to receive service?" />
-                    <button
-                        type="object"
-                        class="btn btn-secondary btn-sm"
-                        string=" Receive service"
-                        name="action_accept_service"
-                        attrs="{'invisible': [('service_state','not in',('customer'))]}"
-                        groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_acceptor"
-                        confirm="Are you sure Failure to Receive service?" />
                     <!-- State Evaluation and service******************************************************** -->
                     <!--! 1-evaluation************************************************************************ -->
                     <button

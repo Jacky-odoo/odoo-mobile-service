@@ -51,7 +51,14 @@ class MobileServiceElbaanShop(models.Model):
     def action_bpfone_service(self):
         if self.is_in_warranty:
             return self.action_qcsmobile_service()
-
+    def action_easmobile_tamin_service(self):
+        service_state='evaluation'
+        substate_evaluation='ppsupply'
+        return self.action_view_serv()
+    def action_easmobile_tamir_service(self):
+        service_state='evaluation'
+        substate_evaluation='repairs'
+        return self.action_view_serv()
     def action_notavailable_service(self):
         if self.is_in_warranty:
              return self.action_ppsuply_change()
