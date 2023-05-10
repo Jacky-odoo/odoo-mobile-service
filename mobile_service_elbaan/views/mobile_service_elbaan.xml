@@ -75,7 +75,7 @@
                         type="object"
                         class="btn btn-secondary btn-sm"
                         string=" Breach OF WARRANTY"
-                        name="action_accept_service"
+                        name="action_custom_from_evaluation_service"
                         attrs="{'invisible': ['|','|',('service_state','not in',('evaluation')),('substate_evaluation','not in',('evaluation')),('is_in_warranty', '!=', True)]}"
                         groups="mobile_service.mobile_service_group_manager,mobile_service.mobile_service_group_technicians"
                         confirm="Are you sure this warranty?" />
