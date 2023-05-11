@@ -53,13 +53,13 @@ class MobileServiceElbaanShop(models.Model):
             return self.action_qcsmobile_service()
         
     def action_easmobile_tamin_service(self):
-        service_state='evaluation'
-        substate_evaluation='ppsupply'
+        self.service_state='evaluation'
+        self.substate_evaluation='ppsupply'
         return self.action_view_serv()
     
     def action_easmobile_tamir_service(self):
-        service_state='evaluation'
-        substate_evaluation='repairs'
+        self.service_state='evaluation'
+        self.substate_evaluation='repairs'
         return self.action_view_serv()
     
     def action_custom_from_evaluation_service(self):
