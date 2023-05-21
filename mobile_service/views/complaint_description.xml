@@ -12,6 +12,8 @@
                         <field name="image"
                             widget='image'
                             class="oe_avatar" />
+                            <field name="active" invisible='1'/>
+
                         <field name="internal_ref" />
                     </group>
                 </sheet>

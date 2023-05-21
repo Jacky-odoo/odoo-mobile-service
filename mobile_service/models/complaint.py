@@ -30,3 +30,4 @@ class MobileComplaintType(models.Model):
         comodel_name='mobile_service.complaint.description',
         inverse_name="complaint_id",
         string="Complaint Descriptions")
+    active=fields.Boolean('Active',default=True, store=True, readonly=False)

@@ -77,7 +77,7 @@ class MobileWarranty(models.Model):
         string='Status',
         default='draft',
         tracking=True)
-
+    active=fields.Boolean('Active',default=True, store=True, readonly=False)        
     start_date = fields.Date(string="Start Date", tracking=True)
     expire_date = fields.Date(string="Expire Date", tracking=True)
     #!Check start date of warranty and plus 18 month

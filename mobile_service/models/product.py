@@ -21,3 +21,4 @@ class ProductProduct(models.Model):
     model_color = fields.Char(
         string='Color',
         help="Color for the part")
+    active=fields.Boolean('Active',default=True, store=True, readonly=False)

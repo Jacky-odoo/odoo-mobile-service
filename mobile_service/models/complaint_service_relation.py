@@ -21,3 +21,4 @@ class MobileComplaintTree(models.Model):
         comodel_name='mobile_service.complaint.description',
         string="Complaint Description",
         domain="[('complaint_id', '=', complaint_id)]")
+    active=fields.Boolean('Active',default=True, store=True, readonly=False)

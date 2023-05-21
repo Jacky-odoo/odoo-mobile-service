@@ -35,6 +35,7 @@ class MobileBrand(models.Model):
         index=True,
         group_operator="count",
         required=True)
+    active=fields.Boolean('Active',default=True, store=True, readonly=False)
 
     def _model_brand_count(self):
         self.ensure_one()

@@ -30,3 +30,4 @@ class MobileBrandModels(models.Model):
         index=True,
         group_operator="count",
         required=True)
+    active=fields.Boolean('Active',default=True, store=True, readonly=False)
