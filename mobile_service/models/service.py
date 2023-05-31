@@ -149,6 +149,7 @@ class MobileServiceShop(models.Model):
         default=lambda self: self.env.company)
 
     picking_count = fields.Integer()
+    active=fields.Boolean('Active',default=True, store=True, readonly=False)
 
    
 
